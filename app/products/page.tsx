@@ -1278,6 +1278,31 @@ export default function Main() {
                     Unlock More Solar Energy Knowledge
                 </p>
                 <div className="w-[570px] h-[685px] absolute -left-4 top-22">
+                    <button className="cursor-pointer text-nowrap flex justify-center items-center gap-75 w-[538px] h-6">
+                        <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-52 h-6">
+                            What is solar energy?
+                        </p>
+                        <div className="flex justify-center items-center w-[30px] h-[30px]">
+                            <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px] overflow-hidden">
+                                <svg
+                                    width="30"
+                                    height="30"
+                                    viewBox="0 0 30 30"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="shrink-0 w-[30px] h-[30px] overflow-hidden relative "
+                                >
+                                    <path
+                                        d="M22 15H8"
+                                        stroke="black"
+                                        strokeWidth="2"
+                                        strokeMiterlimit="10"
+                                        strokeLinecap="round"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                    </button>
                     <div className="flex pt-[17px] pr-0 pb-[50px] pl-0 flex-col items-start gap-[17px] border-t border-t-[#F89420] w-[538px] h-[249px] absolute left-4 top-0">
                         <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-md font-normal leading-[1.5em] w-121 h-[141px]">
                             A solar energy system creates usable power from sunshine. There
@@ -1287,31 +1312,6 @@ export default function Main() {
                             generate the majority of the electricity used in your home, or
                             just a portion of it.
                         </p>
-                        <button className="cursor-pointer text-nowrap flex justify-center items-center gap-75 w-[538px] h-6">
-                            <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-52 h-6">
-                                What is solar energy?
-                            </p>
-                            <div className="flex justify-center items-center w-[30px] h-[30px]">
-                                <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px] overflow-hidden">
-                                    <svg
-                                        width="30"
-                                        height="30"
-                                        viewBox="0 0 30 30"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="shrink-0 w-[30px] h-[30px] overflow-hidden relative "
-                                    >
-                                        <path
-                                            d="M22 15H8"
-                                            stroke="black"
-                                            strokeWidth="2"
-                                            strokeMiterlimit="10"
-                                            strokeLinecap="round"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-                        </button>
                     </div>
                     <div className="flex pt-[17px] pr-0 pb-4 pl-0 justify-center items-center border-t border-t-[#DBDAD7] w-[538px] h-[57px] absolute left-4 top-[249px]">
                         <button className="cursor-pointer text-nowrap flex justify-center items-center gap-[99px] shrink-0 w-[538px] h-6">
@@ -1417,7 +1417,7 @@ export default function Main() {
                                             viewBox="0 0 2 16"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="h-3.5 absolute left-[15px] top-2 "
+                                            className="h-3.5 absolute left-[15px] top-2"
                                         >
                                             <path
                                                 d="M1 1V15"
@@ -1433,7 +1433,7 @@ export default function Main() {
                                             viewBox="0 0 16 2"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="w-3.5 absolute left-2 top-[15px] "
+                                            className="w-3.5 absolute left-2 top-[15px]"
                                         >
                                             <path
                                                 d="M15 1H1"
@@ -1621,32 +1621,6 @@ export default function Main() {
                         </div>
                         <div className="bg-linear-[180deg,rgba(0,0,0,0.55)0%,rgba(0,0,0,0.00)100%] w-full h-60 absolute -left-[406px] top-0"></div>
                         <div className="bg-linear-[0deg,rgba(0,0,0,0.55)0%,rgba(0,0,0,0.00)100%] w-full h-[481px] absolute -left-[406px] top-[481px]"></div>
-                        <div className="w-285 h-[850px] absolute -left-4 top-0">
-                            <div className="w-277 h-150 absolute left-4 top-0"></div>
-                            <p className="flex flex-col justify-center text-[#FFF] font-manrope text-lg font-bold leading-[1.2em] w-[298px] h-6 absolute left-[421px] top-[622px] text-center">
-                                Leading Residential Solar Provider
-                            </p>
-                            <p className="flex flex-col justify-center text-[#FFF] font-manrope text-[40px] font-semibold leading-[1.4em] w-[587px] h-14 absolute left-[277px] top-[670px] text-center">
-                                Take Control of Your Energy Bill
-                            </p>
-                            <div className="w-277 h-25 absolute left-4 top-[750px]">
-                                <p className="flex flex-col justify-center text-[#FFF] font-dMSans text-sm font-normal leading-[1.5em] w-[146px] h-[21px] absolute left-[330px] top-0.5">
-                                    Enter 5-Digit Zip Code
-                                </p>
-                                <div className="flex pt-4 pr-[17px] pb-[17px] pl-[17px] justify-center items-center rounded-2xl border border-[#FFF] bg-[#FFF] w-[210px] h-[53px] absolute left-[330px] top-[31px] overflow-hidden">
-                                    <div className="flex pr-[131px] items-center shrink-0 w-44 h-5 overflow-hidden">
-                                        <p className="flex flex-col justify-center shrink-0 text-[#898989] font-dMSans text-[15px] font-normal leading-[1.2em] w-[45px] h-5">
-                                            20707
-                                        </p>
-                                    </div>
-                                </div>
-                                <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#FDDD00] bg-[#FDDD00] w-[253px] h-[53px] absolute left-131 top-[31px] overflow-hidden">
-                                    <p className="flex flex-col justify-center shrink-0 text-[#243F8B] font-dMSans text-[17px] font-bold leading-[1em] w-[202px] h-[22px] text-center">
-                                        Start Your Free Estimate
-                                    </p>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
