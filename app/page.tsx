@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 export default function Home() {
   return (
     <div className="bg-[#FFF] min-w-screen min-h-screen overflow-auto overflow-x-hidden relative">
-      <div className="w-full h-full absolute left-0 top-0 opacity-[0%]"></div>
+      <div className="w-full h-full absolute left-0 top-0 opacity-0"></div>
       <div className="bg-[#FFF] w-full h-[6175px] absolute left-0 top-0">
         <div className="w-285 h-96 absolute left-[390px] top-[1042px]">
           <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[40px] font-semibold leading-[1.4em] w-[502px] h-14 absolute left-[319px] top-0 text-center">
@@ -185,7 +185,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-[42px] h-[33px] absolute left-4 top-60">
-            <div className="rounded-2xl bg-[#FDDD00] w-8 h-8 absolute left-0 top-[1px] opacity-[0%]"></div>
+            <div className="rounded-2xl bg-[#FDDD00] w-8 h-8 absolute left-0 top-px opacity-0"></div>
             <svg
               width="42"
               height="33"
@@ -203,7 +203,7 @@ export default function Home() {
             </svg>
           </div>
           <div className="w-[42px] h-[33px] absolute left-[1082px] top-60">
-            <div className="rounded-2xl bg-[#FDDD00] w-8 h-8 absolute left-2.5 top-[1px] opacity-[0%]"></div>
+            <div className="rounded-2xl bg-[#FDDD00] w-8 h-8 absolute left-2.5 top-px opacity-0"></div>
             <svg
               width="42"
               height="33"
@@ -225,7 +225,7 @@ export default function Home() {
           <div className="flex pt-4 pr-0 pb-8 pl-0 justify-center items-center shrink-0 w-277 h-[622px]">
             <div className="flex pt-12 pr-8 pb-12 pl-12 justify-end items-center gap-10 shrink-0 rounded-2xl bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-277 h-[574px]">
               <img
-                src="/solar-panels.png"
+                src="/images/solar-installers.webp"
                 className="shrink-0 rounded-2xl w-[478px] h-[478px] overflow-hidden max-w-none"
                 alt="solar"
               />
@@ -257,9 +257,9 @@ export default function Home() {
           <div className="flex pt-8 pr-0 pb-4 pl-0 justify-center items-center shrink-0 w-277 h-[622px]">
             <div className="flex pt-12 pr-8 pb-12 pl-12 justify-end items-center gap-10 shrink-0 rounded-2xl bg-[#4F6BBA] shadow-[0020px0rgba(28,44,87,0.16)] w-277 h-[574px]">
               <img
-                src="/FigureSolarinstallers768x512webp.png"
+                src="/images/d2ec129470064d9df1f61fef8a80dcef.webp"
                 className="shrink-0 rounded-2xl w-[478px] h-[478px] overflow-hidden max-w-none"
-                alt="Figure → solar-installers-768x512.webp"
+                alt="Figure → d2ec129470064d9df1f61fef8a80dcef-768x432.webp"
               />
               <div className="shrink-0 w-[510px] h-82 relative">
                 <p className="flex flex-col justify-center text-[#FFF] font-dMSans text-md font-normal leading-[1.5em] w-[473px] h-[141px] absolute left-4 top-27">
@@ -285,7 +285,7 @@ export default function Home() {
           <div className="flex pt-12 justify-center items-center shrink-0 w-277 h-[622px]">
             <div className="flex pt-12 pr-8 pb-12 pl-12 justify-end items-center gap-10 shrink-0 rounded-2xl bg-[#243F8B] shadow-[0020px0rgba(28,44,87,0.16)] w-277 h-[574px]">
               <img
-                src="/FigureDji_05131edited768x476png.png"
+                src="/images/DJI_0513-1-EDITED-2048x1270.png"
                 className="shrink-0 rounded-2xl w-[478px] h-[478px] overflow-hidden max-w-none"
                 alt="Figure → DJI_0513-1-EDITED-768x476.png"
               />
@@ -345,7 +345,7 @@ export default function Home() {
                   viewBox="0 0 300 300"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-75 h-75 absolute left-0 top-0 "
+                  className="w-75 h-75 absolute left-0 top-0"
                 >
                   <path
                     d="M150 300C232.843 300 300 232.843 300 150C300 67.1573 232.843 0 150 0C67.1573 0 0 67.1573 0 150C0 232.843 67.1573 300 150 300Z"
@@ -382,7 +382,7 @@ export default function Home() {
             </div>
           </div>
           <img
-            src="/Background.png"
+            src="/images/solar-roof-install-flyover1.webp"
             className="flex justify-center items-center rounded-[10px] w-[526px] h-74 absolute left-[598px] top-[43px] max-w-none"
             alt="Background"
           />
@@ -413,7 +413,7 @@ export default function Home() {
                         viewBox="0 0 80 80"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-[3889px] h-[5715px] absolute left-[1px] top-[1px] "
+                        className="w-[3889px] h-[5715px] absolute left-[1px] top-px "
                       >
                         <path
                           d="M-1003 -3147C-1003 -3148.1 -1002.1 -3149 -1001 -3149H2884C2885.1 -3149 2886 -3148.1 2886 -3147V2564C2886 2565.1 2885.1 2566 2884 2566H-1001C-1002.1 2566 -1003 2565.1 -1003 2564V-3147Z"
@@ -538,7 +538,7 @@ export default function Home() {
                                       viewBox="0 0 6 2"
                                       fill="none"
                                       xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[5px] h-0.5 absolute left-[11px] top-[18px] "
+                                      className="w-[5px] h-0.5 absolute left-[11px] top-[18px]"
                                     >
                                       <path
                                         d="M0.9375 1.8749H4.0945C4.6125 1.8749 5.032 1.4554 5.032 0.937401C5.032 0.419701 4.6124 0 4.0945 0H0.9375C0.4198 0 0 0.419801 0 0.937401C0 1.4554 0.4198 1.8749 0.9375 1.8749Z"
@@ -1619,14 +1619,18 @@ export default function Home() {
         </div>
         <div className="w-full h-[962px] absolute left-0 top-0">
           <div className="flex pt-0 pr-[406px] pb-28 pl-[406px] justify-center items-center bg-[#243F8B] w-full h-[962px] absolute left-0 top-0">
+            <div className="absolute left-0 top-0 w-full h-full overflow-hidden">
+              <video src="/videos/hero-video.mp4" className="w-full" autoPlay={true} loop={true} muted={true}></video>
+            </div>
             <div className="shrink-0 w-277 h-[850px] relative">
-              <div className="flex justify-center items-center w-full h-[962px] absolute -left-[406px] top-0 overflow-hidden">
+              {/* <div className="flex justify-center items-center w-full h-[962px] absolute -left-[406px] top-0 overflow-hidden">
+                <video src="/videos/hero-video.mp4" className="w-full" autoPlay={true} loop={true} muted={true}></video>
                 <img
                   src="/Herovideomp4.png"
                   className="shrink-0 w-full h-270 overflow-hidden max-w-none"
                   alt="Hero-Video.mp4"
                 />
-              </div>
+              </div> */}
               <div className="bg-linear-[180deg,rgba(0,0,0,0.55)0%,rgba(0,0,0,0.00)100%] w-full h-60 absolute -left-[406px] top-0"></div>
               <div className="bg-linear-[0deg,rgba(0,0,0,0.55)0%,rgba(0,0,0,0.00)100%] w-full h-[481px] absolute -left-[406px] top-[481px]"></div>
               <div className="w-285 h-[850px] absolute -left-4 top-0">
@@ -1647,12 +1651,12 @@ export default function Home() {
                         20707
                       </p>
                     </div>
+                    <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#FDDD00] bg-[#FDDD00] w-[253px] h-[53px] absolute left-[145px] top-[31px] overflow-hidden">
+                      <p className="flex flex-col justify-center shrink-0 text-[#243F8B] font-dMSans text-[17px] font-bold leading-[1em] w-[202px] h-[22px] text-center">
+                        Start Your Free Estimate
+                      </p>
+                    </button>
                   </div>
-                  <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#FDDD00] bg-[#FDDD00] w-[253px] h-[53px] absolute left-131 top-[31px] overflow-hidden">
-                    <p className="flex flex-col justify-center shrink-0 text-[#243F8B] font-dMSans text-[17px] font-bold leading-[1em] w-[202px] h-[22px] text-center">
-                      Start Your Free Estimate
-                    </p>
-                  </button>
                 </div>
               </div>
             </div>

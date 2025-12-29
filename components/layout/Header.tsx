@@ -1,6 +1,6 @@
 export default function Header() {
     return (
-        <div className="flex pb-[1px] flex-col justify-center items-center w-full h-[138px] absolute left-[3px] top-[1px]">
+        <div className="flex pb-[1px] flex-col justify-center items-center w-full h-[138px] absolute left-0 top-0">
             <div className="flex pt-2 pr-[406px] pb-[9px] pl-[1498px] justify-end items-center shrink-0 bg-[rgba(0,0,0,0.40)] w-full h-[33px] overflow-hidden">
                 <div className="flex pt-0.5 pr-0 pb-0 pl-[5px] justify-end items-center w-4 h-4">
                     <div className="w-4 h-4 relative">
@@ -10,7 +10,7 @@ export default function Header() {
                             viewBox="0 0 13 13"
                             fill="none"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="w-2.5 h-2.5 absolute left-1 top-[1px] "
+                            className="w-2.5 h-2.5 absolute left-1 top-[1px]"
                         >
                             <path
                                 d="M6.18185 11.2727C8.99348 11.2727 11.2728 8.99345 11.2728 6.18182C11.2728 3.37019 8.99348 1.09091 6.18185 1.09091C3.37022 1.09091 1.09094 3.37019 1.09094 6.18182C1.09094 8.99345 3.37022 11.2727 6.18185 11.2727Z"

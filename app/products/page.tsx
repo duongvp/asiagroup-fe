@@ -222,7 +222,7 @@ export default function Main() {
                 <div className="flex pt-4 pr-0 pb-8 pl-0 justify-center items-center shrink-0 w-277 h-[622px]">
                     <div className="flex pt-12 pr-8 pb-12 pl-12 justify-end items-center gap-10 shrink-0 rounded-2xl bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-277 h-[574px]">
                         <img
-                            src="/FigureD2ec129470064d9df1f61fef8a80dcef768x432webp.png"
+                            src="/images/d2ec129470064d9df1f61fef8a80dcef.webp"
                             className="shrink-0 rounded-2xl w-[478px] h-[478px] overflow-hidden max-w-none"
                             alt="Figure → d2ec129470064d9df1f61fef8a80dcef-768x432.webp"
                         />
