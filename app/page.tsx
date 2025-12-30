@@ -1617,10 +1617,34 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="w-full h-[962px] absolute left-0 top-0">
+        <div className="w-full h-[962px] absolute left-0 top-0 banner-video-section">
           <div className="flex pt-0 pr-[406px] pb-28 pl-[406px] justify-center items-center bg-[#243F8B] w-full h-[962px] absolute left-0 top-0">
             <div className="absolute left-0 top-0 w-full h-full overflow-hidden">
-              <video src="/videos/hero-video.mp4" className="w-full" autoPlay={true} loop={true} muted={true}></video>
+              <div className="relative banner-video-mask">
+                <video src="/videos/hero-video.mp4" className="w-full" autoPlay={true} loop={true} muted={true}></video>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0">
+                <defs>
+                  <clipPath id="curved-top" clipPathUnits="objectBoundingBox">
+                    <path d="m1,1H0V.05s.13-.05.48-.05.52.05.52.05v.95Z"></path>
+                  </clipPath>
+                  <clipPath id="curved-top-mobile" clipPathUnits="objectBoundingBox">
+                    <path d="m1,1H0V.02s.13-.02.48-.02.52.02.52.02v.98Z"></path>
+                  </clipPath>
+                  <clipPath id="curved-bottom" clipPathUnits="objectBoundingBox">
+                    <path d="M.55,1c-.19,0-.39-.02-.55-.11,0-.3,0-.59,0-.89h1v.89c-.14.08-.29.1-.45.11Z"></path>
+                  </clipPath>
+                  <clipPath id="curved-bottom-mobile" clipPathUnits="objectBoundingBox">
+                    <path d="M0,0h1v.98s-.13.02-.48.02-.52-.02-.52-.02v-.98Z"></path>
+                  </clipPath>
+                  <clipPath id="footer-clip-path" clipPathUnits="objectBoundingBox">
+                    <path d="M0,0v1h1V0C.75.16.25.16,0,0Z"></path>
+                  </clipPath>
+                  <clipPath id="footer-clip-path-mobile" clipPathUnits="objectBoundingBox">
+                    <path d="M0,0v1h1V0C.75.06.25.06,0,0Z"></path>
+                  </clipPath>
+                </defs>
+              </svg>
             </div>
             <div className="shrink-0 w-277 h-[850px] relative">
               {/* <div className="flex justify-center items-center w-full h-[962px] absolute -left-[406px] top-0 overflow-hidden">
