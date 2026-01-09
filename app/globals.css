@@ -8,6 +8,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -16,9 +18,14 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
 
+  /* Solar Company Colors */
+  --color-primary: var(--primary);
+  --color-background-light: var(--background-light);
+  --color-background-dark: var(--background-dark);
+  --color-brand-blue: var(--brand-blue);
+
   --color-cta: var(--cta);
   --color-cta-foreground: var(--cta-foreground);
-
   --color-sidebar: var(--sidebar);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
@@ -36,7 +43,6 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -51,6 +57,9 @@
 }
 
 :root {
+  --primary-dark: #0fae0f;
+  --secondary-blue: #0a2540;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -58,10 +67,15 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: #13ec13; /* Solar green */
+  --primary-foreground: #0e2a47; /* Brand blue for text on primary */
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
+
+  /* Solar Company Theme Colors */
+  --background-light: #f6f8f6;
+  --background-dark: #102210;
+  --brand-blue: #0e2a47;
 
   --cta: #fddd00;
   --cta-foreground: #243f8b;
@@ -88,20 +102,32 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
+  /* Fonts for Solar Company */
+  --font-display: Manrope, sans-serif;
+  --font-body: Noto Sans, sans-serif;
+
   --scrollbar-width: 15px;
 }
 
 .dark {
+  --primary-dark: #0fae0f;
+  --secondary-blue: #0a2540;
+
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary: #13ec13; /* Same solar green in dark mode */
+  --primary-foreground: #ffffff; /* White text on primary in dark mode */
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
+
+  /* Solar Company Dark Theme Colors */
+  --background-light: #102210;
+  --background-dark: #0b180b;
+  --brand-blue: #0e2a47;
 
   --cta: oklch(0.205 0 0);
   --cta-foreground: oklch(0.985 0 0);
@@ -136,26 +162,8 @@
   body {
     @apply bg-background text-foreground;
   }
-}
 
-.banner-video-section {
-  clip-path: url(#curved-bottom);
-}
-
-.banner-video-mask {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.banner-video-mask::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: calc(-50vw - -50%);
-  width: calc(100vw - var(--scrollbar-width) / 2);
-  height: 50%;
-  z-index: 1;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.55), hsla(0, 0%, 4%, 0));
+  /* Import fonts */
+  @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
 }
