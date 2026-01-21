@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
+import Footer from '@/components/layout/Footer';
+import { BadgeCheck, Factory, FactoryIcon, PiggyBank, Ruler, Shield, Smartphone, Star, TrendingUp, Verified, Zap } from 'lucide-react';
+import Header from '@/components/layout/Header';
 
 export default function SolarTech() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -28,52 +31,7 @@ export default function SolarTech() {
             <div className={`${isDarkMode ? 'dark' : ''}`}>
                 <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
                     {/* Top Navigation */}
-                    <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-[#2a3c2a] bg-white/95 dark:bg-surface-dark/95 backdrop-blur-sm">
-                        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                            <div className="flex items-center gap-2">
-                                <div className="flex items-center justify-center size-8 rounded bg-primary/20 text-primary">
-                                    <span className="material-symbols-outlined text-2xl">solar_power</span>
-                                </div>
-                                <span className="text-xl font-bold tracking-tight text-text-main dark:text-white">SolarTech</span>
-                            </div>
-
-                            <nav className="hidden md:flex items-center gap-8">
-                                <a className="text-sm font-medium text-text-main hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors" href="#solutions">
-                                    Solutions
-                                </a>
-                                <a className="text-sm font-medium text-text-main hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors" href="#commercial">
-                                    Commercial
-                                </a>
-                                <a className="text-sm font-medium text-text-main hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors" href="#technology">
-                                    Technology
-                                </a>
-                                <a className="text-sm font-medium text-text-main hover:text-primary dark:text-gray-200 dark:hover:text-primary transition-colors" href="#contact">
-                                    Contact
-                                </a>
-                            </nav>
-
-                            <div className="flex items-center gap-4">
-                                <button className="hidden sm:flex items-center justify-center rounded-lg bg-primary px-5 py-2.5 text-sm font-bold text-text-main hover:bg-opacity-90 transition-all">
-                                    Get a Quote
-                                </button>
-
-                                {/* Dark Mode Toggle */}
-                                <button
-                                    onClick={toggleDarkMode}
-                                    className="p-2 text-text-main dark:text-white"
-                                >
-                                    <span className="material-symbols-outlined">
-                                        {isDarkMode ? 'light_mode' : 'dark_mode'}
-                                    </span>
-                                </button>
-
-                                {/* Mobile Menu Button */}
-                                <button className="md:hidden p-2 text-text-main dark:text-white">
-                                    <span className="material-symbols-outlined">menu</span>
-                                </button>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     {/* Hero Section */}
                     <section className="relative w-full py-12 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -103,11 +61,11 @@ export default function SolarTech() {
                                 </div>
                                 <div className="flex items-center gap-6 pt-4 text-sm text-gray-500 dark:text-gray-400">
                                     <div className="flex items-center gap-2">
-                                        <span className="material-symbols-outlined text-primary text-xl">verified</span>
+                                        <Verified size={24} className='text-primary' />
                                         <span>25-Year Warranty</span>
                                     </div>
                                     <div className="flex items-center gap-2">
-                                        <span className="material-symbols-outlined text-primary text-xl">savings</span>
+                                        <PiggyBank size={24} className='text-primary' />
                                         <span>$0 Down Options</span>
                                     </div>
                                 </div>
@@ -118,7 +76,7 @@ export default function SolarTech() {
                                 <div
                                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                                     style={{
-                                        backgroundImage: `url('https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')`,
+                                        backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuB7o_HVDe0IDDY1ZSJgguVo7A1kdUxVfcMufqV8_NKxSTTMwsp-E6OjWDovf6DCwvM88YfZ2fIunLBfmvQzp8MVqJDJBdFlXY7V_TCZiPjhQ-o9uiLy6f29bgRR896IpU4HXYaEh4RSp2JtQ7UUJCBkd1US4x7ONR8n8bPvEazUufEKo7PJN2oPItQFMug8c_7GfGSF-5AERWkzoAqWVRj9Wza-F1HbTKlYzl9hlGhGZ4Vt_24LKOj7zjuCZ27vqP3EvpZOCLu74F8')`,
                                     }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -126,7 +84,7 @@ export default function SolarTech() {
                                     <p className="font-bold text-lg">Trusted by 10,000+ Homeowners</p>
                                     <div className="flex gap-1 mt-1">
                                         {[...Array(5)].map((_, i) => (
-                                            <span key={i} className="material-symbols-outlined text-primary fill-current text-sm">star</span>
+                                            <Star size={20} key={i} className='text-primary' />
                                         ))}
                                     </div>
                                 </div>
@@ -164,7 +122,7 @@ export default function SolarTech() {
                                             "25-Year Performance Warranty"
                                         ].map((feature, index) => (
                                             <div key={index} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-200">
-                                                <span className="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                                <BadgeCheck size={20} className='text-primary' />
                                                 {feature}
                                             </div>
                                         ))}
@@ -196,7 +154,7 @@ export default function SolarTech() {
                                             "Smart Monitoring App"
                                         ].map((feature, index) => (
                                             <div key={index} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-200">
-                                                <span className="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                                <BadgeCheck size={20} className='text-primary' />
                                                 {feature}
                                             </div>
                                         ))}
@@ -227,7 +185,7 @@ export default function SolarTech() {
                                             "EV Charger Integration"
                                         ].map((feature, index) => (
                                             <div key={index} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-200">
-                                                <span className="material-symbols-outlined text-primary text-xl">check_circle</span>
+                                                <BadgeCheck size={20} className='text-primary' />
                                                 {feature}
                                             </div>
                                         ))}
@@ -259,12 +217,12 @@ export default function SolarTech() {
                                         <div className="space-y-6">
                                             {[
                                                 {
-                                                    icon: "trending_up",
+                                                    icon: <TrendingUp size={24} />,
                                                     title: "High ROI",
                                                     description: "Typical payback period of 3-5 years with current tax incentives."
                                                 },
                                                 {
-                                                    icon: "factory",
+                                                    icon: <FactoryIcon size={24} />,
                                                     title: "Custom Engineering",
                                                     description: "Tailored arrays for flat roofs, carports, or ground mounts."
                                                 }
@@ -290,7 +248,7 @@ export default function SolarTech() {
                                         <div
                                             className="absolute inset-0 bg-cover bg-center"
                                             style={{
-                                                backgroundImage: `url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')`,
+                                                backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAKSzRlScrOFemTNqqVvDxREx_UUUjORxkFw_nt8IjAS9U1i0UWNwj03pH2NVTCHHgMi6_F4YhPR7BnLxq8cu8uiHzKxDTZUazo-yP49F-4AmGWEiHLk2O9VDap7oU0L6M-fwCMqLrsOKbDxHi72Chfy5Up9-3gKRYWyq4Oj_nYngpwC6VKI13PO2AaXpj4_w-UR3zBbj6qBsXxJfMGr4xmqfP68ljBwigi9SR6M6INoEHgxONgsjYZtmFXHPDEiCDLLBxWWfJRu5c')`,
                                             }}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/10 lg:to-transparent"></div>
@@ -310,29 +268,29 @@ export default function SolarTech() {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                                 {[
                                     {
-                                        icon: "bolt",
+                                        icon: <Zap size={28} />,
                                         title: "High Efficiency",
                                         description: "Our N-type monocrystalline panels operate at 22%+ efficiency, capturing more sunlight even on cloudy days."
                                     },
                                     {
-                                        icon: "shield",
+                                        icon: <Shield size={28} />,
                                         title: "Durability First",
                                         description: "Tested against hail, hurricane winds, and extreme heat. Built to last 30+ years with minimal degradation."
                                     },
                                     {
-                                        icon: "smartphone",
+                                        icon: <Smartphone size={28} />,
                                         title: "Smart Monitoring",
                                         description: "Track your production and consumption in real-time via our mobile app. Get alerts for system optimization."
                                     },
                                     {
-                                        icon: "design_services",
+                                        icon: <Ruler size={28} />,
                                         title: "Sleek Design",
                                         description: "All-black panels and low-profile mounting systems ensure your roof looks modern and clean, not cluttered."
                                     }
                                 ].map((feature, index) => (
                                     <div key={index} className="flex flex-col items-center text-center p-6 rounded-xl hover:bg-white hover:dark:bg-[#1a2e1a] hover:shadow-xl transition-all duration-300 group">
                                         <div className="size-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                            <span className="material-symbols-outlined text-4xl">{feature.icon}</span>
+                                            {feature.icon}
                                         </div>
                                         <h3 className="text-lg font-bold text-text-main dark:text-white mb-3">{feature.title}</h3>
                                         <p className="text-sm text-gray-600 dark:text-gray-400">{feature.description}</p>
@@ -369,69 +327,7 @@ export default function SolarTech() {
                     </section>
 
                     {/* Footer */}
-                    <footer className="bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800 pt-16 pb-8">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                                <div className="space-y-4">
-                                    <div className="flex items-center gap-2 text-text-main dark:text-white">
-                                        <div className="flex items-center justify-center size-6 rounded bg-primary text-text-main">
-                                            <span className="material-symbols-outlined text-sm">solar_power</span>
-                                        </div>
-                                        <span className="text-lg font-bold">SolarTech</span>
-                                    </div>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                                        Leading the transition to sustainable energy with cutting-edge solar technology for everyone.
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <h4 className="font-bold text-text-main dark:text-white mb-4">Solutions</h4>
-                                    <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                        {["Residential Solar", "Commercial Solar", "Battery Storage", "EV Charging"].map((item, index) => (
-                                            <li key={index}>
-                                                <a className="hover:text-primary transition-colors" href="#">{item}</a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h4 className="font-bold text-text-main dark:text-white mb-4">Company</h4>
-                                    <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                                        {["About Us", "Projects", "Careers", "Contact"].map((item, index) => (
-                                            <li key={index}>
-                                                <a className="hover:text-primary transition-colors" href="#">{item}</a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h4 className="font-bold text-text-main dark:text-white mb-4">Contact</h4>
-                                    <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                                        {[
-                                            { icon: "call", text: "+1 (555) 123-4567" },
-                                            { icon: "mail", text: "hello@solartech.com" },
-                                            { icon: "location_on", text: "123 Sun Valley Dr, CA" }
-                                        ].map((item, index) => (
-                                            <li key={index} className="flex items-center gap-2">
-                                                <span className="material-symbols-outlined text-primary text-sm">{item.icon}</span>
-                                                {item.text}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                                <p className="text-xs text-gray-400">© 2024 SolarTech Inc. All rights reserved.</p>
-                                <div className="flex gap-6">
-                                    <a className="text-gray-400 hover:text-primary text-xs" href="#">Privacy Policy</a>
-                                    <a className="text-gray-400 hover:text-primary text-xs" href="#">Terms of Service</a>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+                    <Footer />
                 </div>
             </div>
         </>

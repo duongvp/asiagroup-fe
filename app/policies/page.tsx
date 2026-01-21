@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
+import Header from '@/components/layout/Header';
+import { Cookie, Download, FileText, Lock, ShieldCheck } from 'lucide-react';
 
 export default function PoliciesLegal() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -30,48 +32,7 @@ export default function PoliciesLegal() {
             <div className={`${isDarkMode ? 'dark' : ''}`}>
                 <div className="bg-background-light dark:bg-background-dark font-display text-[#111811] dark:text-white">
                     {/* Top Navigation */}
-                    <header className="sticky top-0 z-50 bg-white dark:bg-[#111811] border-b border-solid border-[#f0f4f0] dark:border-[#2a382a] px-4 md:px-10 py-3">
-                        <div className="flex items-center justify-between whitespace-nowrap">
-                            <div className="flex items-center gap-8">
-                                <div className="flex items-center gap-4 text-[#111811] dark:text-white">
-                                    <div className="size-8 flex items-center justify-center text-primary">
-                                        <span className="material-symbols-outlined text-3xl">solar_power</span>
-                                    </div>
-                                    <h2 className="text-[#111811] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">SolarTech</h2>
-                                </div>
-                                <div className="hidden lg:flex items-center gap-9">
-                                    <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
-                                    <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Products</a>
-                                    <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Services</a>
-                                    <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">About Us</a>
-                                    <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Contact</a>
-                                </div>
-                            </div>
-                            <div className="flex flex-1 justify-end gap-4 md:gap-8">
-                                <form onSubmit={handleSearch} className="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
-                                    <div className="flex w-full flex-1 items-stretch rounded-lg h-full">
-                                        <div className="text-[#618961] flex border-none bg-[#f0f4f0] dark:bg-[#223022] items-center justify-center pl-4 rounded-l-lg border-r-0">
-                                            <span className="material-symbols-outlined text-[24px]">search</span>
-                                        </div>
-                                        <input
-                                            type="text"
-                                            value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
-                                            className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111811] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#f0f4f0] dark:bg-[#223022] focus:border-none h-full placeholder:text-[#618961] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
-                                            placeholder="Search policies..."
-                                        />
-                                    </div>
-                                </form>
-                                <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#111811] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#11d111] transition-colors">
-                                    <span className="truncate">Get a Quote</span>
-                                </button>
-                                {/* Mobile Menu Button */}
-                                <button className="lg:hidden flex items-center justify-center text-[#111811] dark:text-white">
-                                    <span className="material-symbols-outlined">menu</span>
-                                </button>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     {/* Hero Section */}
                     <div className="w-full bg-white dark:bg-[#111811]">
@@ -94,7 +55,7 @@ export default function PoliciesLegal() {
                                         </div>
                                         <div className="flex gap-3 relative z-10">
                                             <button className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 md:h-12 md:px-5 bg-primary text-[#111811] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-white hover:text-primary transition-all">
-                                                <span className="material-symbols-outlined mr-2 text-[20px]">download</span>
+                                                <Download className="mr-2" size={18} />
                                                 <span className="truncate">Download Full PDF</span>
                                             </button>
                                         </div>
@@ -117,19 +78,19 @@ export default function PoliciesLegal() {
                                         </div>
                                         <div className="flex flex-col gap-2">
                                             <a className="group flex items-center gap-3 px-3 py-3 rounded-lg bg-[#f0f4f0] dark:bg-[#223022] hover:bg-[#e0ebe0] dark:hover:bg-[#2c3d2c] transition-colors border-l-4 border-primary" href="#warranty">
-                                                <span className="material-symbols-outlined text-[#111811] dark:text-white">verified_user</span>
+                                                <ShieldCheck />
                                                 <p className="text-[#111811] dark:text-white text-sm font-medium leading-normal">Warranty Policy</p>
                                             </a>
                                             <a className="group flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#f0f4f0] dark:hover:bg-[#223022] transition-colors border-l-4 border-transparent" href="#privacy">
-                                                <span className="material-symbols-outlined text-[#618961] group-hover:text-[#111811] dark:group-hover:text-white">lock</span>
+                                                <Lock />
                                                 <p className="text-[#618961] dark:text-gray-400 group-hover:text-[#111811] dark:group-hover:text-white text-sm font-medium leading-normal">Privacy Policy</p>
                                             </a>
                                             <a className="group flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#f0f4f0] dark:hover:bg-[#223022] transition-colors border-l-4 border-transparent" href="#terms">
-                                                <span className="material-symbols-outlined text-[#618961] group-hover:text-[#111811] dark:group-hover:text-white">description</span>
+                                                <FileText />
                                                 <p className="text-[#618961] dark:text-gray-400 group-hover:text-[#111811] dark:group-hover:text-white text-sm font-medium leading-normal">Terms & Conditions</p>
                                             </a>
                                             <a className="group flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-[#f0f4f0] dark:hover:bg-[#223022] transition-colors border-l-4 border-transparent" href="#cookies">
-                                                <span className="material-symbols-outlined text-[#618961] group-hover:text-[#111811] dark:group-hover:text-white">cookie</span>
+                                                <Cookie />
                                                 <p className="text-[#618961] dark:text-gray-400 group-hover:text-[#111811] dark:group-hover:text-white text-sm font-medium leading-normal">Cookie Policy</p>
                                             </a>
                                         </div>
@@ -148,7 +109,7 @@ export default function PoliciesLegal() {
                                 <section className="scroll-mt-32 bg-white dark:bg-[#1a261a] p-8 md:p-10 rounded-xl shadow-sm border border-[#f0f4f0] dark:border-[#2a382a]" id="warranty">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="bg-primary/20 p-2 rounded-lg">
-                                            <span className="material-symbols-outlined text-[#111811] dark:text-white">verified_user</span>
+                                            <ShieldCheck />
                                         </div>
                                         <h2 className="text-primary text-sm font-bold uppercase tracking-wider">Performance Guarantee</h2>
                                     </div>
@@ -193,7 +154,7 @@ export default function PoliciesLegal() {
                                 <section className="scroll-mt-32 bg-white dark:bg-[#1a261a] p-8 md:p-10 rounded-xl shadow-sm border border-[#f0f4f0] dark:border-[#2a382a]" id="privacy">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="bg-primary/20 p-2 rounded-lg">
-                                            <span className="material-symbols-outlined text-[#111811] dark:text-white">lock</span>
+                                            <Lock />
                                         </div>
                                         <h2 className="text-primary text-sm font-bold uppercase tracking-wider">Data Protection</h2>
                                     </div>
@@ -219,7 +180,7 @@ export default function PoliciesLegal() {
                                 <section className="scroll-mt-32 bg-white dark:bg-[#1a261a] p-8 md:p-10 rounded-xl shadow-sm border border-[#f0f4f0] dark:border-[#2a382a]" id="terms">
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className="bg-primary/20 p-2 rounded-lg">
-                                            <span className="material-symbols-outlined text-[#111811] dark:text-white">description</span>
+                                            <FileText />
                                         </div>
                                         <h2 className="text-primary text-sm font-bold uppercase tracking-wider">Service Agreement</h2>
                                     </div>

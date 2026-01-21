@@ -2,7 +2,25 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
-import { CheckCircle, CheckCircle2, PiggyBank, Star, Zap } from 'lucide-react';
+import { BadgeCheck, CheckCircle, CheckCircle2, ChevronLeft, ChevronRight, PiggyBank, Star, Zap } from 'lucide-react';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
+
+interface ITestimonial {
+    id: number;
+    name: string;
+    date: string;
+    rating: number;
+    review: string;
+    type: "residential" | "commercial";
+    avatar?: string;
+    initials?: string;
+    bgColor?: string;
+    textColor?: string;
+    verified?: boolean;
+    verifiedBusiness?: boolean;
+    icon?: string
+}
 
 export default function CustomerTestimonials() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -12,7 +30,7 @@ export default function CustomerTestimonials() {
         setIsDarkMode(!isDarkMode);
     };
 
-    const testimonials = [
+    const testimonials: ITestimonial[] = [
         {
             id: 1,
             name: "Marcus Chen",
@@ -156,62 +174,16 @@ export default function CustomerTestimonials() {
             <div className={`${isDarkMode ? 'dark' : ''}`}>
                 <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden bg-background-light dark:bg-background-dark text-[#111811] dark:text-white font-display">
                     {/* TopNavBar */}
-                    <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e7eb] bg-white/95 backdrop-blur px-4 md:px-10 py-3 dark:bg-background-dark/95 dark:border-[#1f291f]">
-                        <div className="flex items-center gap-4 text-[#111811] dark:text-white">
-                            <div className="size-8 text-primary flex items-center justify-center">
-                                <span className="material-symbols-outlined text-4xl">solar_power</span>
-                            </div>
-                            <h2 className="text-[#111811] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">SolarTech Solutions</h2>
-                        </div>
-
-                        <div className="hidden lg:flex flex-1 justify-end gap-8">
-                            <div className="flex items-center gap-9">
-                                <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">
-                                    Residential
-                                </a>
-                                <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">
-                                    Commercial
-                                </a>
-                                <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">
-                                    About Us
-                                </a>
-                                <a className="text-primary text-sm font-bold leading-normal" href="#">
-                                    Testimonials
-                                </a>
-                                <a className="text-[#111811] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">
-                                    Support
-                                </a>
-                            </div>
-
-                            <button className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-[#0fbd0f] transition-colors text-[#111811] text-sm font-bold leading-normal tracking-[0.015em]">
-                                <span className="truncate">Get a Quote</span>
-                            </button>
-                        </div>
-
-                        {/* Mobile Menu Icon */}
-                        <div className="lg:hidden flex items-center gap-4">
-                            <button
-                                onClick={toggleDarkMode}
-                                className="text-[#111811] dark:text-white"
-                            >
-                                <span className="material-symbols-outlined">
-                                    {isDarkMode ? 'light_mode' : 'dark_mode'}
-                                </span>
-                            </button>
-                            <button className="text-[#111811] dark:text-white">
-                                <span className="material-symbols-outlined cursor-pointer">menu</span>
-                            </button>
-                        </div>
-                    </header>
+                    <Header />
 
                     <main className="flex h-full grow flex-col items-center">
                         {/* HeroSection */}
-                        <div className="w-full px-4 md:px-10 lg:px-40 py-5 flex justify-center">
-                            <div className="flex flex-col max-w-[960px] flex-1">
+                        <div className="w-full flex justify-center">
+                            <div className="flex flex-col  flex-1">
                                 <div className="@container">
-                                    <div className="@[480px]:p-4">
+                                    <div>
                                         <div
-                                            className="relative flex min-h-[400px] flex-col gap-6 overflow-hidden bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-8"
+                                            className="relative flex min-h-[400px] flex-col gap-6 overflow-hidden bg-cover bg-center bg-no-repeat @[480px]:gap-8  items-center justify-center p-8"
                                             style={{
                                                 backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJyLCPq6fOSVXQrTBwsA4c-87AFpNvpNkUo3u01zXyio_wZzXgL66aQuHTEJBHCMd6ZtqlbQMXCEzhMmaKv0QWadoHW8VbGFbsQgxIow2nxWQ1jy9IkT7Evqp18uJ1fJq03S351r0s4kMvFvuhP8q6qxDZnjPj3OrAbfVbYZ56jYHL7SEsyym6HJaBpWOuyzU_019xcNqWGt7SxE-Cylaqi4P-ORkpdU08FrxUClgndyV59xd1cWbVW87mi6AvjokfKGcQxbSqxng")',
                                             }}
@@ -220,7 +192,7 @@ export default function CustomerTestimonials() {
                                                 <div className="flex items-center justify-center gap-2 mb-2">
                                                     <div className="flex text-primary">
                                                         {[...Array(5)].map((_, i) => (
-                                                            <span key={i} className="material-symbols-outlined fill-1">star</span>
+                                                            <Star size={18} />
                                                         ))}
                                                     </div>
                                                     <span className="text-white font-medium">4.9/5 from 500+ happy neighbors</span>
@@ -251,7 +223,7 @@ export default function CustomerTestimonials() {
                         </div>
 
                         {/* Stats */}
-                        <div className="w-full px-4 md:px-10 lg:px-40 py-5 flex justify-center">
+                        <div className="w-full px-4 md:px-10  py-5 flex justify-center">
                             <div className="flex flex-col max-w-[960px] flex-1">
                                 <div className="flex flex-wrap gap-4 p-4">
                                     {stats.map((stat, index) => (
@@ -278,10 +250,10 @@ export default function CustomerTestimonials() {
 
                                     <div className="flex gap-2">
                                         <button className="p-2 rounded-full border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
-                                            <span className="material-symbols-outlined">arrow_back</span>
+                                            <ChevronLeft />
                                         </button>
                                         <button className="p-2 rounded-full border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
-                                            <span className="material-symbols-outlined">arrow_forward</span>
+                                            <ChevronRight />
                                         </button>
                                     </div>
                                 </div>
@@ -334,7 +306,7 @@ export default function CustomerTestimonials() {
 
                                                     <div className="flex items-center gap-2 mt-2 pt-4 border-t border-gray-100 dark:border-gray-800">
                                                         <button className="text-primary text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all">
-                                                            Read Full Case Study <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                                                            Read Full Case Study <ChevronRight size={18} />
                                                         </button>
                                                     </div>
                                                 </div>
@@ -410,7 +382,7 @@ export default function CustomerTestimonials() {
                                                 <div>
                                                     <p className="font-bold text-[#111811] dark:text-white text-sm">{testimonial.name}</p>
                                                     <div className="flex items-center gap-1">
-                                                        <span className="material-symbols-outlined text-primary text-[14px]">check_circle</span>
+                                                        <BadgeCheck size={16} />
                                                         <span className="text-[10px] uppercase tracking-wider font-bold text-gray-500">
                                                             {testimonial.verifiedBusiness ? 'Verified Business' : 'Verified'}
                                                         </span>
@@ -454,20 +426,7 @@ export default function CustomerTestimonials() {
                     </main>
 
                     {/* Simple Footer */}
-                    <footer className="w-full border-t border-[#e5e7eb] dark:border-gray-800 bg-white dark:bg-background-dark py-8 px-4 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-                        <div className="flex items-center gap-2">
-                            <span className="material-symbols-outlined text-primary">solar_power</span>
-                            <span className="font-bold text-[#111811] dark:text-white">SolarTech Solutions</span>
-                        </div>
-
-                        <div className="flex gap-6">
-                            <a className="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                            <a className="hover:text-primary transition-colors" href="#">Terms of Service</a>
-                            <a className="hover:text-primary transition-colors" href="#">Support</a>
-                        </div>
-
-                        <div>© 2023 SolarTech Solutions. All rights reserved.</div>
-                    </footer>
+                    <Footer />
                 </div>
             </div>
         </>

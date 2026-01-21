@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
+import { ArrowRight, BadgeCheck, BrushCleaning, ChevronDown, PiggyBank } from 'lucide-react';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
 
 export default function SolarInstallationProcess() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -69,10 +72,10 @@ export default function SolarInstallationProcess() {
             title: "Installation Day",
             description: "The big day! Our certified installation crew arrives to install your panels, racking, and inverter system. Most residential installations are completed in just 1-2 days with minimal disruption to your daily routine.",
             badges: [
-                { icon: "safety_check", label: "Certified Crew" },
-                { icon: "cleaning_services", label: "Site Cleanup" }
+                { icon: <BadgeCheck size={16} />, label: "Certified Crew" },
+                { icon: <BrushCleaning size={16} />, label: "Site Cleanup" }
             ],
-            image: "https://images.unsplash.com/photo-1542338106-3514d8d33c7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDStzqPV0L7V_KITjBbT9RPOJDCf2zCWYOLzNUUN92ho2gOktBb3dTbM5KnWaYoWwDms1mCTl0Ppg96HMfnok-agYFVW95eseWfAZDBYpDmBjb3iKz7DtaoMM837J88_J_OwmLX4HywOiWCoQZ6DjRCHOUVKF_DlZ7yOeunxIoSlgBpn0WSrPNGYlHsbnfGJR1ckznDGuz9CJWmOG8S3lE7F4bdOSlxh1uEpGP_K5Q9PZoXbPPMjrn5MdrcixLWFo9ZPV2uqjMbxxE",
             icon: "build",
             iconLabel: "Professional Installation"
         },
@@ -114,53 +117,7 @@ export default function SolarInstallationProcess() {
             <div className={`${isDarkMode ? 'dark' : ''}`}>
                 <div className="bg-background-light dark:bg-background-dark text-foreground">
                     {/* Top Navigation - Giữ nguyên */}
-                    <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-white/10 bg-white/90 backdrop-blur-md dark:bg-background-dark/90">
-                        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                            <div className="flex items-center gap-2">
-                                <div className="flex size-8 items-center justify-center rounded-lg bg-primary/20 text-primary">
-                                    <span className="material-symbols-outlined">wb_sunny</span>
-                                </div>
-                                <span className="text-lg font-bold tracking-tight text-foreground">SolarTech</span>
-                            </div>
-
-                            <nav className="hidden md:flex items-center gap-8">
-                                <a className="text-sm font-medium text-foreground hover:text-primary dark:text-gray-200 transition-colors" href="#">
-                                    Home
-                                </a>
-                                <a className="text-sm font-medium text-foreground hover:text-primary dark:text-gray-200 transition-colors" href="#">
-                                    Services
-                                </a>
-                                <a className="text-sm font-medium text-primary dark:text-primary transition-colors" href="#">
-                                    Process
-                                </a>
-                                <a className="text-sm font-medium text-foreground hover:text-primary dark:text-gray-200 transition-colors" href="#">
-                                    Projects
-                                </a>
-                                <a className="text-sm font-medium text-foreground hover:text-primary dark:text-gray-200 transition-colors" href="#">
-                                    Contact
-                                </a>
-                            </nav>
-
-                            <div className="flex items-center gap-4">
-                                <button className="hidden md:flex h-10 items-center justify-center rounded-lg bg-primary px-4 text-sm font-bold text-foreground transition-transform hover:scale-105">
-                                    Get a Quote
-                                </button>
-
-                                <button
-                                    onClick={toggleDarkMode}
-                                    className="p-2 text-foreground dark:text-white"
-                                >
-                                    <span className="material-symbols-outlined">
-                                        {isDarkMode ? 'light_mode' : 'dark_mode'}
-                                    </span>
-                                </button>
-
-                                <button className="md:hidden p-2 text-foreground dark:text-white">
-                                    <span className="material-symbols-outlined">menu</span>
-                                </button>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     {/* Hero Section - Giữ nguyên */}
                     <div className="relative overflow-hidden bg-secondary-blue py-16 sm:py-24 lg:py-32">
@@ -168,7 +125,7 @@ export default function SolarInstallationProcess() {
                             <div
                                 className="absolute inset-0 bg-cover bg-center"
                                 style={{
-                                    backgroundImage: `url('https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')`,
+                                    backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSbADYRiVzDKlS5neTDKxZDVjMa2YFJh6hvwGDEIAbwLrjmxY4st-Bph6MdoKccLnW_4nT7fS7aDgwSp8CUEL_GhMMj37KGJIcM4dm6ZXoTt9JaW7SHbL5vYKBzU1MN8NHmOnnasj-CxyWZA9R9XDdUK4x7t1NA0ul2rp9dI8B0R-Ub9rkbexoD39Xi6oOC2dtb693R2QtOV4S3rxcVFf8fzAtJiJRrtLQCb276VjvrZ0duz3cOS06btRzUAgwPGGykCeaCn7HPqE")`,
                                 }}
                             />
                             <div className="absolute inset-0 bg-secondary-blue/80 mix-blend-multiply"></div>
@@ -266,7 +223,7 @@ export default function SolarInstallationProcess() {
                                                             {step.features.map((feature, idx) => (
                                                                 <li key={idx} className="flex items-center gap-2">
                                                                     <span className={`material-symbols-outlined text-lg ${step.featureIcons ? 'text-gray-400' : 'text-primary'}`}>
-                                                                        {step.featureIcons ? step.featureIcons[idx] : 'check_circle'}
+                                                                        <BadgeCheck />
                                                                     </span>
                                                                     {feature}
                                                                 </li>
@@ -277,7 +234,7 @@ export default function SolarInstallationProcess() {
                                                     {step.roilabel && (
                                                         <div className={`bg-primary/10 dark:bg-primary/5 p-4 rounded-lg border border-primary/20 max-w-md ${isEven ? 'lg:ml-auto' : ''}`}>
                                                             <p className="text-sm font-semibold text-foreground dark:text-white mb-1 flex items-center gap-2">
-                                                                <span className="material-symbols-outlined text-primary text-base">savings</span>
+                                                                <PiggyBank className="text-primary" size={20} />
                                                                 {step.roilabel}
                                                             </p>
                                                             <p className="text-xs text-gray-600 dark:text-gray-400">{step.roitext}</p>
@@ -298,7 +255,7 @@ export default function SolarInstallationProcess() {
                                                     {step.cta && (
                                                         <button className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-4">
                                                             {step.cta}
-                                                            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                                                            <ArrowRight size={20} />
                                                         </button>
                                                     )}
                                                 </div>
@@ -343,9 +300,7 @@ export default function SolarInstallationProcess() {
                                     >
                                         <div className="flex items-center justify-between gap-1.5 text-foreground dark:text-white font-medium">
                                             <span>{faq.question}</span>
-                                            <span className={`material-symbols-outlined transition ${openFaq === index ? '-rotate-180' : ''}`}>
-                                                expand_more
-                                            </span>
+                                            <ChevronDown size={20} className={`material-symbols-outlined transition ${openFaq === index ? '-rotate-180' : ''}`} />
                                         </div>
                                         {openFaq === index && (
                                             <p className="mt-4 leading-relaxed text-gray-600 dark:text-gray-300">
@@ -415,30 +370,7 @@ export default function SolarInstallationProcess() {
                     </div>
 
                     {/* Footer - Giữ nguyên */}
-                    <footer className="bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-white/10">
-                        <div className="mx-auto max-w-7xl overflow-hidden px-6 py-12 lg:px-8">
-                            <div className="flex justify-center items-center gap-2 mb-8">
-                                <div className="flex size-6 items-center justify-center rounded bg-primary/20 text-primary">
-                                    <span className="material-symbols-outlined text-sm">wb_sunny</span>
-                                </div>
-                                <span className="text-base font-bold text-foreground">SolarTech</span>
-                            </div>
-
-                            <nav aria-label="Footer" className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12">
-                                {["About", "Process", "Projects", "Careers", "Contact"].map((link, index) => (
-                                    <div key={index} className="pb-6">
-                                        <a className="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200" href="#">
-                                            {link}
-                                        </a>
-                                    </div>
-                                ))}
-                            </nav>
-
-                            <p className="mt-10 text-center text-xs leading-5 text-gray-500 dark:text-gray-400">
-                                © 2024 SolarTech Inc. All rights reserved.
-                            </p>
-                        </div>
-                    </footer>
+                    <Footer />
                 </div>
             </div>
         </>

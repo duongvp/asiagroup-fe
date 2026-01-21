@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import { BadgeCheck, Leaf, ShieldCheck, Sun, Users, Zap } from 'lucide-react';
 
 export default function PartnersAndCertifications() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -26,52 +29,7 @@ export default function PartnersAndCertifications() {
             <div className={`${isDarkMode ? 'dark' : ''}`}>
                 <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-background-light dark:bg-background-dark font-display text-[#111811] dark:text-white">
                     {/* Navbar */}
-                    <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e5e8e5] bg-white/90 backdrop-blur-md px-6 py-4 dark:border-[#2a3c2a] dark:bg-background-dark/90 md:px-10">
-                        <div className="flex items-center gap-4">
-                            <div className="size-8 text-primary">
-                                <span className="material-symbols-outlined text-4xl">solar_power</span>
-                            </div>
-                            <h2 className="text-lg font-bold leading-tight tracking-[-0.015em] text-[#111811] dark:text-white">SolarTech</h2>
-                        </div>
-
-                        <div className="hidden flex-1 justify-end gap-8 md:flex">
-                            <nav className="flex items-center gap-9">
-                                <a className="text-sm font-medium leading-normal text-[#111811] hover:text-primary dark:text-white dark:hover:text-primary" href="#">
-                                    Home
-                                </a>
-                                <a className="text-sm font-medium leading-normal text-[#111811] hover:text-primary dark:text-white dark:hover:text-primary" href="#">
-                                    Solutions
-                                </a>
-                                <a className="text-sm font-medium leading-normal text-[#111811] hover:text-primary dark:text-white dark:hover:text-primary" href="#">
-                                    Projects
-                                </a>
-                                <a className="text-sm font-bold leading-normal text-primary" href="#">
-                                    Partners
-                                </a>
-                                <a className="text-sm font-medium leading-normal text-[#111811] hover:text-primary dark:text-white dark:hover:text-primary" href="#">
-                                    Contact
-                                </a>
-                            </nav>
-
-                            <button className="flex h-10 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-4 text-sm font-bold leading-normal tracking-[0.015em] text-[#111811] transition-colors hover:bg-primary/90">
-                                <span className="truncate">Get a Quote</span>
-                            </button>
-                        </div>
-
-                        <div className="flex items-center md:hidden">
-                            <button
-                                onClick={toggleDarkMode}
-                                className="mr-4 text-[#111811] dark:text-white"
-                            >
-                                <span className="material-symbols-outlined">
-                                    {isDarkMode ? 'light_mode' : 'dark_mode'}
-                                </span>
-                            </button>
-                            <button className="text-[#111811] dark:text-white">
-                                <span className="material-symbols-outlined">menu</span>
-                            </button>
-                        </div>
-                    </header>
+                    <Header />
 
                     <main className="flex flex-1 flex-col">
                         {/* Hero Section */}
@@ -92,7 +50,7 @@ export default function PartnersAndCertifications() {
                         <section className="w-full border-b border-[#e5e8e5] bg-white dark:border-[#2a3c2a] dark:bg-background-dark">
                             <div className="mx-auto flex max-w-[960px] flex-wrap justify-center gap-4 px-4 py-8 md:justify-between md:px-10">
                                 <div className="flex min-w-[140px] flex-col items-center gap-1 text-center">
-                                    <span className="material-symbols-outlined text-4xl text-primary">verified_user</span>
+                                    <ShieldCheck size={32} className="text-[#66FF00] mb-4" strokeWidth={2.5} />
                                     <p className="mt-2 text-3xl font-bold tracking-tight text-[#111811] dark:text-white">10+</p>
                                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Years Experience</p>
                                 </div>
@@ -100,7 +58,7 @@ export default function PartnersAndCertifications() {
                                 <div className="h-16 w-px bg-gray-200 dark:bg-gray-700 hidden md:block"></div>
 
                                 <div className="flex min-w-[140px] flex-col items-center gap-1 text-center">
-                                    <span className="material-symbols-outlined text-4xl text-primary">solar_power</span>
+                                    <Sun size={32} className="text-[#66FF00] mb-4" strokeWidth={2.5} />
                                     <p className="mt-2 text-3xl font-bold tracking-tight text-[#111811] dark:text-white">500+</p>
                                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Projects Completed</p>
                                 </div>
@@ -108,7 +66,7 @@ export default function PartnersAndCertifications() {
                                 <div className="h-16 w-px bg-gray-200 dark:bg-gray-700 hidden md:block"></div>
 
                                 <div className="flex min-w-[140px] flex-col items-center gap-1 text-center">
-                                    <span className="material-symbols-outlined text-4xl text-primary">workspace_premium</span>
+                                    <BadgeCheck size={32} className="text-[#66FF00] mb-4" strokeWidth={2.5} />
                                     <p className="mt-2 text-3xl font-bold tracking-tight text-[#111811] dark:text-white">100%</p>
                                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Certified Quality</p>
                                 </div>
@@ -116,7 +74,7 @@ export default function PartnersAndCertifications() {
                                 <div className="h-16 w-px bg-gray-200 dark:bg-gray-700 hidden md:block"></div>
 
                                 <div className="flex min-w-[140px] flex-col items-center gap-1 text-center">
-                                    <span className="material-symbols-outlined text-4xl text-primary">group</span>
+                                    <Users size={32} className="text-[#66FF00] mb-4" strokeWidth={2.5} />
                                     <p className="mt-2 text-3xl font-bold tracking-tight text-[#111811] dark:text-white">50+</p>
                                     <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Trusted Partners</p>
                                 </div>
@@ -195,7 +153,7 @@ export default function PartnersAndCertifications() {
                                     {/* Cert 1 */}
                                     <div className="flex flex-col items-center rounded-xl bg-white p-8 text-center shadow-sm dark:bg-background-dark">
                                         <div className="mb-4 flex size-20 items-center justify-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-                                            <span className="material-symbols-outlined text-4xl">verified</span>
+                                            <BadgeCheck className="text-blue-600" size={24} />
                                         </div>
                                         <h3 className="mb-2 text-lg font-bold text-[#111811] dark:text-white">ISO 9001:2015</h3>
                                         <p className="text-sm leading-normal text-gray-500 dark:text-gray-400">Quality Management Systems Certified for consistent service.</p>
@@ -204,7 +162,7 @@ export default function PartnersAndCertifications() {
                                     {/* Cert 2 */}
                                     <div className="flex flex-col items-center rounded-xl bg-white p-8 text-center shadow-sm dark:bg-background-dark">
                                         <div className="mb-4 flex size-20 items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400">
-                                            <span className="material-symbols-outlined text-4xl">eco</span>
+                                            <Leaf className="text-green-600" size={24} />
                                         </div>
                                         <h3 className="mb-2 text-lg font-bold text-[#111811] dark:text-white">ISO 14001</h3>
                                         <p className="text-sm leading-normal text-gray-500 dark:text-gray-400">Environmental Management for sustainable operations.</p>
@@ -213,7 +171,7 @@ export default function PartnersAndCertifications() {
                                     {/* Cert 3 */}
                                     <div className="flex flex-col items-center rounded-xl bg-white p-8 text-center shadow-sm dark:bg-background-dark">
                                         <div className="mb-4 flex size-20 items-center justify-center rounded-full bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400">
-                                            <span className="material-symbols-outlined text-4xl">safety_check</span>
+                                            <ShieldCheck className="text-orange-600" size={24} />
                                         </div>
                                         <h3 className="mb-2 text-lg font-bold text-[#111811] dark:text-white">TUV Rheinland</h3>
                                         <p className="text-sm leading-normal text-gray-500 dark:text-gray-400">Safety and Quality Standards for solar PV components.</p>
@@ -222,7 +180,7 @@ export default function PartnersAndCertifications() {
                                     {/* Cert 4 */}
                                     <div className="flex flex-col items-center rounded-xl bg-white p-8 text-center shadow-sm dark:bg-background-dark">
                                         <div className="mb-4 flex size-20 items-center justify-center rounded-full bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">
-                                            <span className="material-symbols-outlined text-4xl">bolt</span>
+                                            <Zap className="text-purple-600" size={24} />
                                         </div>
                                         <h3 className="mb-2 text-lg font-bold text-[#111811] dark:text-white">CE Certified</h3>
                                         <p className="text-sm leading-normal text-gray-500 dark:text-gray-400">European Conformity for health, safety, and environmental protection.</p>
@@ -293,36 +251,8 @@ export default function PartnersAndCertifications() {
                         </section>
                     </main>
 
-                    <footer className="flex flex-col gap-6 border-t border-[#e5e8e5] px-10 py-10 dark:border-[#2a3c2a]">
-                        <div className="mx-auto flex w-full max-w-[960px] flex-col gap-6">
-                            <div className="flex flex-wrap items-center justify-between gap-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="size-8 text-primary">
-                                        <span className="material-symbols-outlined text-4xl">solar_power</span>
-                                    </div>
-                                    <h2 className="text-lg font-bold leading-tight tracking-[-0.015em] text-[#111811] dark:text-white">SolarTech</h2>
-                                </div>
-
-                                <div className="flex flex-wrap gap-8 text-sm font-medium text-[#111811] dark:text-gray-300">
-                                    <a className="hover:text-primary" href="#">Privacy Policy</a>
-                                    <a className="hover:text-primary" href="#">Terms of Service</a>
-                                    <a className="hover:text-primary" href="#">Support</a>
-                                </div>
-
-                                <div className="flex gap-4 text-[#111811] dark:text-white">
-                                    <a className="transition-colors hover:text-primary" href="#">
-                                        {/* Social Icon Placeholder */}
-                                        <span className="material-symbols-outlined">public</span>
-                                    </a>
-                                    <a className="transition-colors hover:text-primary" href="#">
-                                        {/* Social Icon Placeholder */}
-                                        <span className="material-symbols-outlined">mail</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">© 2023 SolarTech. All rights reserved.</p>
-                        </div>
-                    </footer>
+                    {/* Footer */}
+                    <Footer />
                 </div>
             </div>
         </>

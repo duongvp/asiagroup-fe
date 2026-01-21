@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
-
+import { ArrowRight, BadgeCheck, Banknote, ChevronDown, CircleCheck, Leaf, Mail, MapPin, Phone, PiggyBank, Star, UserCog } from 'lucide-react';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 export default function GetQuote() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [formData, setFormData] = useState({
@@ -59,54 +61,7 @@ export default function GetQuote() {
             <div className={`${isDarkMode ? 'dark' : ''}`}>
                 <div className="flex flex-col min-h-screen bg-background-light dark:bg-background-dark text-text-main dark:text-white font-display overflow-x-hidden">
                     {/* TopNavBar */}
-                    <header className="sticky top-0 z-50 w-full border-b border-[#e2e8f0] bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-background-dark/95 dark:border-white/10">
-                        <div className="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto h-16 flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                                <div className="text-primary">
-                                    <span className="material-symbols-outlined text-3xl">solar_power</span>
-                                </div>
-                                <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">SolarGreen</span>
-                            </div>
-
-                            <nav className="hidden md:flex items-center gap-8">
-                                <a className="text-sm font-medium text-slate-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors" href="#">
-                                    Residential
-                                </a>
-                                <a className="text-sm font-medium text-slate-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors" href="#">
-                                    Commercial
-                                </a>
-                                <a className="text-sm font-medium text-slate-700 hover:text-primary dark:text-gray-300 dark:hover:text-primary transition-colors" href="#">
-                                    How It Works
-                                </a>
-                            </nav>
-
-                            <div className="flex items-center gap-4">
-                                <a className="hidden lg:flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-gray-200" href="tel:555-0123">
-                                    <span className="material-symbols-outlined text-[20px]">call</span>
-                                    (555) 123-4567
-                                </a>
-
-                                <button className="hidden sm:flex bg-primary hover:bg-green-400 text-slate-900 text-sm font-bold h-10 px-5 rounded-lg items-center justify-center transition-all">
-                                    Get Quote
-                                </button>
-
-                                {/* Dark Mode Toggle & Mobile Menu Button */}
-                                <div className="flex items-center gap-2 md:hidden">
-                                    <button
-                                        onClick={toggleDarkMode}
-                                        className="p-2 text-slate-700 dark:text-white"
-                                    >
-                                        <span className="material-symbols-outlined">
-                                            {isDarkMode ? 'light_mode' : 'dark_mode'}
-                                        </span>
-                                    </button>
-                                    <button className="p-2 text-slate-700 dark:text-white">
-                                        <span className="material-symbols-outlined">menu</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     <main className="flex-grow">
                         {/* Hero Section with Split Layout */}
@@ -122,7 +77,7 @@ export default function GetQuote() {
                                     {/* Left Column: Content */}
                                     <div className="flex flex-col gap-6 max-w-2xl">
                                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-white/10 w-fit border border-blue-100 dark:border-white/10">
-                                            <span className="material-symbols-outlined text-accent-blue text-sm">verified</span>
+                                            <BadgeCheck size={18} />
                                             <span className="text-xs font-bold uppercase tracking-wide text-accent-blue">Official Solar Partner</span>
                                         </div>
 
@@ -156,11 +111,11 @@ export default function GetQuote() {
                                                 </div>
                                                 <div className="flex flex-col">
                                                     <div className="flex text-yellow-400 text-sm">
-                                                        <span className="material-symbols-outlined text-[16px] fill-current">star</span>
-                                                        <span className="material-symbols-outlined text-[16px] fill-current">star</span>
-                                                        <span className="material-symbols-outlined text-[16px] fill-current">star</span>
-                                                        <span className="material-symbols-outlined text-[16px] fill-current">star</span>
-                                                        <span className="material-symbols-outlined text-[16px] fill-current">star</span>
+                                                        <Star size={16} />
+                                                        <Star size={16} />
+                                                        <Star size={16} />
+                                                        <Star size={16} />
+                                                        <Star size={16} />
                                                     </div>
                                                     <span className="text-xs font-medium text-slate-500 dark:text-gray-400">Trusted by 10,000+ homeowners</span>
                                                 </div>
@@ -169,15 +124,15 @@ export default function GetQuote() {
 
                                         <ul className="space-y-3 mt-4">
                                             <li className="flex items-center gap-3 text-slate-700 dark:text-gray-200">
-                                                <span className="material-symbols-outlined text-primary">check_circle</span>
+                                                <CircleCheck className="text-primary" size={20} />
                                                 <span>$0 Down financing options available</span>
                                             </li>
                                             <li className="flex items-center gap-3 text-slate-700 dark:text-gray-200">
-                                                <span className="material-symbols-outlined text-primary">check_circle</span>
+                                                <CircleCheck className="text-primary" size={20} />
                                                 <span>25-Year performance warranty</span>
                                             </li>
                                             <li className="flex items-center gap-3 text-slate-700 dark:text-gray-200">
-                                                <span className="material-symbols-outlined text-primary">check_circle</span>
+                                                <CircleCheck className="text-primary" size={20} />
                                                 <span>Increase property value instantly</span>
                                             </li>
                                         </ul>
@@ -196,7 +151,7 @@ export default function GetQuote() {
                                                     <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400" htmlFor="zipcode">Zip Code</label>
                                                     <div className="relative">
                                                         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-                                                            <span className="material-symbols-outlined text-[20px]">location_on</span>
+                                                            <MapPin size={18} />
                                                         </span>
                                                         <input
                                                             className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white placeholder-slate-400 focus:ring-0 transition-all"
@@ -213,7 +168,7 @@ export default function GetQuote() {
                                                     <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400" htmlFor="bill">Average Monthly Bill</label>
                                                     <div className="relative">
                                                         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
-                                                            <span className="material-symbols-outlined text-[20px]">payments</span>
+                                                            <Banknote size={16} />
                                                         </span>
                                                         <select
                                                             className="w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-900 dark:text-white appearance-none focus:ring-0 transition-all cursor-pointer"
@@ -228,7 +183,7 @@ export default function GetQuote() {
                                                             <option value="300+">$300+</option>
                                                         </select>
                                                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
-                                                            <span className="material-symbols-outlined text-[20px]">expand_more</span>
+                                                            <ChevronDown size={20} />
                                                         </span>
                                                     </div>
                                                 </div>
@@ -273,7 +228,7 @@ export default function GetQuote() {
                                                     type="submit"
                                                 >
                                                     Calculate My Savings
-                                                    <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
+                                                    <ArrowRight size={18} />
                                                 </button>
 
                                                 <p className="text-[11px] text-center text-slate-400 mt-1">
@@ -296,7 +251,7 @@ export default function GetQuote() {
                                     </div>
                                     <a className="text-primary font-bold flex items-center gap-1 hover:gap-2 transition-all" href="#">
                                         See all benefits
-                                        <span className="material-symbols-outlined">arrow_right_alt</span>
+                                        <ArrowRight size={18} />
                                     </a>
                                 </div>
 
@@ -304,7 +259,7 @@ export default function GetQuote() {
                                     {/* Feature 1 */}
                                     <div className="group p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 transition-all hover:shadow-lg">
                                         <div className="w-12 h-12 bg-white dark:bg-slate-700 rounded-lg flex items-center justify-center text-primary mb-4 shadow-sm group-hover:scale-110 transition-transform">
-                                            <span className="material-symbols-outlined">savings</span>
+                                            <PiggyBank size={24} />
                                         </div>
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Maximum Savings</h3>
                                         <p className="text-slate-600 dark:text-slate-400">Lock in lower electricity rates and protect yourself from utility price hikes for decades.</p>
@@ -313,7 +268,7 @@ export default function GetQuote() {
                                     {/* Feature 2 */}
                                     <div className="group p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 transition-all hover:shadow-lg">
                                         <div className="w-12 h-12 bg-white dark:bg-slate-700 rounded-lg flex items-center justify-center text-accent-blue mb-4 shadow-sm group-hover:scale-110 transition-transform">
-                                            <span className="material-symbols-outlined">engineering</span>
+                                            <UserCog size={24} />
                                         </div>
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Expert Installation</h3>
                                         <p className="text-slate-600 dark:text-slate-400">Our certified teams handle everything from permits to activation. Sit back and relax.</p>
@@ -322,7 +277,7 @@ export default function GetQuote() {
                                     {/* Feature 3 */}
                                     <div className="group p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 transition-all hover:shadow-lg">
                                         <div className="w-12 h-12 bg-white dark:bg-slate-700 rounded-lg flex items-center justify-center text-green-600 mb-4 shadow-sm group-hover:scale-110 transition-transform">
-                                            <span className="material-symbols-outlined">eco</span>
+                                            <Leaf size={24} />
                                         </div>
                                         <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Clean Future</h3>
                                         <p className="text-slate-600 dark:text-slate-400">Reduce your carbon footprint significantly. One home at a time, we're changing the world.</p>
@@ -335,12 +290,6 @@ export default function GetQuote() {
                         <footer className="bg-slate-900 py-12 border-t border-slate-800">
                             <div className="container mx-auto px-4 md:px-6 max-w-7xl text-center">
                                 <div className="flex flex-col items-center gap-6">
-                                    <div className="flex items-center gap-2 mb-4">
-                                        <div className="text-primary">
-                                            <span className="material-symbols-outlined text-3xl">solar_power</span>
-                                        </div>
-                                        <span className="text-2xl font-bold tracking-tight text-white">SolarGreen</span>
-                                    </div>
 
                                     <h2 className="text-2xl md:text-3xl font-bold text-white max-w-2xl">
                                         Ready to see your savings?
@@ -351,12 +300,12 @@ export default function GetQuote() {
                                     </p>
 
                                     <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center">
-                                        <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700">
-                                            <span className="material-symbols-outlined text-sm">mail</span>
+                                        <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 px-4 py-2 rounded-full">
+                                            <Mail size={18} />
                                             <span className="text-sm">hello@solargreen.com</span>
                                         </div>
-                                        <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700">
-                                            <span className="material-symbols-outlined text-sm">phone_iphone</span>
+                                        <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 px-4 py-2 rounded-full">
+                                            <Phone size={18} />
                                             <span className="text-sm">1-800-SOLAR-NOW</span>
                                         </div>
                                     </div>

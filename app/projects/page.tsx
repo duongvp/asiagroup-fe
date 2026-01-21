@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
+import { ArrowRight, Banknote, Calendar, ChevronDown, ChevronRight, CircleCheck, Cloud, Smile, Sun, Verified, Zap } from 'lucide-react';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 export default function SolarTechPortfolio() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -88,22 +91,22 @@ export default function SolarTechPortfolio() {
 
     const stats = [
         {
-            icon: "check_circle",
+            icon: <CircleCheck size={24} />,
             label: "Projects Completed",
             value: "500+"
         },
         {
-            icon: "bolt",
+            icon: <Zap size={24} />,
             label: "Energy Generated",
             value: "12GWh"
         },
         {
-            icon: "sentiment_satisfied",
+            icon: <Smile size={24} />,
             label: "Happy Clients",
             value: "98%"
         },
         {
-            icon: "co2",
+            icon: <Cloud size={24} />,
             label: "CO2 Offset",
             value: "5k Tons"
         }
@@ -131,54 +134,7 @@ export default function SolarTechPortfolio() {
             <div className={`${isDarkMode ? 'dark' : ''}`}>
                 <div className="bg-background-light dark:bg-background-dark text-accent-blue dark:text-white font-display overflow-x-hidden">
                     {/* TopNavBar - FIXED LAYOUT */}
-                    <header className="sticky top-0 z-50 w-full border-b border-[#f0f4f0] dark:border-[#2a3c2a] bg-white dark:bg-[#162e16]">
-                        <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 md:px-10">
-                            <div className="flex items-center gap-3 text-[#111811] dark:text-white">
-                                <div className="size-8 text-primary">
-                                    <span className="material-symbols-outlined !text-3xl">solar_power</span>
-                                </div>
-                                <h2 className="text-xl font-bold leading-tight tracking-tight">SolarTech</h2>
-                            </div>
-
-                            <nav className="hidden md:flex items-center gap-9">
-                                <a className="text-sm font-medium text-[#111811] hover:text-primary dark:text-gray-200 transition-colors" href="#">
-                                    Home
-                                </a>
-                                <a className="text-sm font-medium text-[#111811] hover:text-primary dark:text-gray-200 transition-colors" href="#">
-                                    Residential
-                                </a>
-                                <a className="text-sm font-medium text-[#111811] hover:text-primary dark:text-gray-200 transition-colors" href="#">
-                                    Commercial
-                                </a>
-                                <a className="text-sm font-bold text-primary dark:text-primary" href="#">
-                                    Portfolio
-                                </a>
-                                <a className="text-sm font-medium text-[#111811] hover:text-primary dark:text-gray-200 transition-colors" href="#">
-                                    About Us
-                                </a>
-                            </nav>
-
-                            <div className="flex items-center gap-4">
-                                <button className="hidden md:flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary text-[#111811] text-sm font-bold hover:bg-green-400 transition-colors">
-                                    Get a Quote
-                                </button>
-
-                                {/* Dark Mode Toggle for Mobile */}
-                                <button
-                                    onClick={toggleDarkMode}
-                                    className="md:hidden text-[#111811] dark:text-white p-2"
-                                >
-                                    <span className="material-symbols-outlined">
-                                        {isDarkMode ? 'light_mode' : 'dark_mode'}
-                                    </span>
-                                </button>
-
-                                <button className="md:hidden text-[#111811] dark:text-white p-2">
-                                    <span className="material-symbols-outlined">menu</span>
-                                </button>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     {/* HeroSection - FIXED LAYOUT */}
                     <section className="w-full relative">
@@ -187,7 +143,7 @@ export default function SolarTechPortfolio() {
                         }}>
                             <div className="relative z-10 max-w-[800px] text-center">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-6">
-                                    <span className="material-symbols-outlined text-sm text-primary">verified</span>
+                                    <Verified className="text-primary" size={20} />
                                     <span className="text-xs font-bold uppercase tracking-wide">Trusted by 500+ Homeowners</span>
                                 </div>
 
@@ -218,7 +174,7 @@ export default function SolarTechPortfolio() {
                                 {stats.map((stat, index) => (
                                     <div key={index} className="flex flex-col gap-2 p-6 rounded-xl bg-background-light dark:bg-[#1f3a1f] border border-[#dbe6db] dark:border-[#2a4e2a] hover:border-primary/50 transition-colors group">
                                         <div className="size-10 rounded-full bg-primary/20 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
-                                            <span className="material-symbols-outlined">{stat.icon}</span>
+                                            {stat.icon}
                                         </div>
                                         <p className="text-gray-600 dark:text-gray-300 text-sm font-medium">{stat.label}</p>
                                         <p className="text-[#111811] dark:text-white text-3xl font-bold leading-tight">{stat.value}</p>
@@ -296,7 +252,7 @@ export default function SolarTechPortfolio() {
                                                 </div>
 
                                                 <button className="size-8 rounded-full bg-[#f0f4f0] dark:bg-[#2a3c2a] flex items-center justify-center text-[#111811] dark:text-white group-hover:bg-primary transition-colors">
-                                                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                                                    <ArrowRight size={16} />
                                                 </button>
                                             </div>
                                         </div>
@@ -307,7 +263,7 @@ export default function SolarTechPortfolio() {
                             {/* Pagination/More */}
                             <div className="flex justify-center mt-12">
                                 <button className="flex items-center gap-2 text-sm font-bold text-[#111811] dark:text-white border border-[#dbe6db] dark:border-[#2a4e2a] rounded-lg px-6 py-3 hover:bg-[#f0f4f0] dark:hover:bg-[#2a3c2a] transition-colors">
-                                    Load More Projects <span className="material-symbols-outlined text-sm">expand_more</span>
+                                    Load More Projects <ChevronDown size={18} />
                                 </button>
                             </div>
                         </div>
@@ -330,11 +286,11 @@ export default function SolarTechPortfolio() {
                                         <div className="absolute bottom-6 left-6 right-6">
                                             <div className="flex gap-4 text-sm font-medium text-white/90">
                                                 <span className="flex items-center gap-1">
-                                                    <span className="material-symbols-outlined text-primary text-base">calendar_month</span>
+                                                    <Calendar size={16} />
                                                     6 Month Timeline
                                                 </span>
                                                 <span className="flex items-center gap-1">
-                                                    <span className="material-symbols-outlined text-primary text-base">paid</span>
+                                                    <Banknote size={16} />
                                                     ROI in 3.5 Years
                                                 </span>
                                             </div>
@@ -371,7 +327,7 @@ export default function SolarTechPortfolio() {
 
                                     <div className="mt-4">
                                         <button className="flex items-center gap-2 text-primary font-bold hover:underline">
-                                            Read Full Case Study <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                                            Read Full Case Study <ChevronRight size={18} />
                                         </button>
                                     </div>
                                 </div>
@@ -381,8 +337,8 @@ export default function SolarTechPortfolio() {
 
                     {/* CTA Section - FIXED LAYOUT */}
                     <section className="w-full py-20 bg-[#f0f4f0] dark:bg-[#162e16]">
-                        <div className="max-w-[800px] mx-auto px-4 md:px-10 text-center">
-                            <span className="material-symbols-outlined text-5xl text-primary mb-4">sunny</span>
+                        <div className="max-w-[800px] mx-auto px-4 md:px-10 flex flex-col items-center text-center">
+                            <Sun className='text-primary mb-4' size={32} />
                             <h2 className="text-[#111811] dark:text-white text-3xl md:text-4xl font-bold leading-tight mb-4">
                                 Ready to start your solar journey?
                             </h2>
@@ -402,65 +358,7 @@ export default function SolarTechPortfolio() {
                     </section>
 
                     {/* Footer - FIXED LAYOUT */}
-                    <footer className="bg-white dark:bg-[#102210] border-t border-[#f0f4f0] dark:border-[#2a3c2a] pt-16 pb-8">
-                        <div className="max-w-[1200px] mx-auto px-4 md:px-10">
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                                <div className="flex flex-col gap-4">
-                                    <div className="flex items-center gap-2 text-[#111811] dark:text-white">
-                                        <span className="material-symbols-outlined text-primary text-2xl">solar_power</span>
-                                        <span className="text-xl font-bold">SolarTech</span>
-                                    </div>
-                                    <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                        Leading the transition to sustainable energy with cutting-edge solar technology and exceptional service.
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <h4 className="font-bold text-[#111811] dark:text-white mb-4">Services</h4>
-                                    <ul className="flex flex-col gap-2 text-sm text-gray-500 dark:text-gray-400">
-                                        <li><a className="hover:text-primary transition-colors" href="#">Residential Solar</a></li>
-                                        <li><a className="hover:text-primary transition-colors" href="#">Commercial Solar</a></li>
-                                        <li><a className="hover:text-primary transition-colors" href="#">Battery Storage</a></li>
-                                        <li><a className="hover:text-primary transition-colors" href="#">EV Charging</a></li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h4 className="font-bold text-[#111811] dark:text-white mb-4">Company</h4>
-                                    <ul className="flex flex-col gap-2 text-sm text-gray-500 dark:text-gray-400">
-                                        <li><a className="hover:text-primary transition-colors" href="#">About Us</a></li>
-                                        <li><a className="hover:text-primary transition-colors" href="#">Portfolio</a></li>
-                                        <li><a className="hover:text-primary transition-colors" href="#">Careers</a></li>
-                                        <li><a className="hover:text-primary transition-colors" href="#">Contact</a></li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h4 className="font-bold text-[#111811] dark:text-white mb-4">Connect</h4>
-                                    <div className="flex gap-4 mb-4">
-                                        <a className="size-8 rounded-full bg-[#f0f4f0] dark:bg-[#2a3c2a] flex items-center justify-center hover:bg-primary transition-colors text-[#111811] dark:text-white" href="#">
-                                            <span className="text-xs font-bold">in</span>
-                                        </a>
-                                        <a className="size-8 rounded-full bg-[#f0f4f0] dark:bg-[#2a3c2a] flex items-center justify-center hover:bg-primary transition-colors text-[#111811] dark:text-white" href="#">
-                                            <span className="text-xs font-bold">fb</span>
-                                        </a>
-                                        <a className="size-8 rounded-full bg-[#f0f4f0] dark:bg-[#2a3c2a] flex items-center justify-center hover:bg-primary transition-colors text-[#111811] dark:text-white" href="#">
-                                            <span className="text-xs font-bold">x</span>
-                                        </a>
-                                    </div>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">1-800-SOLAR-TECH</p>
-                                </div>
-                            </div>
-
-                            <div className="border-t border-[#f0f4f0] dark:border-[#2a3c2a] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
-                                <p>© 2023 SolarTech Solutions. All rights reserved.</p>
-                                <div className="flex gap-6">
-                                    <a className="hover:text-primary" href="#">Privacy Policy</a>
-                                    <a className="hover:text-primary" href="#">Terms of Service</a>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
+                    <Footer />
                 </div>
             </div>
         </>
