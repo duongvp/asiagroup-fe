@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
+import { Building, ChartBar, ChartColumnBig, Home, Leaf, PiggyBank, Star, StarHalf, TrendingUp, Zap } from 'lucide-react';
 
 export default function Benefits() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -50,56 +53,7 @@ export default function Benefits() {
             <div className={`${isDarkMode ? 'dark' : ''}`}>
                 <div className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased overflow-x-hidden flex flex-col min-h-screen">
                     {/* Navigation */}
-                    <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-[#102210]/90 backdrop-blur-md">
-                        <div className="px-4 md:px-10 py-3 flex items-center justify-between max-w-[1280px] mx-auto">
-                            <div className="flex items-center gap-2 text-slate-900 dark:text-white">
-                                <div className="size-8 text-primary flex items-center justify-center">
-                                    <span className="material-symbols-outlined text-3xl">solar_power</span>
-                                </div>
-                                <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">SolarTech</h2>
-                            </div>
-
-                            {/* Desktop Nav */}
-                            <nav className="hidden md:flex items-center gap-8">
-                                <a className="text-sm font-medium hover:text-primary transition-colors" href="#">
-                                    Home
-                                </a>
-                                <a className="text-sm font-medium hover:text-primary transition-colors" href="#">
-                                    Residential
-                                </a>
-                                <a className="text-sm font-medium hover:text-primary transition-colors" href="#">
-                                    Commercial
-                                </a>
-                                <a className="text-sm font-bold text-primary" href="#">
-                                    Benefits
-                                </a>
-                                <a className="text-sm font-medium hover:text-primary transition-colors" href="#">
-                                    Contact
-                                </a>
-                            </nav>
-
-                            <div className="flex items-center gap-4">
-                                <button className="hidden md:flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-slate-900 text-sm font-bold leading-normal tracking-[0.015em] shadow-[0_0_15px_rgba(19,236,19,0.3)]">
-                                    <span className="truncate">Get a Free Quote</span>
-                                </button>
-
-                                {/* Mobile Menu & Dark Mode Toggle */}
-                                <div className="md:hidden flex items-center gap-2">
-                                    <button
-                                        onClick={toggleDarkMode}
-                                        className="text-slate-900 dark:text-white"
-                                    >
-                                        <span className="material-symbols-outlined">
-                                            {isDarkMode ? 'light_mode' : 'dark_mode'}
-                                        </span>
-                                    </button>
-                                    <button className="text-slate-900 dark:text-white">
-                                        <span className="material-symbols-outlined">menu</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     {/* Main Content */}
                     <main className="flex-grow flex flex-col items-center w-full">
@@ -149,7 +103,7 @@ export default function Benefits() {
                                             onChange={() => handleAudienceChange('homeowners')}
                                         />
                                         <span className="flex items-center gap-2">
-                                            <span className="material-symbols-outlined text-[18px]">home</span>
+                                            <Home size={18} />
                                             For Homeowners
                                         </span>
                                     </label>
@@ -169,7 +123,7 @@ export default function Benefits() {
                                             onChange={() => handleAudienceChange('businesses')}
                                         />
                                         <span className="flex items-center gap-2">
-                                            <span className="material-symbols-outlined text-[18px]">business</span>
+                                            <Building size={18} />
                                             For Businesses
                                         </span>
                                     </label>
@@ -190,7 +144,7 @@ export default function Benefits() {
                                 {/* Card 1 */}
                                 <div className="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-slate-900 text-primary transition-colors">
-                                        <span className="material-symbols-outlined text-3xl">savings</span>
+                                        <PiggyBank size={24} />
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Drastic Cost Savings</h3>
                                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -201,7 +155,7 @@ export default function Benefits() {
                                 {/* Card 2 */}
                                 <div className="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-slate-900 text-primary transition-colors">
-                                        <span className="material-symbols-outlined text-3xl">eco</span>
+                                        <Leaf size={24} />
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Environmental Impact</h3>
                                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -212,7 +166,7 @@ export default function Benefits() {
                                 {/* Card 3 */}
                                 <div className="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-slate-900 text-primary transition-colors">
-                                        <span className="material-symbols-outlined text-3xl">bolt</span>
+                                        <Zap size={24} />
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Energy Independence</h3>
                                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -223,7 +177,7 @@ export default function Benefits() {
                                 {/* Card 4 */}
                                 <div className="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-slate-900 text-primary transition-colors">
-                                        <span className="material-symbols-outlined text-3xl">trending_up</span>
+                                        <TrendingUp size={24} />
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Increased Property Value</h3>
                                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -239,7 +193,7 @@ export default function Benefits() {
                                 {/* Text Content */}
                                 <div className="flex-1 flex flex-col gap-6">
                                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-bold w-fit">
-                                        <span className="material-symbols-outlined text-lg">analytics</span>
+                                        <ChartColumnBig size={16} />
                                         Long-Term Analysis
                                     </div>
                                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
@@ -303,11 +257,11 @@ export default function Benefits() {
                                 {/* Testimonial 1 */}
                                 <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col gap-4">
                                     <div className="flex text-yellow-400 gap-1">
-                                        <span className="material-symbols-outlined text-sm">star</span>
-                                        <span className="material-symbols-outlined text-sm">star</span>
-                                        <span className="material-symbols-outlined text-sm">star</span>
-                                        <span className="material-symbols-outlined text-sm">star</span>
-                                        <span className="material-symbols-outlined text-sm">star</span>
+                                        <Star size={18} />
+                                        <Star size={18} />
+                                        <Star size={18} />
+                                        <Star size={18} />
+                                        <Star size={18} />
                                     </div>
                                     <p className="text-slate-700 dark:text-slate-300 italic">
                                         "The process was incredibly smooth. We've seen our bill drop from $250 to practically zero in the summer months. Highly recommend!"
@@ -328,11 +282,11 @@ export default function Benefits() {
                                 {/* Testimonial 2 */}
                                 <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col gap-4">
                                     <div className="flex text-yellow-400 gap-1">
-                                        <span className="material-symbols-outlined text-sm">star</span>
-                                        <span className="material-symbols-outlined text-sm">star</span>
-                                        <span className="material-symbols-outlined text-sm">star</span>
-                                        <span className="material-symbols-outlined text-sm">star</span>
-                                        <span className="material-symbols-outlined text-sm">star_half</span>
+                                        <Star size={18} />
+                                        <Star size={18} />
+                                        <Star size={18} />
+                                        <Star size={18} />
+                                        <Star size={18} />
                                     </div>
                                     <p className="text-slate-700 dark:text-slate-300 italic">
                                         "Implementing solar for our warehouse was a strategic move. The ROI has been faster than projected, and our clients love our green initiative."
@@ -388,24 +342,7 @@ export default function Benefits() {
                     </main>
 
                     {/* Footer */}
-                    <footer className="bg-white dark:bg-[#0c1a0c] border-t border-slate-200 dark:border-slate-800 py-10 w-full px-4 md:px-10">
-                        <div className="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-                            <div className="flex items-center gap-2">
-                                <div className="size-6 text-primary">
-                                    <span className="material-symbols-outlined">solar_power</span>
-                                </div>
-                                <span className="text-slate-900 dark:text-white font-bold">SolarTech</span>
-                            </div>
-
-                            <div className="flex gap-6 text-sm text-slate-500 dark:text-slate-400">
-                                <a className="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                                <a className="hover:text-primary transition-colors" href="#">Terms of Service</a>
-                                <a className="hover:text-primary transition-colors" href="#">Support</a>
-                            </div>
-
-                            <p className="text-sm text-slate-400">© 2024 SolarTech Energy. All rights reserved.</p>
-                        </div>
-                    </footer>
+                    <Footer />
                 </div>
             </div>
         </>

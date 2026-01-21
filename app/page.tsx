@@ -1,1668 +1,273 @@
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+import Head from 'next/head';
+import Footer from '@/components/layout/Footer';
+import Header from '@/components/layout/Header';
+import { CreditCard, Home, Leaf, PiggyBank, Users, Wallet, Zap } from 'lucide-react';
+import CountUpStat from '@/components/CountUpStat';
+
+export default function SolarCompany() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="bg-[#FFF] min-w-screen min-h-screen overflow-auto overflow-x-hidden relative">
-      <div className="w-full h-full absolute left-0 top-0 opacity-0"></div>
-      <div className="bg-[#FFF] w-full h-[6175px] absolute left-0 top-0">
-        <div className="w-285 h-96 absolute left-[390px] top-[1042px]">
-          <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[40px] font-semibold leading-[1.4em] w-[502px] h-14 absolute left-[319px] top-0 text-center">
-            Milestones in Solar Impact
-          </p>
-          <div className="rounded-sm border border-[#1C2C57] bg-[#FFF] w-2 h-2 absolute left-[494px] top-96"></div>
-          <div className="rounded-sm border border-[#1C2C57] bg-[#1C2C57] w-2 h-2 absolute left-[518px] top-96"></div>
-          <div className="rounded-sm border border-[#1C2C57] bg-[#FFF] w-2 h-2 absolute left-[542px] top-96"></div>
-          <div className="rounded-sm border border-[#1C2C57] bg-[#FFF] w-2 h-2 absolute left-[566px] top-96"></div>
-          <div className="rounded-sm border border-[#1C2C57] bg-[#FFF] w-2 h-2 absolute left-[590px] top-96"></div>
-          <div className="rounded-sm border border-[#1C2C57] bg-[#FFF] w-2 h-2 absolute left-[614px] top-96"></div>
-          <div className="rounded-sm border border-[#1C2C57] bg-[#FFF] w-2 h-2 absolute left-[638px] top-96"></div>
-          <div className="w-full h-64 absolute -left-[390px] top-32 overflow-hidden">
-            <div className="rounded-[10px] bg-[#FFF] shadow-[05px14px0rgba(0,0,0,0.10)] w-[313px] h-32 absolute left-[1137px] top-16">
-              <div className="flex flex-col justify-center items-center w-[69px] h-[75px] absolute left-[122px] top-0">
-                <div className="flex pt-[3px] pr-0 pb-[3px] pl-0 flex-col justify-center items-center shrink-0 w-[69px] h-[75px] overflow-hidden">
-                  <div className="shrink-0 w-[69px] h-[69px] overflow-hidden relative">
-                    <svg
-                      width="69"
-                      height="69"
-                      viewBox="0 0 69 69"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[69px] h-[69px] absolute left-0 top-0 "
-                    >
-                      <path
-                        d="M34.445 68.89C53.4684 68.89 68.89 53.4684 68.89 34.445C68.89 15.4216 53.4684 0 34.445 0C15.4216 0 0 15.4216 0 34.445C0 53.4684 15.4216 68.89 34.445 68.89Z"
-                        fill="#FCD4AE"
+    <>
+      <Head>
+        <title>Solar Company - Homepage</title>
+        <meta name="description" content="Power Your Future with Clean Energy" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+
+      <div className={`${isDarkMode ? 'dark' : ''}`}>
+        <main className="bg-background-light dark:bg-background-dark font-display text-foreground overflow-x-hidden">
+          {/* Navigation */}
+          <Header />
+
+          {/* Hero Section */}
+          <section className="w-full relative px-6 py-12 md:py-20 lg:py-24 max-w-[1280px] mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Text Content */}
+              <div className="flex flex-col gap-6 order-2 lg:order-1">
+                <div className="inline-flex w-fit items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-brand-blue dark:text-blue-200 text-xs font-bold uppercase tracking-wider">
+                  <Leaf size={20} />
+                  Clean Energy Future
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-foreground">
+                  Power Your Future with{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600">
+                    Clean Energy
+                  </span>
+                </h1>
+                <p className="text-lg text-gray-600 dark:text-gray-300 max-w-lg leading-relaxed">
+                  Join thousands of homeowners saving money and the planet with our premium solar solutions. Experience energy independence today.
+                </p>
+                <div className="flex flex-wrap gap-4 pt-4">
+                  <button className="flex items-center justify-center rounded-lg h-12 px-8 bg-primary hover:bg-green-400 text-primary-foreground text-base font-bold shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5">
+                    Get Your Free Quote
+                  </button>
+                  <button className="flex items-center justify-center rounded-lg h-12 px-8 bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 text-foreground text-base font-bold hover:bg-gray-50 dark:hover:bg-white/20 transition-colors">
+                    Learn More
+                  </button>
+                </div>
+                <div className="flex items-center gap-4 mt-4 text-sm text-gray-500 dark:text-gray-400 font-medium">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3].map((item) => (
+                      <div
+                        key={item}
+                        className="size-8 rounded-full bg-gray-200 border-2 border-white dark:border-background-dark"
+                        style={{
+                          backgroundImage: `url(https://randomuser.me/api/portraits/men/${item}.jpg)`,
+                          backgroundSize: 'cover',
+                        }}
                       />
-                    </svg>
-                    <svg
-                      width="53"
-                      height="53"
-                      viewBox="0 0 53 53"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-13 h-13 absolute left-2 top-2 "
-                    >
-                      <path
-                        d="M26.2438 52.4876C40.7379 52.4876 52.4876 40.7379 52.4876 26.2438C52.4876 11.7498 40.7379 0 26.2438 0C11.7498 0 0 11.7498 0 26.2438C0 40.7379 11.7498 52.4876 26.2438 52.4876Z"
-                        fill="#F9AE61"
-                      />
-                    </svg>
-                    <svg
-                      width="37"
-                      height="37"
-                      viewBox="0 0 37 37"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-9 h-9 absolute left-4 top-4 "
-                    >
-                      <path
-                        d="M18.0426 36.0852C28.0073 36.0852 36.0852 28.0073 36.0852 18.0426C36.0852 8.07795 28.0073 0 18.0426 0C8.07795 0 0 8.07795 0 18.0426C0 28.0073 8.07795 36.0852 18.0426 36.0852Z"
-                        fill="#F89420"
-                      />
-                    </svg>
+                    ))}
+                  </div>
+                  <span>Trusted by 5,000+ homeowners</span>
+                </div>
+              </div>
+
+              {/* Image Content */}
+              <div className="relative order-1 lg:order-2">
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent z-10"></div>
+                  <div
+                    className="w-full h-full bg-center bg-cover transition-transform duration-700 hover:scale-105"
+                    style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPbsM6UmCtd9cxLXQJcmmue6iVUcvAlejYtHsFX6nUeOMz09OfIK5CUmX4wJSJgqpwjgjve-IahzGMCIOHvmeihOqY9ahMlnQ-H1cwvmBEE3IwPV_6GCtkyPLZL2rRU4jNqJiKNafxj_8k101WlzDDyfrfswEA_R2zAmk9x7Bh4proHJG2SQpY2z8WYJBfvwq53rxZGbdgEFij49JZgevr_4_fBbANNk-h-M8tr7pDiyXiAXNuuN-O-kaBTFQAGgrLF0s-gzRvJ08')" }}
+                  />
+                </div>
+                {/* Floating Badge */}
+                <div className="absolute -bottom-6 -left-6 z-20 bg-white dark:bg-[#1e3a1e] p-4 rounded-xl shadow-xl border border-gray-100 dark:border-white/10 hidden md:block">
+                  <div className="flex items-center gap-3">
+                    <div className="bg-green-100 dark:bg-green-900/50 p-2 rounded-lg text-green-700 dark:text-green-300">
+                      <PiggyBank size={20} />
+                      {/* <span className="material-symbols-outlined">savings</span> */}
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Average Savings</p>
+                      <p className="text-lg font-bold text-foreground">$1,500/yr</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="rounded-[10px] bg-[#FFF] w-[313px] h-32 absolute left-0 top-0">
-                <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[44.8px] font-bold leading-[1.5012999999999999em] w-[182px] h-[57px] absolute left-18 top-[18px] text-center">
-                  26,000+
-                </p>
-                <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-[24.1px] font-normal leading-[1.50274em] w-50 h-[30px] absolute left-[65px] top-20 text-center">
-                  Happy Customers
-                </p>
+            </div>
+          </section>
+
+          {/* Stats Section */}
+          <section className="w-full bg-brand-blue text-white py-12">
+            <div className="max-w-[1280px] mx-auto px-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-white/10">
+                {[
+                  {
+                    icon: <Zap size={28} color="#22c55e" />,
+                    value: 500,
+                    suffix: '+ MW',
+                    label: 'Clean Energy Generated'
+                  },
+                  {
+                    icon: <CreditCard size={28} color="#22c55e" />,
+                    value: 10,
+                    prefix: '$',
+                    suffix: 'M+',
+                    label: 'Customer Money Saved'
+                  },
+                  {
+                    icon: <Users size={28} color="#22c55e" />,
+                    value: 5000,
+                    suffix: '+',
+                    label: 'Happy Customers'
+                  },
+                ].map((stat, index) => (
+                  <CountUpStat
+                    key={index}
+                    icon={stat.icon}
+                    endValue={stat.value}
+                    prefix={stat.prefix || ''}
+                    suffix={stat.suffix || ''}
+                    label={stat.label}
+                  // Tuỳ chỉnh thêm nếu muốn
+                  // duration={3}
+                  // decimals={1} // cho số thập phân
+                  />
+                ))}
               </div>
             </div>
-            <div className="rounded-[10px] bg-[#FFF] shadow-[05px14px0rgba(0,0,0,0.10)] w-[313px] h-32 absolute left-[470px] top-16">
-              <div className="flex flex-col justify-center items-center w-[69px] h-[75px] absolute left-[122px] top-0">
-                <div className="flex py-[3px] px-0 flex-col justify-center items-center shrink-0 w-[69px] h-[75px] overflow-hidden">
-                  <div className="shrink-0 w-[69px] h-[69px] overflow-hidden relative">
-                    <svg
-                      width="69"
-                      height="69"
-                      viewBox="0 0 69 69"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[69px] h-[69px] absolute left-0 top-0 "
-                    >
-                      <path
-                        d="M34.45 68.9C53.4762 68.9 68.9 53.4762 68.9 34.45C68.9 15.4238 53.4762 0 34.45 0C15.4238 0 0 15.4238 0 34.45C0 53.4762 15.4238 68.9 34.45 68.9Z"
-                        fill="#FCD4AE"
-                      />
-                    </svg>
-                    <svg
-                      width="53"
-                      height="53"
-                      viewBox="0 0 53 53"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-13 h-13 absolute left-2 top-2 "
-                    >
-                      <path
-                        d="M26.2476 52.4952C40.7438 52.4952 52.4952 40.7438 52.4952 26.2476C52.4952 11.7515 40.7438 0 26.2476 0C11.7515 0 0 11.7515 0 26.2476C0 40.7438 11.7515 52.4952 26.2476 52.4952Z"
-                        fill="#F9AE61"
-                      />
-                    </svg>
-                    <svg
-                      width="37"
-                      height="37"
-                      viewBox="0 0 37 37"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-9 h-9 absolute left-4 top-4 "
-                    >
-                      <path
-                        d="M18.0452 36.0905C28.0113 36.0905 36.0905 28.0113 36.0905 18.0452C36.0905 8.07913 28.0113 0 18.0452 0C8.07912 0 0 8.07913 0 18.0452C0 28.0113 8.07912 36.0905 18.0452 36.0905Z"
-                        fill="#F89420"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div className="rounded-[10px] bg-[#FFF] w-[313px] h-32 absolute left-0 top-0">
-                <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[44.8px] font-bold leading-[1.5015299999999998em] w-[73px] h-[57px] absolute left-[123px] top-[18px] text-center">
-                  16+
-                </p>
-                <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-[24.1px] font-normal leading-[1.5029599999999999em] w-[190px] h-[30px] absolute left-[71px] top-20 text-center">
-                  Years in Business
-                </p>
-              </div>
-            </div>
-            <div className="rounded-[10px] bg-[#FFF] shadow-[05px14px0rgba(0,0,0,0.10)] w-[391px] h-40 absolute left-[765px] top-12">
-              <div className="flex flex-col justify-center items-center w-[86px] h-[93px] absolute left-38 -top-[31px]">
-                <div className="flex pt-1 pr-0 pb-1 pl-0 flex-col justify-center items-center shrink-0 w-[86px] h-[93px] overflow-hidden">
-                  <div className="shrink-0 w-[86px] h-[86px] overflow-hidden relative">
-                    <svg
-                      width="86"
-                      height="86"
-                      viewBox="0 0 86 86"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[86px] h-[86px] absolute left-0 top-0 "
-                    >
-                      <path
-                        d="M42.99 85.98C66.7327 85.98 85.98 66.7327 85.98 42.99C85.98 19.2473 66.7327 0 42.99 0C19.2473 0 0 19.2473 0 42.99C0 66.7327 19.2473 85.98 42.99 85.98Z"
-                        fill="#FCD4AE"
-                      />
-                    </svg>
-                    <svg
-                      width="66"
-                      height="66"
-                      viewBox="0 0 66 66"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[66px] h-[66px] absolute left-2.5 top-2.5 "
-                    >
-                      <path
-                        d="M32.7543 65.5086C50.844 65.5086 65.5086 50.844 65.5086 32.7543C65.5086 14.6646 50.844 0 32.7543 0C14.6646 0 0 14.6646 0 32.7543C0 50.844 14.6646 65.5086 32.7543 65.5086Z"
-                        fill="#F9AE61"
-                      />
-                    </svg>
-                    <svg
-                      width="46"
-                      height="46"
-                      viewBox="0 0 46 46"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[45px] h-[45px] absolute left-5 top-5 "
-                    >
-                      <path
-                        d="M22.5186 45.0371C34.9552 45.0371 45.0371 34.9552 45.0371 22.5186C45.0371 10.0819 34.9552 0 22.5186 0C10.0819 0 0 10.0819 0 22.5186C0 34.9552 10.0819 45.0371 22.5186 45.0371Z"
-                        fill="#F89420"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <button className="cursor-pointer text-nowrap flex pt-[23px] pr-[115px] pb-[23px] pl-29 flex-col justify-center items-center gap-1.5 rounded-[10px] bg-[#FFF] w-[391px] h-40 absolute left-0 top-0">
-                <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[52px] font-bold leading-[1.4998099999999999em] w-[81px] h-[71px] text-center">
-                  #6
-                </p>
-                <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-3xl font-normal leading-[1.4998099999999999em] w-40 h-[37px] text-center">
-                  In the Nation
-                </p>
-              </button>
-            </div>
-          </div>
-          <div className="w-[42px] h-[33px] absolute left-4 top-60">
-            <div className="rounded-2xl bg-[#FDDD00] w-8 h-8 absolute left-0 top-px opacity-0"></div>
-            <svg
-              width="42"
-              height="33"
-              viewBox="0 0 42 33"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-[42px] h-[33px] absolute left-0 top-0 "
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M16.6569 23.0711L10.2929 16.7072C9.90237 16.3166 9.90237 15.6835 10.2929 15.2929L16.6569 8.929C17.0474 8.53848 17.6805 8.53848 18.0711 8.929C18.4616 9.31953 18.4616 9.95269 18.0711 10.3432L13.4142 15L41 15.0001C41.5523 15.0001 42 15.4478 42 16.0001C42 16.5523 41.5523 17.0001 41 17.0001L13.4142 17L18.0711 21.6569C18.4616 22.0474 18.4616 22.6806 18.0711 23.0711C17.6805 23.4616 17.0474 23.4616 16.6569 23.0711Z"
-                fill="#1C2C57"
-              />
-            </svg>
-          </div>
-          <div className="w-[42px] h-[33px] absolute left-[1082px] top-60">
-            <div className="rounded-2xl bg-[#FDDD00] w-8 h-8 absolute left-2.5 top-px opacity-0"></div>
-            <svg
-              width="42"
-              height="33"
-              viewBox="0 0 42 33"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-[42px] h-[33px] absolute left-0 top-0 "
-            >
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M25.3431 9.92888L31.7071 16.2928C32.0976 16.6834 32.0976 17.3165 31.7071 17.7071L25.3431 24.071C24.9526 24.4615 24.3195 24.4615 23.9289 24.071C23.5384 23.6805 23.5384 23.0473 23.9289 22.6568L28.5858 17.9999H1C0.447715 17.9999 0 17.5522 0 16.9999C0 16.4477 0.447715 15.9999 1 15.9999H28.5858L23.9289 11.3431C23.5384 10.9526 23.5384 10.3194 23.9289 9.92888C24.3195 9.53836 24.9526 9.53836 25.3431 9.92888Z"
-                fill="#1C2C57"
-              />
-            </svg>
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-start gap-4 w-277 h-[1898px] absolute left-[406px] top-[1522px]">
-          <div className="flex pt-4 pr-0 pb-8 pl-0 justify-center items-center shrink-0 w-277 h-[622px]">
-            <div className="flex pt-12 pr-8 pb-12 pl-12 justify-end items-center gap-10 shrink-0 rounded-2xl bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-277 h-[574px]">
-              <img
-                src="/images/solar-installers.webp"
-                className="shrink-0 rounded-2xl w-[478px] h-[478px] overflow-hidden max-w-none"
-                alt="solar"
-              />
-              <div className="shrink-0 w-[510px] h-82 relative">
-                <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-md font-normal leading-[1.5em] w-[457px] h-[141px] absolute left-4 top-27">
-                  Our comprehensive range of top-quality solar products,
-                  including panels, batteries, and Live Monitoring, is designed
-                  to maximize your savings and minimize your carbon footprint.
-                  Crafted to integrate seamlessly, our solutions empower both
-                  homeowners and business owners to achieve energy independence.
-                </p>
-                <div className="bg-linear-[90deg,#F895220%,#FDDD00100%] w-20 h-[3px] absolute left-4 top-0 overflow-hidden"></div>
-                <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[40px] font-semibold leading-[1.4em] w-113 h-14 absolute left-4 top-[27px]">
-                  Solar Panels &amp; Batteries
-                </p>
-                <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#243F8B] w-49 h-[53px] absolute left-4 top-[275px] overflow-hidden">
-                  <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-dMSans text-[17px] font-bold leading-[1em] w-[145px] h-[22px] text-center">
-                    View Solar Panels
-                  </p>
-                </button>
-                <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#243F8B] w-[219px] h-[53px] absolute left-59 top-[275px] overflow-hidden">
-                  <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-dMSans text-[17px] font-bold leading-[1em] w-[167px] h-[22px] text-center">
-                    View Solar Batteries
-                  </p>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="flex pt-8 pr-0 pb-4 pl-0 justify-center items-center shrink-0 w-277 h-[622px]">
-            <div className="flex pt-12 pr-8 pb-12 pl-12 justify-end items-center gap-10 shrink-0 rounded-2xl bg-[#4F6BBA] shadow-[0020px0rgba(28,44,87,0.16)] w-277 h-[574px]">
-              <img
-                src="/images/d2ec129470064d9df1f61fef8a80dcef.webp"
-                className="shrink-0 rounded-2xl w-[478px] h-[478px] overflow-hidden max-w-none"
-                alt="Figure → d2ec129470064d9df1f61fef8a80dcef-768x432.webp"
-              />
-              <div className="shrink-0 w-[510px] h-82 relative">
-                <p className="flex flex-col justify-center text-[#FFF] font-dMSans text-md font-normal leading-[1.5em] w-[473px] h-[141px] absolute left-4 top-27">
-                  Are you curious about how solar energy can benefit your home?
-                  Our solar experts are well-versed in the local solar
-                  incentives, regulations, and weather conditions that make each
-                  state unique. Visit our solar by state page to learn more
-                  about the benefits of going solar in your area and take the
-                  first step towards a cleaner, more sustainable energy future!
-                </p>
-                <div className="bg-linear-[90deg,#F895220%,#FDDD00100%] w-20 h-[3px] absolute left-4 top-0 overflow-hidden"></div>
-                <p className="flex flex-col justify-center text-[#FFF] font-manrope text-[40px] font-semibold leading-[1.4em] w-[349px] h-14 absolute left-4 top-[27px]">
-                  Solar in Your State
-                </p>
-                <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#FFF] w-58 h-[53px] absolute left-4 top-[275px] overflow-hidden">
-                  <p className="flex flex-col justify-center shrink-0 text-[#FFF] font-dMSans text-[17px] font-bold leading-[1em] w-45 h-[22px] text-center">
-                    View State Resources
-                  </p>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="flex pt-12 justify-center items-center shrink-0 w-277 h-[622px]">
-            <div className="flex pt-12 pr-8 pb-12 pl-12 justify-end items-center gap-10 shrink-0 rounded-2xl bg-[#243F8B] shadow-[0020px0rgba(28,44,87,0.16)] w-277 h-[574px]">
-              <img
-                src="/images/DJI_0513-1-EDITED-2048x1270.png"
-                className="shrink-0 rounded-2xl w-[478px] h-[478px] overflow-hidden max-w-none"
-                alt="Figure → DJI_0513-1-EDITED-768x476.png"
-              />
-              <div className="shrink-0 w-[510px] h-104 relative">
-                <p className="flex flex-col justify-center text-[#FFF] font-dMSans text-md font-normal leading-[1.5em] w-[473px] h-[117px] absolute left-4 top-55">
-                  Established in 2009, Solar Energy World is a leading solar
-                  company serving Maryland and beyond, including DC, DE, PA, FL,
-                  NJ, and VA. By choosing us for your solar panel installation,
-                  you join thousands saving up to 100% on utility costs with
-                  clean energy.
-                </p>
-                <div className="bg-linear-[90deg,#F895220%,#FDDD00100%] w-20 h-[3px] absolute left-4 top-0 overflow-hidden"></div>
-                <p className="flex flex-col justify-center text-[#FFF] font-manrope text-[40px] font-semibold leading-[1.4em] w-[369px] h-[167px] absolute left-4 top-[27px]">
-                  Your Partner in Sustainable Energy Savings
-                </p>
-                <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#FFF] w-[229px] h-[53px] absolute left-4 top-[363px] overflow-hidden">
-                  <p className="flex flex-col justify-center shrink-0 text-[#FFF] font-dMSans text-[17px] font-bold leading-[1em] w-[177px] h-[22px] text-center">
-                    View Solar Resources
-                  </p>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="w-285 h-[381px] absolute left-[390px] top-895">
-          <div className="w-[558px] h-[381px] absolute left-0 top-0">
-            <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-md font-normal leading-[1.5em] w-[523px] h-[165px] absolute left-4 top-[137px]">
-              At Solar Energy World, we believe in providing a hassle-free solar
-              installation experience that begins with the very first
-              conversation and continues long after the installation is
-              complete. Our comprehensive approach is based on our “6 Steps for
-              Success,” a proven process that ensures every aspect of your solar
-              panel installation is taken care of by our team of experts. Learn
-              about our “6 Steps for Success” and more on our install
-              information page.
-            </p>
-            <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[40px] font-semibold leading-[1.4em] w-[389px] h-[111px] absolute left-4 top-0">
-              Easy Install for Every Budget
-            </p>
-            <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#243F8B] w-[203px] h-[53px] absolute left-4 top-82 overflow-hidden">
-              <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-dMSans text-[17px] font-bold leading-[1em] w-[151px] h-[22px] text-center">
-                Financing Options
+          </section>
+
+          {/* Mission / Overview Section */}
+          <section className="w-full py-16 md:py-24 px-6 max-w-[960px] mx-auto text-center">
+            <div className="flex flex-col items-center gap-6">
+              <span className="text-primary font-bold text-sm tracking-widest uppercase">Our Mission</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                Sustainable Energy for Everyone
+              </h2>
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+                We are dedicated to transforming how the world generates energy. Our mission is to provide affordable, clean, and reliable solar power to every home and business, ensuring a greener planet for future generations.
               </p>
-            </button>
-            <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#FDDD00] bg-[#FDDD00] w-[263px] h-[53px] absolute left-[243px] top-82 overflow-hidden">
-              <p className="flex flex-col justify-center shrink-0 text-[#243F8B] font-dMSans text-[17px] font-bold leading-[1em] w-53 h-[22px] text-center">
-                Get A Free Solar Estimate
-              </p>
-            </button>
-          </div>
-          <div className="flex flex-col justify-center items-center w-75 h-[307px] absolute left-[899px] -top-[50px]">
-            <div className="flex py-1 px-0 flex-col justify-center items-center shrink-0 w-75 h-[307px] overflow-hidden">
-              <div className="shrink-0 w-75 h-75 overflow-hidden relative">
-                <svg
-                  width="300"
-                  height="300"
-                  viewBox="0 0 300 300"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-75 h-75 absolute left-0 top-0"
-                >
-                  <path
-                    d="M150 300C232.843 300 300 232.843 300 150C300 67.1573 232.843 0 150 0C67.1573 0 0 67.1573 0 150C0 232.843 67.1573 300 150 300Z"
-                    fill="#FEF2AF"
-                  />
-                </svg>
-                <svg
-                  width="229"
-                  height="229"
-                  viewBox="0 0 229 229"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-[229px] h-[229px] absolute left-9 top-9 "
-                >
-                  <path
-                    d="M114.286 228.572C177.404 228.572 228.572 177.404 228.572 114.286C228.572 51.1676 177.404 0 114.286 0C51.1676 0 0 51.1676 0 114.286C0 177.404 51.1676 228.572 114.286 228.572Z"
-                    fill="#FEE560"
-                  />
-                </svg>
-                <svg
-                  width="158"
-                  height="158"
-                  viewBox="0 0 158 158"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-[157px] h-[157px] absolute left-[71px] top-[71px] "
-                >
-                  <path
-                    d="M78.5714 157.143C121.965 157.143 157.143 121.965 157.143 78.5714C157.143 35.1776 121.965 0 78.5714 0C35.1776 0 0 35.1776 0 78.5714C0 121.965 35.1776 157.143 78.5714 157.143Z"
-                    fill="#FDDD00"
-                  />
-                </svg>
+            </div>
+          </section>
+
+          {/* Benefits Grid */}
+          <section className="w-full bg-white dark:bg-[#152a15] py-16 md:py-24">
+            <div className="max-w-[1280px] mx-auto px-6">
+              <div className="text-center mb-16">
+                <h3 className="text-3xl font-bold text-foreground mb-4">Why Switch to Solar?</h3>
+                <p className="text-gray-500 dark:text-gray-400">Discover the advantages of powering your home with the sun.</p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  {
+                    icon: <Wallet size={24} />,
+                    title: 'Massive Savings',
+                    description: 'Reduce or even eliminate your electricity bills. Lock in lower energy rates and protect yourself from rising utility costs.',
+                    bgColor: 'bg-blue-100',
+                    textColor: 'text-blue-700',
+                    darkBg: 'dark:bg-blue-900/30',
+                    darkText: 'dark:text-blue-300'
+                  },
+                  {
+                    icon: <Leaf size={24} />,
+                    title: 'Energy Independence',
+                    description: 'Take control of your power. Generate your own clean energy and rely less on the grid, ensuring stability for your home.',
+                    bgColor: 'bg-green-100',
+                    textColor: 'text-green-700',
+                    darkBg: 'dark:bg-green-900/30',
+                    darkText: 'dark:text-green-300'
+                  },
+                  {
+                    icon: <Home size={24} />,
+                    title: 'Increase Home Value',
+                    description: 'Homes with solar panels sell faster and for more money. It\'s a smart investment that pays off now and in the future.',
+                    bgColor: 'bg-teal-100',
+                    textColor: 'text-teal-700',
+                    darkBg: 'dark:bg-teal-900/30',
+                    darkText: 'dark:text-teal-300'
+                  },
+                ].map((benefit, index) => (
+                  <div
+                    key={index}
+                    className="group bg-background-light dark:bg-background-dark p-8 rounded-2xl hover:shadow-xl transition-all duration-300 border border-transparent hover:border-primary/20"
+                  >
+                    <div className={`size-14 ${benefit.bgColor} ${benefit.darkBg} rounded-xl flex items-center justify-center ${benefit.textColor} ${benefit.darkText} mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors`}>
+                      {benefit.icon}
+                    </div>
+                    <h4 className="text-xl font-bold text-foreground mb-3">{benefit.title}</h4>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{benefit.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-          <img
-            src="/images/solar-roof-install-flyover1.webp"
-            className="flex justify-center items-center rounded-[10px] w-[526px] h-74 absolute left-[598px] top-[43px] max-w-none"
-            alt="Background"
-          />
-        </div>
-        <button className="cursor-pointer text-nowrap flex py-0 px-19 flex-col justify-center items-center gap-12 w-277 h-[659px] absolute left-[406px] top-[4057px]">
-          <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[40px] font-semibold leading-[1.4em] w-[514px] h-14 text-center">
-            Top Benefits of Going Solar
-          </p>
-          <div className="w-[955px] h-[555px] overflow-hidden relative">
-            <button className="cursor-pointer text-nowrap flex pt-[38px] pr-[38px] pb-10 pl-[38px] flex-col justify-center items-center gap-[26px] rounded-xl border border-[#EEE] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[286px] h-[246px] absolute left-4 top-4 overflow-hidden">
-              <div className="flex justify-center items-center w-20 h-20 overflow-hidden">
-                <div className="flex justify-center items-center shrink-0 w-20 h-20 overflow-hidden">
-                  <div className="shrink-0 w-20 h-20 overflow-hidden relative">
-                    <svg
-                      width="80"
-                      height="80"
-                      viewBox="0 0 80 80"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-20 h-20 absolute left-0 top-0 "
-                    >
-                      <path d="M80 0H0V80H80V0Z" fill="#E8E8E8" />
-                    </svg>
-                    <div className="w-[3891px] h-[5717px] absolute -left-251 -top-[3150px]">
-                      <svg
-                        width="80"
-                        height="80"
-                        viewBox="0 0 80 80"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-[3889px] h-[5715px] absolute left-[1px] top-px "
-                      >
-                        <path
-                          d="M-1003 -3147C-1003 -3148.1 -1002.1 -3149 -1001 -3149H2884C2885.1 -3149 2886 -3148.1 2886 -3147V2564C2886 2565.1 2885.1 2566 2884 2566H-1001C-1002.1 2566 -1003 2565.1 -1003 2564V-3147Z"
-                          fill="#D9D9D9"
-                        />
-                      </svg>
-                      <svg
-                        width="80"
-                        height="80"
-                        viewBox="0 0 80 80"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-[3891px] h-[5717px] absolute left-0 top-0 "
-                      >
-                        <path
-                          d="M-1001 -3148H2884V-3150H-1001V-3148ZM2885 -3147V2564H2887V-3147H2885ZM2884 2565H-1001V2567H2884V2565ZM-1002 2564V-3147H-1004V2564H-1002ZM-1001 2565C-1001.55 2565 -1002 2564.55 -1002 2564H-1004C-1004 2565.66 -1002.66 2567 -1001 2567V2565ZM2885 2564C2885 2564.55 2884.55 2565 2884 2565V2567C2885.66 2567 2887 2565.66 2887 2564H2885ZM2884 -3148C2884.55 -3148 2885 -3147.55 2885 -3147H2887C2887 -3148.66 2885.66 -3150 2884 -3150V-3148ZM-1001 -3150C-1002.66 -3150 -1004 -3148.66 -1004 -3147H-1002C-1002 -3147.55 -1001.55 -3148 -1001 -3148V-3150Z"
-                          fill="black"
-                          fillOpacity="0.1"
-                        />
-                      </svg>
-                      <div className="w-360 h-[5295px] absolute left-163 top-[321px]">
-                        <div className="w-360 h-[5295px] absolute left-0 top-0">
-                          <svg
-                            width="80"
-                            height="80"
-                            viewBox="0 0 80 80"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-360 h-[5295px] absolute left-0 top-0 "
-                          >
-                            <path
-                              d="M1088 -2829H-352V2466H1088V-2829Z"
-                              fill="white"
-                            />
-                          </svg>
-                          <div className="w-[290px] h-52 absolute left-[247px] top-[2809px]">
-                            <div className="w-[290px] h-52 absolute left-0 top-0">
-                              <div className="w-[290px] h-52 absolute left-0 top-0">
-                                <svg
-                                  width="80"
-                                  height="80"
-                                  viewBox="0 0 80 80"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="w-[290px] h-52 absolute left-0 top-0 "
-                                >
-                                  <path
-                                    d="M173 -20H-93C-99.6274 -20 -105 -14.6274 -105 -8V176C-105 182.627 -99.6274 188 -93 188H173C179.627 188 185 182.627 185 176V-8C185 -14.6274 179.627 -20 173 -20Z"
-                                    fill="white"
-                                  />
-                                </svg>
-                                <div className="w-[62px] h-[75px] absolute left-[114px] top-[22px]">
-                                  <div className="w-[62px] h-[75px] absolute left-0 top-0">
-                                    <svg
-                                      width="62"
-                                      height="76"
-                                      viewBox="0 0 62 76"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[62px] h-[75px] absolute left-0 top-0 "
-                                    >
-                                      <path
-                                        d="M0.531341 66.1875C0.856341 66.3437 1.24178 66.2997 1.52328 66.0747L6.78158 61.8687L12.04 66.0747C12.3824 66.3489 12.8694 66.3489 13.2118 66.0747L18.4694 61.8687L23.7266 66.0747C24.0709 66.35 24.5605 66.3484 24.903 66.0708L30.9524 61.1653L35.7485 65.5133L35.7214 65.7216C35.6589 66.032 35.7284 66.3544 35.9139 66.6109C36.0378 66.7815 36.2045 66.9161 36.3972 67.0016V71.9591C36.3977 72.881 36.7641 73.7651 37.4159 74.4172C38.0677 75.0695 38.9516 75.4364 39.8735 75.4375H45.9008C46.8224 75.4365 47.7063 75.0698 48.3581 74.418C49.0099 73.7661 49.3765 72.8826 49.3776 71.9607V66.9532C49.5794 66.8427 49.7471 66.6789 49.862 66.4797C49.9771 66.2805 50.0351 66.0537 50.0297 65.8237C50.0297 65.8149 50.0297 65.8063 50.0286 65.7974L49.9362 64.0388V64.0339C49.8112 61.8602 50.5984 59.8003 52.0953 58.3842C52.2828 58.2079 52.468 58.023 52.6464 57.8349C54.5982 55.7662 55.845 53.1329 56.2089 50.3123C56.5724 47.4915 56.0342 44.6279 54.6709 42.1316C53.3079 39.6355 51.1896 37.6347 48.6198 36.416V22.8067H60.9185C61.4362 22.8067 61.856 22.3869 61.856 21.8692V7.5565C61.8536 5.6159 61.106 3.7505 59.7672 2.34583C58.4284 0.94117 56.6008 0.1047 54.6628 0.00962996V0H8.53538C6.27238 0.0026 4.10258 0.9026 2.50258 2.50286C0.902331 4.10313 0.00233 6.27266 0 8.53567V65.3437C0.00052 65.7036 0.207121 66.0315 0.531341 66.1875ZM38.272 67.1075H47.5034V69.238H38.272V67.1075ZM45.9014 73.5625H39.874C39.4493 73.5619 39.042 73.3929 38.7418 73.0927C38.4415 72.7922 38.2725 72.3849 38.2722 71.9601V71.113H47.5036V71.9601C47.5033 72.3849 47.3343 72.7921 47.0338 73.0927C46.7335 73.3932 46.3261 73.5619 45.9014 73.5625ZM54.4494 48.5858C54.4533 51.5465 53.3204 54.3957 51.285 56.5458C51.1316 56.7078 50.9725 56.8669 50.8087 57.0205C48.9082 58.8185 47.9079 61.4133 48.0645 64.1392L48.122 65.2329L37.6754 65.2332L37.711 64.959C38.1298 62.0257 37.1105 59.0705 34.9725 57.019C33.7634 55.881 32.8128 54.4966 32.185 52.9596C31.5572 51.4223 31.2668 49.7684 31.3332 48.1093C31.546 42.2788 36.304 37.41 42.1586 37.0253C44.268 36.8961 46.3724 37.3464 48.244 38.3274C50.1156 39.3084 51.6833 40.7828 52.777 42.5909C53.8708 44.399 54.4494 46.4728 54.4494 48.5858ZM59.9806 7.55644V20.9311H48.62V7.55644C48.62 5.52704 49.7025 3.65177 51.4601 2.6369C53.2179 1.62204 55.3833 1.62204 57.1408 2.6369C58.8984 3.65177 59.9806 5.52704 59.9806 7.55644ZM1.87528 8.53567C1.87708 6.76977 2.57938 5.07677 3.82818 3.8281C5.07688 2.57944 6.76978 1.87704 8.53568 1.87497H49.327C47.6862 3.30677 46.7448 5.3781 46.745 7.5557V35.6957C45.2214 35.2429 43.6302 35.0595 42.0435 35.1543C35.2348 35.6015 29.7075 41.2624 29.4602 48.0383C29.3833 49.9641 29.7206 51.8837 30.4495 53.668C31.1782 55.4521 32.2813 57.0591 33.6842 58.3805C34.9873 59.6308 35.7782 61.3217 35.9029 63.1233L31.6159 59.2365C31.2732 58.9259 30.755 58.9115 30.3958 59.2029L24.3084 64.1394L19.055 59.9363C18.7125 59.6621 18.2256 59.6621 17.8831 59.9363L12.6256 64.1423L7.36718 59.9363C7.02478 59.6621 6.53778 59.6621 6.19538 59.9363L1.87458 63.3925L1.87528 8.53567Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="3"
-                                      height="2"
-                                      viewBox="0 0 3 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-0.5 h-0.5 absolute left-1.5 top-[27px] "
-                                    >
-                                      <path
-                                        d="M0.937499 1.8749H1.3555C1.8732 1.8749 2.2929 1.4551 2.2929 0.937401C2.2929 0.419801 1.8731 0 1.3555 0H0.937499C0.419799 0 0 0.419801 0 0.937401C0 1.4551 0.419799 1.8749 0.937499 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="6"
-                                      height="2"
-                                      viewBox="0 0 6 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[5px] h-0.5 absolute left-[11px] top-[27px] "
-                                    >
-                                      <path
-                                        d="M0.9375 1.8749H4.0945C4.6125 1.8749 5.032 1.4551 5.032 0.937401C5.032 0.419801 4.6124 0 4.0945 0H0.9375C0.4198 0 0 0.419801 0 0.937401C0 1.4551 0.4198 1.8749 0.9375 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="25"
-                                      height="2"
-                                      viewBox="0 0 25 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[25px] h-0.5 absolute left-[18px] top-[27px] "
-                                    >
-                                      <path
-                                        d="M0.937401 1.8749H23.5674C24.0851 1.8749 24.5049 1.4551 24.5049 0.937401C24.5049 0.419801 24.0851 0 23.5674 0H0.937401C0.419701 0 0 0.419801 0 0.937401C0 1.4551 0.419801 1.8749 0.937401 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="3"
-                                      height="2"
-                                      viewBox="0 0 3 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-0.5 h-0.5 absolute left-1.5 top-[18px] "
-                                    >
-                                      <path
-                                        d="M0.937499 1.8749H1.3555C1.8732 1.8749 2.2929 1.4554 2.2929 0.937401C2.2929 0.419701 1.8731 0 1.3555 0H0.937499C0.419799 0 0 0.419801 0 0.937401C0 1.4554 0.419799 1.8749 0.937499 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="6"
-                                      height="2"
-                                      viewBox="0 0 6 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[5px] h-0.5 absolute left-[11px] top-[18px]"
-                                    >
-                                      <path
-                                        d="M0.9375 1.8749H4.0945C4.6125 1.8749 5.032 1.4554 5.032 0.937401C5.032 0.419701 4.6124 0 4.0945 0H0.9375C0.4198 0 0 0.419801 0 0.937401C0 1.4554 0.4198 1.8749 0.9375 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="25"
-                                      height="2"
-                                      viewBox="0 0 25 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[25px] h-0.5 absolute left-[18px] top-[18px] "
-                                    >
-                                      <path
-                                        d="M0.937401 1.8749H23.5674C24.0851 1.8749 24.5049 1.4554 24.5049 0.937401C24.5049 0.419701 24.0851 0 23.5674 0H0.937401C0.419701 0 0 0.419801 0 0.937401C0 1.4554 0.419801 1.8749 0.937401 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="3"
-                                      height="2"
-                                      viewBox="0 0 3 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-0.5 h-0.5 absolute left-1.5 top-[9px] "
-                                    >
-                                      <path
-                                        d="M0.937499 1.875H1.3555C1.8732 1.875 2.2929 1.4552 2.2929 0.9375C2.2929 0.4198 1.8731 0 1.3555 0H0.937499C0.419799 0 0 0.4198 0 0.9375C0 1.4552 0.419799 1.875 0.937499 1.875Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="6"
-                                      height="2"
-                                      viewBox="0 0 6 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[5px] h-0.5 absolute left-[11px] top-[9px] "
-                                    >
-                                      <path
-                                        d="M0.9375 1.875H4.0945C4.6125 1.875 5.032 1.4552 5.032 0.9375C5.032 0.4198 4.6124 0 4.0945 0H0.9375C0.4198 0 0 0.4198 0 0.9375C0 1.4552 0.4198 1.875 0.9375 1.875Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="25"
-                                      height="2"
-                                      viewBox="0 0 25 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[25px] h-0.5 absolute left-[18px] top-[9px] "
-                                    >
-                                      <path
-                                        d="M0.937401 1.875H23.5674C24.0851 1.875 24.5049 1.4552 24.5049 0.9375C24.5049 0.4198 24.0851 0 23.5674 0H0.937401C0.419701 0 0 0.4198 0 0.9375C0 1.4552 0.419801 1.875 0.937401 1.875Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="3"
-                                      height="2"
-                                      viewBox="0 0 3 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-0.5 h-0.5 absolute left-1.5 top-9 "
-                                    >
-                                      <path
-                                        d="M0.937499 1.8749H1.3555C1.8732 1.8749 2.2929 1.4551 2.2929 0.937401C2.2929 0.419501 1.8731 0 1.3555 0H0.937499C0.419799 0 0 0.419501 0 0.937401C0 1.4551 0.419799 1.8749 0.937499 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="6"
-                                      height="2"
-                                      viewBox="0 0 6 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[5px] h-0.5 absolute left-[11px] top-9 "
-                                    >
-                                      <path
-                                        d="M0.9375 1.8749H4.0945C4.6125 1.8749 5.032 1.4551 5.032 0.937401C5.032 0.419501 4.6124 0 4.0945 0H0.9375C0.4198 0 0 0.419501 0 0.937401C0 1.4551 0.4198 1.8749 0.9375 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="16"
-                                      height="2"
-                                      viewBox="0 0 16 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-4 h-0.5 absolute left-[18px] top-9 "
-                                    >
-                                      <path
-                                        d="M0.937401 1.8749H14.6641C15.1818 1.8749 15.6016 1.4551 15.6016 0.937401C15.6016 0.419501 15.1818 0 14.6641 0H0.937401C0.419701 0 0 0.419501 0 0.937401C0 1.4551 0.419801 1.8749 0.937401 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="8"
-                                      height="16"
-                                      viewBox="0 0 8 16"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[7px] h-4 absolute left-1.5 top-11 "
-                                    >
-                                      <path
-                                        d="M3.6106 12.0768H3.5923H3.5741C3.1223 12.0719 2.6905 11.8888 2.3723 11.5674C2.0543 11.2463 1.8757 10.8128 1.8749 10.3606C1.8749 9.8429 1.4554 9.4232 0.937501 9.4232C0.419701 9.4232 0 9.843 0 10.3606C0.0013 11.1497 0.2617 11.9166 0.7414 12.5432C1.2211 13.1697 1.8935 13.621 2.6549 13.828V14.595C2.6549 15.1127 3.0747 15.5324 3.5924 15.5324C4.1101 15.5324 4.5299 15.1126 4.5299 14.595V13.828C5.6603 13.5223 6.571 12.685 6.97 11.584C7.3689 10.4827 7.2062 9.2564 6.5335 8.2976C5.8611 7.339 4.7635 6.7682 3.5924 6.7682C3.1369 6.7684 2.6999 6.5874 2.3778 6.2653C2.0557 5.9434 1.8747 5.5064 1.8747 5.051C1.8744 4.5955 2.0554 4.1585 2.3775 3.8364C2.6997 3.5142 3.1367 3.3332 3.5921 3.3332C4.0476 3.3332 4.4846 3.5142 4.8067 3.8364C5.1286 4.1585 5.3096 4.5955 5.3096 5.051C5.3096 5.5687 5.7294 5.9884 6.2471 5.9884C6.7647 5.9884 7.1845 5.5686 7.1845 5.051C7.1835 4.2619 6.9231 3.495 6.4434 2.8684C5.9637 2.2419 5.2913 1.7903 4.5299 1.5836V0.9375C4.5299 0.4195 4.1101 0 3.5924 0C3.0747 0 2.6549 0.4195 2.6549 0.9375V1.5836C1.5245 1.889 0.6141 2.7266 0.2151 3.8276C-0.1836 4.9286 -0.0209002 6.1549 0.6515 7.1138C1.3239 8.0724 2.4213 8.6432 3.5924 8.6432C4.2025 8.645 4.7659 8.9702 5.0723 9.4978C5.3788 10.0254 5.3822 10.676 5.0814 11.2067C4.7807 11.7374 4.2205 12.0687 3.6106 12.0768Z"
-                                        fill="#F47822"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="10"
-                                      height="2"
-                                      viewBox="0 0 10 2"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-2.5 h-0.5 absolute left-[17px] top-[54px] "
-                                    >
-                                      <path
-                                        d="M0.937401 1.8749H8.8621C9.3798 1.8749 9.7996 1.4554 9.7996 0.937401C9.7996 0.419701 9.3798 0 8.8621 0H0.937401C0.419701 0 0 0.419801 0 0.937401C0 1.4554 0.419701 1.8749 0.937401 1.8749Z"
-                                        fill="#1C2C57"
-                                      />
-                                    </svg>
-                                    <svg
-                                      width="12"
-                                      height="24"
-                                      viewBox="0 0 12 24"
-                                      fill="none"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="w-[11px] h-6 absolute left-[37px] top-10 "
-                                    >
-                                      <path
-                                        d="M0.153607 14.5946C0.326707 14.859 0.621509 15.0181 0.937409 15.0181H3.64971L3.72261 22.5854C3.72731 23.0276 4.04011 23.406 4.47341 23.494C4.90671 23.5818 5.34271 23.355 5.51931 22.9497L11.2258 9.80506C11.3516 9.51546 11.3229 9.18156 11.15 8.91746C10.9769 8.65346 10.6823 8.49436 10.3664 8.49406H7.65441L7.58071 0.92736C7.57601 0.48526 7.26301 0.10656 6.82971 0.01876C6.39631 -0.06904 5.96071 0.15786 5.78381 0.56306L0.077809 13.7071C-0.048291 13.9967 -0.019593 14.3306 0.153607 14.5946ZM5.74861 5.35126L5.78821 9.44056C5.79321 9.95466 6.21141 10.369 6.72571 10.369H8.93711L5.55491 18.1604L5.51551 14.0713C5.51061 13.557 5.09211 13.1429 4.57811 13.1429H2.36641L5.74861 5.35126Z"
-                                        fill="#F47822"
-                                      />
-                                    </svg>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+          </section>
+
+          {/* Steps Section */}
+          <section className="w-full py-16 md:py-24 px-6 max-w-[1280px] mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="order-2 md:order-1 relative">
+                <div className="w-full aspect-square md:aspect-[4/5] bg-gray-200 rounded-2xl overflow-hidden shadow-lg">
+                  <div
+                    className="w-full h-full bg-center bg-cover"
+                    style={{
+                      backgroundImage: `url('https://images.unsplash.com/photo-1542338106-3514d8d33c7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')`,
+                    }}
+                  />
+                </div>
+                <div className="absolute -bottom-8 -right-8 size-48 bg-primary rounded-full hidden lg:flex items-center justify-center text-primary-foreground font-black text-center text-lg p-6 rotate-12 shadow-xl border-4 border-white dark:border-background-dark">
+                  Go Solar in<br />3 Easy Steps
+                </div>
+              </div>
+              <div className="order-1 md:order-2 flex flex-col gap-8">
+                <div>
+                  <span className="text-primary font-bold text-sm tracking-widest uppercase">How It Works</span>
+                  <h3 className="text-3xl md:text-4xl font-bold text-foreground mt-2">Simple Process, Powerful Results</h3>
+                </div>
+                <div className="flex flex-col gap-6">
+                  {[
+                    { number: '1', title: 'Free Consultation', description: 'We analyze your roof and energy usage to design the perfect system for your needs.' },
+                    { number: '2', title: 'Expert Installation', description: 'Our certified team handles permits and installation quickly and professionally.' },
+                    { number: '3', title: 'Power On & Save', description: 'Switch on your system and start generating your own clean, affordable electricity.' },
+                  ].map((step, index) => (
+                    <div key={index} className="flex gap-4">
+                      <div className="flex flex-col items-center">
+                        <div className={`size-10 rounded-full ${step.number === '3' ? 'bg-primary text-primary-foreground' : 'bg-brand-blue text-white'} flex items-center justify-center font-bold text-lg`}>
+                          {step.number}
                         </div>
+                        {index < 2 && <div className="w-0.5 h-full bg-gray-200 dark:bg-white/10 my-2"></div>}
+                      </div>
+                      <div className={`${index < 2 ? 'pb-8' : ''}`}>
+                        <h4 className="text-xl font-bold text-foreground mb-2">{step.title}</h4>
+                        <p className="text-gray-600 dark:text-gray-400">{step.description}</p>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-2xl font-semibold leading-[1.2em] w-[211px] h-[62px] text-wrap text-center">
-                Save on Electricity Costs
-              </p>
-            </button>
-            <button className="cursor-pointer text-nowrap flex pt-[38px] pr-[66px] pb-10 pl-[66px] flex-col justify-center items-center gap-[26px] rounded-xl border border-[#EEE] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[286px] h-[246px] absolute left-[334px] top-4 overflow-hidden">
-              <div className="flex justify-center items-center w-20 h-20 overflow-hidden">
-                <div className="flex justify-center items-center shrink-0 w-20 h-20 overflow-hidden">
-                  <div className="shrink-0 w-20 h-20 overflow-hidden relative">
-                    <svg
-                      width="15"
-                      height="15"
-                      viewBox="0 0 15 15"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-3.5 h-3.5 absolute left-14 top-[18px] "
-                    >
-                      <path
-                        d="M13.6575 4.0655C12.8302 2.3491 11.3549 1.0313 9.55623 0.402495C7.75753 -0.226205 5.78273 -0.115004 4.06613 0.712396C2.34943 1.5394 1.03173 3.0144 0.402831 4.8132C-0.226369 6.6118 -0.114868 8.5866 0.711932 10.3033C1.53903 12.02 3.01373 13.338 4.81243 13.9671C6.61113 14.5963 8.58593 14.4853 10.3026 13.6585C12.0182 12.8296 13.3346 11.3541 13.9638 9.55559C14.5927 7.75719 14.4825 5.7827 13.6575 4.0655ZM9.48883 11.9688C8.21983 12.5803 6.75993 12.6623 5.43053 12.1974C4.10083 11.7323 3.01043 10.7581 2.39893 9.4894C1.78773 8.2204 1.70553 6.7604 2.17053 5.43099C2.63543 4.1014 3.60963 3.011 4.87863 2.3995C6.14733 1.7883 7.60733 1.706 8.93693 2.1709C10.2663 2.636 11.357 3.6099 11.9682 4.8789C12.5781 6.1482 12.6593 7.6076 12.1945 8.9365C11.7297 10.2657 10.7565 11.3564 9.48883 11.9688Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="3"
-                      height="5"
-                      viewBox="0 0 3 5"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-1 absolute left-[58px] top-3.5 "
-                    >
-                      <path
-                        d="M1.78224 0.530881C1.55744 0.0644806 0.997039 -0.131619 0.530639 0.0930812C0.0642389 0.317881 -0.131561 0.87828 0.0931389 1.34468L1.13094 3.49828C1.23774 3.72428 1.42984 3.89888 1.66554 3.98248C1.90124 4.06578 2.16034 4.05168 2.38564 3.94338C2.61084 3.83478 2.78354 3.64078 2.86504 3.40428C2.94654 3.16808 2.93014 2.90898 2.81974 2.68448L1.78224 0.530881Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="3"
-                      height="5"
-                      viewBox="0 0 3 5"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-1 absolute left-[67px] top-[33px] "
-                    >
-                      <path
-                        d="M0.530623 0.0930521C0.306623 0.200852 0.134827 0.393354 0.0525272 0.628254C-0.0295728 0.862854 -0.0149768 1.12065 0.0931232 1.34465L1.13062 3.49835C1.35532 3.96475 1.91572 4.16085 2.38212 3.93605C2.84852 3.71135 3.04432 3.15096 2.81962 2.68456L1.78192 0.530854C1.67392 0.306854 1.48162 0.134752 1.24702 0.0524523C1.01232 -0.0295477 0.754623 -0.0149479 0.530623 0.0930521Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="5"
-                      height="3"
-                      viewBox="0 0 5 3"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-1 h-[3px] absolute left-[71px] top-5 "
-                    >
-                      <path
-                        d="M2.68464 0.0931389L0.530936 1.13084C0.0645364 1.35554 -0.131561 1.91574 0.0931389 2.38214C0.317939 2.84854 0.878041 3.04464 1.34474 2.81994L3.49834 1.78214C3.96484 1.55744 4.16084 0.997039 3.93614 0.530639C3.71144 0.0642389 3.15104 -0.131561 2.68464 0.0931389Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="5"
-                      height="3"
-                      viewBox="0 0 5 3"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-1 h-[3px] absolute left-13 top-[29px] "
-                    >
-                      <path
-                        d="M0.938834 2.91689C1.07973 2.91659 1.21853 2.88458 1.34513 2.82318L3.49874 1.78539C3.72474 1.67888 3.89923 1.48649 3.98283 1.25079C4.06623 1.01509 4.05213 0.755685 3.94383 0.530485C3.83523 0.305485 3.64123 0.132785 3.40473 0.0512846C3.16853 -0.0302154 2.90943 -0.0141153 2.68493 0.0962847L0.531332 1.13379C0.136732 1.32369 -0.0739665 1.76118 0.0237335 2.18768C0.121433 2.61458 0.501334 2.91739 0.938834 2.91689Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="4"
-                      height="6"
-                      viewBox="0 0 4 6"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-[5px] absolute left-[66px] top-3 "
-                    >
-                      <path
-                        d="M1.31839 0.628382L0.052783 4.24818C-0.118117 4.73698 0.139684 5.27188 0.628284 5.44268C1.11708 5.61358 1.65199 5.35598 1.82279 4.86718L3.08838 1.24738C3.25928 0.758583 3.00168 0.223683 2.51288 0.0528825C2.02408 -0.118217 1.48919 0.139582 1.31839 0.628382Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="4"
-                      height="6"
-                      viewBox="0 0 4 6"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-[5px] absolute left-[58px] top-[34px] "
-                    >
-                      <path
-                        d="M1.31837 0.628304L0.0527646 4.24841C-0.118035 4.73721 0.139465 5.27201 0.628265 5.44291C1.11707 5.61371 1.65196 5.35621 1.82286 4.86741L3.08847 1.2473C3.25957 0.758504 3.00167 0.223604 2.51287 0.0528039C2.02407 -0.118096 1.48917 0.139504 1.31837 0.628304Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="6"
-                      height="4"
-                      viewBox="0 0 6 4"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[5px] h-[3px] absolute left-18 top-7 "
-                    >
-                      <path
-                        d="M0.0525242 0.627839C-0.0295758 0.862439 -0.0149721 1.12004 0.0931279 1.34424C0.200928 1.56824 0.393422 1.74004 0.628322 1.82214L4.24813 3.08774C4.73693 3.25854 5.27152 3.00074 5.44233 2.51214C5.61343 2.02334 5.35562 1.48854 4.86682 1.31764L1.24703 0.052539C0.758528 -0.117761 0.224124 0.139539 0.0525242 0.627839Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="6"
-                      height="4"
-                      viewBox="0 0 6 4"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[5px] h-[3px] absolute left-[50px] top-5 "
-                    >
-                      <path
-                        d="M0.628383 1.82283L4.24818 3.08843C4.73698 3.25923 5.27158 3.00143 5.44268 2.51283C5.61348 2.02403 5.35568 1.48923 4.86688 1.31833L1.24708 0.0527307C0.758281 -0.118069 0.223682 0.139731 0.0528824 0.628531C-0.118218 1.11703 0.139583 1.65203 0.628383 1.82283Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="76"
-                      height="37"
-                      viewBox="0 0 76 37"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[75px] h-9 absolute left-0.5 top-8 "
-                    >
-                      <path
-                        d="M74.7956 23.7113L57.8709 15.2246C57.6488 15.1132 57.3912 15.0946 57.1553 15.173C56.9194 15.2514 56.7241 15.4202 56.6126 15.6426L55.2334 18.3939C55.1219 18.6161 55.1032 18.8736 55.1816 19.1095C55.26 19.3455 55.429 19.5408 55.6511 19.6522L63.5038 23.5897V34.209H50.1251V24.5289L57.3224 28.1384C57.5446 28.2499 57.8021 28.2687 58.038 28.1903C58.274 28.1119 58.469 27.9429 58.5805 27.7206L59.9599 24.9697C60.0713 24.7474 60.0901 24.49 60.0117 24.2541C59.9333 24.0182 59.7643 23.8228 59.5422 23.7113L42.6175 15.2247C42.3951 15.1132 42.1378 15.0946 41.9016 15.173C41.6657 15.2514 41.4707 15.4202 41.3592 15.6426L39.9798 18.394C39.8683 18.6161 39.8498 18.8736 39.928 19.1096C40.0064 19.3455 40.1754 19.5408 40.3975 19.6523L48.2502 23.5898V34.2091H32.4062V19.0838H36.5088C36.8879 19.0838 37.2296 18.8554 37.3746 18.5051C37.52 18.1549 37.4397 17.7515 37.1715 17.4835L32.385 12.6971V3.03165C32.385 2.51395 31.9653 2.09425 31.4476 2.09425H27.803C27.2853 2.09425 26.8656 2.51405 26.8656 3.03165V7.17725L19.9629 0.27465C19.597 -0.09155 19.0032 -0.09155 18.6371 0.27465L1.42913 17.4827C1.16116 17.7506 1.08095 18.1539 1.226 18.5042C1.37132 18.8545 1.71298 19.0829 2.09214 19.0829H6.19474V34.2082H0.93747C0.41976 34.2082 0 34.628 0 35.1457C0 35.6634 0.4198 36.0832 0.93747 36.0832H70.5375C71.0552 36.0832 71.4749 35.6634 71.4749 35.1457C71.4749 34.628 71.0551 34.2082 70.5375 34.2082H65.3765V24.5289L72.5739 28.1383C72.7963 28.2498 73.0533 28.2685 73.2892 28.1901C73.5254 28.1117 73.7204 27.9426 73.8319 27.7206L75.2113 24.9695C75.3228 24.7474 75.3415 24.4897 75.2631 24.2537C75.1847 24.0177 75.0157 23.8224 74.7933 23.711L74.7956 23.7113ZM42.6156 17.3207L57.8642 24.9674L57.3254 26.0424L42.0768 18.3957L42.6156 17.3207ZM30.5102 3.96935V5.83935L28.7412 5.83965V3.96955L30.5102 3.96935ZM28.7412 7.71495H30.5102V10.8217L28.7412 9.05275V7.71495ZM7.13325 17.2083H4.35645L19.3011 2.26355L34.2458 17.2083H31.4694C30.9517 17.2083 30.532 17.6281 30.532 18.1458V34.2084H24.2877V24.6831C24.2877 24.1654 23.8679 23.7456 23.3502 23.7456H15.2522C14.7345 23.7456 14.3148 24.1654 14.3148 24.6831V34.2084H8.07082V18.1458C8.07082 17.6281 7.65092 17.2083 7.13325 17.2083ZM22.4132 34.2083H16.19V25.621H22.4132V34.2083ZM72.5792 26.0415L57.3306 18.395L57.8694 17.3202L73.118 24.9669L72.5792 26.0415Z"
-                        fill="#1C2C57"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-2xl font-semibold leading-[1.2em] w-[155px] h-[62px] text-wrap text-center">
-                Increase Your Home’s Value
-              </p>
-            </button>
-            <div className="rounded-xl border border-[#EEE] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[286px] h-[246px] absolute left-[653px] top-4 overflow-hidden">
-              <div className="flex justify-center items-center w-20 h-20 absolute left-[103px] top-[38px] overflow-hidden">
-                <div className="flex justify-center items-center shrink-0 w-20 h-20 overflow-hidden">
-                  <div className="shrink-0 w-20 h-20 overflow-hidden relative">
-                    <svg
-                      width="9"
-                      height="6"
-                      viewBox="0 0 9 6"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[9px] h-[5px] absolute left-4 top-[26px] "
-                    >
-                      <path
-                        d="M7.6017 0C7.084 0 6.6642 0.419801 6.6642 0.937401C6.6642 1.7929 6.208 2.5835 5.4671 3.0114C4.726 3.439 3.8132 3.439 3.0723 3.0114C2.3314 2.5835 1.8749 1.7929 1.8749 0.937401C1.8749 0.419701 1.4551 0 0.937401 0C0.419801 0 0 0.419801 0 0.937401C0 2.463 0.8138 3.8723 2.1348 4.6351C3.4559 5.3978 5.0835 5.3978 6.4047 4.6351C7.7255 3.8724 8.5393 2.463 8.5393 0.937401C8.5393 0.419701 8.1197 0 7.6017 0Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="4"
-                      height="3"
-                      viewBox="0 0 4 3"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-[3px] absolute left-[49px] top-9 "
-                    >
-                      <path
-                        d="M0.938547 2.60979C1.10335 2.60999 1.26515 2.56649 1.40725 2.48369C1.84475 2.23089 2.29785 1.99359 2.75595 1.77879C3.21425 1.55299 3.40755 1.00169 3.19035 0.539188C2.97315 0.076688 2.42545 -0.126714 1.95905 0.0818859C1.45385 0.319386 0.952848 0.581888 0.469748 0.860588C0.101548 1.07249 -0.0781523 1.50589 0.0322477 1.91629C0.142348 2.32669 0.514745 2.61159 0.939745 2.61059L0.938547 2.60979Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="8"
-                      height="11"
-                      viewBox="0 0 8 11"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[7px] h-2.5 absolute left-[41px] top-[38px] "
-                    >
-                      <path
-                        d="M7.1299 1.64545C7.5208 1.30585 7.56241 0.713953 7.2231 0.322753C6.8835 -0.0681469 6.2913 -0.109744 5.9004 0.229556C4.734 1.24306 3.68841 2.38766 2.78481 3.64106C1.60641 5.27486 0.683506 7.07845 0.0481055 8.99025C-0.115194 9.48165 0.150707 10.0124 0.642107 10.1757C1.13351 10.339 1.66421 10.0728 1.82751 9.58165C2.40301 7.85035 3.2387 6.21705 4.3062 4.73785C5.1249 3.60165 6.0726 2.56395 7.1299 1.64545Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="79"
-                      height="66"
-                      viewBox="0 0 79 66"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[78px] h-[66px] absolute left-[1px] top-[7px] "
-                    >
-                      <path
-                        d="M62.4944 32.0611C62.5639 31.3392 62.6019 30.6116 62.6019 29.8866C62.6019 29.5962 62.5944 29.3085 62.5835 29.0199C64.2045 28.8447 65.7038 28.0769 66.7936 26.8642C67.8837 25.6515 68.4876 24.0791 68.4897 22.4486C68.4897 21.9309 68.0699 21.5111 67.5522 21.5111C67.0342 21.5111 66.6147 21.9309 66.6147 22.4486C66.6132 23.608 66.1869 24.7265 65.4163 25.5926C64.6457 26.4587 63.5845 27.0127 62.4335 27.1494C60.9309 14.8841 49.4581 5.31411 35.5701 5.31411C33.8949 5.31431 32.2222 5.44451 30.567 5.70311C29.411 3.95111 27.8383 2.513 25.9902 1.51774C24.142 0.5224 22.0759 0.0008 19.9767 0C19.6793 0 19.3996 0.14089 19.223 0.37995C19.0462 0.61901 18.993 0.9276 19.0803 1.21195L19.3686 2.15335C19.9628 4.08461 20.185 6.11111 20.0233 8.12521C14.8048 10.2096 10.3746 13.883 7.35994 18.6252L6.17814 20.4924H2.89767C2.12947 20.4932 1.39274 20.7989 0.849466 21.3421C0.306236 21.8856 0.0008 22.6221 0 23.3906V35.8353C0.000781 36.6038 0.306256 37.3399 0.849466 37.8832C1.39296 38.4264 2.1294 38.7322 2.89767 38.7329H6.24247C7.1464 40.4976 8.28074 42.134 9.61572 43.5999C12.2732 46.5574 13.7363 50.3972 13.7206 54.3739C13.7216 55.3888 14.1253 56.3619 14.843 57.0796C15.5607 57.7974 16.5339 58.201 17.5487 58.202H21.5691C22.5839 58.201 23.557 57.7973 24.2748 57.0796C24.9925 56.3619 25.3961 55.3888 25.3972 54.3739C25.3974 53.8559 25.6034 53.3596 25.9696 52.9934C26.3357 52.627 26.8323 52.4213 27.3503 52.4208H34.8536C35.3715 52.4213 35.8677 52.627 36.2341 52.9934C36.6003 53.3596 36.806 53.8559 36.8065 54.3739C36.8076 55.3888 37.2112 56.3619 37.9289 57.0796C38.6466 57.7974 39.6198 58.201 40.6346 58.202H47.6753C49.812 61.3893 52.975 63.7494 56.6386 64.89C60.3024 66.0306 64.2466 65.883 67.8146 64.4715C71.3828 63.0603 74.3607 60.4702 76.2526 57.1322C78.1451 53.7942 78.838 49.9089 78.2164 46.1222C77.5946 42.3357 75.6958 38.8755 72.8354 36.3182C69.975 33.7609 66.3256 32.2583 62.4934 32.0619L62.4944 32.0611ZM40.6324 56.3251C40.1147 56.3245 39.6181 56.1188 39.2519 55.7527C38.8858 55.3863 38.6798 54.8899 38.6793 54.3719C38.6782 53.3571 38.2746 52.3839 37.5569 51.6662C36.8394 50.9485 35.8663 50.5449 34.8511 50.5438H27.3485C26.3336 50.5449 25.3605 50.9485 24.6427 51.6662C23.925 52.3839 23.5214 53.3571 23.5203 54.3719C23.5198 54.8899 23.3141 55.3863 22.9479 55.7527C22.5815 56.1188 22.0852 56.3245 21.5672 56.3251H17.5479C17.0302 56.3245 16.5336 56.1188 16.1675 55.7527C15.8013 55.3863 15.5953 54.8899 15.5948 54.3719C15.611 49.9316 13.9758 45.6439 11.0071 42.3419C9.65922 40.8659 8.53651 39.1987 7.67558 37.3948C7.52089 37.0669 7.19069 36.8576 6.82791 36.8576H2.89745C2.62635 36.8573 2.36619 36.7495 2.17451 36.5576C1.98285 36.3659 1.87503 36.106 1.87477 35.8346V23.39C1.87503 23.1189 1.98285 22.859 2.17477 22.6673C2.36644 22.4756 2.62633 22.3678 2.89744 22.3673H6.69431C7.01566 22.3673 7.31462 22.2027 7.48651 21.9311L8.94431 19.6277C11.8404 15.0711 16.1403 11.5806 21.1943 9.68261C21.5412 9.56781 21.7899 9.26211 21.8313 8.89881C22.1011 6.56831 21.9081 4.20741 21.2636 1.95144C23.8909 2.26966 26.3112 3.53841 28.0676 5.51811C29.8241 7.49781 30.7957 10.0517 30.7991 12.6981C30.7991 13.2158 31.2189 13.6356 31.7366 13.6356C32.2543 13.6356 32.674 13.2158 32.674 12.6981C32.6751 10.8892 32.2873 9.10121 31.5366 7.45541C32.8738 7.27911 34.221 7.19031 35.5696 7.18971C49.441 7.18971 60.7256 17.3717 60.7256 29.8877C60.7254 30.6173 60.6868 31.3461 60.6103 32.0719C56.9019 32.2958 53.3723 33.7425 50.5736 36.1857C47.7749 38.6291 45.865 41.931 45.1426 45.575C44.4199 49.2193 44.9259 53.0003 46.5806 56.3263L40.6324 56.3251ZM61.6304 63.7784C58.677 63.7784 55.7901 62.9026 53.3344 61.262C50.8789 59.6211 48.9649 57.2891 47.8347 54.5607C46.7045 51.832 46.4089 48.8297 46.9849 45.9333C47.5612 43.0367 48.9834 40.3761 51.0717 38.288C53.1602 36.1997 55.8209 34.7776 58.7177 34.2015C61.6143 33.6252 64.6166 33.9211 67.345 35.0513C70.0737 36.1815 72.4057 38.0953 74.0463 40.551C75.6869 43.0067 76.5627 45.8937 76.5627 48.847C76.5583 52.8059 74.9835 56.601 72.1841 59.4003C69.3849 62.1995 65.589 63.774 61.6304 63.7784Z"
-                        fill="#1C2C57"
-                      />
-                    </svg>
-                    <svg
-                      width="10"
-                      height="21"
-                      viewBox="0 0 10 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[9px] h-5 absolute left-[58px] top-[46px] "
-                    >
-                      <path
-                        d="M4.5442 3.8564C5.2517 3.8572 5.9304 4.1387 6.4309 4.639C6.9315 5.1395 7.2127 5.8182 7.2135 6.5257C7.2135 7.0434 7.6333 7.4632 8.1509 7.4632C8.6686 7.4632 9.0884 7.0434 9.0884 6.5257C9.0871 5.4838 8.7282 4.4736 8.0717 3.6645C7.4152 2.8551 6.5009 2.2958 5.4816 2.0794V0.937397C5.4816 0.419497 5.0618 0 4.5441 0C4.0265 0 3.6067 0.419497 3.6067 0.937397V2.0794C2.1277 2.3913 0.9007 3.4182 0.333 4.819C-0.2347 6.2198 -0.0688004 7.8112 0.7757 9.0648C1.6202 10.3182 3.0327 11.07 4.5442 11.07C5.4939 11.0711 6.3712 11.5768 6.8486 12.3979C7.3257 13.219 7.3303 14.2318 6.8613 15.0576C6.3921 15.8831 5.5194 16.3972 4.5697 16.4073C4.5611 16.4073 4.5527 16.406 4.5441 16.406C4.5353 16.406 4.5272 16.407 4.5186 16.4073C3.8157 16.4 3.1436 16.1156 2.6488 15.6164C2.154 15.117 1.8759 14.4425 1.8749 13.7394C1.8749 13.2217 1.4551 12.8019 0.937401 12.8019C0.419701 12.8019 0 13.2217 0 13.7394C0.0013 14.7816 0.360102 15.7914 1.0166 16.6008C1.6731 17.41 2.5874 17.9696 3.6068 18.186V19.492C3.6068 20.0097 4.0266 20.4294 4.5442 20.4294C5.0619 20.4294 5.4817 20.0096 5.4817 19.492V18.186C6.9609 17.8742 8.1882 16.8474 8.7559 15.4464C9.3239 14.0453 9.158 12.4536 8.3132 11.2C7.4687 9.9464 6.0559 9.1948 4.5442 9.1951C3.5905 9.1951 2.7093 8.6862 2.2325 7.8604C1.7556 7.0346 1.7556 6.0172 2.2325 5.1912C2.7093 4.3654 3.5905 3.8564 4.5442 3.8564Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div className="w-55 h-6 absolute left-[33px] top-[123px]"></div>
-              <p className="flex flex-col text-wrap justify-center text-[#1C2C57] font-manrope text-2xl font-semibold leading-[1.2em] w-[182px] h-[62px] absolute left-13 top-36 text-center">
-                Profit From Your Solar Panels
-              </p>
             </div>
-            <div className="rounded-xl border border-[#EEE] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[286px] h-[246px] absolute left-4 top-[294px] overflow-hidden">
-              <div className="flex justify-center items-center w-20 h-20 absolute left-[103px] top-[38px] overflow-hidden">
-                <div className="flex justify-center items-center shrink-0 w-20 h-20 overflow-hidden">
-                  <div className="shrink-0 w-20 h-20 overflow-hidden relative">
-                    <svg
-                      width="77"
-                      height="55"
-                      viewBox="0 0 77 55"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[77px] h-[55px] absolute left-0.5 top-[23px] "
-                    >
-                      <path
-                        d="M75.94 52.7533H66.4866V48.5933C66.4866 48.0733 66.0666 47.6533 65.5466 47.6533H63.3466L59 7.4333C58.9466 6.96 58.5466 6.5933 58.0666 6.5933H49.24C48.76 6.5933 48.36 6.9533 48.3066 7.4333L43.96 47.6533H41.76C41.24 47.6533 40.82 48.0733 40.82 48.5933V52.7533H38.0733V47.9133C38.0733 47.3933 37.6533 46.9733 37.1333 46.9733H34.5266L29.5866 0.839998C29.5333 0.366598 29.1333 0 28.6533 0H18.6466C18.1666 0 17.7666 0.359998 17.7133 0.839998L12.7733 46.9733H10.1666C9.64664 46.9733 9.22664 47.3933 9.22664 47.9133V52.7533H0.94C0.42 52.7533 0 53.1733 0 53.6933C0 54.2133 0.42 54.6333 0.94 54.6333H75.94C76.46 54.6333 76.88 54.2133 76.88 53.6933C76.88 53.1733 76.46 52.7533 75.94 52.7533ZM61.4666 47.6533H45.8466L49.64 12.5533H53.66H57.68L61.4666 47.6533ZM57.2333 8.4733L57.4733 10.6733H53.66H49.84L50.08 8.4733H57.2333ZM42.7 49.5333H64.6133V52.7533H42.7V49.5333ZM18.9933 6.5H28.3133L29.04 13.28L17.9266 16.5L18.9933 6.5ZM17.7066 18.52L29.24 15.1733L29.6933 19.44L17.2666 22.5866L17.7066 18.52ZM17.06 24.5733L29.9 21.32L30.86 30.2666L16.0733 33.8066L17.06 24.5733ZM15.86 35.7866L31.06 32.1466L31.5133 36.3933L15.4066 40.0333L15.86 35.7866ZM27.82 1.88L28.1133 4.6266H19.1933L19.4866 1.88H27.82ZM15.1933 42.0066L31.7133 38.2733L32.6466 46.9733H14.66L15.1933 42.0066ZM11.1133 48.8466H36.2V52.7466H11.1133V48.8466Z"
-                        fill="#1C2C57"
-                      />
-                    </svg>
-                    <svg
-                      width="18"
-                      height="14"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[18px] h-3.5 absolute left-[53px] top-3.5 "
-                    >
-                      <path
-                        d="M14.3305 3.08358C13.4571 1.55018 11.9638 0.470182 10.2305 0.123582C8.5038 -0.229818 6.7038 0.183582 5.2971 1.25018C3.8905 2.31688 3.0171 3.93688 2.8905 5.69688C2.8371 5.71688 2.7838 5.73018 2.7305 5.75018C1.4905 6.20358 0.543805 7.21018 0.170505 8.47688C-0.202895 9.74358 0.0438025 11.1036 0.843803 12.1569C1.6371 13.2102 2.8838 13.8169 4.2038 13.8036C5.5238 13.7902 6.7505 13.1502 7.5238 12.0836C9.2438 12.5102 11.0705 12.1769 12.5238 11.1636C13.5171 11.4836 14.5905 11.4169 15.5305 10.9769C16.4771 10.5369 17.2171 9.76358 17.6171 8.80358C18.0171 7.84358 18.0438 6.77018 17.6838 5.79018C17.4238 5.07688 16.9771 4.45018 16.3838 3.97018C15.7905 3.48358 15.0838 3.18358 14.3305 3.08358ZM15.8438 8.16358C15.5838 8.71688 15.1171 9.14358 14.5371 9.35018C13.9638 9.55688 13.3305 9.51688 12.7771 9.25018C12.4438 9.08358 12.0438 9.13688 11.7571 9.37688C11.1638 9.87688 10.4505 10.2036 9.6905 10.3302C8.9305 10.4569 8.1438 10.3702 7.4305 10.0836C6.9638 9.89688 6.4305 10.1169 6.2238 10.5769C6.0038 11.0636 5.6238 11.4636 5.1438 11.6969C4.6638 11.9302 4.1171 11.9902 3.5971 11.8569C3.0771 11.7302 2.6238 11.4169 2.3105 10.9836C1.9971 10.5502 1.8438 10.0236 1.8838 9.48358C1.9238 8.95018 2.1438 8.44358 2.5171 8.06358C2.8905 7.67688 3.3838 7.43688 3.9171 7.38358C4.4171 7.33688 4.7905 6.89688 4.7571 6.39018C4.7038 5.47688 4.9505 4.56358 5.4505 3.79688C5.9571 3.03018 6.6905 2.44358 7.5505 2.13018C8.0105 1.96358 8.4971 1.87688 8.9905 1.87688C9.8105 1.87688 10.6105 2.11018 11.3038 2.55688C11.9905 2.99688 12.5438 3.63018 12.8838 4.37688C13.0371 4.71018 13.3705 4.93018 13.7371 4.93018H13.7838C14.2505 4.93018 14.7038 5.07688 15.0905 5.34358C15.4705 5.61018 15.7638 5.99018 15.9238 6.43018C16.1305 6.99018 16.1038 7.61688 15.8438 8.16358Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="22"
-                      height="17"
-                      viewBox="0 0 22 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[21px] h-[17px] absolute left-5 top-[3px] "
-                    >
-                      <path
-                        d="M20.2537 3.72703C19.7003 2.9337 18.8937 2.34703 17.967 2.0737C17.0403 1.80036 16.0403 1.8537 15.147 2.22703C14.0537 1.0137 12.5603 0.233703 10.9403 0.0470326C9.32031 -0.146297 7.68031 0.260363 6.34031 1.1937C4.95371 2.1537 3.98031 3.60036 3.61371 5.24036C1.84031 5.98036 0.540309 7.5404 0.133709 9.4204C-0.272991 11.3004 0.260309 13.2537 1.56701 14.667C2.87371 16.0804 4.78031 16.7604 6.68701 16.5004C8.58701 16.2404 10.247 15.0604 11.1203 13.3537C13.0737 13.067 14.8003 11.9404 15.847 10.2737C16.9603 10.527 18.1337 10.3204 19.0937 9.6937C20.0537 9.067 20.7203 8.087 20.9403 6.96036C21.147 5.8337 20.907 4.66703 20.2537 3.72703ZM19.0937 6.56036C18.9603 7.2804 18.507 7.8937 17.8603 8.2337C17.2137 8.567 16.447 8.587 15.7803 8.2804C15.5537 8.1737 15.2937 8.167 15.0603 8.2537C14.827 8.3404 14.6337 8.5137 14.5337 8.7404C14.167 9.5337 13.587 10.2137 12.867 10.707C12.1403 11.2004 11.3003 11.487 10.427 11.5337C10.0603 11.5537 9.74031 11.787 9.60701 12.127C9.10701 13.4137 7.97371 14.347 6.62031 14.6004C5.26701 14.8537 3.87371 14.4004 2.93371 13.387C1.99371 12.3737 1.64701 10.9537 2.00701 9.6204C2.36701 8.287 3.38701 7.2337 4.70701 6.8337C5.06031 6.72703 5.31371 6.42703 5.36031 6.06036C5.54701 4.7137 6.28701 3.50703 7.40031 2.7337C8.20701 2.1737 9.16031 1.8737 10.1403 1.8737C10.4337 1.8737 10.727 1.90036 11.0203 1.9537C12.2803 2.18036 13.4003 2.90036 14.127 3.96036C14.4203 4.38703 15.007 4.4937 15.4337 4.20036C15.947 3.84703 16.5803 3.70703 17.2003 3.82036C17.8137 3.9337 18.3603 4.28703 18.7203 4.80036C19.067 5.30703 19.207 5.94703 19.0937 6.56036Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div className="w-55 h-6 absolute left-[33px] top-[123px]"></div>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-2xl font-semibold leading-[1.2em] w-[195px] h-[29px] absolute left-[46px] top-[147px] text-center">
-                Reduce Pollution
+          </section>
+
+          {/* CTA Footer Section */}
+          <section className="w-full bg-brand-blue py-20 px-6 mt-12 text-center relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#13ec13 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+            <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-6">
+              <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">Ready to Power Your Future?</h2>
+              <p className="text-blue-100 text-lg md:text-xl">
+                Get a custom solar quote in less than 24 hours. No obligation, just savings.
               </p>
-            </div>
-            <div className="rounded-xl border border-[#EEE] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[286px] h-[246px] absolute left-[334px] top-[294px] overflow-hidden">
-              <div className="flex justify-center items-center w-20 h-20 absolute left-[103px] top-[38px] overflow-hidden">
-                <div className="flex justify-center items-center shrink-0 w-20 h-20 overflow-hidden">
-                  <div className="shrink-0 w-20 h-20 overflow-hidden relative">
-                    <svg
-                      width="32"
-                      height="50"
-                      viewBox="0 0 32 50"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-8 h-[49px] absolute left-1.5 top-[27px] "
-                    >
-                      <path
-                        d="M31.1929 28.4221C30.8731 28.2642 30.4914 28.3015 30.2084 28.5181L28.763 29.6252C28.7195 29.4064 28.6911 29.1848 28.6784 28.9621L28.5641 26.9941C28.5628 26.9686 28.56 26.9428 28.5566 26.9173C28.2842 24.9548 27.4741 23.1058 26.216 21.5754C24.9577 20.0446 23.3004 18.8923 21.4277 18.2454L20.7882 18.0228C19.9213 17.7199 19.1329 17.2259 18.4827 16.5772L15.3969 13.4915L14.343 9.92487C14.0844 8.96937 13.5464 8.11287 12.7979 7.46497C12.0493 6.81707 11.1245 6.40747 10.1417 6.28847L9.99145 5.78767C9.98935 5.78007 9.98705 5.77257 9.98445 5.76527C9.48055 4.22507 7.83265 3.22227 6.13075 3.28887L6.10815 3.21287C5.77815 2.10347 5.03285 1.16417 4.02765 0.590767C3.02244 0.017067 1.83464 -0.146533 0.711769 0.133967C0.230259 0.253467 -0.0746905 0.727168 0.0159095 1.21497L3.42291 19.551C3.43124 19.5948 3.44218 19.6377 3.4565 19.6796C4.26595 22.0596 5.81535 24.1182 7.87835 25.5546L15.3197 30.6817C15.3363 30.6932 15.353 30.7039 15.3702 30.7143C15.8819 31.0195 16.2592 31.5073 16.4259 32.0794L17.6721 37.6081C17.7033 37.7424 17.7637 37.868 17.8493 37.976L16.4302 39.0628C16.1984 39.2401 16.0623 39.5154 16.0623 39.807V48.5204C16.0623 48.8654 16.2518 49.1826 16.5557 49.3462C16.8596 49.5094 17.2288 49.4928 17.5166 49.3024L31.2945 40.1991C31.5572 40.0254 31.7157 39.7319 31.7157 39.4171V29.2637C31.7157 28.9067 31.5131 28.5802 31.1929 28.4221ZM12.5341 10.4194C12.5362 10.4277 12.5385 10.4361 12.5411 10.4439L12.8067 11.3441C12.4013 11.153 11.9732 11.0139 11.5325 10.9301L10.7669 8.37537C11.6383 8.74987 12.2896 9.50327 12.5341 10.4194ZM8.19925 6.33807L9.57325 10.922C9.20815 10.9876 8.85105 11.091 8.50765 11.2308L8.48725 11.1652L6.70215 5.19797C7.39205 5.32377 8.00295 5.75347 8.19925 6.33807ZM18.25 31.6408C18.2463 31.6252 18.2423 31.6082 18.2376 31.5918C17.9478 30.5606 17.2771 29.6775 16.361 29.1218L8.94495 24.0124C7.23135 22.8189 5.93915 21.1134 5.25375 19.1408L2.04777 1.88607C2.56783 1.93577 3.06104 2.13997 3.46444 2.47197C3.86785 2.80407 4.16295 3.24907 4.31155 3.74987L6.69335 11.7119L6.87155 12.2869C6.83345 12.3228 6.79465 12.358 6.75745 12.3952C6.57645 12.5765 6.47745 12.8236 6.48345 13.0796C6.48925 13.3356 6.59965 13.5778 6.78865 13.7504L10.5168 17.1556C11.596 18.1421 12.5832 19.2246 13.4657 20.39C13.7782 20.8031 14.3665 20.8843 14.7792 20.5718C15.192 20.2593 15.2735 19.6713 14.961 19.2585C14.0092 18.0017 12.9449 16.8343 11.7813 15.7711L8.88295 13.1237C9.53835 12.7703 10.2904 12.6372 11.0277 12.7448C11.7647 12.8523 12.4477 13.1943 12.9751 13.7203L17.1567 17.9021C18.0075 18.7503 19.0382 19.3966 20.1723 19.7927L20.8118 20.0154C22.3529 20.5477 23.7174 21.4943 24.7554 22.7516C25.7931 24.0086 26.4645 25.5276 26.6952 27.1414L26.8071 29.0698C26.8424 29.6774 26.9602 30.2774 27.1579 30.8532L19.4086 36.7826L18.25 31.6408ZM29.8407 38.9121L17.9373 46.7768V40.2698L29.8407 31.1605V38.9121Z"
-                        fill="#1C2C57"
-                      />
-                    </svg>
-                    <svg
-                      width="32"
-                      height="50"
-                      viewBox="0 0 32 50"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-8 h-[49px] absolute left-[42px] top-[27px] "
-                    >
-                      <path
-                        d="M31.0039 0.133932C29.8812 -0.146468 28.6935 0.0170314 27.6883 0.590431C26.6831 1.16363 25.9377 2.10303 25.6075 3.21203L25.5846 3.28813C23.8826 3.22143 22.2349 4.22453 21.731 5.76463C21.7284 5.77223 21.726 5.77973 21.7239 5.78703L21.5737 6.28783C20.5909 6.40693 19.6664 6.81673 18.9177 7.46463C18.1692 8.11223 17.6312 8.96873 17.3726 9.92443L16.3187 13.4914L13.233 16.5768C12.5827 17.2255 11.7947 17.7192 10.9278 18.0224L10.2882 18.245C8.4156 18.8919 6.758 20.0442 5.4997 21.575C4.2416 23.1054 3.4315 24.9544 3.1591 26.9169C3.1554 26.9424 3.1528 26.9679 3.1515 26.9937L3.0372 28.9617C3.0244 29.1846 2.9961 29.406 2.9526 29.6247L1.5075 28.5187C1.2242 28.3018 0.8421 28.2646 0.5224 28.4226C0.2026 28.5807 0 28.9065 0 29.2632V39.4166C0 39.7314 0.158099 40.0252 0.420799 40.1988L14.1988 49.3022C14.4865 49.4926 14.8561 49.509 15.16 49.3457C15.4639 49.1821 15.6532 48.8649 15.6532 48.5199V39.8072C15.6532 39.5153 15.5173 39.24 15.2855 39.0627L13.8657 37.9762C13.9514 37.8681 14.0118 37.7426 14.0428 37.6082L15.2889 32.0796C15.4558 31.5074 15.8329 31.0197 16.3449 30.7144C16.3618 30.704 16.3787 30.6933 16.3954 30.6819L23.8387 25.5535C25.901 24.1173 27.4499 22.0592 28.2591 19.6798C28.2734 19.6379 28.2843 19.5949 28.2927 19.5512L31.6999 1.21453C31.7905 0.726731 31.4854 0.253532 31.0039 0.133932ZM23.5159 6.33893C23.7122 5.75423 24.3231 5.32433 25.0133 5.19833L23.2307 11.1571L23.2078 11.2311C22.8643 11.0915 22.507 10.9879 22.142 10.9222L23.5159 6.33893ZM19.181 10.4201C19.4255 9.50403 20.0766 8.75063 20.9479 8.37593L20.1823 10.9305C19.7417 11.0144 19.3136 11.1534 18.9081 11.3446L19.1738 10.4443C19.1764 10.4368 19.1789 10.4285 19.181 10.4201ZM13.7779 46.7777L1.8745 38.9131V31.1617L13.7779 40.2711V46.7777ZM26.4612 19.1417C25.7761 21.1136 24.4849 22.8182 22.7724 24.0118L15.3544 29.1227C14.4383 29.6784 13.7677 30.5613 13.4779 31.5928C13.4732 31.6084 13.469 31.6253 13.4656 31.6417L12.3068 36.7842L4.5581 30.8548C4.7558 30.2791 4.8737 29.6787 4.9089 29.0712L5.0209 27.1428C5.2516 25.529 5.9229 24.01 6.9607 22.7529C7.9987 21.4957 9.3631 20.549 10.9042 20.0167L11.5438 19.7941C12.6779 19.398 13.7086 18.7519 14.5594 17.9035L18.7409 13.722C19.2683 13.1959 19.951 12.8538 20.6883 12.7464C21.4253 12.6389 22.1776 12.7717 22.8331 13.1253L19.9352 15.7725C18.7714 16.8357 17.7073 18.0032 16.7558 19.2599C16.4433 19.6727 16.5245 20.2607 16.9373 20.5732C17.3503 20.8857 17.9384 20.8045 18.2508 20.3914C19.1334 19.2261 20.1206 18.1435 21.1998 17.157L24.9279 13.7518C25.1172 13.5792 25.2274 13.337 25.2334 13.081C25.2391 12.825 25.1401 12.5779 24.9591 12.3966C24.9219 12.3594 24.8831 12.3242 24.8451 12.2883L25.0245 11.7042L27.4039 3.75083C27.5529 3.25013 27.8477 2.80523 28.251 2.47353C28.6542 2.14173 29.1476 1.93783 29.6674 1.88813L26.4612 19.1417Z"
-                        fill="#1C2C57"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[19px] h-[19px] absolute left-[30px] top-3 "
-                    >
-                      <path
-                        d="M18.2824 5.44274C17.1752 3.14484 15.2005 1.38104 12.7926 0.539044C10.3848 -0.302856 7.74099 -0.153956 5.44319 0.953344C3.14529 2.06034 1.38119 4.03514 0.539288 6.44294C-0.302912 8.85054 -0.153913 11.4943 0.952887 13.7923C2.05989 16.0905 4.03469 17.8545 6.44219 18.6969C8.84999 19.5391 11.4935 19.3904 13.7915 18.2837C16.1019 17.1894 17.8775 15.2149 18.7215 12.8019C19.5652 10.3889 19.4071 7.73854 18.2824 5.44274ZM2.63979 12.9787C1.74839 11.1284 1.62859 8.99985 2.30669 7.06105C2.98479 5.12225 4.40519 3.53234 6.25559 2.64094C8.10589 1.74954 10.2346 1.62974 12.1734 2.30784C14.1119 2.98574 15.702 4.40634 16.5934 6.25654C17.4848 8.10704 17.6046 10.2357 16.9268 12.1742C16.2486 14.113 14.8281 15.7032 12.9778 16.5946C11.1296 17.5 8.99579 17.6271 7.05309 16.9477C5.11039 16.2683 3.52079 14.8388 2.63979 12.9787Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="4"
-                      height="5"
-                      viewBox="0 0 4 5"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-[5px] absolute left-8 top-1.5 "
-                    >
-                      <path
-                        d="M0.531328 0.0927735C0.307128 0.200593 0.134928 0.393034 0.0527281 0.627934C-0.0295719 0.862824 -0.0150735 1.12063 0.0930265 1.34486L1.53473 4.33737C1.75943 4.80377 2.31983 4.99987 2.78623 4.77507C3.25263 4.55037 3.44873 3.98997 3.22403 3.52355L1.78233 0.531094C1.55763 0.0646836 0.997728 -0.131447 0.531328 0.0927735Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="4"
-                      height="5"
-                      viewBox="0 0 4 5"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-[5px] absolute left-[45px] top-[33px] "
-                    >
-                      <path
-                        d="M0.530463 0.0929425C0.306463 0.201043 0.134662 0.393441 0.0525616 0.628141C-0.0294384 0.862741 -0.015137 1.12054 0.092963 1.34454L1.53466 4.33694C1.75936 4.80364 2.31976 4.99974 2.78616 4.77504C3.25276 4.55024 3.44886 3.98984 3.22416 3.52324L1.78196 0.530443C1.67386 0.306543 1.48146 0.134644 1.24686 0.0526441C1.01216 -0.0294559 0.754363 -0.0151575 0.530463 0.0929425Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="5"
-                      height="4"
-                      viewBox="0 0 5 4"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[5px] h-[3px] absolute left-[51px] top-3.5 "
-                    >
-                      <path
-                        d="M1.35441 3.22391L4.34691 1.78231C4.81331 1.55751 5.00941 0.997413 4.78461 0.530713C4.55991 0.0643126 3.99981 -0.131487 3.53311 0.0930133L0.540606 1.53461C0.313506 1.64061 0.138508 1.83331 0.0544075 2.06951C-0.0296925 2.30551 -0.0158916 2.56541 0.0930084 2.79111C0.201508 3.01691 0.396307 3.18961 0.633307 3.27111C0.870307 3.35231 1.12991 3.33541 1.35441 3.22391Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="5"
-                      height="4"
-                      viewBox="0 0 5 4"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[5px] h-[3px] absolute left-6 top-[27px] "
-                    >
-                      <path
-                        d="M0.938432 3.31788C1.07933 3.31758 1.21813 3.28558 1.34473 3.22408L4.33723 1.78248C4.80383 1.55768 4.99973 0.997278 4.77493 0.530878C4.55023 0.0642782 3.98983 -0.131622 3.52343 0.093178L0.530931 1.53508C0.136631 1.72498 -0.0737683 2.16218 0.0236317 2.58878C0.121332 3.01528 0.500932 3.31838 0.938432 3.31788Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="4"
-                      height="7"
-                      viewBox="0 0 4 7"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-1 h-[7px] absolute left-[43px] top-[3px] "
-                    >
-                      <path
-                        d="M1.81398 0.62828L0.0550822 5.65794C-0.0293178 5.89336 -0.0163202 6.15248 0.0912798 6.37828C0.19888 6.60381 0.392081 6.77721 0.627981 6.85951C0.863981 6.94211 1.12308 6.92701 1.34778 6.81761C1.57258 6.70821 1.74438 6.51341 1.82488 6.27698L3.58398 1.24731C3.75488 0.75851 3.49728 0.22364 3.00848 0.0527803C2.51968 -0.11806 1.98478 0.13948 1.81398 0.62828Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="4"
-                      height="7"
-                      viewBox="0 0 4 7"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-1 h-[7px] absolute left-[33px] top-[33px] "
-                    >
-                      <path
-                        d="M0.937728 6.91195C1.33623 6.91195 1.69113 6.65985 1.82263 6.28355L3.58153 1.25415C3.66583 1.01905 3.65283 0.759653 3.54533 0.534053C3.43773 0.308353 3.24453 0.135154 3.00853 0.052554C2.77263 -0.029946 2.51353 -0.0148461 2.28873 0.0945539C2.06403 0.203854 1.89213 0.398654 1.81173 0.635154L0.0525279 5.66505C-0.0476721 5.95175 -0.00287177 6.26945 0.172828 6.51735C0.348628 6.76535 0.633828 6.91195 0.937728 6.91195Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="7"
-                      height="4"
-                      viewBox="0 0 7 4"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[7px] h-1 absolute left-[51px] top-[25px] "
-                    >
-                      <path
-                        d="M0.628353 1.82306L5.65775 3.58196C6.14635 3.75276 6.68145 3.49526 6.85255 3.00646C7.02335 2.51766 6.76575 1.98276 6.27695 1.81196L1.24755 0.0527648C0.758755 -0.118035 0.223853 0.139463 0.0527533 0.628263C-0.118047 1.11706 0.139553 1.65196 0.628353 1.82306Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="7"
-                      height="4"
-                      viewBox="0 0 7 4"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[7px] h-1 absolute left-[22px] top-[15px] "
-                    >
-                      <path
-                        d="M5.9673 3.63486C6.4249 3.63536 6.816 3.30546 6.8928 2.85416C6.9694 2.40306 6.709 1.96247 6.277 1.81197L1.2473 0.0527646C0.758704 -0.118035 0.223804 0.139465 0.0528039 0.628265C-0.118096 1.11707 0.139504 1.65196 0.628304 1.82286L5.6577 3.58196C5.7572 3.61686 5.8618 3.63456 5.9673 3.63486Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div className="w-55 h-6 absolute left-[33px] top-[123px]"></div>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-2xl font-semibold leading-[1.2em] w-[199px] h-[62px] absolute left-11 top-36 text-wrap text-center">
-                Use Energy Guilt- Free
-              </p>
-            </div>
-            <div className="rounded-xl border border-[#EEE] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[286px] h-[246px] absolute left-[653px] top-[294px] overflow-hidden">
-              <div className="flex justify-center items-center w-20 h-20 absolute left-[103px] top-[38px] overflow-hidden">
-                <div className="flex justify-center items-center shrink-0 w-20 h-20 overflow-hidden">
-                  <div className="shrink-0 w-20 h-20 overflow-hidden relative">
-                    <svg
-                      width="3"
-                      height="2"
-                      viewBox="0 0 3 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-0.5 absolute left-15 top-[19px] "
-                    >
-                      <path
-                        d="M0 0.9375C0 1.4552 0.4198 1.875 0.9375 1.875H1.6828C2.2005 1.875 2.6203 1.4552 2.6203 0.9375C2.6203 0.4198 2.2005 0 1.6828 0H0.9375C0.4198 0 0 0.4198 0 0.9375Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="22"
-                      height="2"
-                      viewBox="0 0 22 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[21px] h-0.5 absolute left-[38px] top-[19px] "
-                    >
-                      <path
-                        d="M20.3595 0H0.9375C0.4198 0 0 0.4198 0 0.9375C0 1.4551 0.4198 1.8749 0.9375 1.8749H20.3595C20.8772 1.8749 21.297 1.4551 21.297 0.9375C21.297 0.4198 20.8772 0 20.3595 0Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="3"
-                      height="2"
-                      viewBox="0 0 3 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[3px] h-0.5 absolute left-[58px] top-3 "
-                    >
-                      <path
-                        d="M2.8042 0.9375C2.8042 0.4198 2.3844 0 1.8667 0H0.9375C0.4198 0 0 0.4198 0 0.9375C0 1.4555 0.4198 1.875 0.9375 1.875H1.8667C2.3844 1.875 2.8042 1.4554 2.8042 0.9375Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="15"
-                      height="2"
-                      viewBox="0 0 15 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-3.5 h-0.5 absolute left-[43px] top-3 "
-                    >
-                      <path
-                        d="M0.9375 1.8749H13.0861C13.6039 1.8749 14.0236 1.4554 14.0236 0.9375C14.0236 0.4198 13.6038 0 13.0861 0H0.9375C0.4198 0 0 0.4198 0 0.9375C0 1.4554 0.4198 1.8749 0.9375 1.8749Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="5"
-                      height="2"
-                      viewBox="0 0 5 2"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-1 h-0.5 absolute left-[38px] top-3 "
-                    >
-                      <path
-                        d="M0.937401 1.8749H3.1333C3.651 1.8749 4.0708 1.4554 4.0708 0.9375C4.0708 0.4198 3.651 0 3.1333 0H0.937401C0.419501 0 0 0.4198 0 0.9375C0 1.4554 0.419501 1.8749 0.937401 1.8749Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="25"
-                      height="25"
-                      viewBox="0 0 25 25"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[25px] h-[25px] absolute left-12 top-[49px] "
-                    >
-                      <path
-                        d="M12.3375 -0.00018692C9.0654 -0.00018692 5.9271 1.29981 3.6135 3.61391C1.2997 5.92771 0 9.06591 0 12.3385C0 15.6109 1.3 18.7489 3.614 21.0625C5.9278 23.3763 9.0661 24.6763 12.3387 24.6763C15.6108 24.6763 18.7491 23.3763 21.0627 21.0625C23.3765 18.7485 24.6765 15.6102 24.6765 12.3379C24.6729 9.06651 23.3716 5.93031 21.0585 3.61721C18.7452 1.30391 15.6087 0.00321308 12.3375 -0.00018692ZM12.3375 22.8011C9.5625 22.8011 6.9013 21.6985 4.9388 19.7363C2.9766 17.774 1.8745 15.1126 1.8745 12.3376C1.8745 9.56261 2.9771 6.90111 4.9394 4.93891C6.9016 2.97671 9.563 1.87431 12.338 1.87431C15.113 1.87431 17.7745 2.97691 19.7367 4.93921C21.699 6.90151 22.8013 9.56291 22.8013 12.3379C22.7982 15.1121 21.6948 17.7717 19.7331 19.7332C17.7716 21.6949 15.1115 22.7982 12.3375 22.8011Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="8"
-                      height="17"
-                      viewBox="0 0 8 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[7px] h-4 absolute left-[57px] top-[54px] "
-                    >
-                      <path
-                        d="M3.7307 3.4096C4.2226 3.4101 4.6942 3.606 5.0421 3.9539C5.3901 4.3018 5.5859 4.7734 5.5864 5.2653C5.5864 5.7833 6.0062 6.2028 6.5239 6.2028C7.0416 6.2028 7.4613 5.7833 7.4613 5.2653C7.4603 4.4395 7.1856 3.6369 6.6803 2.9835C6.1749 2.3302 5.4673 1.8627 4.6681 1.6541V0.9375C4.6681 0.4198 4.2483 0 3.7306 0C3.2129 0 2.7931 0.4198 2.7931 0.9375V1.6541C1.6116 1.9612 0.655101 2.8263 0.231701 3.9711C-0.191499 5.1161 -0.0281991 6.3955 0.669201 7.3971C1.3666 8.3989 2.51 8.9961 3.7306 8.9963C4.3934 8.9927 5.0077 9.343 5.3424 9.9151C5.6767 10.4872 5.6806 11.1943 5.3525 11.7703C5.0241 12.3461 4.4137 12.7028 3.751 12.7065C3.7442 12.7065 3.7374 12.7054 3.7307 12.7054C3.7239 12.7054 3.7171 12.7054 3.7101 12.7065C3.2218 12.7007 2.7554 12.5028 2.4119 12.1557C2.0684 11.8086 1.8754 11.3401 1.8749 10.8518C1.8749 10.3341 1.4551 9.9143 0.9375 9.9143C0.4197 9.9143 0 10.3341 0 10.8518C0.001 11.6781 0.275502 12.4804 0.781002 13.134C1.2862 13.7877 1.9937 14.2551 2.7933 14.464V15.3077C2.7933 15.8254 3.2131 16.2452 3.7307 16.2452C4.2484 16.2452 4.6682 15.8254 4.6682 15.3077V14.464C5.8495 14.1572 6.8059 13.2918 7.2294 12.147C7.6528 11.0022 7.4893 9.7226 6.7919 8.721C6.0945 7.7192 4.9513 7.122 3.7307 7.122C3.0677 7.122 2.4549 6.7681 2.1234 6.1942C1.7919 5.6199 1.7919 4.9124 2.1234 4.3382C2.4549 3.7639 3.0677 3.4096 3.7307 3.4096Z"
-                        fill="#F47822"
-                      />
-                    </svg>
-                    <svg
-                      width="75"
-                      height="77"
-                      viewBox="0 0 75 77"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-[74px] h-[77px] absolute left-[3px] top-0.5 "
-                    >
-                      <path
-                        d="M73.4226 13.3511C73.4242 12.7066 73.1721 12.0876 72.7213 11.6274L62.1033 0.7448C61.639 0.27032 61.0036 0.0018 60.3398 0H30.6484C29.9948 0.00156 29.3688 0.26198 28.907 0.72446C28.4456 1.18696 28.1862 1.81353 28.186 2.46693V12.9149L26.3748 10.9329C25.0185 9.45223 23.1032 8.60823 21.0951 8.60643H7.1518C5.2552 8.60613 3.43593 9.35983 2.0948 10.7009C0.7534 12.042 0 13.8613 0 15.7579V56.4806C0.00182 58.3766 0.756 60.1949 2.09687 61.5355C3.43747 62.8764 5.25546 63.6306 7.1518 63.6326H41.1418C41.7923 66.6316 43.2514 69.3954 45.361 71.624C47.4707 73.8529 50.1501 75.4614 53.109 76.2755C56.0682 77.0896 59.1934 77.0778 62.1457 76.2419C65.0986 75.406 67.766 73.7773 69.859 71.533C71.952 69.2888 73.3906 66.5143 74.0187 63.5104C74.6471 60.5064 74.4408 57.388 73.4226 54.493V13.3511ZM61.666 2.9818L70.2913 11.8224H65.8728C64.7559 11.8214 63.6854 11.3766 62.8963 10.586C62.1075 9.79563 61.665 8.72403 61.6664 7.60706L61.666 2.9818ZM30.0606 2.46617C30.0606 2.14065 30.3234 1.87632 30.6489 1.87502H59.7909V7.60602C59.7893 9.22033 60.4292 10.7687 61.5696 11.9109C62.7099 13.0534 64.2576 13.6958 65.8717 13.6971H71.5477L71.5474 50.7498C69.6323 47.8839 66.8865 45.6722 63.6788 44.4113V30.3933C63.6783 28.4969 62.9247 26.6781 61.5835 25.3375C60.2423 23.9967 58.4236 23.2435 56.5272 23.2433H30.0605L30.0606 2.46617ZM12.6326 61.7575C12.7108 61.6864 12.7871 61.614 12.8618 61.5387C14.2081 60.2005 14.9631 58.3789 14.9579 56.4804V42.3437C14.9579 41.826 14.5381 41.4063 14.0204 41.4063C13.5027 41.4063 13.0829 41.8261 13.0829 42.3437V56.4824C13.0827 57.8806 12.5275 59.2215 11.5392 60.2105C10.5509 61.1996 9.21053 61.7559 7.81243 61.7574H7.14837C5.74971 61.7556 4.40904 61.1991 3.42024 60.2097C2.43144 59.2207 1.87544 57.8795 1.87417 56.4808V15.7581C1.87417 14.3587 2.43016 13.0165 3.41977 12.0269C4.40939 11.0373 5.75157 10.4813 7.15104 10.4815H21.0943C22.5759 10.4831 23.9886 11.1057 24.9894 12.1982L28.1853 15.6941V23.2441L20.2346 23.2438C18.338 23.2438 16.5187 23.9975 15.1776 25.3386C13.8365 26.6797 13.0828 28.4987 13.0828 30.3956V34.5315C13.0828 35.0492 13.5026 35.469 14.0203 35.469C14.538 35.469 14.9577 35.0492 14.9577 34.5315V30.3956C14.9577 28.9961 15.5137 27.6539 16.5033 26.6643C17.493 25.6747 18.8351 25.1187 20.2346 25.1187H56.5266C57.9261 25.1187 59.2683 25.6747 60.2579 26.6643C61.2475 27.6539 61.8035 28.9961 61.8035 30.3956V43.8016C58.292 42.8883 54.5795 43.1357 51.2201 44.5065C47.8608 45.8774 45.035 48.2979 43.1648 51.4072C41.2945 54.5163 40.4804 58.1472 40.844 61.7572L12.6326 61.7575ZM71.6706 61.0054H72.4675C72.2618 64.3124 70.9576 67.4562 68.7618 69.9374L68.2027 69.3783C67.8352 69.0205 67.2483 69.0247 66.8857 69.3872C66.5232 69.7499 66.5193 70.3364 66.8769 70.7041L67.436 71.2632C64.9547 73.4593 61.811 74.764 58.504 74.97V74.1731C58.504 73.6554 58.0842 73.2357 57.5665 73.2357C57.0488 73.2357 56.6291 73.6555 56.6291 74.1731V74.97C53.3221 74.764 50.1783 73.4593 47.6971 71.2632L48.2562 70.7041C48.6224 70.3379 48.6226 69.7444 48.2564 69.3783C47.8903 69.0121 47.2968 69.0121 46.9306 69.3783L46.3713 69.9374C44.1752 67.4561 42.8705 64.3124 42.6645 61.0054H43.4613C43.9793 61.0054 44.3988 60.5856 44.3988 60.0679C44.3988 59.5503 43.9793 59.1305 43.4613 59.1305H42.6645C42.8704 55.8232 44.1751 52.6797 46.3713 50.1985L46.9306 50.7578C47.2968 51.124 47.8903 51.124 48.2564 50.7578C48.6226 50.3914 48.6226 49.798 48.2564 49.4318L47.6973 48.8727C50.1783 46.6766 53.322 45.3721 56.6293 45.1661V45.963C56.6293 46.4807 57.0491 46.9005 57.5668 46.9005C58.0845 46.9005 58.5042 46.4807 58.5042 45.963V45.1661C61.8115 45.3718 64.9556 46.6763 67.4369 48.8727L66.8781 49.4315C66.6997 49.6068 66.5989 49.8461 66.5979 50.0958C66.5968 50.3458 66.6958 50.5859 66.8723 50.7628C67.0492 50.9396 67.2893 51.0383 67.5393 51.0372C67.789 51.0365 68.0283 50.9357 68.2036 50.7576L68.7627 50.1984C70.9588 52.6797 72.2635 55.8232 72.4695 59.1304H71.6726C71.1549 59.1304 70.7352 59.5502 70.7352 60.0679C70.7352 60.5856 71.155 61.0054 71.6726 61.0054H71.6706Z"
-                        fill="#1C2C57"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div className="w-55 h-6 absolute left-[33px] top-[123px]"></div>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-2xl font-semibold leading-[1.2em] w-[207px] h-[62px] absolute left-10 top-36 text-center text-wrap">
-                Earn Tax Credits &amp; Incentives
-              </p>
-            </div>
-          </div>
-        </button>
-        <div className="flex flex-col justify-center items-center w-175 h-[707px] absolute left-[1682px] top-[4410px]">
-          <div className="flex py-1 px-0 flex-col justify-center items-center shrink-0 w-175 h-[707px] overflow-hidden">
-            <div className="shrink-0 w-175 h-175 overflow-hidden relative">
-              <svg
-                width="700"
-                height="700"
-                viewBox="0 0 700 700"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-175 h-175 absolute left-0 top-0 "
-              >
-                <path
-                  d="M350 700C543.3 700 700 543.3 700 350C700 156.7 543.3 0 350 0C156.7 0 0 156.7 0 350C0 543.3 156.7 700 350 700Z"
-                  fill="#FCD4AE"
-                />
-              </svg>
-              <svg
-                width="534"
-                height="534"
-                viewBox="0 0 534 534"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-[533px] h-[533px] absolute left-[83px] top-[83px]"
-              >
-                <path
-                  d="M266.667 533.335C413.944 533.335 533.335 413.944 533.335 266.667C533.335 119.391 413.944 0 266.667 0C119.391 0 0 119.391 0 266.667C0 413.944 119.391 533.335 266.667 533.335Z"
-                  fill="#F9AE61"
-                />
-              </svg>
-              <svg
-                width="367"
-                height="367"
-                viewBox="0 0 367 367"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-[367px] h-[367px] absolute left-[167px] top-[167px] "
-              >
-                <path
-                  d="M183.333 366.667C284.585 366.667 366.667 284.585 366.667 183.333C366.667 82.0811 284.585 0 183.333 0C82.0811 0 0 82.0811 0 183.333C0 284.585 82.0811 366.667 183.333 366.667Z"
-                  fill="#F89420"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div className="w-277 h-[773px] absolute left-[406px] top-1203">
-          <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-[40px] font-semibold leading-[1.4em] w-176 h-14 absolute left-[202px] top-0 text-center">
-            Unlock More Solar Energy Knowledge
-          </p>
-          <div className="w-[570px] h-[685px] absolute -left-4 top-22">
-            <div className="flex pt-[17px] pr-0 pb-[50px] pl-0 flex-col items-start gap-[17px] border-t border-t-[#F89420] w-[538px] h-[249px] absolute left-4 top-0">
-              <button className="cursor-pointer text-nowrap flex justify-center items-center gap-75 w-[538px] h-6">
-                <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-52 h-6">
-                  What is solar energy?
-                </p>
-                <div className="flex justify-center items-center w-[30px] h-[30px]">
-                  <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px] overflow-hidden">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="shrink-0 w-[30px] h-[30px] overflow-hidden relative "
-                    >
-                      <path
-                        d="M22 15H8"
-                        stroke="black"
-                        strokeWidth="2"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </button>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-md font-normal leading-[1.5em] w-121 h-[141px]">
-                A solar energy system creates usable power from sunshine. There
-                are two basic kinds of systems: Photovoltaic or PV uses sunlight
-                to generate electricity. It’s the same technology found on
-                pocket calculators, just on a larger scale. PV systems can be
-                designed to generate the majority of the electricity used in
-                your home, or just a portion of it.
-              </p>
-            </div>
-            <div className="flex pt-[17px] pr-0 pb-4 pl-0 justify-center items-center border-t border-t-[#DBDAD7] w-[538px] h-[57px] absolute left-4 top-[249px]">
-              <button className="cursor-pointer text-nowrap flex justify-center items-center gap-[99px] shrink-0 w-[538px] h-6">
-                <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-[409px] h-6">
-                  How long will my solar energy system last?
-                </p>
-                <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px]">
-                  <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px] overflow-hidden">
-                    <div className="shrink-0 w-[30px] h-[30px] overflow-hidden relative">
-                      <svg
-                        width="2"
-                        height="16"
-                        viewBox="0 0 2 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3.5 absolute left-[15px] top-2 "
-                      >
-                        <path
-                          d="M1 1V15"
-                          stroke="black"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                      <svg
-                        width="16"
-                        height="2"
-                        viewBox="0 0 16 2"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-3.5 absolute left-2 top-[15px] "
-                      >
-                        <path
-                          d="M15 1H1"
-                          stroke="black"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </div>
-            <div className="flex pt-[17px] pr-0 pb-4 pl-0 justify-center items-center border-t border-t-[#DBDAD7] w-[538px] h-[57px] absolute left-4 top-[306px]">
-              <button className="cursor-pointer text-nowrap flex justify-center items-center gap-21 shrink-0 w-[538px] h-6">
-                <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-106 h-6">
-                  How much does a solar energy system cost?
-                </p>
-                <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px]">
-                  <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px] overflow-hidden">
-                    <div className="shrink-0 w-[30px] h-[30px] overflow-hidden relative">
-                      <svg
-                        width="2"
-                        height="16"
-                        viewBox="0 0 2 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3.5 absolute left-[15px] top-2 "
-                      >
-                        <path
-                          d="M1 1V15"
-                          stroke="black"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                      <svg
-                        width="16"
-                        height="2"
-                        viewBox="0 0 16 2"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-3.5 absolute left-2 top-[15px] "
-                      >
-                        <path
-                          d="M15 1H1"
-                          stroke="black"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </div>
-            <div className="flex py-[17px] px-0 justify-center items-center border-t border-t-[#DBDAD7] border-b border-b-[#DBDAD7] w-[538px] h-[58px] absolute left-4 top-[363px]">
-              <button className="cursor-pointer text-nowrap flex justify-center items-center gap-20 shrink-0 w-[538px] h-6">
-                <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-107 h-6">
-                  What is the solar panel installation process?
-                </p>
-                <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px]">
-                  <div className="flex justify-center items-center shrink-0 w-[30px] h-[30px] overflow-hidden">
-                    <div className="shrink-0 w-[30px] h-[30px] overflow-hidden relative">
-                      <svg
-                        width="2"
-                        height="16"
-                        viewBox="0 0 2 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3.5 absolute left-[15px] top-2 "
-                      >
-                        <path
-                          d="M1 1V15"
-                          stroke="black"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                      <svg
-                        width="16"
-                        height="2"
-                        viewBox="0 0 16 2"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-3.5 absolute left-2 top-[15px] "
-                      >
-                        <path
-                          d="M15 1H1"
-                          stroke="black"
-                          strokeWidth="2"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </div>
-            <div className="w-[538px] h-12 absolute left-4 top-[445px]"></div>
-            <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#243F8B] w-[163px] h-[53px] absolute left-4 top-[517px] overflow-hidden">
-              <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-dMSans text-[17px] font-bold leading-[1em] w-28 h-[22px] text-center">
-                View All FAQs
-              </p>
-            </button>
-          </div>
-          <div className="w-[465px] h-[685px] absolute left-[659px] top-22">
-            <div className="rounded-[10px] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[433px] h-32 absolute left-4 top-0">
-              <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-md font-normal leading-[1.2em] w-[137px] h-[21px] absolute left-4 top-[17px]">
-                Article | Oct 2025
-              </p>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-[301px] h-[75px] absolute left-4 top-[38px]">
-                Can Solar Power My Well Pump, Sump Pump, or Other Heavy Loads?
-              </p>
-            </div>
-            <div className="rounded-[10px] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[433px] h-32 absolute left-4 top-36">
-              <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-md font-normal leading-[1.2em] w-[137px] h-[21px] absolute left-4 top-[17px]">
-                Article | Oct 2025
-              </p>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-82 h-[75px] absolute left-4 top-[38px]">
-                What Permits and Inspections Are Required for a Home Solar
-                Installation?
-              </p>
-            </div>
-            <div className="rounded-[10px] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[433px] h-26 absolute left-4 top-72">
-              <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-md font-normal leading-[1.2em] w-[137px] h-[21px] absolute left-4 top-[17px]">
-                Article | Oct 2025
-              </p>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-75 h-[51px] absolute left-4 top-[38px]">
-                Can I Move My Solar Panels to a New House When I Sell?
-              </p>
-            </div>
-            <div className="rounded-[10px] bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[433px] h-32 absolute left-4 top-102">
-              <p className="flex flex-col justify-center text-[#1C2C57] font-dMSans text-md font-normal leading-[1.2em] w-[137px] h-[21px] absolute left-4 top-[17px]">
-                Article | Oct 2025
-              </p>
-              <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-xl font-bold leading-[1.2em] w-[293px] h-[75px] absolute left-4 top-[38px]">
-                What Questions Should I Ask a Solar Installer Before I Sign a
-                Contract?
-              </p>
-            </div>
-            <div className="w-[433px] h-12 absolute left-4 top-140"></div>
-            <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center rounded-2xl border-2 border-[#243F8B] w-[229px] h-[53px] absolute left-4 top-158 overflow-hidden">
-              <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-dMSans text-[17px] font-bold leading-[1em] w-[177px] h-[22px] text-center">
-                View Solar Resources
-              </p>
-            </button>
-          </div>
-        </div>
-        <div className="inline-flex pt-[65px] pr-[406px] pb-16 pl-[390px] items-end gap-10 border-t border-t-[#EEE] w-full h-[542px] absolute left-0 top-[5633px]">
-          <div className="flex pt-0 pr-4 pb-[34px] pl-4 flex-col items-start gap-6 w-[570px] h-[413px] absolute left-[390px] top-[65px]">
-            <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-dMSans text-md font-normal leading-[1.5em] w-68 h-6">
-              Fill out the form to get started today.
-            </p>
-            <div className="shrink-0 w-[538px] h-12"></div>
-            <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-manrope text-[40px] font-semibold leading-[1.4em] w-[530px] h-14">
-              Want a Free Solar Estimate?
-            </p>
-            <div className="shrink-0 w-[538px] h-4"></div>
-            <img
-              src="/FigureTrustlogoswebp.png"
-              className="shrink-0 w-[538px] h-[63px] overflow-hidden max-w-none"
-              alt="Figure → Trust-Logos.webp"
-            />
-            <img
-              src="/FigureAccreditedsealsus_pms7469horizontalabseal6010x219663bfb9c300x90png.png"
-              className="shrink-0 w-[175px] h-13 overflow-hidden max-w-none"
-              alt="Figure → Accredited-Seals-US_PMS7469-HorizontalABSeal-6010x2196-63bfb9c-300x90.png"
-            />
-          </div>
-          <div className="w-[514px] h-[365px] absolute left-250 top-[113px]">
-            <div className="w-45 h-45 absolute left-[167px] -top-[54px]">
-              <svg
-                width="180"
-                height="180"
-                viewBox="0 0 180 180"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-45 h-45 absolute left-0 top-0 "
-              >
-                <path
-                  d="M89.945 179.89C139.62 179.89 179.89 139.62 179.89 89.945C179.89 40.2697 139.62 0 89.945 0C40.2697 0 0 40.2697 0 89.945C0 139.62 40.2697 179.89 89.945 179.89Z"
-                  fill="#FCD4AE"
-                />
-              </svg>
-              <svg
-                width="138"
-                height="138"
-                viewBox="0 0 138 138"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-[137px] h-[137px] absolute left-[21px] top-[21px] "
-              >
-                <path
-                  d="M68.5299 137.06C106.378 137.06 137.06 106.378 137.06 68.5299C137.06 30.6819 106.378 0 68.5299 0C30.6819 0 0 30.6819 0 68.5299C0 106.378 30.6819 137.06 68.5299 137.06Z"
-                  fill="#F9AE61"
-                />
-              </svg>
-              <svg
-                width="95"
-                height="95"
-                viewBox="0 0 95 95"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-[94px] h-[94px] absolute left-[43px] top-[43px] "
-              >
-                <path
-                  d="M47.1143 94.2286C73.1348 94.2286 94.2286 73.1348 94.2286 47.1143C94.2286 21.0938 73.1348 0 47.1143 0C21.0938 0 0 21.0938 0 47.1143C0 73.1348 21.0938 94.2286 47.1143 94.2286Z"
-                  fill="#F89420"
-                />
-              </svg>
-            </div>
-            <div className="flex p-8 justify-center items-center rounded-xl bg-[#FFF] shadow-[0020px0rgba(28,44,87,0.16)] w-[514px] h-[343px] absolute left-0 top-0">
-              <div className="shrink-0 w-[450px] h-[279px] relative">
-                <svg
-                  width="320"
-                  height="12"
-                  viewBox="0 0 320 12"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="flex pr-[282px] items-center rounded-[100px] bg-[#EEE] w-80 h-3 absolute left-[65px] top-0 "
-                >
-                  <rect width="320" height="12" rx="6" fill="#EEEEEE" />
-                  <rect width="38.39" height="12" rx="6" fill="#1C2C57" />
-                </svg>
-                <p className="flex flex-col justify-center text-[#1C2C57] font-manrope text-3xl font-semibold leading-[1.2em] w-[425px] h-[38px] absolute left-3 top-[57px] text-center">
-                  Where is your property located?
-                </p>
-                <div className="flex pt-[1px] pr-0 pb-0.5 pl-0 justify-center items-start gap-[3px] w-39 h-[21px] absolute left-[147px] top-30">
-                  <p className="flex flex-col justify-center shrink-0 text-[#1C2C57] font-dMSans text-sm font-normal leading-[1.5em] w-[146px] h-[18px] text-center">
-                    Enter 5-Digit Zip Code
-                  </p>
-                  <p className="flex flex-col justify-center shrink-0 text-[#C02B0A] font-dMSans text-[13px] font-normal leading-[1.50077em] w-[7px] h-[17px] text-center">
-                    *
-                  </p>
-                </div>
-                <div className="rounded-2xl border border-[#243F8B] bg-[#FFF] w-[210px] h-[53px] absolute left-30 top-[149px] overflow-hidden"></div>
-                <button className="cursor-pointer text-nowrap flex pt-[15px] pr-[26px] pb-4 pl-[26px] justify-center items-center gap-[7px] rounded-2xl border-2 border-[#FDDD00] bg-[#FDDD00] w-[153px] h-[53px] absolute left-[149px] top-[218px] overflow-hidden">
-                  <p className="flex flex-col justify-center shrink-0 text-[#243F8B] font-dMSans text-[17px] font-bold leading-[1em] w-[77px] h-[22px] text-center">
-                    Continue
-                  </p>
-                  <div className="flex flex-col justify-center items-center shrink-0 w-4 h-[17px]">
-                    <div className="flex py-[1px] px-0 flex-col justify-center items-center shrink-0 w-4 h-[17px] overflow-hidden">
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="shrink-0 w-4 h-4 overflow-hidden relative "
-                      >
-                        <path
-                          d="M5 3L10 8L5 13"
-                          stroke="black"
-                          strokeWidth="2"
-                        />
-                      </svg>
-                    </div>
-                  </div>
+              <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full justify-center">
+                <button className="flex items-center justify-center rounded-lg h-14 px-8 bg-primary hover:bg-green-400 text-primary-foreground text-lg font-bold shadow-lg transition-colors w-full sm:w-auto">
+                  Get Started Now
+                </button>
+                <button className="flex items-center justify-center rounded-lg h-14 px-8 bg-transparent border-2 border-white/20 hover:bg-white/10 text-white text-lg font-bold transition-colors w-full sm:w-auto">
+                  Call (555) 123-4567
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="w-full h-[962px] absolute left-0 top-0 banner-video-section">
-          <div className="flex pt-0 pr-[406px] pb-28 pl-[406px] justify-center items-center bg-[#243F8B] w-full h-[962px] absolute left-0 top-0">
-            <div className="absolute left-0 top-0 w-full h-full overflow-hidden">
-              <div className="relative banner-video-mask">
-                <video src="/videos/hero-video.mp4" className="w-full" autoPlay={true} loop={true} muted={true}></video>
-              </div>
-              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="0" height="0">
-                <defs>
-                  <clipPath id="curved-top" clipPathUnits="objectBoundingBox">
-                    <path d="m1,1H0V.05s.13-.05.48-.05.52.05.52.05v.95Z"></path>
-                  </clipPath>
-                  <clipPath id="curved-top-mobile" clipPathUnits="objectBoundingBox">
-                    <path d="m1,1H0V.02s.13-.02.48-.02.52.02.52.02v.98Z"></path>
-                  </clipPath>
-                  <clipPath id="curved-bottom" clipPathUnits="objectBoundingBox">
-                    <path d="M.55,1c-.19,0-.39-.02-.55-.11,0-.3,0-.59,0-.89h1v.89c-.14.08-.29.1-.45.11Z"></path>
-                  </clipPath>
-                  <clipPath id="curved-bottom-mobile" clipPathUnits="objectBoundingBox">
-                    <path d="M0,0h1v.98s-.13.02-.48.02-.52-.02-.52-.02v-.98Z"></path>
-                  </clipPath>
-                  <clipPath id="footer-clip-path" clipPathUnits="objectBoundingBox">
-                    <path d="M0,0v1h1V0C.75.16.25.16,0,0Z"></path>
-                  </clipPath>
-                  <clipPath id="footer-clip-path-mobile" clipPathUnits="objectBoundingBox">
-                    <path d="M0,0v1h1V0C.75.06.25.06,0,0Z"></path>
-                  </clipPath>
-                </defs>
-              </svg>
-            </div>
-            <div className="shrink-0 w-277 h-[850px] relative">
-              {/* <div className="flex justify-center items-center w-full h-[962px] absolute -left-[406px] top-0 overflow-hidden">
-                <video src="/videos/hero-video.mp4" className="w-full" autoPlay={true} loop={true} muted={true}></video>
-                <img
-                  src="/Herovideomp4.png"
-                  className="shrink-0 w-full h-270 overflow-hidden max-w-none"
-                  alt="Hero-Video.mp4"
-                />
-              </div> */}
-              <div className="bg-linear-[180deg,rgba(0,0,0,0.55)0%,rgba(0,0,0,0.00)100%] w-full h-60 absolute -left-[406px] top-0"></div>
-              <div className="bg-linear-[0deg,rgba(0,0,0,0.55)0%,rgba(0,0,0,0.00)100%] w-full h-[481px] absolute -left-[406px] top-[481px]"></div>
-            </div>
-          </div>
-        </div>
+          </section>
+        </main>
+        <Footer />
       </div>
-      <Footer />
-      <Header />
-    </div>
+    </>
   );
 }

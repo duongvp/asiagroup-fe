@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
+import { CheckCircle, CheckCircle2, PiggyBank, Star, Zap } from 'lucide-react';
 
 export default function CustomerTestimonials() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -51,7 +52,7 @@ export default function CustomerTestimonials() {
             rating: 5,
             review: "Switched our entire office building to solar. The tax incentives combined with their pricing made it a no-brainer.",
             type: "commercial",
-            icon: "apartment",
+            // icon: "apartment",
             bgColor: "bg-purple-100",
             textColor: "text-purple-700",
             verifiedBusiness: true
@@ -116,9 +117,9 @@ export default function CustomerTestimonials() {
     ];
 
     const stats = [
-        { icon: "check_circle", label: "Installations", value: "2,000+" },
-        { icon: "bolt", label: "Energy Generated", value: "50MW" },
-        { icon: "savings", label: "Client Savings", value: "$5M+" }
+        { icon: <CheckCircle2 size={28} className="material-symbols-outlined text-primary text-3xl" />, label: "Installations", value: "2,000+" },
+        { icon: <Zap size={28} className="material-symbols-outlined text-primary text-3xl" />, label: "Energy Generated", value: "50MW" },
+        { icon: <PiggyBank size={28} className="material-symbols-outlined text-primary text-3xl" />, label: "Client Savings", value: "$5M+" }
     ];
 
     const filteredTestimonials = activeFilter === 'all'
@@ -127,23 +128,13 @@ export default function CustomerTestimonials() {
 
     const renderStars = (rating: number) => {
         return [...Array(5)].map((_, index) => (
-            <span
-                key={index}
-                className={`material-symbols-outlined ${index < rating ? 'fill-1 text-primary' : 'text-gray-300'} text-[20px]`}
-            >
-                star
-            </span>
+            <Star size={18} />
         ));
     };
 
     const renderFeaturedStars = (rating: number, size: string = "text-[18px]") => {
         return [...Array(5)].map((_, index) => (
-            <span
-                key={index}
-                className={`material-symbols-outlined fill-1 text-primary ${size}`}
-            >
-                star
-            </span>
+            <Star size={18} />
         ));
     };
 
@@ -266,7 +257,7 @@ export default function CustomerTestimonials() {
                                     {stats.map((stat, index) => (
                                         <div key={index} className="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#dbe6db] dark:border-gray-700 bg-white dark:bg-[#1a2e1a]">
                                             <div className="flex items-center gap-3">
-                                                <span className="material-symbols-outlined text-primary text-3xl">{stat.icon}</span>
+                                                {stat.icon}
                                                 <p className="text-[#111811] dark:text-gray-200 text-base font-medium leading-normal">{stat.label}</p>
                                             </div>
                                             <p className="text-[#111811] dark:text-white tracking-light text-2xl font-bold leading-tight pl-[44px]">{stat.value}</p>
