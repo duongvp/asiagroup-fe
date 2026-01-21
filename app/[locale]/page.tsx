@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import Head from 'next/head';
-import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
 import { CreditCard, Home, Leaf, PiggyBank, Users, Wallet, Zap } from 'lucide-react';
 import CountUpStat from '@/components/CountUpStat';
 
@@ -24,9 +22,6 @@ export default function SolarCompany() {
 
       <div className={`${isDarkMode ? 'dark' : ''}`}>
         <main className="bg-background-light dark:bg-background-dark font-display text-foreground overflow-x-hidden">
-          {/* Navigation */}
-          <Header />
-
           {/* Hero Section */}
           <section className="w-full relative px-6 py-12 md:py-20 lg:py-24 max-w-[1280px] mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -266,7 +261,6 @@ export default function SolarCompany() {
             </div>
           </section>
         </main>
-        <Footer />
       </div>
     </>
   );
