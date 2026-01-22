@@ -3,7 +3,463 @@
     "home": "Home",
     "solutions": "Solutions",
     "projects": "Projects",
-    "about": "About",
-    "get_quote": "Get a Quote"
+    "about": "About Us",
+    "get_quote": "Get a Quote",
+    "residential": "Residential",
+    "commercial": "Commercial",
+    "installation_process": "Installation Process",
+    "our_company": "Our Company",
+    "benefits": "Benefits",
+    "policies": "Policies",
+    "careers": "Careers"
+  },
+
+  "Footer": {
+    "description": "Empowering homes with clean, renewable energy solutions since 2010.",
+    "columns": {
+      "services": {
+        "title": "Services",
+        "links": ["Residential Solar", "Commercial Solar", "Battery Storage", "Maintenance"]
+      },
+      "company": {
+        "title": "Company",
+        "links": ["About Us", "Careers", "Blog", "Contact"]
+      },
+      "connect": "Connect"
+    },
+    "bottom": {
+      "copyright": "© 2024 Solar Company. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  },
+
+  "Home": {
+    "Hero": {
+      "badge": "Future of Clean Energy",
+      "title": "Power Your Future with",
+      "title_highlight": "Solar Energy",
+      "description": "Join thousands of homeowners saving money and protecting the planet with our smart solar solutions.",
+      "cta_quote": "Free Quote",
+      "cta_learn": "Learn More",
+      "trusted": "Trusted by 5,000+ Homeowners",
+      "savings_label": "Average Savings",
+      "savings_value": "$1,500/yr"
+    },
+    "Stats": {
+      "energy_label": "Clean Energy Generated",
+      "energy_suffix": "+ MW",
+      "money_label": "Customer Money Saved",
+      "money_suffix": "M+",
+      "customers_label": "Happy Customers"
+    },
+    "Mission": {
+      "badge": "Our Mission",
+      "title": "Sustainable Energy for Everyone",
+      "description": "We are dedicated to providing affordable, clean, and reliable solar power to every home and business, ensuring a greener planet."
+    },
+    "Benefits": {
+      "title": "Why Switch to Solar?",
+      "subtitle": "Discover the advantages of powering your home with the sun.",
+      "savings_title": "Massive Savings",
+      "savings_desc": "Reduce or eliminate your electricity bills and protect yourself from rising utility costs.",
+      "independence_title": "Energy Independence",
+      "independence_desc": "Generate your own power and rely less on the grid, ensuring stability for your home.",
+      "value_title": "Increase Home Value",
+      "value_desc": "Homes with solar panels sell faster and for more money. It is a smart investment."
+    },
+    "Steps": {
+      "badge": "How It Works",
+      "title": "Simple Process, Powerful Results",
+      "floating_badge": "Go Solar in 3 Easy Steps",
+      "step1_title": "Free Consultation",
+      "step1_desc": "We analyze your roof and energy usage to design the perfect system.",
+      "step2_title": "Expert Installation",
+      "step2_desc": "Our certified team handles permits and installation quickly and professionally.",
+      "step3_title": "Power On & Save",
+      "step3_desc": "Switch on your system and start generating your own clean electricity."
+    },
+    "CTA": {
+      "title": "Ready to Power Your Future?",
+      "subtitle": "Get a custom solar quote in less than 24 hours. No obligation.",
+      "cta_primary": "Get Started Now",
+      "cta_secondary": "Call (555) 123-4567"
+    }
+  },
+
+  "AboutUs": {
+    "Hero": {
+      "title": "Powering a Brighter Future",
+      "description": "We are leading the transition to renewable energy for homes and businesses. Since 2010, we've been turning sunlight into savings and sustainability.",
+      "cta": "Explore Our Story"
+    },
+    "Introduction": {
+      "title": "Who We Are",
+      "p1": "We are a team of honest, local, and expert engineers dedicated to making solar energy accessible and affordable. Since our founding, we have been committed to transparency and long-term quality for every homeowner and business we serve.",
+      "p2": "Our philosophy is simple: clean energy shouldn't be complicated. We handle everything from the initial survey to the final switch-on, ensuring a seamless transition to a greener lifestyle."
+    },
+    "Purpose": {
+      "title": "Our Purpose",
+      "subtitle": "Driving the world towards a sustainable energy future.",
+      "mission_title": "Our Mission",
+      "mission_desc": "To empower communities by making solar technology accessible, affordable, and reliable for every roof.",
+      "vision_title": "Our Vision",
+      "vision_desc": "A world powered 100% by clean, renewable resources, creating a healthier planet for future generations."
+    },
+    "Values": {
+      "title": "Core Values",
+      "v1_t": "Sustainability",
+      "v1_d": "Commitment to green practices in everything we do.",
+      "v2_t": "Integrity",
+      "v2_d": "Honest pricing and transparent communication.",
+      "v3_t": "Quality",
+      "v3_d": "Using only tier-1 equipment built to last decades.",
+      "v4_t": "Community",
+      "v4_d": "Supporting local jobs and giving back."
+    },
+    "Stats": {
+      "years": "Years Experience",
+      "installs": "Installations",
+      "co2": "Tons CO₂ Saved",
+      "satisfaction": "Satisfaction"
+    },
+    "Team": {
+      "title": "Meet Our Experts",
+      "subtitle": "The passionate people behind the panels.",
+      "role1": "CEO & Founder",
+      "role2": "Head of Engineering",
+      "role3": "Operations Director"
+    },
+    "CTA": {
+      "title": "Ready to switch to solar?",
+      "description": "Get a free consultation and customized quote for your home or business today. Join the green revolution.",
+      "button": "Get Your Free Quote"
+    }
+  },
+
+  "Benefits": {
+    "Hero": {
+      "badge": "Clean Energy Revolution",
+      "title": "Power Your Future with",
+      "titleAccent": "Clean Energy",
+      "description": "Join the renewable revolution. Experience significant cost savings, energy independence, and a cleaner planet for future generations.",
+      "ctaPrimary": "Calculate Savings",
+      "ctaSecondary": "Learn More"
+    },
+    "Audience": {
+      "homeowners": "For Homeowners",
+      "businesses": "For Businesses"
+    },
+    "Features": {
+      "title": "Why Make the Switch?",
+      "description": "Solar energy isn't just about saving the planet—it's a smart financial investment that pays dividends for decades.",
+      "items": [
+        {
+          "title": "Drastic Cost Savings",
+          "desc": "Eliminate or significantly reduce your monthly electricity bills. Solar often pays for itself in 6-9 years."
+        },
+        {
+          "title": "Environmental Impact",
+          "desc": "Reduce your carbon footprint instantly. A typical residential solar system offsets 3-4 tons of carbon annually."
+        },
+        {
+          "title": "Energy Independence",
+          "desc": "Protect yourself from volatile utility rates and grid instability. Generate your own clean power on-site."
+        },
+        {
+          "title": "Increased Property Value",
+          "desc": "Homes with solar sell 20% faster and for 4.1% more on average compared to homes without solar."
+        }
+      ]
+    },
+    "Analysis": {
+      "badge": "Long-Term Analysis",
+      "title": "Solar is Cheaper than Traditional Energy",
+      "description": "Over a 10-year period, the cumulative cost of staying on the traditional grid far exceeds the investment in solar.",
+      "stat1_val": "$15k+",
+      "stat1_label": "Avg. 10-Year Savings",
+      "stat2_val": "4.1%",
+      "stat2_label": "Home Value Increase",
+      "chartTitle": "Cumulative Energy Costs (10 Years)",
+      "chartLabel1": "Traditional Grid",
+      "chartLabel2": "Solar Energy",
+      "chartNote": "Solar users save ~47%"
+    },
+    "Testimonials": {
+      "title": "Trusted by Families & Businesses",
+      "items": [
+        {
+          "quote": "The process was incredibly smooth. We've seen our bill drop from $250 to practically zero in the summer months. Highly recommend!",
+          "name": "Sarah Jenkins",
+          "role": "Homeowner, California"
+        },
+        {
+          "quote": "Implementing solar for our warehouse was a strategic move. The ROI has been faster than projected, and our clients love our green initiative.",
+          "name": "Marcus Chen",
+          "role": "Logistics Corp, Texas"
+        }
+      ]
+    },
+    "CTA": {
+      "title": "Ready to Switch to",
+      "titleAccent": "Clean Power?",
+      "description": "Get a custom quote designed for your specific energy needs. It only takes a minute to start saving.",
+      "placeholder": "Enter your zip code",
+      "button": "Get My Quote",
+      "note": "No commitment required. Free consultation."
+    }
+  },
+
+  "Careers": {
+    "Hero": {
+      "title": "Power Your Career",
+      "description": "Join the Green Energy Revolution. Build a sustainable future with us while advancing your professional journey in a high-growth industry.",
+      "ctaPrimary": "View Open Roles",
+      "ctaSecondary": "Our Culture"
+    },
+    "Values": {
+      "title": "Our Core Values",
+      "description": "We are driven by a passion for sustainability and a commitment to excellence.",
+      "items": [
+        {
+          "title": "Sustainability First",
+          "desc": "Every decision we make prioritizes environmental impact and long-term sustainability."
+        },
+        {
+          "title": "Innovation Driven",
+          "desc": "We push boundaries with the latest solar technology, constantly seeking smarter ways."
+        },
+        {
+          "title": "Collaborative Spirit",
+          "desc": "We believe in the power of teams to solve complex energy challenges together."
+        }
+      ]
+    },
+    "Benefits": {
+      "title": "Why Work With Us",
+      "subtitle": "More than just a job, it's a movement.",
+      "items": [
+        { "title": "Competitive Salary", "desc": "Market-leading compensation packages." },
+        {
+          "title": "Health & Wellness",
+          "desc": "Comprehensive medical, dental, and vision plans."
+        },
+        { "title": "Remote Options", "desc": "Flexible work arrangements for your lifestyle." },
+        { "title": "Growth Path", "desc": "Mentorship and clear career progression plans." }
+      ]
+    },
+    "Roles": {
+      "title": "Open Positions",
+      "subtitle": "Find the role that fits you best.",
+      "details": {
+        "responsibilities": "Responsibilities",
+        "requirements": "Requirements",
+        "applyBtn": "Apply Now"
+      }
+    },
+    "Form": {
+      "title": "Don't see your role?",
+      "subtitle": "Send us your resume and we'll keep you in mind for future opportunities.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "resume": "Upload Resume",
+      "resumeHint": "Click to upload or drag and drop (PDF)",
+      "submitBtn": "Submit Application"
+    }
+  },
+
+  "Customers": {
+    "Hero": {
+      "ratingInfo": "4.9/5 from 500+ happy neighbors",
+      "title": "Powering Homes, Empowering People",
+      "subtitle": "Join thousands of homeowners who have taken control of their energy future. Real stories from real people making a real difference.",
+      "ctaProjects": "See Projects",
+      "ctaEstimate": "Get Estimate"
+    },
+    "Stats": {
+      "installations": "Installations",
+      "energy": "Energy Generated",
+      "savings": "Client Savings"
+    },
+    "Stories": {
+      "badge": "Featured Case Studies",
+      "title": "Success Stories Spotlight",
+      "readMore": "Read Full Case Study",
+      "residential": "Residential Installation",
+      "commercial": "Commercial Project"
+    },
+    "Reviews": {
+      "title": "Latest Reviews",
+      "filterAll": "All",
+      "filterRes": "Residential",
+      "filterCom": "Commercial",
+      "verified": "Verified",
+      "verifiedBiz": "Verified Business",
+      "loadMore": "Load More Reviews"
+    },
+    "CTA": {
+      "title": "Ready to join the Green Revolution?",
+      "desc": "Get a custom quote for your home or business in less than 24 hours.",
+      "btn": "Get Free Quote"
+    }
+  },
+
+  "Installation": {
+    "Hero": {
+      "title": "From Sunshine to Savings\n in {steps}",
+      "stepsHighlight": "5 Simple Steps",
+      "subtitle": "We've streamlined the journey to solar energy. Our experts handle the heavy lifting, permits, and installation so you can focus on a cleaner future.",
+      "ctaStart": "Start Your Journey",
+      "ctaVideo": "Watch Video"
+    },
+    "Workflow": {
+      "badge": "Our Workflow",
+      "title": "How We Power Your Home",
+      "subtitle": "Transparent, efficient, and hassle-free. Here is exactly what happens when you choose SolarTech."
+    },
+    "Steps": [
+      {
+        "day": "Day 1",
+        "title": "Free Consultation & Energy Audit",
+        "desc": "We start with a conversation. One of our energy consultants will visit your home to analyze usage, inspect your roof, and discuss goals.",
+        "features": [
+          "Roof sun exposure analysis",
+          "Review of utility bills",
+          "Preliminary savings estimate"
+        ],
+        "iconLabel": "Personalized Assessment"
+      },
+      {
+        "day": "Day 3-7",
+        "title": "System Design & Proposal",
+        "desc": "Our engineering team creates a custom solar design tailored to your roof and weather patterns. We'll present a detailed financial proposal.",
+        "roilabel": "ROI Calculation Included",
+        "roitext": "We show you exactly when your system pays for itself.",
+        "iconLabel": "Custom Engineering"
+      },
+      {
+        "day": "Week 2-4",
+        "title": "Permitting & Paperwork",
+        "desc": "Sit back and relax. We handle all the bureaucratic heavy lifting with your local municipality and utility company.",
+        "features": ["HOA Approvals", "Building Permits", "Utility Interconnection Agreement"],
+        "iconLabel": "Full Compliance Handled"
+      },
+      {
+        "day": "Day 30 (Approx)",
+        "title": "Installation Day",
+        "desc": "The big day! Our certified crew arrives to install your panels and inverter. Completed in 1-2 days with minimal disruption.",
+        "badges": ["Certified Crew", "Site Cleanup"],
+        "iconLabel": "Professional Installation"
+      },
+      {
+        "day": "Day 45",
+        "title": "Inspection & Activation",
+        "desc": "After final inspection, you get the 'Permission to Operate.' We'll help you flip the switch and set up your monitoring app.",
+        "cta": "View Monitoring App Demo",
+        "iconLabel": "System Live"
+      }
+    ],
+    "FAQ": {
+      "title": "Common Questions",
+      "questions": [
+        {
+          "q": "How long does the entire process take?",
+          "a": "Typically 45-60 days. Most of this is waiting for permits and utility approval. Actual installation takes 1-2 days."
+        },
+        {
+          "q": "Do I need to be home for the installation?",
+          "a": "Yes, we need brief access inside for electrical connections. Most work happens outside on the roof."
+        },
+        {
+          "q": "What happens if it rains on installation day?",
+          "a": "Safety first. In heavy rain or high winds, we will reschedule. Light rain usually doesn't stop us!"
+        }
+      ]
+    },
+    "CTA": {
+      "title": "Ready to make the switch?",
+      "desc": "Get your free customized solar design and savings estimate today. No commitment required.",
+      "placeholder": "Enter your email",
+      "button": "Get Proposal",
+      "features": {
+        "fast": { "title": "Fast Scheduling", "desc": "Consultation within 24 hours." },
+        "warranty": { "title": "25-Year Warranty", "desc": "Peace of mind on panels and labor." }
+      }
+    }
+  },
+
+  "Contact": {
+    "Hero": {
+      "title": "Contact Our",
+      "highlight": "Solar Experts",
+      "subtitle": "Have questions about solar for your home or business? Our team is here to help you navigate your journey to clean energy."
+    },
+    "Info": {
+      "address": {
+        "title": "Office Address",
+        "detail": "1230 Solar Way, Suite 400\nPalo Alto, CA 94304"
+      },
+      "phone": {
+        "title": "Phone Number",
+        "detail": "Main: (555) 123-4567\nSupport: (555) 987-6543"
+      },
+      "email": {
+        "title": "Email Address",
+        "detail": "hello@solartech-energy.com\nsales@solartech-energy.com"
+      },
+      "connect": "Connect With Us",
+      "map": "View on Google Maps"
+    },
+    "Form": {
+      "title": "Send us a Message",
+      "subtitle": "Typical response time: under 24 hours.",
+      "labels": {
+        "name": "Full Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "type": "Property Type",
+        "message": "Message"
+      },
+      "types": {
+        "home": "Residential / Home",
+        "business": "Commercial / Business",
+        "industrial": "Industrial"
+      },
+      "placeholder": "Tell us about your project...",
+      "button": "Send Inquiry",
+      "privacy": "By clicking send, you agree to our Privacy Policy regarding your data."
+    }
+  },
+
+  "FAQ": {
+    "Hero": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about switching to clean, sustainable solar energy for your home or business.",
+      "search": "Search for answers (e.g. ROI, maintenance...)",
+      "searchBtn": "Search"
+    },
+    "Filters": {
+      "all": "All Topics",
+      "general": "General",
+      "installation": "Installation",
+      "financial": "Financial",
+      "technical": "Technical"
+    },
+    "Questions": {
+      "q1": {
+        "title": "What is the Return on Investment (ROI) for a home system?",
+        "answer": "ROI typically ranges between 15-25% annually, depending on your local electricity rates and solar incentives. Most homeowners see their system pay for itself within 5 to 7 years. After that point, the energy generated is essentially free for the remaining lifespan of the system."
+      },
+      "q2": {
+        "title": "How long do solar panels typically last?",
+        "answer": "Most modern solar panels are designed to last for 25 to 30 years. However, this doesn't mean they stop working after that period; their efficiency may slightly decrease (usually about 0.5% per year). We offer warranties that guarantee high performance even after 25 years."
+      }
+    },
+    "CTA": {
+      "title": "Still have questions?",
+      "subtitle": "Our team of solar experts is ready to help you analyze your energy needs and provide a custom solution tailored to your home.",
+      "button": "Speak to an Expert"
+    }
   }
 }

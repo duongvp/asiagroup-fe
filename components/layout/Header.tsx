@@ -24,21 +24,42 @@ export default function Header() {
         { code: 'vi', name: 'Tiếng Việt' }
     ];
 
-    // Lấy thông tin ngôn ngữ hiện tại từ code (ví dụ: 'vi' -> { code: 'vi', name: 'Tiếng Việt' })
     const currentLang = languages.find(l => l.code === locale) || languages[0];
 
-    // Hàm chuyển đổi ngôn ngữ trên URL
     const handleLangChange = (newLocale: string) => {
-        // pathname hiện tại đang bao gồm cả locale (ví dụ: /vi/about)
-        // Chúng ta cần thay thế phần locale cũ bằng locale mới
         const segments = pathname.split('/');
         segments[1] = newLocale;
         const newPath = segments.join('/');
-
         router.push(newPath);
         setIsLangOpen(false);
         setIsMobileMenuOpen(false);
     };
+
+    // --- PHẦN THAY ĐỔI CHÍNH Ở ĐÂY ---
+    const menuItems = [
+        { name: t('home'), href: `/${locale}` },
+        {
+            name: t('solutions'),
+            href: `/${locale}/solutions`,
+            subMenu: [
+                { name: t('residential'), href: `/${locale}/solutions/residential` },
+                { name: t('commercial'), href: `/${locale}/solutions/commercial` },
+                { name: t('installation_process'), href: `/${locale}/installation-process` },
+            ]
+        },
+        { name: t('projects'), href: `/${locale}/projects` },
+        {
+            name: t('about'),
+            href: `/${locale}/about-us`,
+            subMenu: [
+                { name: t('our_company'), href: `/${locale}/about-us` },
+                { name: t('benefits'), href: `/${locale}/benefits` },
+                { name: t('policies'), href: `/${locale}/policies` },
+                { name: t('careers'), href: `/${locale}/careers` },
+            ]
+        },
+    ];
+    // --------------------------------
 
     useEffect(() => {
         const isDark = document.documentElement.classList.contains('dark');
@@ -57,31 +78,6 @@ export default function Header() {
             document.body.style.overflow = 'unset';
         }
     }, [isMobileMenuOpen]);
-
-    // Menu sử dụng t() để lấy nội dung từ file JSON
-    const menuItems = [
-        { name: t('home'), href: `/${locale}` },
-        {
-            name: t('solutions'),
-            href: `/${locale}/solutions`,
-            subMenu: [
-                { name: "Residential", href: `/${locale}/solutions/residential` },
-                { name: "Commercial", href: `/${locale}/solutions/commercial` },
-                { name: "Installation Process", href: `/${locale}/installation-process` },
-            ]
-        },
-        { name: t('projects'), href: `/${locale}/projects` },
-        {
-            name: t('about'),
-            href: `/${locale}/about-us`,
-            subMenu: [
-                { name: "Our Company", href: `/${locale}/about-us` },
-                { name: "Benefits", href: `/${locale}/benefits` },
-                { name: "Policies", href: `/${locale}/policies` },
-                { name: "Careers", href: `/${locale}/careers` },
-            ]
-        },
-    ];
 
     return (
         <header className="sticky top-0 z-[100] w-full bg-white dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
@@ -128,7 +124,6 @@ export default function Header() {
                         ))}
                     </nav>
 
-                    {/* ACTION CLUSTER */}
                     <div className="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-white/10">
                         {/* Language Selector */}
                         <div className="relative">
@@ -161,9 +156,6 @@ export default function Header() {
                         <button className="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-primary-foreground text-sm font-bold shadow-sm hover:shadow-md">
                             <span className="truncate"> {t('get_quote')}</span>
                         </button>
-                        {/* <Link href={`/${locale}/solar-quotes`} className="rounded-xl h-10 px-6 bg-[#13ec13] text-[#102210] text-sm font-black flex items-center shadow-lg hover:brightness-110 active:scale-95 transition-all">
-                            {t('get_quote')}
-                        </Link> */}
                     </div>
                 </div>
 

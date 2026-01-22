@@ -4,6 +4,461 @@
     "solutions": "Giải pháp",
     "projects": "Dự án",
     "about": "Giới thiệu",
-    "get_quote": "Nhận báo giá"
+    "get_quote": "Nhận báo giá",
+    "residential": "Hộ gia đình",
+    "commercial": "Doanh nghiệp",
+    "installation_process": "Quy trình lắp đặt",
+    "our_company": "Về công ty",
+    "benefits": "Lợi ích",
+    "policies": "Chính sách",
+    "careers": "Tuyển dụng"
+  },
+
+  "Footer": {
+    "description": "Cung cấp các giải pháp năng lượng sạch, tái tạo cho mọi ngôi nhà từ năm 2010.",
+    "columns": {
+      "services": {
+        "title": "Dịch vụ",
+        "links": ["Điện mặt trời hộ gia đình", "Điện mặt trời thương mại", "Lưu trữ pin", "Bảo trì"]
+      },
+      "company": {
+        "title": "Công ty",
+        "links": ["Về chúng tôi", "Tuyển dụng", "Blog", "Liên hệ"]
+      },
+      "connect": "Kết nối"
+    },
+    "bottom": {
+      "copyright": "© 2024 Solar Company. Bảo lưu mọi quyền.",
+      "privacy": "Chính sách bảo mật",
+      "terms": "Điều khoản dịch vụ"
+    }
+  },
+
+  "Home": {
+    "Hero": {
+      "badge": "Tương lai năng lượng sạch",
+      "title": "Thắp sáng tương lai với",
+      "title_highlight": "Năng lượng sạch",
+      "description": "Tham gia cùng hàng ngàn hộ gia đình tiết kiệm chi phí và bảo vệ hành tinh với hệ thống điện mặt trời thông minh.",
+      "cta_quote": "Nhận báo giá",
+      "cta_learn": "Tìm hiểu thêm",
+      "trusted": "Được tin dùng bởi hơn 5,000 chủ nhà",
+      "savings_label": "Tiết kiệm trung bình",
+      "savings_value": "35.000.000đ/năm"
+    },
+    "Stats": {
+      "energy_label": "Năng lượng đã tạo ra",
+      "energy_suffix": "+ MW",
+      "money_label": "Tiền điện tiết kiệm",
+      "money_suffix": " Tỷ+",
+      "customers_label": "Khách hàng hài lòng"
+    },
+    "Mission": {
+      "badge": "Sứ mệnh",
+      "title": "Năng lượng bền vững cho mọi người",
+      "description": "Chúng tôi tận tâm cung cấp giải pháp điện mặt trời giá rẻ, sạch và tin cậy cho mọi ngôi nhà và doanh nghiệp."
+    },
+    "Benefits": {
+      "title": "Tại sao chọn điện mặt trời?",
+      "subtitle": "Khám phá những lợi ích vượt trội từ năng lượng mặt trời.",
+      "savings_title": "Tiết kiệm khổng lồ",
+      "savings_desc": "Loại bỏ hoàn toàn nỗi lo hóa đơn tiền điện tăng cao hàng tháng.",
+      "independence_title": "Tự chủ năng lượng",
+      "independence_desc": "Không còn phụ thuộc vào lưới điện quốc gia và các đợt cắt điện.",
+      "value_title": "Tăng giá trị nhà",
+      "value_desc": "Bất động sản có sẵn điện mặt trời luôn có giá cao hơn trên thị trường."
+    },
+    "Steps": {
+      "badge": "Quy trình",
+      "title": "Đơn giản và Hiệu quả",
+      "floating_badge": "Lắp đặt chỉ trong 3 bước",
+      "step1_title": "Tư vấn miễn phí",
+      "step1_desc": "Khảo sát thực tế và thiết kế hệ thống tối ưu theo nhu cầu.",
+      "step2_title": "Lắp đặt chuyên nghiệp",
+      "step2_desc": "Thi công nhanh chóng, an toàn và thẩm mỹ bởi chuyên gia.",
+      "step3_title": "Kích hoạt & Hưởng thụ",
+      "step3_desc": "Bắt đầu tiết kiệm tiền ngay khi hệ thống hòa lưới."
+    },
+    "CTA": {
+      "title": "Sẵn sàng để tiết kiệm?",
+      "subtitle": "Liên hệ ngay để được báo giá chính xác nhất trong 24h.",
+      "cta_primary": "Bắt đầu ngay",
+      "cta_secondary": "Gọi tư vấn"
+    }
+  },
+
+  "AboutUs": {
+    "Hero": {
+      "title": "Vì một tương lai tươi sáng hơn",
+      "description": "Chúng tôi dẫn đầu trong quá trình chuyển đổi sang năng lượng tái tạo cho gia đình và doanh nghiệp. Từ năm 2010, chúng tôi biến ánh nắng thành sự tiết kiệm và bền vững.",
+      "cta": "Khám phá câu chuyện của chúng tôi"
+    },
+    "Introduction": {
+      "title": "Chúng tôi là ai",
+      "p1": "Chúng tôi là đội ngũ kỹ sư địa phương tận tâm, chuyên nghiệp, luôn hướng tới việc làm cho năng lượng mặt trời trở nên dễ tiếp cận và hợp túi tiền hơn. Kể từ khi thành lập, chúng tôi cam kết minh bạch và mang lại chất lượng dài hạn cho mọi khách hàng.",
+      "p2": "Triết lý của chúng tôi rất đơn giản: năng lượng sạch không nên phức tạp. Chúng tôi xử lý mọi thứ từ khảo sát ban đầu đến khi vận hành, đảm bảo quá trình chuyển đổi sang lối sống xanh diễn ra suôn sẻ."
+    },
+    "Purpose": {
+      "title": "Mục tiêu của chúng tôi",
+      "subtitle": "Đưa thế giới hướng tới một tương lai năng lượng bền vững.",
+      "mission_title": "Sứ mệnh",
+      "mission_desc": "Trao quyền cho cộng đồng bằng cách làm cho công nghệ mặt trời trở nên sẵn có, giá cả phải chăng và tin cậy trên mọi mái nhà.",
+      "vision_title": "Tầm nhìn",
+      "vision_desc": "Một thế giới được cung cấp 100% bởi các nguồn tài nguyên sạch, tái tạo, tạo ra một hành tinh khỏe mạnh cho thế hệ tương lai."
+    },
+    "Values": {
+      "title": "Giá trị cốt lõi",
+      "v1_t": "Bền vững",
+      "v1_d": "Cam kết thực hành xanh trong mọi hoạt động.",
+      "v2_t": "Chính trực",
+      "v2_d": "Giá cả trung thực và giao tiếp minh bạch.",
+      "v3_t": "Chất lượng",
+      "v3_d": "Sử dụng thiết bị cấp cao nhất, bền bỉ hàng thập kỷ.",
+      "v4_t": "Cộng đồng",
+      "v4_d": "Hỗ trợ việc làm địa phương và đóng góp cho xã hội."
+    },
+    "Stats": {
+      "years": "Năm kinh nghiệm",
+      "installs": "Dự án lắp đặt",
+      "co2": "Tấn CO₂ giảm thiểu",
+      "satisfaction": "Sự hài lòng"
+    },
+    "Team": {
+      "title": "Gặp gỡ chuyên gia",
+      "subtitle": "Những con người tâm huyết đằng sau những tấm pin.",
+      "role1": "CEO & Người sáng lập",
+      "role2": "Trưởng phòng kỹ thuật",
+      "role3": "Giám đốc vận hành"
+    },
+    "CTA": {
+      "title": "Sẵn sàng lắp điện mặt trời?",
+      "description": "Nhận tư vấn miễn phí và báo giá tùy chỉnh cho ngôi nhà hoặc doanh nghiệp của bạn ngay hôm nay.",
+      "button": "Nhận báo giá miễn phí"
+    }
+  },
+
+  "Benefits": {
+    "Hero": {
+      "badge": "Cách mạng Năng lượng Sạch",
+      "title": "Thắp sáng Tương lai bằng",
+      "titleAccent": "Năng lượng Sạch",
+      "description": "Tham gia cuộc cách mạng tái tạo. Trải nghiệm tiết kiệm chi phí đáng kể, tự chủ năng lượng và một hành tinh sạch hơn cho thế hệ mai sau.",
+      "ctaPrimary": "Tính toán Tiết kiệm",
+      "ctaSecondary": "Tìm hiểu thêm"
+    },
+    "Audience": {
+      "homeowners": "Cho Hộ gia đình",
+      "businesses": "Cho Doanh nghiệp"
+    },
+    "Features": {
+      "title": "Tại sao nên chuyển đổi?",
+      "description": "Năng lượng mặt trời không chỉ là bảo vệ hành tinh—đó là một khoản đầu tư tài chính thông minh mang lại lợi nhuận trong nhiều thập kỷ.",
+      "items": [
+        {
+          "title": "Tiết kiệm chi phí triệt để",
+          "desc": "Loại bỏ hoặc giảm đáng kể hóa đơn tiền điện hàng tháng. Hệ thống thường tự hoàn vốn sau 6-9 năm."
+        },
+        {
+          "title": "Tác động Môi trường",
+          "desc": "Giảm dấu chân carbon ngay lập tức. Một hệ thống dân dụng điển hình giúp giảm 3-4 tấn carbon mỗi năm."
+        },
+        {
+          "title": "Tự chủ Năng lượng",
+          "desc": "Bảo vệ bản thân trước sự biến động của giá điện và sự bất ổn của lưới điện quốc gia."
+        },
+        {
+          "title": "Tăng Giá trị Bất động sản",
+          "desc": "Nhà có hệ thống điện mặt trời bán nhanh hơn 20% và giá cao hơn trung bình 4.1% so với nhà thông thường."
+        }
+      ]
+    },
+    "Analysis": {
+      "badge": "Phân tích Dài hạn",
+      "title": "Điện mặt trời rẻ hơn năng lượng truyền thống",
+      "description": "Trong 10 năm, tổng chi phí duy trì điện lưới truyền thống vượt xa mức đầu tư vào điện mặt trời.",
+      "stat1_val": "350tr+",
+      "stat1_label": "Tiết kiệm TB 10 năm",
+      "stat2_val": "4.1%",
+      "stat2_label": "Giá trị nhà tăng thêm",
+      "chartTitle": "Tổng chi phí năng lượng (10 năm)",
+      "chartLabel1": "Điện lưới",
+      "chartLabel2": "Điện mặt trời",
+      "chartNote": "Người dùng điện mặt trời tiết kiệm ~47%"
+    },
+    "Testimonials": {
+      "title": "Được tin tưởng bởi hàng nghìn gia đình",
+      "items": [
+        {
+          "quote": "Quy trình thực hiện vô cùng suôn sẻ. Hóa đơn điện của chúng tôi đã giảm từ 5 triệu xuống gần như bằng không vào mùa hè. Rất đáng đầu tư!",
+          "name": "Nguyễn Văn Nam",
+          "role": "Chủ hộ, TP. HCM"
+        },
+        {
+          "quote": "Lắp đặt điện mặt trời cho kho bãi là một bước đi chiến lược. Lợi nhuận thu về nhanh hơn dự kiến và khách hàng rất thích sáng kiến xanh của chúng tôi.",
+          "name": "Lê Minh Tâm",
+          "role": "GĐ Logistics, Bình Dương"
+        }
+      ]
+    },
+    "CTA": {
+      "title": "Sẵn sàng chuyển sang",
+      "titleAccent": "Năng lượng sạch?",
+      "description": "Nhận báo giá tùy chỉnh được thiết kế cho nhu cầu năng lượng cụ thể của bạn. Chỉ mất 1 phút để bắt đầu tiết kiệm.",
+      "placeholder": "Nhập mã vùng/Địa chỉ",
+      "button": "Nhận báo giá ngay",
+      "note": "Không yêu cầu cam kết. Tư vấn hoàn toàn miễn phí."
+    }
+  },
+
+  "Careers": {
+    "Hero": {
+      "title": "Thắp Sáng Sự Nghiệp Của Bạn",
+      "description": "Tham gia cuộc cách mạng năng lượng xanh. Xây dựng tương lai bền vững cùng chúng tôi và phát triển sự nghiệp trong ngành công nghiệp tăng trưởng cao.",
+      "ctaPrimary": "Xem vị trí ứng tuyển",
+      "ctaSecondary": "Văn hóa của chúng tôi"
+    },
+    "Values": {
+      "title": "Giá Trị Cốt Lõi",
+      "description": "Chúng tôi được thúc đẩy bởi niềm đam mê bền vững và cam kết hướng tới sự xuất sắc.",
+      "items": [
+        {
+          "title": "Bền Vững Là Trên Hết",
+          "desc": "Mọi quyết định của chúng tôi đều ưu tiên tác động môi trường và sự bền vững lâu dài."
+        },
+        {
+          "title": "Sáng Tạo Dẫn Lối",
+          "desc": "Chúng tôi phá vỡ các giới hạn với công nghệ mặt trời mới nhất, tìm kiếm giải pháp thông minh hơn."
+        },
+        {
+          "title": "Tinh Thần Hợp Tác",
+          "desc": "Chúng tôi tin vào sức mạnh tập thể để giải quyết các thách thức năng lượng phức tạp."
+        }
+      ]
+    },
+    "Benefits": {
+      "title": "Tại Sao Nên Làm Việc Với Chúng Tôi",
+      "subtitle": "Không chỉ là một công việc, đó là một sứ mệnh.",
+      "items": [
+        { "title": "Lương Thưởng Cạnh Tranh", "desc": "Mức thu nhập hàng đầu thị trường." },
+        { "title": "Sức Khỏe & Phúc Lợi", "desc": "Bảo hiểm y tế, nha khoa và thị lực đầy đủ." },
+        { "title": "Làm Việc Linh Hoạt", "desc": "Tùy chọn làm việc từ xa hoặc hybrid." },
+        {
+          "title": "Lộ Trình Phát Triển",
+          "desc": "Chương trình cố vấn và lộ trình thăng tiến rõ ràng."
+        }
+      ]
+    },
+    "Roles": {
+      "title": "Vị Trí Đang Tuyển",
+      "subtitle": "Tìm kiếm vai trò phù hợp nhất với bạn.",
+      "details": {
+        "responsibilities": "Trách nhiệm",
+        "requirements": "Yêu cầu",
+        "applyBtn": "Ứng tuyển ngay"
+      }
+    },
+    "Form": {
+      "title": "Không tìm thấy vị trí phù hợp?",
+      "subtitle": "Gửi CV cho chúng tôi và chúng tôi sẽ liên hệ khi có cơ hội trong tương lai.",
+      "firstName": "Tên",
+      "lastName": "Họ",
+      "email": "Địa chỉ Email",
+      "resume": "Tải lên CV",
+      "resumeHint": "Nhấp để tải lên hoặc kéo thả (PDF)",
+      "submitBtn": "Nộp đơn ứng tuyển"
+    }
+  },
+
+  "Customers": {
+    "Hero": {
+      "ratingInfo": "4.9/5 từ hơn 500 khách hàng hài lòng",
+      "title": "Cung Cấp Năng Lượng Cho Ngôi Nhà, Trao Quyền Cho Con Người",
+      "subtitle": "Tham gia cùng hàng nghìn chủ nhà đã làm chủ tương lai năng lượng của họ. Những câu chuyện chân thực từ những con người thật, tạo nên sự khác biệt thực sự.",
+      "ctaProjects": "Xem Dự Án",
+      "ctaEstimate": "Nhận Báo Giá"
+    },
+    "Stats": {
+      "installations": "Hệ Thống Đã Lắp Đặt",
+      "energy": "Năng Lượng Tạo Ra",
+      "savings": "Tiết Kiệm Cho Khách Hàng"
+    },
+    "Stories": {
+      "badge": "Dự Án Tiêu Biểu",
+      "title": "Điểm Nhấn Các Câu Chuyện Thành Công",
+      "readMore": "Xem Chi Tiết Dự Án",
+      "residential": "Lắp Đặt Nhà Ở",
+      "commercial": "Dự Án Thương Mại"
+    },
+    "Reviews": {
+      "title": "Đánh Giá Mới Nhất",
+      "filterAll": "Tất Cả",
+      "filterRes": "Nhà Ở",
+      "filterCom": "Thương Mại",
+      "verified": "Đã Xác Thực",
+      "verifiedBiz": "Doanh Nghiệp Đã Xác Thực",
+      "loadMore": "Xem Thêm Đánh Giá"
+    },
+    "CTA": {
+      "title": "Sẵn Sàng Tham Gia Cuộc Cách Mạng Xanh?",
+      "desc": "Nhận báo giá phù hợp cho ngôi nhà hoặc doanh nghiệp của bạn chỉ trong vòng chưa đến 24 giờ.",
+      "btn": "Nhận Báo Giá Miễn Phí"
+    }
+  },
+
+  "Installation": {
+    "Hero": {
+      "title": "Từ Ánh Nắng Đến Tiết Kiệm\n trong {steps}",
+      "stepsHighlight": "5 Bước Đơn Giản",
+      "subtitle": "Chúng tôi đã tối ưu hóa hành trình đến với năng lượng mặt trời. Các chuyên gia sẽ xử lý mọi việc nặng nhọc, giấy phép và lắp đặt để bạn có thể tập trung vào một tương lai xanh hơn.",
+      "ctaStart": "Bắt đầu hành trình",
+      "ctaVideo": "Xem Video"
+    },
+    "Workflow": {
+      "badge": "Quy trình làm việc",
+      "title": "Cách chúng tôi cấp điện cho nhà bạn",
+      "subtitle": "Minh bạch, hiệu quả và không rắc rối. Đây là chính xác những gì sẽ diễn ra khi bạn chọn SolarTech."
+    },
+    "Steps": [
+      {
+        "day": "Ngày 1",
+        "title": "Tư vấn & Kiểm tra năng lượng miễn phí",
+        "desc": "Chúng tôi bắt đầu bằng một cuộc trò chuyện. Chuyên gia sẽ phân tích mức tiêu thụ điện, kiểm tra tình trạng mái nhà và thảo luận về mục tiêu năng lượng của bạn.",
+        "features": [
+          "Phân tích độ phơi nắng của mái",
+          "Xem xét hóa đơn điện tiện ích",
+          "Ước tính mức tiết kiệm sơ bộ"
+        ],
+        "iconLabel": "Đánh giá cá nhân hóa"
+      },
+      {
+        "day": "Ngày 3-7",
+        "title": "Thiết kế hệ thống & Đề xuất",
+        "desc": "Đội ngũ kỹ thuật tạo ra bản thiết kế riêng biệt phù hợp với kích thước mái và thời tiết địa phương. Chúng tôi sẽ trình bày chi tiết về quy mô hệ thống và lợi nhuận tài chính.",
+        "roilabel": "Bao gồm tính toán ROI",
+        "roitext": "Chúng tôi chỉ ra chính xác khi nào hệ thống của bạn tự hoàn vốn.",
+        "iconLabel": "Kỹ thuật tùy chỉnh"
+      },
+      {
+        "day": "Tuần 2-4",
+        "title": "Cấp phép & Giấy tờ",
+        "desc": "Hãy thư giãn. Chúng tôi xử lý mọi thủ tục hành chính phức tạp với chính quyền địa phương và công ty điện lực để đảm bảo hệ thống đúng quy định.",
+        "features": ["Phê duyệt HOA", "Giấy phép xây dựng", "Thỏa thuận đấu nối điện lực"],
+        "iconLabel": "Tuân thủ đầy đủ"
+      },
+      {
+        "day": "Khoảng Ngày 30",
+        "title": "Ngày lắp đặt",
+        "desc": "Ngày trọng đại! Đội ngũ lắp đặt chuyên nghiệp sẽ đến để lắp đặt tấm pin, khung giá và hệ thống biến tần (inverter) chỉ trong 1-2 ngày.",
+        "badges": ["Đội ngũ chứng chỉ", "Dọn dẹp công trường"],
+        "iconLabel": "Lắp đặt chuyên nghiệp"
+      },
+      {
+        "day": "Ngày 45",
+        "title": "Kiểm tra & Kích hoạt",
+        "desc": "Sau khi kiểm tra cuối cùng và thay công tơ điện, bạn sẽ được cấp 'Quyền vận hành'. Chúng tôi sẽ giúp bạn bật hệ thống và thiết lập ứng dụng giám sát.",
+        "cta": "Xem demo ứng dụng giám sát",
+        "iconLabel": "Hệ thống hoạt động"
+      }
+    ],
+    "FAQ": {
+      "title": "Câu hỏi thường gặp",
+      "questions": [
+        {
+          "q": "Toàn bộ quá trình mất bao lâu?",
+          "a": "Thông thường mất khoảng 45-60 ngày. Phần lớn thời gian là chờ giấy phép và phê duyệt của điện lực. Việc lắp đặt thực tế chỉ mất 1-2 ngày."
+        },
+        {
+          "q": "Tôi có cần ở nhà khi lắp đặt không?",
+          "a": "Có, chúng tôi cần vào nhà một lúc để kết nối điện và thiết lập thiết bị giám sát. Tuy nhiên, hầu hết công việc diễn ra trên mái nhà."
+        },
+        {
+          "q": "Nếu trời mưa vào ngày lắp đặt thì sao?",
+          "a": "An toàn là trên hết. Nếu mưa lớn hoặc gió mạnh, chúng tôi sẽ dời sang ngày an toàn gần nhất. Mưa nhỏ thường không ảnh hưởng!"
+        }
+      ]
+    },
+    "CTA": {
+      "title": "Sẵn sàng chuyển đổi?",
+      "desc": "Nhận thiết kế và ước tính tiết kiệm miễn phí ngay hôm nay. không yêu cầu cam kết.",
+      "placeholder": "Nhập email của bạn",
+      "button": "Nhận báo giá",
+      "features": {
+        "fast": { "title": "Đặt lịch nhanh", "desc": "Tư vấn trong vòng 24 giờ." },
+        "warranty": { "title": "Bảo hành 25 năm", "desc": "Yên tâm về tấm pin và hiệu suất." }
+      }
+    }
+  },
+  "Contact": {
+    "Hero": {
+      "title": "Liên hệ với chuyên gia",
+      "highlight": "Năng lượng mặt trời",
+      "subtitle": "Bạn có câu hỏi về điện mặt trời cho gia đình hay doanh nghiệp? Đội ngũ của chúng tôi luôn sẵn sàng hỗ trợ bạn trên hành trình năng lượng sạch."
+    },
+    "Info": {
+      "address": {
+        "title": "Địa chỉ văn phòng",
+        "detail": "1230 Solar Way, Suite 400\nPalo Alto, CA 94304"
+      },
+      "phone": {
+        "title": "Số điện thoại",
+        "detail": "Chính: (555) 123-4567\nHỗ trợ: (555) 987-6543"
+      },
+      "email": {
+        "title": "Địa chỉ Email",
+        "detail": "hello@solartech-energy.com\nsales@solartech-energy.com"
+      },
+      "connect": "Kết nối với chúng tôi",
+      "map": "Xem trên Google Maps"
+    },
+    "Form": {
+      "title": "Gửi tin nhắn cho chúng tôi",
+      "subtitle": "Thời gian phản hồi dự kiến: dưới 24 giờ.",
+      "labels": {
+        "name": "Họ và tên",
+        "email": "Địa chỉ Email",
+        "phone": "Số điện thoại",
+        "type": "Loại bất động sản",
+        "message": "Tin nhắn"
+      },
+      "types": {
+        "home": "Nhà ở / Hộ gia đình",
+        "business": "Thương mại / Doanh nghiệp",
+        "industrial": "Công nghiệp"
+      },
+      "placeholder": "Hãy cho chúng tôi biết về dự án của bạn...",
+      "button": "Gửi yêu cầu",
+      "privacy": "Bằng cách nhấn gửi, bạn đồng ý với Chính sách bảo mật của chúng tôi."
+    }
+  },
+
+  "FAQ": {
+    "Hero": {
+      "title": "Câu hỏi thường gặp",
+      "subtitle": "Mọi điều bạn cần biết về việc chuyển sang năng lượng mặt trời sạch và bền vững.",
+      "search": "Tìm kiếm câu trả lời (ví dụ: bảo trì, ROI...)",
+      "searchBtn": "Tìm kiếm"
+    },
+    "Filters": {
+      "all": "Tất cả chủ đề",
+      "general": "Chung",
+      "installation": "Lắp đặt",
+      "financial": "Tài chính",
+      "technical": "Kỹ thuật"
+    },
+    "Questions": {
+      "q1": {
+        "title": "ROI cho hệ thống gia đình là bao nhiêu?",
+        "answer": "ROI thường dao động từ 15-25% mỗi năm. Hầu hết chủ nhà sẽ hoàn vốn trong vòng 5 đến 7 năm. Sau đó, năng lượng tạo ra là hoàn toàn miễn phí."
+      },
+      "q2": {
+        "title": "Tấm pin năng lượng mặt trời kéo dài bao lâu?",
+        "answer": "Hầu hết các tấm pin hiện đại được thiết kế để tồn tại từ 25 đến 30 năm. Chúng tôi bảo hành hiệu suất vẫn đạt 85% ngay cả sau 25 năm."
+      }
+    },
+    "CTA": {
+      "title": "Vẫn còn thắc mắc?",
+      "subtitle": "Đội ngũ chuyên gia của chúng tôi sẵn sàng giúp bạn phân tích nhu cầu năng lượng và cung cấp giải pháp tùy chỉnh.",
+      "button": "Nói chuyện với chuyên gia"
+    }
   }
 }

@@ -1,19 +1,13 @@
 'use client';
-
 import { useState } from 'react';
 import Head from 'next/head';
-import { ArrowRight, BadgeCheck, BrushCleaning, ChevronDown, PiggyBank } from 'lucide-react';
-import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
+import { ArrowRight, BadgeCheck, BrushCleaning, ChevronDown, CirclePlay, PiggyBank } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function SolarInstallationProcess() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
     const [email, setEmail] = useState('');
     const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-    const toggleDarkMode = () => {
-        setIsDarkMode(!isDarkMode);
-    };
+    const t = useTranslations('Installation');
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -114,263 +108,256 @@ export default function SolarInstallationProcess() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
 
-            <div className={`${isDarkMode ? 'dark' : ''}`}>
-                <div className="bg-background-light dark:bg-background-dark text-foreground">
-                    {/* Top Navigation - Giữ nguyên */}
-                    <Header />
+            <div className="bg-background-light dark:bg-background-dark text-foreground">
 
-                    {/* Hero Section - Giữ nguyên */}
-                    <div className="relative overflow-hidden bg-secondary-blue py-16 sm:py-24 lg:py-32">
-                        <div className="absolute inset-0 overflow-hidden">
-                            <div
-                                className="absolute inset-0 bg-cover bg-center"
-                                style={{
-                                    backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSbADYRiVzDKlS5neTDKxZDVjMa2YFJh6hvwGDEIAbwLrjmxY4st-Bph6MdoKccLnW_4nT7fS7aDgwSp8CUEL_GhMMj37KGJIcM4dm6ZXoTt9JaW7SHbL5vYKBzU1MN8NHmOnnasj-CxyWZA9R9XDdUK4x7t1NA0ul2rp9dI8B0R-Ub9rkbexoD39Xi6oOC2dtb693R2QtOV4S3rxcVFf8fzAtJiJRrtLQCb276VjvrZ0duz3cOS06btRzUAgwPGGykCeaCn7HPqE")`,
-                                }}
-                            />
-                            <div className="absolute inset-0 bg-secondary-blue/80 mix-blend-multiply"></div>
-                            <div className="absolute inset-0 bg-gradient-to-t from-secondary-blue via-secondary-blue/40 to-transparent"></div>
-                        </div>
-
-                        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-                            <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl mb-6">
-                                From Sunshine to Savings<br className="hidden sm:block" /> in <span className="text-primary">5 Simple Steps</span>
-                            </h1>
-                            <p className="mx-auto max-w-2xl text-lg leading-8 text-gray-300 mb-10">
-                                We've streamlined the journey to solar energy. Our experts handle the heavy lifting, permits, and installation so you can focus on a cleaner future.
-                            </p>
-
-                            <div className="flex justify-center gap-4">
-                                <button className="flex h-12 items-center justify-center rounded-lg bg-primary px-6 text-base font-bold text-foreground hover:bg-primary-dark transition-colors">
-                                    Start Your Journey
-                                </button>
-                                <button className="flex h-12 items-center justify-center rounded-lg border border-white/30 bg-white/10 px-6 text-base font-bold text-white hover:bg-white/20 transition-colors backdrop-blur-sm">
-                                    Watch Video
-                                    <span className="material-symbols-outlined ml-2 text-sm">play_circle</span>
-                                </button>
-                            </div>
-                        </div>
+                {/* Hero Section - Giữ nguyên */}
+                <div className="relative overflow-hidden bg-secondary-blue py-16 sm:py-24 lg:py-32">
+                    <div className="absolute inset-0 overflow-hidden">
+                        <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{
+                                backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSbADYRiVzDKlS5neTDKxZDVjMa2YFJh6hvwGDEIAbwLrjmxY4st-Bph6MdoKccLnW_4nT7fS7aDgwSp8CUEL_GhMMj37KGJIcM4dm6ZXoTt9JaW7SHbL5vYKBzU1MN8NHmOnnasj-CxyWZA9R9XDdUK4x7t1NA0ul2rp9dI8B0R-Ub9rkbexoD39Xi6oOC2dtb693R2QtOV4S3rxcVFf8fzAtJiJRrtLQCb276VjvrZ0duz3cOS06btRzUAgwPGGykCeaCn7HPqE")`,
+                            }}
+                        />
+                        <div className="absolute inset-0 bg-secondary-blue/80 mix-blend-multiply"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-secondary-blue via-secondary-blue/40 to-transparent"></div>
                     </div>
 
-                    {/* Process Overview Header - Giữ nguyên */}
-                    <div className="py-16 bg-white dark:bg-background-dark">
-                        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-                            <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Our Workflow</span>
-                            <h2 className="text-3xl font-bold tracking-tight text-foreground dark:text-white sm:text-4xl mb-4">
-                                How We Power Your Home
-                            </h2>
-                            <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-                                Transparent, efficient, and hassle-free. Here is exactly what happens when you choose SolarTech.
-                            </p>
+                    <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+                        <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl mb-6">
+                            From Sunshine to Savings<br className="hidden sm:block" /> in <span className="text-primary">5 Simple Steps</span>
+                        </h1>
+                        <p className="mx-auto max-w-2xl text-lg leading-8 text-gray-300 mb-10">
+                            {t('Hero.subtitle')}
+                        </p>
+
+                        <div className="flex justify-center gap-4">
+                            <button className="flex h-12 items-center justify-center rounded-lg bg-primary px-6 text-base font-bold text-foreground hover:bg-primary-dark transition-colors">
+                                {t('Hero.ctaStart')}
+                            </button>
+                            <button className="flex h-12 items-center justify-center rounded-lg border border-white/30 bg-white/10 px-6 text-base font-bold text-white hover:bg-white/20 transition-colors backdrop-blur-sm">
+                                {t('Hero.ctaVideo')}
+                                <CirclePlay className="ml-2" />
+                            </button>
                         </div>
                     </div>
+                </div>
 
-                    {/* Vertical Timeline Process - SỬA LẠI BỐ CỤC */}
-                    <div className="relative bg-white dark:bg-background-dark pb-24">
-                        {/* Vertical Line (Desktop) */}
-                        <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700 hidden lg:block -translate-x-1/2"></div>
+                {/* Process Overview Header - Giữ nguyên */}
+                <div className="py-16 bg-white dark:bg-background-dark">
+                    <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+                        <span className="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">{t('Workflow.badge')}</span>
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground dark:text-white sm:text-4xl mb-4">
+                            {t('Workflow.title')}
+                        </h2>
+                        <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+                            {t('Workflow.subtitle')}
+                        </p>
+                    </div>
+                </div>
 
-                        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                            <div className="flex flex-col gap-16 lg:gap-24">
-                                {steps.map((step, index) => {
-                                    const isEven = index % 2 === 0;
-                                    const isFirst = index === 0;
+                {/* Vertical Timeline Process - SỬA LẠI BỐ CỤC */}
+                <div className="relative bg-white dark:bg-background-dark pb-24">
+                    {/* Vertical Line (Desktop) */}
+                    <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700 hidden lg:block -translate-x-1/2"></div>
 
-                                    return (
-                                        <div key={index} className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-                                            {/* Desktop Number Circle - ĐÚNG VỊ TRÍ */}
-                                            <div className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-4 hidden lg:flex h-12 w-12 items-center justify-center rounded-full border-4 border-white dark:border-background-dark ${isFirst ? 'bg-primary text-foreground' : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-foreground dark:text-white'} font-bold z-10 shadow-lg`}>
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <div className="flex flex-col gap-16 lg:gap-24">
+                            {steps.map((step, index) => {
+                                const isEven = index % 2 === 0;
+                                const isFirst = index === 0;
+
+                                return (
+                                    <div key={index} className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
+                                        {/* Desktop Number Circle - ĐÚNG VỊ TRÍ */}
+                                        <div className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-4 hidden lg:flex h-12 w-12 items-center justify-center rounded-full border-4 border-white dark:border-background-dark ${isFirst ? 'bg-primary text-foreground' : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-foreground dark:text-white'} font-bold z-10 shadow-lg`}>
+                                            {step.number}
+                                        </div>
+
+                                        {/* Mobile Number Circle */}
+                                        <div className="flex lg:hidden items-center gap-2 mb-4">
+                                            <span className={`flex h-8 w-8 items-center justify-center rounded-full ${isFirst ? 'bg-primary text-foreground' : 'bg-gray-200 dark:bg-gray-700 text-foreground dark:text-white'} font-bold text-sm`}>
                                                 {step.number}
-                                            </div>
+                                            </span>
+                                            <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
+                                                {step.day}
+                                            </span>
+                                        </div>
 
-                                            {/* Mobile Number Circle */}
-                                            <div className="flex lg:hidden items-center gap-2 mb-4">
-                                                <span className={`flex h-8 w-8 items-center justify-center rounded-full ${isFirst ? 'bg-primary text-foreground' : 'bg-gray-200 dark:bg-gray-700 text-foreground dark:text-white'} font-bold text-sm`}>
-                                                    {step.number}
-                                                </span>
-                                                <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
-                                                    {step.day}
-                                                </span>
-                                            </div>
-
-                                            {/* Content bên TRÁI cho steps chẵn (1, 3, 5) */}
-                                            <div className={`w-full lg:w-1/2 ${isEven ? 'lg:pr-8' : 'lg:pl-8 lg:order-2'}`}>
-                                                {/* Desktop Day - chỉ hiện khi nội dung bên trái */}
-                                                {isEven && (
-                                                    <div className="hidden lg:flex items-center gap-2 mb-2 justify-end">
-                                                        <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
-                                                            {step.day}
-                                                        </span>
-                                                    </div>
-                                                )}
-
-                                                {/* Desktop Day - chỉ hiện khi nội dung bên phải */}
-                                                {!isEven && (
-                                                    <div className="hidden lg:flex items-center gap-2 mb-2">
-                                                        <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
-                                                            {step.day}
-                                                        </span>
-                                                    </div>
-                                                )}
-
-                                                {/* Nội dung text */}
-                                                <div className={`${isEven ? 'lg:text-right' : 'lg:text-left'}`}>
-                                                    <h3 className="text-2xl font-bold text-foreground dark:text-white mb-3">{step.title}</h3>
-                                                    <p className="text-gray-600 dark:text-gray-300 mb-6">{step.description}</p>
-
-                                                    {step.features && (
-                                                        <ul className={`flex flex-col gap-2 text-gray-600 dark:text-gray-400 text-sm ${isEven ? 'lg:items-end' : ''}`}>
-                                                            {step.features.map((feature, idx) => (
-                                                                <li key={idx} className="flex items-center gap-2">
-                                                                    <span className={`material-symbols-outlined text-lg ${step.featureIcons ? 'text-gray-400' : 'text-primary'}`}>
-                                                                        <BadgeCheck />
-                                                                    </span>
-                                                                    {feature}
-                                                                </li>
-                                                            ))}
-                                                        </ul>
-                                                    )}
-
-                                                    {step.roilabel && (
-                                                        <div className={`bg-primary/10 dark:bg-primary/5 p-4 rounded-lg border border-primary/20 max-w-md ${isEven ? 'lg:ml-auto' : ''}`}>
-                                                            <p className="text-sm font-semibold text-foreground dark:text-white mb-1 flex items-center gap-2">
-                                                                <PiggyBank className="text-primary" size={20} />
-                                                                {step.roilabel}
-                                                            </p>
-                                                            <p className="text-xs text-gray-600 dark:text-gray-400">{step.roitext}</p>
-                                                        </div>
-                                                    )}
-
-                                                    {step.badges && (
-                                                        <div className="grid grid-cols-2 gap-4 max-w-md">
-                                                            {step.badges.map((badge, idx) => (
-                                                                <div key={idx} className="flex items-center gap-3 bg-background-light dark:bg-white/5 p-3 rounded-lg">
-                                                                    <span className="material-symbols-outlined text-primary">{badge.icon}</span>
-                                                                    <span className="text-sm font-medium">{badge.label}</span>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    )}
-
-                                                    {step.cta && (
-                                                        <button className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-4">
-                                                            {step.cta}
-                                                            <ArrowRight size={20} />
-                                                        </button>
-                                                    )}
+                                        {/* Content bên TRÁI cho steps chẵn (1, 3, 5) */}
+                                        <div className={`w-full lg:w-1/2 ${isEven ? 'lg:pr-8' : 'lg:pl-8 lg:order-2'}`}>
+                                            {/* Desktop Day - chỉ hiện khi nội dung bên trái */}
+                                            {isEven && (
+                                                <div className="hidden lg:flex items-center gap-2 mb-2 justify-end">
+                                                    <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
+                                                        {step.day}
+                                                    </span>
                                                 </div>
-                                            </div>
+                                            )}
 
-                                            {/* Image - bên PHẢI cho steps chẵn (1, 3, 5) */}
-                                            <div className={`w-full lg:w-1/2 ${isEven ? 'lg:pl-8' : 'lg:pr-8 lg:order-1'}`}>
-                                                <div className="relative overflow-hidden rounded-2xl shadow-xl aspect-video lg:aspect-[4/3] max-w-lg mx-auto">
-                                                    <div
-                                                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
-                                                        style={{ backgroundImage: `url('${step.image}')` }}
-                                                    />
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                                                    <div className="absolute bottom-4 left-4 right-4 text-white">
-                                                        <div className="flex items-center gap-2">
-                                                            <span className="material-symbols-outlined">{step.icon}</span>
-                                                            <span className="font-medium text-sm">{step.iconLabel}</span>
-                                                        </div>
+                                            {/* Desktop Day - chỉ hiện khi nội dung bên phải */}
+                                            {!isEven && (
+                                                <div className="hidden lg:flex items-center gap-2 mb-2">
+                                                    <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
+                                                        {step.day}
+                                                    </span>
+                                                </div>
+                                            )}
+
+                                            {/* Nội dung text */}
+                                            <div className={`${isEven ? 'lg:text-right' : 'lg:text-left'}`}>
+                                                <h3 className="text-2xl font-bold text-foreground dark:text-white mb-3">{step.title}</h3>
+                                                <p className="text-gray-600 dark:text-gray-300 mb-6">{step.description}</p>
+
+                                                {step.features && (
+                                                    <ul className={`flex flex-col gap-2 text-gray-600 dark:text-gray-400 text-sm ${isEven ? 'lg:items-end' : ''}`}>
+                                                        {step.features.map((feature, idx) => (
+                                                            <li key={idx} className="flex items-center gap-2">
+                                                                <span className={`material-symbols-outlined text-lg ${step.featureIcons ? 'text-gray-400' : 'text-primary'}`}>
+                                                                    <BadgeCheck />
+                                                                </span>
+                                                                {feature}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+
+                                                {step.roilabel && (
+                                                    <div className={`bg-primary/10 dark:bg-primary/5 p-4 rounded-lg border border-primary/20 max-w-md ${isEven ? 'lg:ml-auto' : ''}`}>
+                                                        <p className="text-sm font-semibold text-foreground dark:text-white mb-1 flex items-center gap-2">
+                                                            <PiggyBank className="text-primary" size={20} />
+                                                            {step.roilabel}
+                                                        </p>
+                                                        <p className="text-xs text-gray-600 dark:text-gray-400">{step.roitext}</p>
+                                                    </div>
+                                                )}
+
+                                                {step.badges && (
+                                                    <div className="grid grid-cols-2 gap-4 max-w-md">
+                                                        {step.badges.map((badge, idx) => (
+                                                            <div key={idx} className="flex items-center gap-3 bg-background-light dark:bg-white/5 p-3 rounded-lg">
+                                                                <span className="material-symbols-outlined text-primary">{badge.icon}</span>
+                                                                <span className="text-sm font-medium">{badge.label}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+
+                                                {step.cta && (
+                                                    <button className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-4">
+                                                        {step.cta}
+                                                        <ArrowRight size={20} />
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Image - bên PHẢI cho steps chẵn (1, 3, 5) */}
+                                        <div className={`w-full lg:w-1/2 ${isEven ? 'lg:pl-8' : 'lg:pr-8 lg:order-1'}`}>
+                                            <div className="relative overflow-hidden rounded-2xl shadow-xl aspect-video lg:aspect-[4/3] max-w-lg mx-auto">
+                                                <div
+                                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+                                                    style={{ backgroundImage: `url('${step.image}')` }}
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                                <div className="absolute bottom-4 left-4 right-4 text-white">
+                                                    <div className="flex items-center gap-2">
+                                                        <span className="material-symbols-outlined">{step.icon}</span>
+                                                        <span className="font-medium text-sm">{step.iconLabel}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    );
-                                })}
-                            </div>
+                                    </div>
+                                );
+                            })}
                         </div>
                     </div>
+                </div>
 
-                    {/* FAQ Section - Giữ nguyên */}
-                    <div className="py-24 bg-background-light dark:bg-black/20">
-                        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-                            <h2 className="text-3xl font-bold tracking-tight text-foreground dark:text-white text-center mb-12">
-                                Common Questions
-                            </h2>
+                {/* FAQ Section - Giữ nguyên */}
+                <div className="py-24 bg-background-light dark:bg-black/20">
+                    <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                        <h2 className="text-3xl font-bold tracking-tight text-foreground dark:text-white text-center mb-12">
+                            Common Questions
+                        </h2>
 
-                            <div className="space-y-4">
-                                {faqs.map((faq, index) => (
-                                    <div
-                                        key={index}
-                                        className={`rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm cursor-pointer ${openFaq === index ? 'ring-1 ring-primary/20' : ''}`}
-                                        onClick={() => toggleFaq(index)}
+                        <div className="space-y-4">
+                            {faqs.map((faq, index) => (
+                                <div
+                                    key={index}
+                                    className={`rounded-lg bg-white dark:bg-gray-800 p-6 shadow-sm cursor-pointer ${openFaq === index ? 'ring-1 ring-primary/20' : ''}`}
+                                    onClick={() => toggleFaq(index)}
+                                >
+                                    <div className="flex items-center justify-between gap-1.5 text-foreground dark:text-white font-medium">
+                                        <span>{faq.question}</span>
+                                        <ChevronDown size={20} className={`material-symbols-outlined transition ${openFaq === index ? '-rotate-180' : ''}`} />
+                                    </div>
+                                    {openFaq === index && (
+                                        <p className="mt-4 leading-relaxed text-gray-600 dark:text-gray-300">
+                                            {faq.answer}
+                                        </p>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                {/* CTA Section - Giữ nguyên */}
+                <div className="relative isolate overflow-hidden bg-secondary-blue py-16 sm:py-24 lg:py-32">
+                    <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+                            <div className="max-w-xl lg:max-w-lg">
+                                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                                    Ready to make the switch?
+                                </h2>
+                                <p className="mt-4 text-lg leading-8 text-gray-300">
+                                    Get your free customized solar design and savings estimate today. No commitment required.
+                                </p>
+
+                                <form onSubmit={handleSubmit} className="mt-6 flex max-w-md gap-x-4">
+                                    <input
+                                        type="email"
+                                        id="email-address"
+                                        name="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                        className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                                        placeholder="Enter your email"
+                                    />
+                                    <button
+                                        type="submit"
+                                        className="flex-none rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-foreground shadow-sm hover:bg-primary-dark"
                                     >
-                                        <div className="flex items-center justify-between gap-1.5 text-foreground dark:text-white font-medium">
-                                            <span>{faq.question}</span>
-                                            <ChevronDown size={20} className={`material-symbols-outlined transition ${openFaq === index ? '-rotate-180' : ''}`} />
-                                        </div>
-                                        {openFaq === index && (
-                                            <p className="mt-4 leading-relaxed text-gray-600 dark:text-gray-300">
-                                                {faq.answer}
-                                            </p>
-                                        )}
+                                        Get Proposal
+                                    </button>
+                                </form>
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
+                                <div className="flex flex-col items-start">
+                                    <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                                        <span className="material-symbols-outlined text-white">calendar_month</span>
                                     </div>
-                                ))}
+                                    <dt className="mt-4 font-semibold text-white">Fast Scheduling</dt>
+                                    <dd className="mt-2 leading-7 text-gray-400">We value your time. Book a consultation within 24 hours.</dd>
+                                </div>
+                                <div className="flex flex-col items-start">
+                                    <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
+                                        <span className="material-symbols-outlined text-white">workspace_premium</span>
+                                    </div>
+                                    <dt className="mt-4 font-semibold text-white">25-Year Warranty</dt>
+                                    <dd className="mt-2 leading-7 text-gray-400">Peace of mind guaranteed on panels, labor, and performance.</dd>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* CTA Section - Giữ nguyên */}
-                    <div className="relative isolate overflow-hidden bg-secondary-blue py-16 sm:py-24 lg:py-32">
-                        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-                                <div className="max-w-xl lg:max-w-lg">
-                                    <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                                        Ready to make the switch?
-                                    </h2>
-                                    <p className="mt-4 text-lg leading-8 text-gray-300">
-                                        Get your free customized solar design and savings estimate today. No commitment required.
-                                    </p>
-
-                                    <form onSubmit={handleSubmit} className="mt-6 flex max-w-md gap-x-4">
-                                        <input
-                                            type="email"
-                                            id="email-address"
-                                            name="email"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                            required
-                                            className="min-w-0 flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
-                                            placeholder="Enter your email"
-                                        />
-                                        <button
-                                            type="submit"
-                                            className="flex-none rounded-md bg-primary px-3.5 py-2.5 text-sm font-semibold text-foreground shadow-sm hover:bg-primary-dark"
-                                        >
-                                            Get Proposal
-                                        </button>
-                                    </form>
-                                </div>
-
-                                <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
-                                    <div className="flex flex-col items-start">
-                                        <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-                                            <span className="material-symbols-outlined text-white">calendar_month</span>
-                                        </div>
-                                        <dt className="mt-4 font-semibold text-white">Fast Scheduling</dt>
-                                        <dd className="mt-2 leading-7 text-gray-400">We value your time. Book a consultation within 24 hours.</dd>
-                                    </div>
-                                    <div className="flex flex-col items-start">
-                                        <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-                                            <span className="material-symbols-outlined text-white">workspace_premium</span>
-                                        </div>
-                                        <dt className="mt-4 font-semibold text-white">25-Year Warranty</dt>
-                                        <dd className="mt-2 leading-7 text-gray-400">Peace of mind guaranteed on panels, labor, and performance.</dd>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div aria-hidden="true" className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6">
-                            <div className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-primary to-secondary-blue opacity-30" style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }} />
-                        </div>
+                    <div aria-hidden="true" className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6">
+                        <div className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-primary to-secondary-blue opacity-30" style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }} />
                     </div>
-
-                    {/* Footer - Giữ nguyên */}
-                    <Footer />
                 </div>
             </div>
         </>
