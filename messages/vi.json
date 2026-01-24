@@ -460,5 +460,119 @@
       "subtitle": "Đội ngũ chuyên gia của chúng tôi sẵn sàng giúp bạn phân tích nhu cầu năng lượng và cung cấp giải pháp tùy chỉnh.",
       "button": "Nói chuyện với chuyên gia"
     }
+  },
+
+  "Commercial": {
+    "Hero": {
+      "badge": "Giải pháp doanh nghiệp",
+      "title": "Nâng tầm hiệu suất",
+      "highlight": "Công nghiệp.",
+      "subtitle": "Hạ tầng năng lượng mặt trời được thiết kế riêng nhằm tối ưu hóa ROI, đáp ứng các tiêu chuẩn ESG và đảm bảo ổn định giá năng lượng dài hạn cho tổ chức của bạn.",
+      "btnROI": "Phân tích ROI",
+      "btnPortfolio": "Xem dự án"
+    },
+    "Logos": {
+      "title": "Được tin tưởng bởi các tập đoàn hàng đầu thế giới"
+    },
+    "ESG": {
+      "tag": "ESG & Bền vững",
+      "title": "Đạt mục tiêu Net-Zero với tác động đo lường được",
+      "desc": "Trong kỷ nguyên giám sát chặt chẽ từ các bên liên quan, giải pháp của chúng tôi cung cấp dữ liệu thực tế cần thiết cho báo cáo Trách nhiệm xã hội (CSR) và tuân thủ ESG.",
+      "item1": {
+        "title": "Khử carbon quy mô lớn",
+        "desc": "Loại bỏ phát thải Scope 2 bằng cách tạo ra 100% năng lượng sạch tại chỗ."
+      },
+      "item2": {
+        "title": "Báo cáo ESG thời gian thực",
+        "desc": "Xuất dữ liệu tự động cho báo cáo bền vững hàng năm và công bố thông tin nhà đầu tư."
+      },
+      "stats1": "Tiềm năng giảm Carbon",
+      "stats2": "Hỗ trợ xếp hạng ESG"
+    },
+    "Engineering": {
+      "tag": "Kỹ thuật xuất sắc",
+      "title": "Kỹ thuật chính xác cho bất động sản công nghiệp",
+      "item1": {
+        "title": "Đánh giá kết cấu",
+        "desc": "Phân tích khả năng chịu tải nghiêm ngặt cho kho bãi mái bằng và trung tâm phân phối."
+      },
+      "item2": {
+        "title": "Bãi đậu xe Solar & Trạm sạc EV",
+        "desc": "Biến hạ tầng bãi đậu xe thành nhà máy điện với hệ thống sạc xe điện tích hợp."
+      },
+      "item3": {
+        "title": "Tích hợp Microgrid",
+        "desc": "Tích hợp liền mạch với BMS hiện có của cơ sở và các bộ lưu trữ pin công nghiệp."
+      }
+    },
+    "Intelligence": {
+      "tag": "Trí tuệ vận hành",
+      "title": "Trung tâm điều hành của quản lý cơ sở",
+      "desc": "Hệ thống đo lường tiên tiến cung cấp các chỉ số sản xuất thời gian thực, sức khỏe thiết bị và phân tích mức tiêu thụ đỉnh điểm.",
+      "output": "Sản lượng hiện tại",
+      "savings": "Tiết kiệm trong ngày",
+      "status": "Trạng thái hệ thống",
+      "operational": "Đang hoạt động"
+    }
+  },
+  "Residential": {
+    "Hero": {
+      "badge": "Năng lượng cho tổ ấm",
+      "title": "Biến mái nhà thành",
+      "highlight": "Nhà máy điện",
+      "subtitle": "Giải pháp điện mặt trời áp mái thông minh giúp gia đình bạn tự chủ năng lượng, cắt giảm hóa đơn và bảo vệ môi trường.",
+      "btnQuote": "Nhận báo giá miễn phí",
+      "btnWork": "Quy trình lắp đặt"
+    },
+    "Switcher": {
+      "homeowners": "Chủ sở hữu nhà",
+      "newbuild": "Nhà xây mới & Pin"
+    },
+    "Solutions": {
+      "title": "Giải pháp cho mọi ngôi nhà",
+      "desc": "Từ hệ thống áp mái đơn giản đến hệ thống lưu trữ năng lượng phức tạp, chúng tôi có mọi thứ bạn cần.",
+      "roof": {
+        "title": "Điện mặt trời áp mái",
+        "desc": "Tận dụng diện tích mái nhà để tạo ra nguồn điện sạch mỗi ngày.",
+        "feature1": "Tấm pin hiệu suất cao",
+        "feature2": "Bảo hành 25 năm",
+        "feature3": "Lắp đặt trong 48h"
+      },
+      "storage": {
+        "title": "Lưu trữ pin Smart",
+        "desc": "Sử dụng điện mặt trời ngay cả vào ban đêm hoặc khi mất điện lưới.",
+        "feature1": "Công nghệ Lithium mới",
+        "feature2": "Chống mất điện 100%",
+        "feature3": "Quản lý qua App"
+      },
+      "ev": {
+        "title": "Sạc xe điện tại nhà",
+        "desc": "Sạc xe điện bằng năng lượng mặt trời - Tiết kiệm tối đa chi phí di chuyển.",
+        "feature1": "Sạc nhanh cấp độ 2",
+        "feature2": "Tích hợp Smart Home",
+        "feature3": "An toàn tuyệt đối"
+      }
+    },
+    "Savings": {
+      "title": "Tiết kiệm hơn, sống xanh hơn",
+      "card1": {
+        "title": "Giảm 90% hóa đơn điện",
+        "desc": "Hệ thống dân dụng giúp cắt giảm chi phí điện năng ngay từ tháng đầu tiên."
+      },
+      "card2": {
+        "title": "Tăng giá trị bất động sản",
+        "desc": "Nhà có điện mặt trời có giá trị chuyển nhượng cao hơn 4.1%."
+      },
+      "labelOld": "Hóa đơn cũ",
+      "labelNew": "Hóa đơn Solar",
+      "note": "Ước tính tiết kiệm trung bình 150.000.000đ sau 10 năm."
+    },
+    "CTA": {
+      "title": "Sẵn sàng nâng cấp",
+      "highlight": "Ngôi nhà của bạn?",
+      "desc": "Chuyên gia của chúng tôi sẽ tư vấn giải pháp tối ưu nhất dựa trên diện tích mái và nhu cầu sử dụng của bạn.",
+      "btnMain": "Tư vấn ngay",
+      "btnAlt": "Xem mẫu dự án"
+    }
   }
 }

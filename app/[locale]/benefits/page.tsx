@@ -10,7 +10,6 @@ export default function Benefits() {
     const [audience, setAudience] = useState('homeowners');
     const [zipCode, setZipCode] = useState('');
 
-
     const handleAudienceChange = (value: string) => {
         setAudience(value);
     };

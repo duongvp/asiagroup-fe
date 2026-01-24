@@ -461,5 +461,120 @@
       "subtitle": "Our team of solar experts is ready to help you analyze your energy needs and provide a custom solution tailored to your home.",
       "button": "Speak to an Expert"
     }
+  },
+
+  "Commercial": {
+    "Hero": {
+      "badge": "Enterprise Solutions",
+      "title": "Powering Industrial",
+      "highlight": "Performance.",
+      "subtitle": "Custom-engineered solar infrastructure designed to maximize ROI, fulfill ESG mandates, and secure long-term energy price stability for your organization.",
+      "btnROI": "Get ROI Analysis",
+      "btnPortfolio": "View Portfolio"
+    },
+    "Logos": {
+      "title": "Trusted by Global Industry Leaders"
+    },
+    "ESG": {
+      "tag": "ESG & Sustainability",
+      "title": "Meet Your Net-Zero Targets with Measurable Impact",
+      "desc": "In an era of increasing stakeholder scrutiny, our solar solutions provide the hard data needed for Corporate Social Responsibility (CSR) reporting and ESG compliance.",
+      "item1": {
+        "title": "Decarbonization at Scale",
+        "desc": "Eliminate Scope 2 emissions by generating 100% clean energy on-site."
+      },
+      "item2": {
+        "title": "Real-time ESG Reporting",
+        "desc": "Automated data exports for annual sustainability reports and investor disclosures."
+      },
+      "stats1": "Carbon Offset Potential",
+      "stats2": "ESG Rating Support"
+    },
+    "Engineering": {
+      "tag": "Engineering Excellence",
+      "title": "Precision Engineering for Industrial Real Estate",
+      "item1": {
+        "title": "Structural Assessment",
+        "desc": "Rigorous load-bearing analysis for flat-roof warehouses and distribution centers."
+      },
+      "item2": {
+        "title": "Solar Carports & EV Hubs",
+        "desc": "Turn your parking infrastructure into power generation plants with integrated EV charging."
+      },
+      "item3": {
+        "title": "Microgrid Integration",
+        "desc": "Seamless integration with existing facility BMS and industrial battery storage units."
+      }
+    },
+    "Intelligence": {
+      "tag": "Operational Intelligence",
+      "title": "The Facility Manager's Command Center",
+      "desc": "Advanced telemetry providing real-time production metrics, inverter health, and peak-shaving analytics across multiple sites.",
+      "output": "Current Output",
+      "savings": "Grid Savings Today",
+      "status": "System Status",
+      "operational": "Operational"
+    }
+  },
+
+  "Residential": {
+    "Hero": {
+      "badge": "Energy for your Home",
+      "title": "Turn Your Roof into a",
+      "highlight": "Power Plant",
+      "subtitle": "Smart rooftop solar solutions that help your family become energy independent, cut bills, and protect the environment.",
+      "btnQuote": "Get Free Quote",
+      "btnWork": "Installation Process"
+    },
+    "Switcher": {
+      "homeowners": "For Homeowners",
+      "newbuild": "New Builds & Battery"
+    },
+    "Solutions": {
+      "title": "Solutions for Every Home",
+      "desc": "From simple rooftop setups to complex energy storage systems, we have everything you need.",
+      "roof": {
+        "title": "Rooftop Solar",
+        "desc": "Maximize your roof space to generate clean electricity every day.",
+        "feature1": "High-efficiency panels",
+        "feature2": "25-year warranty",
+        "feature3": "48h installation"
+      },
+      "storage": {
+        "title": "Smart Battery Storage",
+        "desc": "Use solar power at night or during grid outages with smart storage.",
+        "feature1": "Latest Lithium Tech",
+        "feature2": "100% Backup Power",
+        "feature3": "Mobile App Control"
+      },
+      "ev": {
+        "title": "Home EV Charging",
+        "desc": "Charge your electric vehicle with sunshine - the ultimate fuel savings.",
+        "feature1": "Level 2 Fast Charging",
+        "feature2": "Smart Home Sync",
+        "feature3": "Advanced Safety"
+      }
+    },
+    "Savings": {
+      "title": "Save More, Live Greener",
+      "card1": {
+        "title": "Reduce Bills by 90%",
+        "desc": "Residential systems significantly cut energy costs from the first month."
+      },
+      "card2": {
+        "title": "Increase Home Value",
+        "desc": "Solar-equipped homes value 4.1% higher on average."
+      },
+      "labelOld": "Standard Bill",
+      "labelNew": "Solar Bill",
+      "note": "Estimated average savings of $15,000+ over 10 years."
+    },
+    "CTA": {
+      "title": "Ready to Upgrade",
+      "highlight": "Your Home?",
+      "desc": "Our experts will provide the best solution based on your roof size and energy needs.",
+      "btnMain": "Contact Expert",
+      "btnAlt": "View Portfolio"
+    }
   }
 }
