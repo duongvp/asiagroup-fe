@@ -1,18 +1,36 @@
 'use client';
-
 import { useState } from 'react';
 import Head from 'next/head';
-import { ArrowRight, Banknote, Calendar, ChevronDown, ChevronRight, CircleCheck, Cloud, Smile, Sun, Verified, Zap } from 'lucide-react';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
+import { ArrowRight, Banknote, Calendar, ChevronDown, ChevronRight, CircleCheck, Cloud, MapPin, Smile, Sun, Verified, Zap } from 'lucide-react';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { useProjects } from '@/services/project.service';
+
+interface IProject {
+    id: number;
+    title: string;
+    type: string;
+    project_type: string;
+    typeColor: string;
+    location: string;
+    image: string;
+    description: string;
+    systemSize: string;
+    savings: string;
+}
 
 export default function SolarTechPortfolio() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
     const [activeFilter, setActiveFilter] = useState('all');
+    const [projectData, setProjectData] = useState<IProject[] | null>(null)
 
-    const toggleDarkMode = () => {
-        setIsDarkMode(!isDarkMode);
-    };
+    const { projects: projectsDB, isLoading, isError } = useProjects();
+
+
+    if (isLoading) return <div>Loading...</div>;
+    if (isError) return <div>Error</div>;
+
+    console.log("pr", projectsDB)
+
+    console.log(process.env.NEXT_PUBLIC_API_URL)
 
     const projects = [
         {
@@ -23,9 +41,12 @@ export default function SolarTechPortfolio() {
             typeColor: "text-primary",
             location: "Austin, TX",
             image: "https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-            description: "A complete 12kW residential system designed to offset 100% of the home's energy usage during peak summer months.",
+            description1: "A complete 12kW residential system designed to offset 100% of the home's energy usage during peak summer months.",
             systemSize: "12kW",
-            savings: "$2.4k/yr"
+            savings: "$2.4k/yr",
+            description: <BlocksRenderer
+                content={((projectData && projectData[0]) ? projectData[0].description : []) as any}
+            />
         },
         {
             id: 2,
@@ -224,7 +245,7 @@ export default function SolarTechPortfolio() {
 
                                     <div className="p-6 flex flex-col flex-1">
                                         <div className="flex items-center gap-1 text-gray-500 dark:text-gray-400 text-sm mb-2">
-                                            <span className="material-symbols-outlined text-sm">location_on</span>
+                                            <MapPin size={16} />
                                             <span>{project.location}</span>
                                         </div>
 
