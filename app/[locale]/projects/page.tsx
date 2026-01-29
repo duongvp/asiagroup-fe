@@ -4,33 +4,21 @@ import Head from 'next/head';
 import { ArrowRight, Banknote, Calendar, ChevronDown, ChevronRight, CircleCheck, Cloud, MapPin, Smile, Sun, Verified, Zap } from 'lucide-react';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useProjects } from '@/services/project.service';
+import Image from 'next/image';
+import { getStrapiImageUrl } from '@/helper/strapi-convert-url';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
-interface IProject {
-    id: number;
-    title: string;
-    type: string;
-    project_type: string;
-    typeColor: string;
-    location: string;
-    image: string;
-    description: string;
-    systemSize: string;
-    savings: string;
-}
 
 export default function SolarTechPortfolio() {
     const [activeFilter, setActiveFilter] = useState('all');
-    const [projectData, setProjectData] = useState<IProject[] | null>(null)
+    const locale = useLocale();
 
-    const { projects: projectsDB, isLoading, isError } = useProjects();
+    const { projects: projectsDB, isLoading, isError } = useProjects(locale);
 
 
-    if (isLoading) return <div>Loading...</div>;
-    if (isError) return <div>Error</div>;
-
-    console.log("pr", projectsDB)
-
-    console.log(process.env.NEXT_PUBLIC_API_URL)
+    // if (isLoading) return <div>Loading...</div>;
+    // if (isError) return <div>Error</div>;
 
     const projects = [
         {
@@ -44,9 +32,8 @@ export default function SolarTechPortfolio() {
             description1: "A complete 12kW residential system designed to offset 100% of the home's energy usage during peak summer months.",
             systemSize: "12kW",
             savings: "$2.4k/yr",
-            description: <BlocksRenderer
-                content={((projectData && projectData[0]) ? projectData[0].description : []) as any}
-            />
+            description: "Commercial installation for a tech campus, integrating EV charging stations and battery storage for redundancy.",
+
         },
         {
             id: 2,
@@ -230,50 +217,74 @@ export default function SolarTechPortfolio() {
 
                         {/* Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {filteredProjects.map((project) => (
+                            {projectsDB.map((project) => (
                                 <div key={project.id} className="flex flex-col rounded-xl bg-white dark:bg-[#1a2e1a] border border-[#f0f4f0] dark:border-[#2a3c2a] overflow-hidden group hover:shadow-xl transition-all hover:-translate-y-1">
-                                    <div className="relative h-60 w-full overflow-hidden">
-                                        <div
-                                            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                            style={{ backgroundImage: `url('${project.image}')` }}
-                                        />
-                                        <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#111811] dark:text-white flex items-center gap-1">
-                                            <span className={`material-symbols-outlined text-sm ${project.typeColor}`}>{project.typeIcon}</span>
-                                            {project.type.charAt(0).toUpperCase() + project.type.slice(1)}
+                                    <Link href={`/projects/${project.slug}`} aria-label={project.title}>
+                                        <div className="relative h-60 w-full overflow-hidden">
+                                            <div
+                                                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                            // style={{ backgroundImage: `url('${project.images.url}')` }}
+                                            >
+                                                {project.images && (
+                                                    <Image
+                                                        unoptimized
+                                                        src={getStrapiImageUrl(project.images.url)}
+                                                        alt={project.title}
+                                                        fill
+                                                        sizes="100vw"
+                                                        className="object-cover"
+                                                    />
+                                                )}
+
+                                            </div>
+                                            <div className="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-[#111811] dark:text-white flex items-center gap-1">
+                                                {/* <span className={`material-symbols-outlined text-sm ${project.typeColor}`}>{project.typeIcon}</span>     */}
+                                                {/* {project.type.charAt(0).toUpperCase() + project.type.slice(1)} */}
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div className="p-6 flex flex-col flex-1">
-                                        <div className="flex items-center gap-1 text-gray-500 dark:text-gray-400 text-sm mb-2">
-                                            <MapPin size={16} />
-                                            <span>{project.location}</span>
-                                        </div>
-
-                                        <h3 className="text-xl font-bold text-[#111811] dark:text-white mb-2 group-hover:text-primary transition-colors">
-                                            {project.title}
-                                        </h3>
-
-                                        <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 line-clamp-2">
-                                            {project.description}
-                                        </p>
-
-                                        <div className="mt-auto pt-4 border-t border-gray-100 dark:border-[#2a3c2a] flex justify-between items-center">
-                                            <div className="flex gap-4">
-                                                <div className="flex flex-col">
-                                                    <span className="text-xs text-gray-500 font-medium uppercase">System</span>
-                                                    <span className="text-sm font-bold text-[#111811] dark:text-white">{project.systemSize}</span>
-                                                </div>
-                                                <div className="flex flex-col">
-                                                    <span className="text-xs text-gray-500 font-medium uppercase">Savings</span>
-                                                    <span className="text-sm font-bold text-primary">{project.savings}</span>
-                                                </div>
+                                        <div className="p-6 flex flex-col flex-1  min-h-[234.5px]">
+                                            <div className="flex items-center gap-1 text-gray-500 dark:text-gray-400 text-sm mb-2">
+                                                <MapPin size={16} />
+                                                <span>{project.location}</span>
                                             </div>
 
-                                            <button className="size-8 rounded-full bg-[#f0f4f0] dark:bg-[#2a3c2a] flex items-center justify-center text-[#111811] dark:text-white group-hover:bg-primary transition-colors">
-                                                <ArrowRight size={16} />
-                                            </button>
+                                            <h3 className="text-xl font-bold text-[#111811] dark:text-white mb-2 group-hover:text-primary transition-colors">
+                                                {project.title}
+                                            </h3>
+
+                                            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 line-clamp-2">
+                                                {
+                                                    project.description ? (
+                                                        <BlocksRenderer
+                                                            content={project.description as any}
+                                                        />
+                                                    ) : (
+                                                        // Có thể để trống hoặc một khoảng trắng không nhìn thấy
+                                                        <div className="invisible">No description available</div>
+                                                    )
+                                                }
+
+                                            </p>
+
+                                            <div className="mt-auto pt-4 border-t border-gray-100 dark:border-[#2a3c2a] flex justify-between items-center">
+                                                <div className="flex gap-4">
+                                                    <div className="flex flex-col">
+                                                        <span className="text-xs text-gray-500 font-medium uppercase">System</span>
+                                                        <span className="text-sm font-bold text-[#111811] dark:text-white">{project.system_size}</span>
+                                                    </div>
+                                                    <div className="flex flex-col">
+                                                        <span className="text-xs text-gray-500 font-medium uppercase">Savings</span>
+                                                        <span className="text-sm font-bold text-primary">{project.estimated_savings}</span>
+                                                    </div>
+                                                </div>
+
+                                                <button className="size-8 rounded-full bg-[#f0f4f0] dark:bg-[#2a3c2a] flex items-center justify-center text-[#111811] dark:text-white group-hover:bg-primary transition-colors">
+                                                    <ArrowRight size={16} />
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 </div>
                             ))}
                         </div>

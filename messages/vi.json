@@ -574,5 +574,37 @@
       "btnMain": "Tư vấn ngay",
       "btnAlt": "Xem mẫu dự án"
     }
+  },
+  "JobDetail": {
+    "backToCareers": "Quay lại danh sách tuyển dụng",
+    "posted": "Đã đăng",
+    "applyNow": "Ứng tuyển vị trí này",
+    "overview": "Tổng quan vai trò",
+    "description": {
+      "p1": "Với tư cách là Kỹ sư Điện cao cấp tại SolarTech, bạn sẽ đóng vai trò then chốt trong việc thiết kế và triển khai các hệ thống năng lượng mặt trời hiệu suất cao cho khách hàng thương mại và công nghiệp.",
+      "p2": "Chúng tôi đang tìm kiếm một chuyên gia có tầm nhìn, kết hợp chuyên môn kỹ thuật sâu rộng với niềm đam mê bền vững."
+    },
+    "responsibilities": "Trách nhiệm chính",
+    "responsibilitiesItems": [
+      "Dẫn dắt thiết kế các hệ thống PV quy mô thương mại và tiện ích phức tạp.",
+      "Thực hiện mô phỏng điện chi tiết bằng PVSyst và Helioscope.",
+      "Đảm bảo mọi thiết kế tuân thủ NEC và các quy chuẩn xây dựng địa phương.",
+      "Thực hiện đánh giá hiện trường và nghiên cứu khả thi.",
+      "Hướng dẫn và đào tạo kỹ thuật cho các kỹ sư trẻ."
+    ],
+    "requirements": "Yêu cầu công việc",
+    "requirementsItems": [
+      "Bằng Cử nhân Kỹ thuật Điện (ưu tiên có chứng chỉ PE).",
+      "Hơn 5 năm kinh nghiệm trong thiết kế hệ thống điện mặt trời.",
+      "Thành thạo AutoCAD, PVSyst và Bluebeam.",
+      "Kiến thức vững chắc về Tiêu chuẩn Điện Quốc gia (NEC).",
+      "Kỹ năng giải quyết vấn đề và giao tiếp xuất sắc."
+    ],
+    "sideBenefits": "Phúc lợi chính",
+    "formTitle": "Gửi hồ sơ ứng tuyển",
+    "formSubtitle": "Hãy thực hiện bước đầu tiên cho sự nghiệp năng lượng sạch của bạn.",
+    "uploadText": "Nhấp để tải lên hoặc kéo thả tệp",
+    "coverLetter": "Thư giới thiệu",
+    "submitBtn": "Gửi đơn ứng tuyển"
   }
 }

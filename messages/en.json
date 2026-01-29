@@ -576,5 +576,37 @@
       "btnMain": "Contact Expert",
       "btnAlt": "View Portfolio"
     }
+  },
+  "JobDetail": {
+    "backToCareers": "Back to Careers",
+    "posted": "Posted",
+    "applyNow": "Apply for this Position",
+    "overview": "Role Overview",
+    "description": {
+      "p1": "As a Senior Electrical Engineer at SolarTech, you will play a pivotal role in designing and implementing high-efficiency solar energy systems for commercial and industrial clients.",
+      "p2": "We are looking for a visionary professional who combines deep technical expertise with a passion for sustainability."
+    },
+    "responsibilities": "Responsibilities",
+    "responsibilitiesItems": [
+      "Lead the design of complex commercial and utility-scale PV systems.",
+      "Conduct detailed electrical simulations using PVSyst and Helioscope.",
+      "Ensure all designs comply with NEC and local building codes.",
+      "Perform site assessments and feasibility studies.",
+      "Provide technical mentorship to junior engineers."
+    ],
+    "requirements": "Requirements",
+    "requirementsItems": [
+      "Bachelor's degree in Electrical Engineering (PE preferred).",
+      "5+ years of experience in solar PV system design.",
+      "Proficiency in AutoCAD, PVSyst, and Bluebeam.",
+      "Strong knowledge of the National Electrical Code (NEC).",
+      "Excellent problem-solving and communication skills."
+    ],
+    "sideBenefits": "Key Benefits",
+    "formTitle": "Apply for this Position",
+    "formSubtitle": "Take the first step towards your career in clean energy.",
+    "uploadText": "Click to upload or drag and drop",
+    "coverLetter": "Cover Letter",
+    "submitBtn": "Submit My Application"
   }
 }

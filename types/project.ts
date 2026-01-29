@@ -8,12 +8,22 @@ export interface IProject {
     location: string;
     project_type: 'residential' | 'commercial' | 'industrial';
     description: RootNode[]; // Kiểu Blocks JSON
-    systemSize: string;
-    savings: string;
+    system_size: string;
+    estimated_savings: string;
     // Nếu có ảnh
-    image?: {
+    images?: {
         url: string;
         alternativeText: string;
+    },
+    gallery?: {
+        id: number;
+        url: string;
+        alternativeText: string;
+    }[],
+    testimonial: {
+        author_name: string;
+        author_role: string;
+        quote: string;
     };
     // Các trường bổ sung khác của bạn...
 }
