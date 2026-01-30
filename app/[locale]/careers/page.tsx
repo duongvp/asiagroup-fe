@@ -1,10 +1,11 @@
 'use client';
-
 import { useState } from 'react';
 import Head from 'next/head';
 import { Banknote, ChevronDown, HeartPulse, House, Leaf, Lightbulb, MapPin, TrendingUp, UserCog, Users, CloudUpload, ArrowRight } from 'lucide-react';
-import { useTranslations } from 'use-intl';
-
+import { useLocale, useTranslations } from 'use-intl';
+import { useCareers } from '@/services/career.service';
+import { ICareer } from '@/types/career';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 // Dữ liệu Job giữ nguyên không đưa vào JSON theo yêu cầu
 const jobs = [
@@ -64,12 +65,14 @@ const jobs = [
 
 export default function Careers() {
     const t = useTranslations();
-    const [isOpen, setIsOpen] = useState(new Array(jobs.length).fill(false));
+    const locale = useLocale();
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    // 1. Lấy dữ liệu từ Strapi API thông qua Service
+    const { careers, isLoading, isError } = useCareers(locale);
 
     const toggleJobCard = (index: number) => {
-        const newIsOpen = [...isOpen];
-        newIsOpen[index] = !newIsOpen[index];
-        setIsOpen(newIsOpen);
+        setOpenIndex(openIndex === index ? null : index);
     };
 
     return (
@@ -184,58 +187,70 @@ export default function Careers() {
                             </div>
 
                             <div className="flex flex-col gap-4">
-                                {jobs.map((job, index) => (
-                                    <div key={index} className={`group bg-white dark:bg-[#152615] rounded-xl border border-[#dbe6db] dark:border-[#1a2e1a] overflow-hidden transition-all duration-300 ${isOpen[index] ? "ring-2 ring-primary/50" : ""}`}>
-                                        <div className="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-50 dark:hover:bg-[#1a2e1a] transition-colors" onClick={() => toggleJobCard(index)}>
-                                            <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 w-full">
-                                                <div className="flex-1">
-                                                    <h3 className="text-lg font-bold text-[#111811] dark:text-white">{job.title}</h3>
-                                                    <div className="flex gap-4 mt-1 text-sm text-[#618961] dark:text-gray-400">
-                                                        <span className="flex items-center gap-1"><UserCog size={18} /> {job.department}</span>
-                                                        <span className="flex items-center gap-1"><MapPin size={18} /> {job.location}</span>
-                                                    </div>
-                                                </div>
-                                                <div className="hidden md:block">
-                                                    <span className="text-primary font-bold text-sm uppercase tracking-wide">{job.type}</span>
-                                                </div>
-                                            </div>
-                                            <ChevronDown size={18} className={`text-[#618961] transition-transform duration-300 ${isOpen[index] ? "rotate-180" : ""}`} />
-                                        </div>
-
-                                        {isOpen[index] && (
-                                            <div className="px-6 pb-6 border-t border-[#f0f4f0] dark:border-[#2a3e2a] animate-sweep">
-                                                <div className="mt-4 space-y-4 text-sm text-[#618961] dark:text-gray-300">
-                                                    <p>{job.description}</p>
-                                                    {(job.responsibilities || job.requirements) && (
-                                                        <div className="grid md:grid-cols-2 gap-8">
-                                                            {job.responsibilities && (
-                                                                <div>
-                                                                    <h4 className="font-bold text-[#111811] dark:text-white mb-2">{t('Careers.Roles.details.responsibilities')}</h4>
-                                                                    <ul className="list-disc pl-5 space-y-1">
-                                                                        {job.responsibilities.map((item, i) => <li key={i}>{item}</li>)}
-                                                                    </ul>
-                                                                </div>
-                                                            )}
-                                                            {job.requirements && (
-                                                                <div>
-                                                                    <h4 className="font-bold text-[#111811] dark:text-white mb-2">{t('Careers.Roles.details.requirements')}</h4>
-                                                                    <ul className="list-disc pl-5 space-y-1">
-                                                                        {job.requirements.map((item, i) => <li key={i}>{item}</li>)}
-                                                                    </ul>
-                                                                </div>
-                                                            )}
+                                {careers.length > 0 ? (
+                                    careers.map((job: ICareer, index: number) => {
+                                        const isExpanded = openIndex === index;
+                                        return (
+                                            <div key={job.documentId} className={`group bg-white dark:bg-[#152615] rounded-xl border border-[#dbe6db] dark:border-[#1a2e1a] overflow-hidden transition-all duration-300 ${isExpanded ? "ring-2 ring-primary/50 shadow-xl" : "hover:border-primary/50"}`}>
+                                                {/* Card Header */}
+                                                <div className="flex items-center justify-between p-6 cursor-pointer" onClick={() => toggleJobCard(index)}>
+                                                    <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 w-full">
+                                                        <div className="flex-1">
+                                                            <h3 className="text-lg font-bold text-[#111811] dark:text-white group-hover:text-primary transition-colors">{job.title}</h3>
+                                                            <div className="flex gap-4 mt-1 text-sm text-[#618961] dark:text-gray-400">
+                                                                <span className="flex items-center gap-1"><UserCog size={16} /> {job.department?.name || "General"}</span>
+                                                                <span className="flex items-center gap-1"><MapPin size={16} /> {job.location}</span>
+                                                            </div>
                                                         </div>
-                                                    )}
-                                                    <div className="pt-4 flex justify-end">
-                                                        <button className="bg-primary hover:bg-green-400 text-[#111811] font-bold py-2 px-6 rounded-lg transition-colors flex items-center gap-2">
-                                                            {t('Careers.Roles.details.applyBtn')} <ArrowRight size={16} />
-                                                        </button>
+                                                        <div className="flex items-center gap-4">
+                                                            <span className="hidden md:block text-primary font-bold text-xs uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">{job.type}</span>
+                                                            <ChevronDown size={20} className={`text-[#618961] transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+                                                        </div>
                                                     </div>
                                                 </div>
+
+                                                {/* Card Content - Rendered from Strapi Blocks */}
+                                                {isExpanded && (
+                                                    <div className="px-6 pb-8 border-t border-[#f0f4f0] dark:border-[#2a3e2a] animate-sweep">
+                                                        <div className="mt-6 space-y-8">
+                                                            <div className="prose dark:prose-invert max-w-none text-[#618961] dark:text-gray-300">
+                                                                <BlocksRenderer content={job.description} />
+                                                            </div>
+
+                                                            <div className="grid md:grid-cols-2 gap-12">
+                                                                <div className="flex flex-col gap-3">
+                                                                    <h4 className="font-bold text-[#111811] dark:text-white mb-2">
+                                                                        {t('Careers.Roles.details.responsibilities')}
+                                                                    </h4>
+                                                                    <div className="prose prose-sm dark:prose-invert marker:text-primary">
+                                                                        <BlocksRenderer content={job.responsibilities} />
+                                                                    </div>
+                                                                </div>
+                                                                <div className="flex flex-col gap-3">
+                                                                    <h4 className="font-bold text-[#111811] dark:text-white mb-2">
+                                                                        {t('Careers.Roles.details.requirements')}
+                                                                    </h4>
+                                                                    <div className="prose prose-sm dark:prose-invert marker:text-primary">
+                                                                        <BlocksRenderer content={job.requirements} />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100 dark:border-gray-800">
+                                                                <p className="text-xs text-gray-400 italic font-medium">Ref: {job.documentId.substring(0, 8).toUpperCase()}</p>
+                                                                <button className="w-full sm:w-auto bg-primary hover:bg-green-400 text-[#111811] font-bold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:-translate-y-1">
+                                                                    {t('Careers.Roles.details.applyBtn')} <ArrowRight size={18} />
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
-                                        )}
-                                    </div>
-                                ))}
+                                        );
+                                    })
+                                ) : (
+                                    <p className="text-center py-10 text-gray-500 italic">No open positions at the moment. Please check back later!</p>
+                                )}
                             </div>
                         </div>
                     </section>

@@ -20,7 +20,7 @@ export default function Header() {
 
     const languages = [
         { code: 'en', name: 'English' },
-        { code: 'jp', name: '日本語' },
+        { code: 'ja', name: '日本語' },
         { code: 'vi', name: 'Tiếng Việt' }
     ];
 

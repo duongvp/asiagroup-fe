@@ -2,7 +2,7 @@ import { getRequestConfig } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 // Khai báo danh sách các ngôn ngữ hỗ trợ
-const locales = ['vi', 'en', 'jp'];
+const locales = ['vi', 'en', 'ja'];
 
 export default getRequestConfig(async ({ requestLocale }) => {
     // 1. Đợi requestLocale (vì trong Next 15 nó là một Promise)

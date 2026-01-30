@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import {
@@ -11,9 +10,6 @@ import {
     CheckCircle2,
     UploadCloud,
     Send,
-    Briefcase,
-    GraduationCap,
-    Car
 } from 'lucide-react';
 import { useTranslations } from 'use-intl';
 
