@@ -1,10 +1,15 @@
 'use client';
 
-import { useTranslations } from 'use-intl';
+import { useLocale, useTranslations } from 'use-intl';
 import { EyeIcon, Hammer, Handshake, Leaf, Target, Users } from 'lucide-react';
+import { useTeamMembers } from '@/services/team.service';
+import Image from 'next/image';
+import { getStrapiImageUrl } from '@/helper/strapi-convert-url';
 
 export default function AboutUs() {
     const t = useTranslations('AboutUs');
+    const locale = useLocale();
+    const { members, isLoading, isError } = useTeamMembers(locale as string);
 
     return (
         <>
@@ -162,46 +167,23 @@ export default function AboutUs() {
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                 {/* Member 1 */}
-                                <div className="flex flex-col gap-4">
-                                    <div className="aspect-[4/3] rounded-xl bg-gray-200 overflow-hidden relative">
-                                        <div
-                                            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-105"
-                                            style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxOkzpzygLf_sYyksAXXJ3TNguRbu8rVYk3SnPXcOD4JcE8ZxzArEwTBpxtyk8D2abSijSEo94tphozs2mFy1IGLxDfd4gCe0fQoViNByzt0UvOrM8aMa56mNEvbAoIgfFlS6McJdqfd3U6h7oQWfZOZcVJhFArZur-h5BCTftXkLmvnT7M26uAcRUXBM1yttncNvg8HJSupbGiJYAcBEe6kZ_SG0Kzty4yoZ9lGvw8LSFKG5Cdx6b3z4iXc1GlaXWLGrwO9mlafo')" }}
-                                        ></div>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-bold text-[#111418] dark:text-white">John Carter</h3>
-                                        <p className="text-sm text-primary font-medium">{t('Team.role1')}</p>
-                                    </div>
-                                </div>
-
-                                {/* Member 2 */}
-                                <div className="flex flex-col gap-4">
-                                    <div className="aspect-[4/3] rounded-xl bg-gray-200 overflow-hidden relative">
-                                        <div
-                                            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-105"
-                                            style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC4ZlCzWV6eVgx0Wq-yIEG5K3gZYRzuv3zVPXY_THmEToEE18Mc_F5KZB0BgV5OVyhpDijSiakvmGMvQKiSpXnhJZp7U7R-gKtFcGJh2K5qVQ2K0RcjaObhOhb87-VCjTYUP1MIQc6JpgfDE-h6or5vHkhl4On2cQnngWHtciB4PNn_H0JlZQOudX3o5Z9McrQjkMjvnCF7KbTpm9nWVyp0ZsXYrv6bF_qUqxH4Tiu4n_zH1TkFkAvAjqU6BRAeZ6Fan3NQhAcQ3yM')" }}
-                                        ></div>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-bold text-[#111418] dark:text-white">Sarah Jenkins</h3>
-                                        <p className="text-sm text-primary font-medium">{t('Team.role2')}</p>
-                                    </div>
-                                </div>
-
-                                {/* Member 3 */}
-                                <div className="flex flex-col gap-4">
-                                    <div className="aspect-[4/3] rounded-xl bg-gray-200 overflow-hidden relative">
-                                        <div
-                                            className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-105"
-                                            style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsIBY4beeN_t1eyg6J0yD5yWXNKO8z1FKgWqHeQ7J7WqJKQRrEnN9hhWO-ab-j7gzQw8CLWLNzmSt1ff1It-60HMKkpDACp0Po22zUoFOSFsJRnnDDOsIgtY9sd0WRFBKsocDidmJ4fH2VYJeLpMrAKtYiGHcvpU6v09b9FJDWPXBsb4AdnsiufKd-dPkr1nmJuLPqwwOJZnneAMoNhOzoD75-8aKp61YidcCFbiXJloSQZl5IH-isumoL7-bj61Fx_YylGyzyIUg')" }}
-                                        ></div>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-lg font-bold text-[#111418] dark:text-white">Michael Ross</h3>
-                                        <p className="text-sm text-primary font-medium">{t('Team.role3')}</p>
-                                    </div>
-                                </div>
+                                {
+                                    members?.map((member) => (
+                                        <div key={member.id} className="flex flex-col gap-4">
+                                            <div className="aspect-[4/3] rounded-xl bg-gray-200 overflow-hidden relative">
+                                                <div
+                                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 hover:scale-105"
+                                                >
+                                                    <Image unoptimized src={getStrapiImageUrl(member.avartar?.url || '')} alt={member.name} width={500} height={500} className="w-full h-full object-cover" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h3 className="text-lg font-bold text-[#111418] dark:text-white">{member.name}</h3>
+                                                <p className="text-sm text-primary font-medium">{member.role}</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
                             </div>
                         </div>
                     </section>

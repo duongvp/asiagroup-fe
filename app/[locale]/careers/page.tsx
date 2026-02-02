@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'use-intl';
 import { useCareers } from '@/services/career.service';
 import { ICareer } from '@/types/career';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import Link from 'next/link';
 
 // Dữ liệu Job giữ nguyên không đưa vào JSON theo yêu cầu
 const jobs = [
@@ -238,9 +239,10 @@ export default function Careers() {
 
                                                             <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100 dark:border-gray-800">
                                                                 <p className="text-xs text-gray-400 italic font-medium">Ref: {job.documentId.substring(0, 8).toUpperCase()}</p>
-                                                                <button className="w-full sm:w-auto bg-primary hover:bg-green-400 text-[#111811] font-bold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:-translate-y-1">
+
+                                                                <Link href={`/careers/${job.slug}`} className="w-full sm:w-auto bg-primary hover:bg-green-400 text-[#111811] font-bold py-3 px-8 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:-translate-y-1">
                                                                     {t('Careers.Roles.details.applyBtn')} <ArrowRight size={18} />
-                                                                </button>
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                     </div>
