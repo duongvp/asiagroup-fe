@@ -11,7 +11,10 @@
     "our_company": "Our Company",
     "benefits": "Benefits",
     "policies": "Policies",
-    "careers": "Careers"
+    "careers": "Careers",
+    "faq": "FAQs",
+    "contact": "Contact",
+    "maintenance": "Maintenance"
   },
 
   "Footer": {
@@ -608,5 +611,81 @@
     "uploadText": "Click to upload or drag and drop",
     "coverLetter": "Cover Letter",
     "submitBtn": "Submit My Application"
+  },
+
+  "Maintenance": {
+    "hero": {
+      "badge": "Expert Maintenance Services",
+      "title1": "Maximize Your",
+      "title2": "Solar Efficiency",
+      "description": "Keep your system running at peak performance. Our certified technicians provide comprehensive inspections, cleaning, and repairs to ensure maximum ROI for your investment.",
+      "ctaPrimary": "Schedule Inspection",
+      "ctaSecondary": "View Plans",
+      "statLabel": "Efficiency Boost"
+    },
+    "why": {
+      "subtitle": "The Value of Care",
+      "title": "Why Maintenance is Essential",
+      "card1": {
+        "title": "Peak Efficiency",
+        "desc": "Dust and grime can reduce power output by up to 30%. Regular cleaning keeps production high."
+      },
+      "card2": {
+        "title": "Extended Lifespan",
+        "desc": "Preventative care identifies minor issues before they become costly system-wide failures."
+      },
+      "card3": {
+        "title": "Warranty Protection",
+        "desc": "Many manufacturers require proof of professional maintenance to keep warranties valid."
+      },
+      "card4": {
+        "title": "Safety First",
+        "desc": "Systematic electrical testing prevents fire hazards and ensures grounding is secure."
+      }
+    },
+    "checklist": {
+      "title": "Comprehensive Service Checklist",
+      "desc": "We follow a rigorous multi-point inspection process designed by solar engineers to ensure your system meets original factory specifications.",
+      "point1": "Certified Technicians",
+      "point2": "Detailed Performance Reports",
+      "point3": "Genuine Replacement Parts",
+      "item1": {
+        "title": "Professional Cleaning",
+        "desc": "Eco-friendly removal of pollen, bird droppings, and industrial pollutants using deionized water."
+      },
+      "item2": {
+        "title": "Electrical Testing",
+        "desc": "Testing of AC/DC wiring, inverter efficiency, and connection integrity to prevent power loss."
+      },
+      "item3": {
+        "title": "Thermal Imaging",
+        "desc": "Advanced infrared scans to detect 'hot spots' and micro-cracks invisible to the naked eye."
+      },
+      "item4": {
+        "title": "Health Checks",
+        "desc": "Full diagnostic review of monitoring software and physical mounting structure stability."
+      }
+    },
+    "form": {
+      "title": "Request a Service",
+      "desc": "Fill out the form to schedule your maintenance visit. One of our specialists will contact you within 4 business hours to confirm a time.",
+      "phoneLabel": "Immediate Assistance",
+      "hoursLabel": "Service Hours",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "serviceType": "Service Type",
+      "servicePlaceholder": "Select a service...",
+      "preferredDate": "Preferred Date",
+      "submit": "Submit Request",
+      "successMessage": "Your request has been submitted successfully!",
+      "errors": {
+        "firstName": "First name is required",
+        "lastName": "Last name is required",
+        "email": "Please enter a valid email address",
+        "serviceType": "Please select a service type",
+        "preferredDate": "Please select a preferred date"
+      }
+    }
   }
 }

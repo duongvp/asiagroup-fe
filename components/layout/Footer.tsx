@@ -1,6 +1,7 @@
 import { Facebook, Mail, Phone } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from 'next-intl';
+import Link from "next/link";
 
 export default function Footer() {
     const t = useTranslations('Footer');
@@ -23,7 +24,7 @@ export default function Footer() {
                         {/* Sử dụng t.raw để lấy mảng từ JSON */}
                         {t.raw('columns.services.links').map((item: string) => (
                             <li key={item}>
-                                <a className="hover:text-primary transition-colors" href="#">{item}</a>
+                                <Link className="hover:text-primary transition-colors" href="#">{item}</Link>
                             </li>
                         ))}
                     </ul>
@@ -34,7 +35,7 @@ export default function Footer() {
                     <ul className="flex flex-col gap-2 text-sm text-gray-600 dark:text-gray-400">
                         {t.raw('columns.company.links').map((item: string) => (
                             <li key={item}>
-                                <a className="hover:text-primary transition-colors" href="#">{item}</a>
+                                <Link className="hover:text-primary transition-colors" href="/contact">{item}</Link>
                             </li>
                         ))}
                     </ul>

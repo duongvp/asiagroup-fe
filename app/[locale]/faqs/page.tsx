@@ -1,13 +1,35 @@
 'use client';
 
-import React from 'react';
+import { useState } from 'react';
+import { useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Search, ChevronDown, Headset, Zap } from 'lucide-react';
+import { useFaqCategories, useFaqItems } from '@/services/faq.service';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export default function FAQPage() {
     const t = useTranslations('FAQ');
+    const { locale } = useParams();
 
-    const categories = ['all', 'general', 'installation', 'financial', 'technical'];
+    // State để quản lý Filter và Search
+    const [activeCategory, setActiveCategory] = useState('all');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [tempSearch, setTempSearch] = useState(''); // Cho input search
+
+    // Gọi Service lấy Categories (cho thanh Tabs)
+    const { categories, isLoading: isCatLoading } = useFaqCategories(locale as string);
+
+    // Gọi Service lấy FAQ Items (dựa trên category và search)
+    const { faqs, isLoading: isFaqLoading } = useFaqItems(
+        locale as string,
+        activeCategory,
+        searchTerm
+    );
+
+    // Hàm xử lý khi bấm nút Search
+    const handleSearch = () => {
+        setSearchTerm(tempSearch);
+    };
 
     return (
         <main className="flex-grow flex flex-col items-center w-full bg-background-light dark:bg-background-dark">
@@ -32,18 +54,26 @@ export default function FAQPage() {
 
                     {/* Search Bar */}
                     <div className="w-full max-w-[550px] z-10 mt-8">
-                        <div className="flex w-full items-center rounded-2xl h-14 bg-white dark:bg-slate-800 shadow-2xl p-1 focus-within:ring-2 focus-within:ring-primary transition-all">
+                        <form
+                            onSubmit={(e) => { e.preventDefault(); handleSearch(); }}
+                            className="flex w-full items-center rounded-2xl h-14 bg-white dark:bg-slate-800 shadow-2xl p-1 focus-within:ring-2 focus-within:ring-primary transition-all"
+                        >
                             <div className="pl-4 pr-2 text-gray-400">
                                 <Search size={20} />
                             </div>
                             <input
                                 className="flex-1 bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder:text-gray-400 text-base"
                                 placeholder={t('Hero.search')}
+                                value={tempSearch}
+                                onChange={(e) => setTempSearch(e.target.value)}
                             />
-                            <button className="px-6 h-full bg-primary hover:bg-primary-dark text-black font-bold rounded-xl transition-colors">
+                            <button
+                                type="submit"
+                                className="px-6 h-full bg-primary hover:bg-primary-dark text-black font-bold rounded-xl transition-colors"
+                            >
                                 {t('Hero.searchBtn')}
                             </button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -51,44 +81,62 @@ export default function FAQPage() {
             {/* Main Content Area */}
             <section className="w-full max-w-[1000px] px-4 py-10 flex flex-col gap-10">
 
-                {/* Filters (Chips) */}
+                {/* Filters (Chips) - Dữ liệu từ Strapi */}
                 <div className="flex gap-3 flex-wrap justify-center">
+                    <button
+                        onClick={() => setActiveCategory('all')}
+                        className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all border ${activeCategory === 'all'
+                            ? 'bg-primary border-primary text-black'
+                            : 'bg-white dark:bg-white/5 border-gray-200 dark:border-white/10 hover:border-primary'
+                            }`}
+                    >
+                        {t('Filters.all')}
+                    </button>
                     {categories.map((cat) => (
                         <button
-                            key={cat}
-                            className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all border ${cat === 'all'
+                            key={cat.id}
+                            onClick={() => setActiveCategory(cat.slug)}
+                            className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all border ${activeCategory === cat.slug
                                 ? 'bg-primary border-primary text-black'
                                 : 'bg-white dark:bg-white/5 border-gray-200 dark:border-white/10 hover:border-primary'
                                 }`}
                         >
-                            {t(`Filters.${cat}`)}
+                            {cat.title}
                         </button>
                     ))}
                 </div>
 
-                {/* Accordion List */}
+                {/* Accordion List - Dữ liệu động từ API */}
                 <div className="flex flex-col gap-4">
-                    {[1, 2].map((num) => (
-                        <details
-                            key={num}
-                            className="group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 overflow-hidden transition-all duration-300 open:ring-1 open:ring-primary/30"
-                            open={num === 1}
-                        >
-                            <summary className="flex cursor-pointer items-center justify-between gap-6 px-6 py-6 select-none hover:bg-gray-50 dark:hover:bg-white/5 transition-colors list-none">
-                                <h3 className="text-lg font-bold flex items-center gap-3 leading-tight">
-                                    <span className="text-primary"><Zap size={18} fill="currentColor" /></span>
-                                    {t(`Questions.q${num}.title`)}
-                                </h3>
-                                <ChevronDown className="text-gray-400 group-open:rotate-180 group-open:text-primary transition-transform duration-300" size={24} />
-                            </summary>
-                            <div className="px-6 pb-6 pt-0 ml-7">
-                                <div className="h-px w-full bg-gray-100 dark:bg-white/10 mb-5" />
-                                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                                    {t(`Questions.q${num}.answer`)}
-                                </p>
-                            </div>
-                        </details>
-                    ))}
+                    {isFaqLoading ? (
+                        <div className="text-center py-10 text-gray-400">Loading questions...</div>
+                    ) : faqs.length > 0 ? (
+                        faqs.map((faq, index) => (
+                            <details
+                                key={faq.id}
+                                className="group rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 overflow-hidden transition-all duration-300 open:ring-1 open:ring-primary/30"
+                                open={index === 0} // Mở câu đầu tiên
+                            >
+                                <summary className="flex cursor-pointer items-center justify-between gap-6 px-6 py-6 select-none hover:bg-gray-50 dark:hover:bg-white/5 transition-colors list-none">
+                                    <h3 className="text-lg font-bold flex items-center gap-3 leading-tight">
+                                        <span className="text-primary"><Zap size={18} fill="currentColor" /></span>
+                                        {faq.question}
+                                    </h3>
+                                    <ChevronDown className="text-gray-400 group-open:rotate-180 group-open:text-primary transition-transform duration-300" size={24} />
+                                </summary>
+                                <div className="px-6 pb-6 pt-0 ml-7">
+                                    <div className="h-px w-full bg-gray-100 dark:bg-white/10 mb-5" />
+                                    <div className="text-gray-600 dark:text-gray-400 leading-relaxed prose dark:prose-invert max-w-none">
+                                        <BlocksRenderer content={faq.answer} />
+                                    </div>
+                                </div>
+                            </details>
+                        ))
+                    ) : (
+                        <div className="text-center py-10 text-gray-500">
+                            No questions found for "{searchTerm}"
+                        </div>
+                    )}
                 </div>
 
                 {/* CTA Block */}

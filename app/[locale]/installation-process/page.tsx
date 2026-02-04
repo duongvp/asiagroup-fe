@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Head from 'next/head';
-import { ArrowRight, BadgeCheck, BrushCleaning, ChevronDown, CirclePlay, PiggyBank } from 'lucide-react';
+import { ArrowRight, BadgeCheck, BrushCleaning, Calendar, ChevronDown, CirclePlay, PiggyBank, Workflow } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export default function SolarInstallationProcess() {
@@ -116,11 +116,11 @@ export default function SolarInstallationProcess() {
                         <div
                             className="absolute inset-0 bg-cover bg-center"
                             style={{
-                                backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSbADYRiVzDKlS5neTDKxZDVjMa2YFJh6hvwGDEIAbwLrjmxY4st-Bph6MdoKccLnW_4nT7fS7aDgwSp8CUEL_GhMMj37KGJIcM4dm6ZXoTt9JaW7SHbL5vYKBzU1MN8NHmOnnasj-CxyWZA9R9XDdUK4x7t1NA0ul2rp9dI8B0R-Ub9rkbexoD39Xi6oOC2dtb693R2QtOV4S3rxcVFf8fzAtJiJRrtLQCb276VjvrZ0duz3cOS06btRzUAgwPGGykCeaCn7HPqE")`,
+                                backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSbADYRiVzDKlS5neTDKxZDVjMa2YFJh6hvwGDEIAbwLrjmxY4st-Bph6MdoKccLnW_4nT7fS7aDgwSp8CUEL_GhMMj37KGJIcM4dm6ZXoTt9JaW7SHbL5vYKBzU1MN8NHmOnnasj-CxyWZA9R9XDdUK4x7t1NA0ul2rp9dI8B0R-Ub9rkbexoD39Xi6oOC2dtb693R2QtOV4S3rxcVFf8fzAtJiJRrtLQCb276VjvrZ0duz3cOS06btRzUAgwPGGykCeaCn7HPqE")`,
                             }}
                         />
-                        <div className="absolute inset-0 bg-secondary-blue/80 mix-blend-multiply"></div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-secondary-blue via-secondary-blue/40 to-transparent"></div>
+                        {/* <div className="absolute inset-0 bg-secondary-blue/80 mix-blend-multiply"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-secondary-blue via-secondary-blue/40 to-transparent"></div> */}
                     </div>
 
                     <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
@@ -339,14 +339,14 @@ export default function SolarInstallationProcess() {
                             <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
                                 <div className="flex flex-col items-start">
                                     <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-                                        <span className="material-symbols-outlined text-white">calendar_month</span>
+                                        <Calendar size={18} className='text-white' />
                                     </div>
                                     <dt className="mt-4 font-semibold text-white">Fast Scheduling</dt>
                                     <dd className="mt-2 leading-7 text-gray-400">We value your time. Book a consultation within 24 hours.</dd>
                                 </div>
                                 <div className="flex flex-col items-start">
                                     <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-                                        <span className="material-symbols-outlined text-white">workspace_premium</span>
+                                        <Workflow size={18} className='text-white' />
                                     </div>
                                     <dt className="mt-4 font-semibold text-white">25-Year Warranty</dt>
                                     <dd className="mt-2 leading-7 text-gray-400">Peace of mind guaranteed on panels, labor, and performance.</dd>

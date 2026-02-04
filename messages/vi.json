@@ -11,7 +11,10 @@
     "our_company": "Về công ty",
     "benefits": "Lợi ích",
     "policies": "Chính sách",
-    "careers": "Tuyển dụng"
+    "careers": "Tuyển dụng",
+    "faq": "Hỏi đáp",
+    "contact": "Liên hệ",
+    "maintenance": "Bảo trì & Dịch vụ"
   },
 
   "Footer": {
@@ -606,5 +609,80 @@
     "uploadText": "Nhấp để tải lên hoặc kéo thả tệp",
     "coverLetter": "Thư giới thiệu",
     "submitBtn": "Gửi đơn ứng tuyển"
+  },
+
+  "Maintenance": {
+    "hero": {
+      "badge": "Dịch vụ Bảo trì Chuyên nghiệp",
+      "title1": "Tối ưu hóa",
+      "title2": "Hiệu suất Năng lượng",
+      "description": "Giữ cho hệ thống của bạn hoạt động ở hiệu suất cao nhất. Kỹ thuật viên của chúng tôi cung cấp dịch vụ kiểm tra, vệ sinh và sửa chữa toàn diện để đảm bảo lợi nhuận tối đa cho khoản đầu tư của bạn.",
+      "ctaPrimary": "Đặt lịch kiểm tra",
+      "ctaSecondary": "Xem bảng giá",
+      "statLabel": "Tăng cường hiệu suất"
+    },
+    "why": {
+      "subtitle": "Giá trị của sự chăm sóc",
+      "title": "Tại sao bảo trì lại quan trọng?",
+      "card1": {
+        "title": "Hiệu suất tối đa",
+        "desc": "Bụi bẩn có thể làm giảm tới 30% công suất. Vệ sinh định kỳ giúp duy trì sản lượng cao."
+      },
+      "card2": {
+        "title": "Kéo dài tuổi thọ",
+        "desc": "Chăm sóc phòng ngừa giúp phát hiện lỗi nhỏ trước khi chúng trở thành hư hỏng nặng."
+      },
+      "card3": {
+        "title": "Bảo vệ bảo hành",
+        "desc": "Nhiều nhà sản xuất yêu cầu bảo trì chuyên nghiệp để duy trì hiệu lực bảo hành."
+      },
+      "card4": {
+        "title": "An toàn là trên hết",
+        "desc": "Kiểm tra hệ thống điện giúp ngăn ngừa hỏa hoạn và đảm bảo nối đất an toàn."
+      }
+    },
+    "checklist": {
+      "title": "Danh mục dịch vụ toàn diện",
+      "desc": "Chúng tôi tuân thủ quy trình kiểm tra đa điểm nghiêm ngặt được thiết kế bởi các kỹ sư năng lượng mặt trời.",
+      "point1": "Kỹ thuật viên có chứng chỉ",
+      "point2": "Báo cáo hiệu suất chi tiết",
+      "point3": "Phụ tùng thay thế chính hãng",
+      "item1": {
+        "title": "Vệ sinh chuyên nghiệp",
+        "desc": "Loại bỏ các chất gây ô nhiễm bằng nước khử ion thân thiện với môi trường."
+      },
+      "item2": {
+        "title": "Kiểm tra hệ thống điện",
+        "desc": "Kiểm tra dây dẫn AC/DC, hiệu suất biến tần và tính toàn vẹn của kết nối."
+      },
+      "item3": {
+        "title": "Chụp ảnh nhiệt",
+        "desc": "Quét hồng ngoại nâng cao để phát hiện các 'điểm nóng' và vết nứt li ti."
+      },
+      "item4": {
+        "title": "Kiểm tra sức khỏe hệ thống",
+        "desc": "Đánh giá chẩn đoán toàn diện phần mềm giám sát và cấu trúc lắp đặt."
+      }
+    },
+    "form": {
+      "title": "Yêu cầu dịch vụ",
+      "desc": "Điền vào biểu mẫu để lên lịch bảo trì. Chuyên gia của chúng tôi sẽ liên hệ với bạn trong vòng 4 giờ làm việc.",
+      "phoneLabel": "Hỗ trợ khẩn cấp",
+      "hoursLabel": "Giờ làm việc",
+      "firstName": "Tên",
+      "lastName": "Họ",
+      "email": "Địa chỉ Email",
+      "serviceType": "Loại dịch vụ",
+      "preferredDate": "Ngày hẹn mong muốn",
+      "submit": "Gửi yêu cầu",
+      "successMessage": "Yêu cầu của bạn đã được gửi thành công!",
+      "errors": {
+        "firstName": "Vui lòng nhập tên của bạn",
+        "lastName": "Vui lòng nhập họ của bạn",
+        "email": "Địa chỉ email không hợp lệ",
+        "serviceType": "Vui lòng chọn một loại dịch vụ",
+        "preferredDate": "Vui lòng chọn ngày hẹn"
+      }
+    }
   }
 }

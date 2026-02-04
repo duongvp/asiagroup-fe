@@ -45,6 +45,7 @@ export default function Header() {
                 { name: t('residential'), href: `/${locale}/solutions/residential` },
                 { name: t('commercial'), href: `/${locale}/solutions/commercial` },
                 { name: t('installation_process'), href: `/${locale}/installation-process` },
+                { name: t('maintenance'), href: `/${locale}/maintenance` },
             ]
         },
         { name: t('projects'), href: `/${locale}/projects` },
@@ -56,8 +57,10 @@ export default function Header() {
                 { name: t('benefits'), href: `/${locale}/benefits` },
                 { name: t('policies'), href: `/${locale}/policies` },
                 { name: t('careers'), href: `/${locale}/careers` },
+                { name: t('faq'), href: `/${locale}/faqs` },
             ]
         },
+        { name: t('contact'), href: `/${locale}/contact` },
     ];
     // --------------------------------
 

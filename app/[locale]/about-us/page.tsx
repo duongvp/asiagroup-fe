@@ -137,7 +137,7 @@ export default function AboutUs() {
                     </section>
 
                     {/* Stats Section */}
-                    <section className="w-full bg-primary py-16 text-white">
+                    <section className="w-full bg-secondary-blue py-16 text-white">
                         <div className="max-w-[960px] mx-auto px-4 lg:px-40 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                             <div>
                                 <div className="text-4xl lg:text-5xl font-black mb-2">15+</div>
@@ -191,7 +191,7 @@ export default function AboutUs() {
                     {/* CTA Section */}
                     <section className="px-4 py-20 bg-white dark:bg-background-dark">
                         <div className="max-w-[960px] mx-auto rounded-2xl overflow-hidden relative">
-                            <div className="absolute inset-0 bg-primary opacity-95"></div>
+                            <div className="absolute inset-0 bg-secondary-blue opacity-95"></div>
                             <div
                                 className="absolute inset-0 opacity-20"
                                 style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQPHOq3KnHg2aenuZ4GhtX_rYX-FSE4Wbhu3aaEezjka4je0_SLF2SVhGhT1O4kaaSC1H47Jps_avVrozmHoqeeLtK4mQDtnwpVx8TlpwUb-TNzEVG5vWwdn05G2FEBMTOsj9oPLIuz2KhCeeWkyymqd0yGig12obl-XPHQdJQaysxfzcdRiPHyUpu0uEmpQ4bFPLZ3QTStGGhUCe04w7I8lnC-HpgKrDFQ2IbuDzADl9KobCVBB3qjC12Aq3QK2u8TvrBalGNueg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
