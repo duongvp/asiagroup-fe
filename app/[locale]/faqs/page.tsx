@@ -62,7 +62,7 @@ export default function FAQPage() {
                                 <Search size={20} />
                             </div>
                             <input
-                                className="flex-1 bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder:text-gray-400 text-base"
+                                className="flex-1 bg-transparent border-none outline-0 focus:ring-0 text-slate-900 dark:text-white placeholder:text-gray-400 text-base"
                                 placeholder={t('Hero.search')}
                                 value={tempSearch}
                                 onChange={(e) => setTempSearch(e.target.value)}

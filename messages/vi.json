@@ -554,6 +554,52 @@
         "feature1": "Sạc nhanh cấp độ 2",
         "feature2": "Tích hợp Smart Home",
         "feature3": "An toàn tuyệt đối"
+      },
+      "owners": {
+        "roof": {
+          "title": "Điện Mặt Trời Mái Nhà",
+          "desc": "Tối đa hóa không gian mái để tạo ra điện sạch mỗi ngày.",
+          "feature1": "Tấm pin hiệu suất cao",
+          "feature2": "Bảo hành 25 năm",
+          "feature3": "Lắp đặt trong 48h"
+        },
+        "storage": {
+          "title": "Lưu Trữ Pin Thông Minh",
+          "desc": "Sử dụng điện mặt trời vào ban đêm hoặc khi mất điện lưới.",
+          "feature1": "Công nghệ Lithium mới",
+          "feature2": "Dự phòng 100% điện",
+          "feature3": "Quản lý qua App"
+        },
+        "ev": {
+          "title": "Sạc Xe Điện Tại Nhà",
+          "desc": "Sạc xe điện bằng ánh nắng mặt trời - tiết kiệm nhiên liệu tối đa.",
+          "feature1": "Sạc nhanh Cấp độ 2",
+          "feature2": "Đồng bộ nhà thông minh",
+          "feature3": "An toàn nâng cao"
+        }
+      },
+      "newbuild": {
+        "roof": {
+          "title": "Tích Hợp Xây Mới",
+          "desc": "Giải pháp điện mặt trời được thiết kế ngay từ giai đoạn xây dựng.",
+          "feature1": "Thiết kế thẩm mỹ",
+          "feature2": "Lắp đặt theo tiến độ",
+          "feature3": "Tăng giá trị nhà"
+        },
+        "storage": {
+          "title": "Hệ Thống Hybrid 15kWh",
+          "desc": "Giải pháp lưu trữ công suất lớn cho sự độc lập năng lượng hoàn toàn.",
+          "feature1": "Mở rộng linh hoạt",
+          "feature2": "Tối ưu tự tiêu thụ",
+          "feature3": "Vận hành êm ái"
+        },
+        "ev": {
+          "title": "Hạ Tầng Thông Minh",
+          "desc": "Điểm sạc được đi dây sẵn, tích hợp vào lưới điện nhà mới.",
+          "feature1": "Đi dây âm tường",
+          "feature2": "Cân bằng tải",
+          "feature3": "Công nghệ tương lai"
+        }
       }
     },
     "Savings": {
@@ -673,6 +719,7 @@
       "lastName": "Họ",
       "email": "Địa chỉ Email",
       "serviceType": "Loại dịch vụ",
+      "servicePlaceholder": "Chọn một dịch vụ...",
       "preferredDate": "Ngày hẹn mong muốn",
       "submit": "Gửi yêu cầu",
       "successMessage": "Yêu cầu của bạn đã được gửi thành công!",

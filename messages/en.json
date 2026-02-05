@@ -556,6 +556,52 @@
         "feature1": "Level 2 Fast Charging",
         "feature2": "Smart Home Sync",
         "feature3": "Advanced Safety"
+      },
+      "owners": {
+        "roof": {
+          "title": "Rooftop Solar",
+          "desc": "Maximize your roof space to generate clean electricity every day.",
+          "feature1": "High-efficiency panels",
+          "feature2": "25-year warranty",
+          "feature3": "48h installation"
+        },
+        "storage": {
+          "title": "Smart Battery Storage",
+          "desc": "Use solar power at night or during grid outages with smart storage.",
+          "feature1": "Latest Lithium Tech",
+          "feature2": "100% Backup Power",
+          "feature3": "Mobile App Control"
+        },
+        "ev": {
+          "title": "Home EV Charging",
+          "desc": "Charge your electric vehicle with sunshine - the ultimate fuel savings.",
+          "feature1": "Level 2 Fast Charging",
+          "feature2": "Smart Home Sync",
+          "feature3": "Advanced Safety"
+        }
+      },
+      "newbuild": {
+        "roof": {
+          "title": "Solar Integration",
+          "desc": "Perfectly integrated solar solutions designed during the construction phase.",
+          "feature1": "Aesthetic design",
+          "feature2": "Builder-ready install",
+          "feature3": "Increased property value"
+        },
+        "storage": {
+          "title": "15kWh Hybrid System",
+          "desc": "High-capacity storage solutions for complete energy independence.",
+          "feature1": "Modular expansion",
+          "feature2": "Self-consumption mode",
+          "feature3": "Silent operation"
+        },
+        "ev": {
+          "title": "Smart Infrastructure",
+          "desc": "Pre-wired charging points integrated into your new home's electrical grid.",
+          "feature1": "Hidden cabling",
+          "feature2": "Load balancing",
+          "feature3": "Future-proof tech"
+        }
       }
     },
     "Savings": {

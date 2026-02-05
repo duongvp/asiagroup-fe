@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
@@ -8,14 +9,20 @@ import {
     CheckCircle2, Sun, Battery,
     TrendingUp
 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function ResidentialPage() {
     const t = useTranslations('Residential');
-    const [activeTab, setActiveTab] = useState('owners');
+    const [activeTab, setActiveTab] = useState<'owners' | 'newbuild'>('owners');
+
+    const solutionItems = [
+        { icon: <SolarPanel />, key: 'roof' },
+        { icon: <Battery />, key: 'storage' },
+        { icon: <Zap />, key: 'ev' }
+    ];
 
     return (
-        <div className="relative flex min-h-screen w-full flex-col bg-[#f6f8f6] dark:bg-[#102210] text-slate-900 dark:text-white font-sans antialiased">
-
+        <div className="relative flex w-full flex-col bg-[#f6f8f6] dark:bg-[#102210] text-slate-900 dark:text-white font-sans antialiased">
             {/* Hero Section */}
             <section className="w-full px-4 py-6 md:px-10 md:py-8 max-w-7xl mx-auto">
                 <div
@@ -40,9 +47,9 @@ export default function ResidentialPage() {
                         <button className="h-14 px-10 rounded-full bg-[#13ec13] text-[#102210] font-black text-base hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(19,236,19,0.4)]">
                             {t('Hero.btnQuote')}
                         </button>
-                        <button className="h-14 px-10 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold text-base hover:bg-white/20 transition-all">
+                        <Link href="/installation-process" className="h-14 px-10 flex flex-col items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold text-base hover:bg-white/20 transition-all">
                             {t('Hero.btnWork')}
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -50,25 +57,49 @@ export default function ResidentialPage() {
             {/* Residential Focus Switcher */}
             <section className="w-full px-4 py-8 max-w-4xl mx-auto">
                 <div className="flex justify-center">
-                    <div className="inline-flex h-14 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 p-1.5 w-full">
+                    <div className="relative inline-flex h-14 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 p-1.5 w-full overflow-hidden">
+
+                        {/* Nút Owners */}
                         <button
                             onClick={() => setActiveTab('owners')}
-                            className={`flex-1 flex items-center justify-center gap-2 h-full rounded-full transition-all font-bold text-sm ${activeTab === 'owners' ? 'bg-white dark:bg-slate-700 text-[#13ec13] shadow-sm' : 'text-slate-500'}`}
+                            className={`relative flex-1 flex items-center justify-center gap-2 h-full rounded-full z-10 transition-colors duration-300 font-bold text-sm ${activeTab === 'owners' ? 'text-[#13ec13]' : 'text-slate-500'
+                                }`}
                         >
                             <Home size={18} /> {t('Switcher.homeowners')}
+
+                            {/* Phần nền trắng trượt */}
+                            {activeTab === 'owners' && (
+                                <motion.div
+                                    layoutId="activeTabBackground"
+                                    className="absolute inset-0 bg-white dark:bg-slate-700 rounded-full shadow-md -z-10"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
                         </button>
+
+                        {/* Nút New Build */}
                         <button
                             onClick={() => setActiveTab('newbuild')}
-                            className={`flex-1 flex items-center justify-center gap-2 h-full rounded-full transition-all font-bold text-sm ${activeTab === 'newbuild' ? 'bg-white dark:bg-slate-700 text-[#13ec13] shadow-sm' : 'text-slate-500'}`}
+                            className={`relative flex-1 flex items-center justify-center gap-2 h-full rounded-full z-10 transition-colors duration-300 font-bold text-sm ${activeTab === 'newbuild' ? 'text-[#13ec13]' : 'text-slate-500'
+                                }`}
                         >
                             <Battery size={18} /> {t('Switcher.newbuild')}
+
+                            {/* Phần nền trắng trượt */}
+                            {activeTab === 'newbuild' && (
+                                <motion.div
+                                    layoutId="activeTabBackground"
+                                    className="absolute inset-0 bg-white dark:bg-slate-700 rounded-full shadow-md -z-10"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
                         </button>
                     </div>
                 </div>
             </section>
 
             {/* Home Benefits Grid */}
-            <section className="w-full px-4 py-16 max-w-7xl mx-auto">
+            {/* <section className="w-full px-4 py-16 max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">{t('Solutions.title')}</h2>
                     <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
@@ -100,6 +131,41 @@ export default function ResidentialPage() {
                             </ul>
                         </div>
                     ))}
+                </div>
+            </section> */}
+
+            {/* Solutions Grid */}
+            <section className="w-full px-4 py-16 max-w-7xl mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">{t('Solutions.title')}</h2>
+                    <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                        {t('Solutions.desc')}
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {solutionItems.map((item, idx) => {
+                        const baseKey = `Solutions.${activeTab}.${item.key}`;
+                        return (
+                            <div key={idx} className="bg-white dark:bg-slate-900 p-10 rounded-[2rem] border border-slate-100 dark:border-slate-800 shadow-xl hover:border-[#13ec13]/30 transition-all group animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                <div className="w-14 h-14 rounded-2xl bg-[#13ec13]/10 flex items-center justify-center mb-8 text-[#13ec13] group-hover:bg-[#13ec13] group-hover:text-white transition-all">
+                                    {React.cloneElement(item.icon, { size: 32 })}
+                                </div>
+                                <h3 className="text-2xl font-black mb-4">{t(`${baseKey}.title`)}</h3>
+                                <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-6 min-h-[60px]">
+                                    {t(`${baseKey}.desc`)}
+                                </p>
+                                <ul className="space-y-3">
+                                    {[1, 2, 3].map(i => (
+                                        <li key={i} className="flex items-center gap-2 text-sm font-bold text-slate-700 dark:text-slate-300">
+                                            <CheckCircle2 size={16} className="text-[#13ec13]" />
+                                            {t(`${baseKey}.feature${i}`)}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        );
+                    })}
                 </div>
             </section>
 
