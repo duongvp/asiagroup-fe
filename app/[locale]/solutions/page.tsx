@@ -9,6 +9,51 @@ export default function SolarTech() {
     const [email, setEmail] = useState('');
     const t = useTranslations('Solutions');
 
+    const RESIDENTIAL_PACKAGES = [
+        {
+            id: 'starter',
+            name: 'Starter System',
+            tag: 'Basic',
+            price: '$12k',
+            features: [
+                "4kW System Capacity",
+                "10-12 High-Efficiency Panels",
+                "Standard Inverter",
+                "25-Year Performance Warranty"
+            ],
+            buttonText: 'View Details',
+            isPopular: false
+        },
+        {
+            id: 'family',
+            name: 'Family Plus',
+            tag: 'Most Popular',
+            price: '$18k',
+            features: [
+                "8kW System Capacity",
+                "20-24 Premium Panels",
+                "Micro-Inverter Upgrade",
+                "Smart Monitoring App"
+            ],
+            buttonText: 'View Details',
+            isPopular: true
+        },
+        {
+            id: 'premium',
+            name: 'Energy Independence',
+            tag: 'Storage Included',
+            price: '$25k',
+            features: [
+                "10kW+ System Capacity",
+                "13.5 kWh Battery Storage",
+                "Off-Grid Capabilities",
+                "EV Charger Integration"
+            ],
+            buttonText: 'View Details',
+            isPopular: false
+        }
+    ];
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         alert(`Thank you! We'll contact you at ${email}`);
@@ -92,99 +137,42 @@ export default function SolarTech() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {/* Starter Card */}
-                            <div className="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-[#152615] p-8 shadow-sm hover:shadow-lg transition-shadow relative overflow-hidden">
-                                <div className="mb-6">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <h3 className="text-xl font-bold text-text-main dark:text-white">Starter System</h3>
-                                        <span className="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-bold text-gray-600 dark:text-gray-300">Basic</span>
-                                    </div>
-                                    <div className="flex items-baseline gap-1">
-                                        <span className="text-4xl font-black text-text-main dark:text-white">$12k</span>
-                                        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/ estimated net cost</span>
-                                    </div>
-                                    <p className="text-xs text-green-600 dark:text-green-400 mt-1 font-medium">*After federal tax incentives</p>
-                                </div>
-                                <div className="flex-1 space-y-4 mb-8">
-                                    {[
-                                        "4kW System Capacity",
-                                        "10-12 High-Efficiency Panels",
-                                        "Standard Inverter",
-                                        "25-Year Performance Warranty"
-                                    ].map((feature, index) => (
-                                        <div key={index} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-200">
-                                            <BadgeCheck size={20} className='text-primary' />
-                                            {feature}
+                            {RESIDENTIAL_PACKAGES.map((pkg) => (
+                                <div
+                                    key={pkg.id}
+                                    className={`flex flex-col rounded-2xl border p-8 shadow-sm transition-all relative overflow-hidden order-gray-200 dark:border-gray-700 bg-surface-light dark:bg-[#152615] hover:shadow-lg`}
+                                >
+                                    <div className="mb-6">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <h3 className="text-xl font-bold text-text-main dark:text-white">{pkg.name}</h3>
+                                            <span className={`rounded-full px-3 py-1 text-xs font-bold ${pkg.isPopular
+                                                ? 'bg-primary text-black'
+                                                : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'
+                                                }`}>
+                                                {pkg.tag}
+                                            </span>
                                         </div>
-                                    ))}
-                                </div>
-                                <button className="w-full rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-4 py-3 text-sm font-bold text-text-main dark:text-white transition-colors">
-                                    View Details
-                                </button>
-                            </div>
+                                        <div className="flex items-baseline gap-1">
+                                            <span className="text-4xl font-black text-text-main dark:text-white">{pkg.price}</span>
+                                            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/ estimated net cost</span>
+                                        </div>
+                                        <p className="text-xs text-green-600 dark:text-green-400 mt-1 font-medium">*After federal tax incentives</p>
+                                    </div>
 
-                            {/* Family Plus Card (Highlighted) */}
-                            <div className="flex flex-col rounded-2xl border-2 border-primary bg-white dark:bg-[#1a2e1a] p-8 shadow-xl relative overflow-hidden transform md:-translate-y-4">
-                                <div className="absolute top-0 inset-x-0 h-1 bg-primary"></div>
-                                <div className="mb-6">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <h3 className="text-xl font-bold text-text-main dark:text-white">Family Plus</h3>
-                                        <span className="rounded-full bg-primary px-3 py-1 text-xs font-bold text-black">Most Popular</span>
+                                    <div className="flex-1 space-y-4 mb-8">
+                                        {pkg.features.map((feature, idx) => (
+                                            <div key={idx} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-200">
+                                                <BadgeCheck size={20} className='text-primary' />
+                                                {feature}
+                                            </div>
+                                        ))}
                                     </div>
-                                    <div className="flex items-baseline gap-1">
-                                        <span className="text-4xl font-black text-text-main dark:text-white">$18k</span>
-                                        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/ estimated net cost</span>
-                                    </div>
-                                    <p className="text-xs text-green-600 dark:text-green-400 mt-1 font-medium">*After federal tax incentives</p>
-                                </div>
-                                <div className="flex-1 space-y-4 mb-8">
-                                    {[
-                                        "8kW System Capacity",
-                                        "20-24 Premium Panels",
-                                        "Micro-Inverter Upgrade",
-                                        "Smart Monitoring App"
-                                    ].map((feature, index) => (
-                                        <div key={index} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-200">
-                                            <BadgeCheck size={20} className='text-primary' />
-                                            {feature}
-                                        </div>
-                                    ))}
-                                </div>
-                                <button className="w-full rounded-lg bg-primary hover:bg-green-400 px-4 py-3 text-sm font-bold text-text-main transition-colors shadow-lg shadow-green-500/20">
-                                    Configure System
-                                </button>
-                            </div>
 
-                            {/* Premium Card */}
-                            <div className="flex flex-col rounded-2xl border border-gray-200 dark:border-gray-700 bg-surface-light dark:bg-[#152615] p-8 shadow-sm hover:shadow-lg transition-shadow relative overflow-hidden">
-                                <div className="mb-6">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <h3 className="text-xl font-bold text-text-main dark:text-white">Energy Independence</h3>
-                                        <span className="rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-bold text-gray-600 dark:text-gray-300">Storage Included</span>
-                                    </div>
-                                    <div className="flex items-baseline gap-1">
-                                        <span className="text-4xl font-black text-text-main dark:text-white">$25k</span>
-                                        <span className="text-sm font-medium text-gray-500 dark:text-gray-400">/ estimated net cost</span>
-                                    </div>
-                                    <p className="text-xs text-green-600 dark:text-green-400 mt-1 font-medium">*After federal tax incentives</p>
+                                    <button className={`w-full rounded-lg px-4 py-3 text-sm font-bold transition-all bg-primary hover:bg-green-400 dark:bg-gray-700 dark:hover:bg-gray-600  text-text-main dark:text-white cursor-pointer`}>
+                                        {pkg.buttonText}
+                                    </button>
                                 </div>
-                                <div className="flex-1 space-y-4 mb-8">
-                                    {[
-                                        "10kW+ System Capacity",
-                                        "13.5 kWh Battery Storage",
-                                        "Off-Grid Capabilities",
-                                        "EV Charger Integration"
-                                    ].map((feature, index) => (
-                                        <div key={index} className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-200">
-                                            <BadgeCheck size={20} className='text-primary' />
-                                            {feature}
-                                        </div>
-                                    ))}
-                                </div>
-                                <button className="w-full rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-4 py-3 text-sm font-bold text-text-main dark:text-white transition-colors">
-                                    View Details
-                                </button>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </section>

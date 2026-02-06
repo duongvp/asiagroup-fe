@@ -1,15 +1,60 @@
 'use client';
 
-import React from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Mail, Phone, MapPin, Share2, Globe, ThumbsUp, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Share2, Globe, ThumbsUp, Send, Loader2 } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+
+// Schema Validation
+const contactSchema = z.object({
+    full_name: z.string().min(1, "Required"),
+    email: z.string().email("Invalid email"),
+    phone_number: z.string().min(1, "Required"),
+    property_type: z.string(),
+    message: z.string().min(1, "Required"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
+console.log("process.env.NEXT_PUBLIC_API_URL", process.env.NEXT_PUBLIC_API_URL);
 
 export default function ContactPage() {
     const t = useTranslations('Contact');
+    const [isPending, setIsPending] = useState(false);
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm<ContactFormData>({
+        resolver: zodResolver(contactSchema),
+    });
+
+    const onSubmit = async (values: ContactFormData) => {
+        setIsPending(true);
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/contacts`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data: values }),
+            });
+            if (response.ok) {
+                alert("Success!");
+                reset();
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsPending(false);
+        }
+    };
 
     return (
         <main className="flex-grow flex flex-col items-center w-full bg-background-light dark:bg-background-dark">
-            {/* Header Section */}
+            {/* Header Section - GIỮ NGUYÊN */}
             <section className="w-full px-4 py-12 md:py-20 bg-white dark:bg-white/5 border-b border-gray-100 dark:border-white/5">
                 <div className="max-w-[1280px] mx-auto text-center">
                     <h1 className="text-4xl md:text-5xl font-black text-foreground mb-4">
@@ -23,7 +68,7 @@ export default function ContactPage() {
 
             <section className="w-full px-4 py-16 md:px-10 max-w-[1280px] mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    {/* Contact Information */}
+                    {/* Contact Information - GIỮ NGUYÊN */}
                     <div className="flex flex-col gap-10">
                         <div className="flex flex-col gap-8">
                             <div className="flex items-start gap-4">
@@ -68,7 +113,6 @@ export default function ContactPage() {
                             </div>
                         </div>
 
-                        {/* Map Placeholder */}
                         <div className="w-full h-72 rounded-3xl bg-gray-200 dark:bg-white/5 relative overflow-hidden group">
                             <div
                                 className="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-700"
@@ -84,33 +128,47 @@ export default function ContactPage() {
                         </div>
                     </div>
 
-                    {/* Contact Form */}
+                    {/* Contact Form - KHÔI PHỤC UI GỐC */}
                     <div className="bg-white dark:bg-white/5 p-8 md:p-12 rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-2xl relative">
                         <div className="mb-8">
                             <h2 className="text-3xl font-bold mb-2">{t('Form.title')}</h2>
                             <p className="text-gray-500">{t('Form.subtitle')}</p>
                         </div>
-                        <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+                        <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="flex flex-col gap-2">
                                     <label className="text-sm font-bold ml-1">{t('Form.labels.name')}</label>
-                                    <input className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none" type="text" placeholder="John Doe" />
+                                    <input
+                                        {...register('full_name')}
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none"
+                                        type="text" placeholder="John Doe"
+                                    />
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <label className="text-sm font-bold ml-1">{t('Form.labels.email')}</label>
-                                    <input className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none" type="email" placeholder="john@example.com" />
+                                    <input
+                                        {...register('email')}
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none"
+                                        type="email" placeholder="john@example.com"
+                                    />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="flex flex-col gap-2">
                                     <label className="text-sm font-bold ml-1">{t('Form.labels.phone')}</label>
-                                    <input className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none" type="tel" placeholder="(555) 000-0000" />
+                                    <input
+                                        {...register('phone_number')}
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none"
+                                        type="tel" placeholder="(555) 000-0000"
+                                    />
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <label className="text-sm font-bold ml-1">{t('Form.labels.type')}</label>
-                                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark focus:ring-2 focus:ring-primary outline-none">
-                                        <option value="home">{t('Form.types.home')}</option>
+                                    <select
+                                        {...register('property_type')}
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark focus:ring-2 focus:ring-primary outline-none">
+                                        <option value="residential">{t('Form.types.home')}</option>
                                         <option value="business">{t('Form.types.business')}</option>
                                         <option value="industrial">{t('Form.types.industrial')}</option>
                                     </select>
@@ -119,11 +177,19 @@ export default function ContactPage() {
 
                             <div className="flex flex-col gap-2">
                                 <label className="text-sm font-bold ml-1">{t('Form.labels.message')}</label>
-                                <textarea className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none resize-none" rows={4} placeholder={t('Form.placeholder')}></textarea>
+                                <textarea
+                                    {...register('message')}
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none resize-none"
+                                    rows={4} placeholder={t('Form.placeholder')}
+                                ></textarea>
                             </div>
 
-                            <button className="w-full py-4 bg-primary hover:bg-primary-dark text-black font-bold rounded-xl transition-all shadow-lg shadow-primary/20 text-lg flex items-center justify-center gap-2">
-                                <Send size={20} />
+                            <button
+                                type="submit"
+                                disabled={isPending}
+                                className="w-full py-4 bg-primary hover:bg-primary-dark text-black font-bold rounded-xl transition-all shadow-lg shadow-primary/20 text-lg flex items-center justify-center gap-2"
+                            >
+                                {isPending ? <Loader2 className="animate-spin" size={20} /> : <Send size={20} />}
                                 {t('Form.button')}
                             </button>
                             <p className="text-center text-xs text-gray-400">

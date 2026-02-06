@@ -57,6 +57,7 @@ export default function Header() {
                 { name: t('benefits'), href: `/${locale}/benefits` },
                 { name: t('policies'), href: `/${locale}/policies` },
                 { name: t('careers'), href: `/${locale}/careers` },
+                { name: t('customers'), href: `/${locale}/customers` },
                 { name: t('faq'), href: `/${locale}/faqs` },
             ]
         },
