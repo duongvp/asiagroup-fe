@@ -70,7 +70,6 @@ export default function MaintenancePage() {
     return (
         <main className="flex flex-col w-full items-center bg-background-light dark:bg-background-dark text-[#111811] dark:text-white transition-colors duration-200">
             {/* Component quản lý Toast */}
-            <Toaster />
 
             {/* 1. Hero Section */}
             <section className="w-full relative px-6 py-12 md:py-20 lg:py-24 max-w-[1280px]">

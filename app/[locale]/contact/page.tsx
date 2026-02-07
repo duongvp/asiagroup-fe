@@ -6,19 +6,26 @@ import { Mail, Phone, MapPin, Share2, Globe, ThumbsUp, Send, Loader2 } from 'luc
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import toast from 'react-hot-toast';
 
 // Schema Validation
 const contactSchema = z.object({
-    full_name: z.string().min(1, "Required"),
-    email: z.string().email("Invalid email"),
-    phone_number: z.string().min(1, "Required"),
+    full_name: z.string().min(1, 'Full name is required'),
+    email: z.string().email('Invalid email address'),
+    phone_number: z.string().min(1, 'Phone number is required'),
     property_type: z.string(),
-    message: z.string().min(1, "Required"),
+    message: z.string(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
-console.log("process.env.NEXT_PUBLIC_API_URL", process.env.NEXT_PUBLIC_API_URL);
+const inputClass = (hasError?: boolean) =>
+    `w-full px-4 py-3 rounded-xl border bg-transparent outline-none transition
+   ${hasError
+        ? 'border-red-500 focus:ring-2 focus:ring-red-500'
+        : 'border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-primary'
+    }`;
+
 
 export default function ContactPage() {
     const t = useTranslations('Contact');
@@ -42,10 +49,11 @@ export default function ContactPage() {
                 body: JSON.stringify({ data: values }),
             });
             if (response.ok) {
-                alert("Success!");
+                toast.success(t('Form.success'));
                 reset();
             }
         } catch (error) {
+            toast.error(t('Form.error'));
             console.error(error);
         } finally {
             setIsPending(false);
@@ -135,39 +143,112 @@ export default function ContactPage() {
                             <p className="text-gray-500">{t('Form.subtitle')}</p>
                         </div>
                         <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+                            {/* ===== Name + Email ===== */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* Full name */}
                                 <div className="flex flex-col gap-2">
-                                    <label className="text-sm font-bold ml-1">{t('Form.labels.name')}</label>
+                                    <label
+                                        htmlFor="full_name"
+                                        className="text-sm font-bold ml-1"
+                                    >
+                                        {t('Form.labels.name')}
+                                    </label>
+
                                     <input
+                                        id="full_name"
+                                        type="text"
+                                        placeholder="John Doe"
                                         {...register('full_name')}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none"
-                                        type="text" placeholder="John Doe"
+                                        className={inputClass(!!errors.full_name)}
+                                        aria-invalid={!!errors.full_name}
+                                        aria-describedby={errors.full_name ? 'full_name-error' : undefined}
                                     />
+
+                                    {errors.full_name && (
+                                        <p
+                                            id="full_name-error"
+                                            className="text-sm text-red-500 font-bold ml-1"
+                                        >
+                                            {errors.full_name.message}
+                                        </p>
+                                    )}
                                 </div>
+
+                                {/* Email */}
                                 <div className="flex flex-col gap-2">
-                                    <label className="text-sm font-bold ml-1">{t('Form.labels.email')}</label>
+                                    <label
+                                        htmlFor="email"
+                                        className="text-sm font-bold ml-1"
+                                    >
+                                        {t('Form.labels.email')}
+                                    </label>
+
                                     <input
+                                        id="email"
+                                        type="email"
+                                        placeholder="john@example.com"
                                         {...register('email')}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none"
-                                        type="email" placeholder="john@example.com"
+                                        className={inputClass(!!errors.email)}
+                                        aria-invalid={!!errors.email}
+                                        aria-describedby={errors.email ? 'email-error' : undefined}
                                     />
+
+                                    {errors.email && (
+                                        <p
+                                            id="email-error"
+                                            className="text-sm text-red-500 font-bold ml-1"
+                                        >
+                                            {errors.email.message}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
 
+                            {/* ===== Phone + Property Type ===== */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* Phone */}
                                 <div className="flex flex-col gap-2">
-                                    <label className="text-sm font-bold ml-1">{t('Form.labels.phone')}</label>
+                                    <label
+                                        htmlFor="phone_number"
+                                        className="text-sm font-bold ml-1"
+                                    >
+                                        {t('Form.labels.phone')}
+                                    </label>
+
                                     <input
+                                        id="phone_number"
+                                        type="tel"
+                                        placeholder="(555) 000-0000"
                                         {...register('phone_number')}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none"
-                                        type="tel" placeholder="(555) 000-0000"
+                                        className={inputClass(!!errors.phone_number)}
+                                        aria-invalid={!!errors.phone_number}
+                                        aria-describedby={errors.phone_number ? 'phone-error' : undefined}
                                     />
+
+                                    {errors.phone_number && (
+                                        <p
+                                            id="phone-error"
+                                            className="text-sm text-red-500 font-bold ml-1"
+                                        >
+                                            {errors.phone_number.message}
+                                        </p>
+                                    )}
                                 </div>
+
+                                {/* Property type */}
                                 <div className="flex flex-col gap-2">
-                                    <label className="text-sm font-bold ml-1">{t('Form.labels.type')}</label>
+                                    <label
+                                        htmlFor="property_type"
+                                        className="text-sm font-bold ml-1"
+                                    >
+                                        {t('Form.labels.type')}
+                                    </label>
+
                                     <select
+                                        id="property_type"
                                         {...register('property_type')}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark focus:ring-2 focus:ring-primary outline-none">
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark focus:ring-2 focus:ring-primary outline-none"
+                                    >
                                         <option value="residential">{t('Form.types.home')}</option>
                                         <option value="business">{t('Form.types.business')}</option>
                                         <option value="industrial">{t('Form.types.industrial')}</option>
@@ -175,27 +256,54 @@ export default function ContactPage() {
                                 </div>
                             </div>
 
+                            {/* ===== Message ===== */}
                             <div className="flex flex-col gap-2">
-                                <label className="text-sm font-bold ml-1">{t('Form.labels.message')}</label>
+                                <label
+                                    htmlFor="message"
+                                    className="text-sm font-bold ml-1"
+                                >
+                                    {t('Form.labels.message')}
+                                </label>
+
                                 <textarea
+                                    id="message"
+                                    rows={4}
+                                    placeholder={t('Form.placeholder')}
                                     {...register('message')}
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-transparent focus:ring-2 focus:ring-primary outline-none resize-none"
-                                    rows={4} placeholder={t('Form.placeholder')}
-                                ></textarea>
+                                    className={inputClass(!!errors.message) + ' resize-none'}
+                                    aria-invalid={!!errors.message}
+                                    aria-describedby={errors.message ? 'message-error' : undefined}
+                                />
+
+                                {errors.message && (
+                                    <p
+                                        id="message-error"
+                                        className="text-sm text-red-500 ml-1"
+                                    >
+                                        {errors.message.message}
+                                    </p>
+                                )}
                             </div>
 
+                            {/* ===== Submit ===== */}
                             <button
                                 type="submit"
                                 disabled={isPending}
-                                className="w-full py-4 bg-primary hover:bg-primary-dark text-black font-bold rounded-xl transition-all shadow-lg shadow-primary/20 text-lg flex items-center justify-center gap-2"
+                                className="w-full py-4 bg-primary hover:bg-primary-dark cursor-pointer text-black font-bold rounded-xl transition-all shadow-lg shadow-primary/20 text-lg flex items-center justify-center gap-2"
                             >
-                                {isPending ? <Loader2 className="animate-spin" size={20} /> : <Send size={20} />}
+                                {isPending ? (
+                                    <Loader2 className="animate-spin" size={20} />
+                                ) : (
+                                    <Send size={20} />
+                                )}
                                 {t('Form.button')}
                             </button>
+
                             <p className="text-center text-xs text-gray-400">
                                 {t('Form.privacy')}
                             </p>
                         </form>
+
                     </div>
                 </div>
             </section>

@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Name Wheel</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: #333;
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        padding: 30px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        color: #2575fc;
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .subtitle {
+        color: #666;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+
+      .app-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+
+      .wheel-section {
+        flex: 1;
+        min-width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .wheel-container {
+        position: relative;
+        width: 350px;
+        height: 350px;
+        margin-bottom: 20px;
+      }
+
+      #wheel {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        border: 10px solid #6a11cb;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        transition: transform 5s cubic-bezier(0.17, 0.67, 0.24, 0.99);
+      }
+
+      .wheel-item {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        transform-origin: 100% 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+      }
+
+      .wheel-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        background-color: #2575fc;
+        border-radius: 50%;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.8rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .wheel-pointer {
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 60px;
+        z-index: 20;
+      }
+
+      .wheel-pointer i {
+        color: #ff4757;
+        font-size: 60px;
+        filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
+      }
+
+      .controls-section {
+        flex: 1;
+        min-width: 350px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-section {
+        background-color: #f8f9fa;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      h2 {
+        color: #6a11cb;
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+      }
+
+      .input-group {
+        display: flex;
+        margin-bottom: 15px;
+      }
+
+      input {
+        flex: 1;
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 10px 0 0 10px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+      }
+
+      input:focus {
+        border-color: #6a11cb;
+      }
+
+      button {
+        padding: 15px 25px;
+        background-color: #6a11cb;
+        color: white;
+        border: none;
+        border-radius: 0 10px 10px 0;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: all 0.3s;
+      }
+
+      button:hover {
+        background-color: #5a0db9;
+        transform: translateY(-2px);
+      }
+
+      .button-group {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .spin-button {
+        background-color: #ff4757;
+        border-radius: 10px;
+        padding: 18px 30px;
+        font-size: 1.2rem;
+      }
+
+      .spin-button:hover {
+        background-color: #ff3742;
+      }
+
+      .secondary-button {
+        background-color: #2575fc;
+        border-radius: 10px;
+      }
+
+      .secondary-button:hover {
+        background-color: #1c6ae4;
+      }
+
+      .names-list {
+        background-color: #f8f9fa;
+        padding: 25px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .names-container {
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        border: 1px solid #eee;
+      }
+
+      .name-item {
+        padding: 12px 15px;
+        background-color: #e9ecef;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .name-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .delete-btn {
+        background-color: #ff6b81;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 0.9rem;
+      }
+
+      .delete-btn:hover {
+        background-color: #ff4757;
+      }
+
+      .result-section {
+        background-color: #f8f9fa;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .winner {
+        font-size: 2.5rem;
+        color: #6a11cb;
+        font-weight: bold;
+        margin: 20px 0;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .winner i {
+        margin-right: 15px;
+        color: #ffd700;
+      }
+
+      .history {
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #666;
+      }
+
+      .history-list {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .history-item {
+        background-color: #e9ecef;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      footer {
+        margin-top: 30px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .app-container {
+          flex-direction: column;
+        }
+
+        .wheel-container {
+          width: 300px;
+          height: 300px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-dharmachakra"></i> Random Name Wheel</h1>
+        <p class="subtitle">Add names, spin the wheel, and let chance decide!</p>
+      </header>
+
+      <div class="app-container">
+        <div class="wheel-section">
+          <div class="wheel-container">
+            <div id="wheel"></div>
+            <div class="wheel-center">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="wheel-pointer">
+              <i class="fas fa-caret-down"></i>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button id="spinButton" class="spin-button">
+              <i class="fas fa-redo-alt"></i> SPIN THE WHEEL
+            </button>
+            <button id="resetButton" class="secondary-button">
+              <i class="fas fa-undo"></i> RESET WHEEL
+            </button>
+          </div>
+        </div>
+
+        <div class="controls-section">
+          <div class="input-section">
+            <h2>Add Names</h2>
+            <div class="input-group">
+              <input type="text" id="nameInput" placeholder="Enter a name..." />
+              <button id="addButton">ADD</button>
+            </div>
+            <p>Press Enter or click ADD to include the name in the wheel</p>
+          </div>
+
+          <div class="names-list">
+            <h2>Names on the Wheel <span id="nameCount">(0)</span></h2>
+            <div class="names-container" id="namesContainer">
+              <!-- Names will appear here -->
+              <div class="empty-message">No names added yet. Add some names to get started!</div>
+            </div>
+          </div>
+
+          <div class="result-section">
+            <h2>Winner</h2>
+            <div class="winner" id="winnerDisplay">
+              <i class="fas fa-crown"></i>
+              <span>Spin the wheel to find out!</span>
+            </div>
+
+            <div class="history">
+              <h3>Recent Winners</h3>
+              <div class="history-list" id="historyList">
+                <!-- History will appear here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        Random Name Wheel &copy; 2023 | Made with
+        <i class="fas fa-heart" style="color: #ff4757"></i>
+      </p>
+    </footer>
+
+    <script>
+      // Initialize variables
+      let names = [];
+      let colors = [
+        "#FF6B6B",
+        "#4ECDC4",
+        "#FFD166",
+        "#06D6A0",
+        "#118AB2",
+        "#EF476F",
+        "#073B4C",
+        "#7209B7",
+        "#3A86FF",
+        "#FB5607",
+      ];
+      let isSpinning = false;
+      let spinTimeout = null;
+      let winnerHistory = [];
+
+      // DOM elements
+      const wheel = document.getElementById("wheel");
+      const nameInput = document.getElementById("nameInput");
+      const addButton = document.getElementById("addButton");
+      const spinButton = document.getElementById("spinButton");
+      const resetButton = document.getElementById("resetButton");
+      const namesContainer = document.getElementById("namesContainer");
+      const nameCount = document.getElementById("nameCount");
+      const winnerDisplay = document.getElementById("winnerDisplay");
+      const historyList = document.getElementById("historyList");
+
+      // Initialize the app
+      function init() {
+        // Load sample names if none exist
+        if (names.length === 0) {
+          //   const sampleNames = [
+          //     "Alice",
+          //     "Bob",
+          //     "Charlie",
+          //     "Diana",
+          //     "Ethan",
+          //     "Fiona",
+          //     "George",
+          //     "Hannah",
+          //   ];
+
+          const sampleNames = [];
+          names = [...sampleNames];
+          updateNamesList();
+          drawWheel();
+        }
+
+        // Load history from localStorage
+        const savedHistory = localStorage.getItem("wheelHistory");
+        if (savedHistory) {
+          winnerHistory = JSON.parse(savedHistory);
+          updateHistory();
+        }
+      }
+
+      // Add a name to the list
+      function addName() {
+        const name = nameInput.value.trim();
+
+        if (name === "") {
+          alert("Please enter a name");
+          return;
+        }
+
+        if (names.includes(name)) {
+          alert("This name is already on the wheel");
+          return;
+        }
+
+        names.push(name);
+        updateNamesList();
+        drawWheel();
+        nameInput.value = "";
+        nameInput.focus();
+      }
+
+      // Remove a name from the list
+      function removeName(index) {
+        names.splice(index, 1);
+        updateNamesList();
+        drawWheel();
+      }
+
+      // Update the names list display
+      function updateNamesList() {
+        namesContainer.innerHTML = "";
+        nameCount.textContent = `(${names.length})`;
+
+        if (names.length === 0) {
+          namesContainer.innerHTML =
+            '<div class="empty-message">No names added yet. Add some names to get started!</div>';
+          return;
+        }
+
+        names.forEach((name, index) => {
+          const nameItem = document.createElement("div");
+          nameItem.className = "name-item";
+          nameItem.innerHTML = `
+                    <span>${name}</span>
+                    <button class="delete-btn" data-index="${index}">
+                        <i class="fas fa-times"></i> Remove
+                    </button>
+                `;
+          namesContainer.appendChild(nameItem);
+        });
+
+        // Add event listeners to delete buttons
+        document.querySelectorAll(".delete-btn").forEach((button) => {
+          button.addEventListener("click", function () {
+            const index = parseInt(this.getAttribute("data-index"));
+            removeName(index);
+          });
+        });
+
+        // Save to localStorage
+        localStorage.setItem("wheelNames", JSON.stringify(names));
+      }
+
+      // Draw the wheel with names
+      function drawWheel() {
+        wheel.innerHTML = "";
+
+        if (names.length === 0) {
+          wheel.style.background = "#f0f0f0";
+          return;
+        }
+
+        const angle = 360 / names.length;
+
+        names.forEach((name, index) => {
+          const slice = document.createElement("div");
+          slice.className = "wheel-item";
+          slice.style.backgroundColor = colors[index % colors.length];
+          slice.style.transform = `rotate(${index * angle}deg) skewY(${90 - angle}deg)`;
+
+          // Add name to slice
+          const nameSpan = document.createElement("span");
+          nameSpan.textContent = name;
+          nameSpan.style.transform = `skewY(${angle - 90}deg) rotate(${angle / 2}deg)`;
+          nameSpan.style.position = "absolute";
+          nameSpan.style.left = "30px";
+          nameSpan.style.top = "20px";
+          nameSpan.style.width = "100px";
+          nameSpan.style.textAlign = "center";
+
+          slice.appendChild(nameSpan);
+          wheel.appendChild(slice);
+        });
+      }
+
+      // Spin the wheel
+      function spinWheel() {
+        console.log("isSpinning", isSpinning);
+        debugger;
+        if (isSpinning) return;
+        if (names.length < 2) {
+          alert("Please add at least 2 names to spin the wheel");
+          return;
+        }
+
+        isSpinning = true;
+        spinButton.disabled = true;
+
+        // Random rotation (at least 3 full rotations plus random segment)
+        const segmentAngle = 360 / names.length;
+        const extraRotation = Math.floor(Math.random() * 360);
+        const totalRotation = 1080 + extraRotation; // 3 full rotations + random
+
+        // Apply the rotation with easing
+        wheel.style.transform = `rotate(${totalRotation}deg)`;
+
+        // Calculate the winner
+        const winningSegment = Math.floor((360 - (totalRotation % 360)) / segmentAngle);
+        const winnerIndex = winningSegment % names.length;
+        const winner = names[winnerIndex];
+
+        // Show the winner after the spin completes
+        spinTimeout = setTimeout(() => {
+          showWinner(winner);
+          isSpinning = false;
+          spinButton.disabled = false;
+        }, 5000); // Match the CSS transition duration
+      }
+
+      // Display the winner
+      function showWinner(winner) {
+        winnerDisplay.innerHTML = `
+                <i class="fas fa-crown"></i>
+                <span>${winner}</span>
+            `;
+
+        // Add to history
+        winnerHistory.unshift(winner);
+        if (winnerHistory.length > 5) {
+          winnerHistory.pop();
+        }
+
+        updateHistory();
+
+        // Save to localStorage
+        localStorage.setItem("wheelHistory", JSON.stringify(winnerHistory));
+
+        // Add celebration effect
+        winnerDisplay.style.transform = "scale(1.1)";
+        setTimeout(() => {
+          winnerDisplay.style.transform = "scale(1)";
+        }, 300);
+      }
+
+      // Update the history display
+      function updateHistory() {
+        historyList.innerHTML = "";
+
+        if (winnerHistory.length === 0) {
+          historyList.innerHTML = '<div class="history-item">No winners yet</div>';
+          return;
+        }
+
+        winnerHistory.forEach((winner) => {
+          const historyItem = document.createElement("div");
+          historyItem.className = "history-item";
+          historyItem.textContent = winner;
+          historyList.appendChild(historyItem);
+        });
+      }
+
+      // Reset the wheel
+      function resetWheel() {
+        if (isSpinning) {
+          clearTimeout(spinTimeout);
+          isSpinning = false;
+          spinButton.disabled = false;
+        }
+
+        wheel.style.transform = "rotate(0deg)";
+        winnerDisplay.innerHTML = `
+                <i class="fas fa-crown"></i>
+                <span>Spin the wheel to find out!</span>
+            `;
+      }
+
+      // Event listeners
+      addButton.addEventListener("click", addName);
+
+      nameInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          addName();
+        }
+      });
+
+      spinButton.addEventListener("click", spinWheel);
+
+      resetButton.addEventListener("click", resetWheel);
+
+      // Initialize the app
+      window.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>
