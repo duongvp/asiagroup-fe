@@ -51,3 +51,4 @@ export const useFaqItems = (locale: string = 'en', categorySlug?: string, search
         isError: error
     };
 };
+

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Mail, Phone, MapPin, Share2, Globe, ThumbsUp, Send, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Share2, Globe, ThumbsUp, Send, Loader2, AlertCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -18,14 +18,6 @@ const contactSchema = z.object({
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
-
-const inputClass = (hasError?: boolean) =>
-    `w-full px-4 py-3 rounded-xl border bg-transparent outline-none transition
-   ${hasError
-        ? 'border-red-500 focus:ring-2 focus:ring-red-500'
-        : 'border-gray-200 dark:border-white/10 focus:ring-2 focus:ring-primary'
-    }`;
-
 
 export default function ContactPage() {
     const t = useTranslations('Contact');
@@ -159,19 +151,11 @@ export default function ContactPage() {
                                         type="text"
                                         placeholder="John Doe"
                                         {...register('full_name')}
-                                        className={inputClass(!!errors.full_name)}
+                                        className={`h-12 rounded-xl border-2 px-4 outline-none transition-all ${errors.full_name ? 'border-red-500 bg-red-50/50' : 'border-slate-200 dark:border-white/10 focus:border-primary'} dark:bg-white/5`}
                                         aria-invalid={!!errors.full_name}
                                         aria-describedby={errors.full_name ? 'full_name-error' : undefined}
                                     />
-
-                                    {errors.full_name && (
-                                        <p
-                                            id="full_name-error"
-                                            className="text-sm text-red-500 font-bold ml-1"
-                                        >
-                                            {errors.full_name.message}
-                                        </p>
-                                    )}
+                                    {errors.full_name && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.full_name.message}</span>}
                                 </div>
 
                                 {/* Email */}
@@ -188,19 +172,11 @@ export default function ContactPage() {
                                         type="email"
                                         placeholder="john@example.com"
                                         {...register('email')}
-                                        className={inputClass(!!errors.email)}
+                                        className={`h-12 rounded-xl border-2 px-4 outline-none transition-all ${errors.email ? 'border-red-500 bg-red-50/50' : 'border-slate-200 dark:border-white/10 focus:border-primary'} dark:bg-white/5`}
                                         aria-invalid={!!errors.email}
                                         aria-describedby={errors.email ? 'email-error' : undefined}
                                     />
-
-                                    {errors.email && (
-                                        <p
-                                            id="email-error"
-                                            className="text-sm text-red-500 font-bold ml-1"
-                                        >
-                                            {errors.email.message}
-                                        </p>
-                                    )}
+                                    {errors.email && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.email.message}</span>}
                                 </div>
                             </div>
 
@@ -220,19 +196,11 @@ export default function ContactPage() {
                                         type="tel"
                                         placeholder="(555) 000-0000"
                                         {...register('phone_number')}
-                                        className={inputClass(!!errors.phone_number)}
+                                        className={`h-12 rounded-xl border-2 px-4 outline-none transition-all ${errors.phone_number ? 'border-red-500 bg-red-50/50' : 'border-slate-200 dark:border-white/10 focus:border-primary'} dark:bg-white/5`}
                                         aria-invalid={!!errors.phone_number}
                                         aria-describedby={errors.phone_number ? 'phone-error' : undefined}
                                     />
-
-                                    {errors.phone_number && (
-                                        <p
-                                            id="phone-error"
-                                            className="text-sm text-red-500 font-bold ml-1"
-                                        >
-                                            {errors.phone_number.message}
-                                        </p>
-                                    )}
+                                    {errors.phone_number && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.phone_number.message}</span>}
                                 </div>
 
                                 {/* Property type */}
@@ -247,7 +215,7 @@ export default function ContactPage() {
                                     <select
                                         id="property_type"
                                         {...register('property_type')}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-background-dark focus:ring-2 focus:ring-primary outline-none"
+                                        className={`h-12 rounded-xl border-2 px-4 outline-none transition-all ${errors.property_type ? 'border-red-500 bg-red-50/50' : 'border-slate-200 dark:border-white/10 focus:border-primary'} dark:bg-white/5`}
                                     >
                                         <option value="residential">{t('Form.types.home')}</option>
                                         <option value="business">{t('Form.types.business')}</option>
@@ -269,20 +237,11 @@ export default function ContactPage() {
                                     id="message"
                                     rows={4}
                                     placeholder={t('Form.placeholder')}
+                                    className='h-32 w-full rounded-xl border-2 px-4 py-3 outline-none transition-all border-slate-200 dark:border-white/10 focus:border-primary dark:bg-white/5'
                                     {...register('message')}
-                                    className={inputClass(!!errors.message) + ' resize-none'}
                                     aria-invalid={!!errors.message}
                                     aria-describedby={errors.message ? 'message-error' : undefined}
                                 />
-
-                                {errors.message && (
-                                    <p
-                                        id="message-error"
-                                        className="text-sm text-red-500 ml-1"
-                                    >
-                                        {errors.message.message}
-                                    </p>
-                                )}
                             </div>
 
                             {/* ===== Submit ===== */}

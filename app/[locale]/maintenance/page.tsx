@@ -181,7 +181,7 @@ export default function MaintenancePage() {
                                     className={`h-12 rounded-xl border-2 px-4 outline-none transition-all ${errors.firstName ? 'border-red-500 bg-red-50/50' : 'border-slate-200 dark:border-white/10 focus:border-primary'} dark:bg-white/5`}
                                     placeholder="John"
                                 />
-                                {errors.firstName && <span className="text-red-500 text-[10px] font-bold flex items-center gap-1"><AlertCircle size={10} /> {errors.firstName.message}</span>}
+                                {errors.firstName && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.firstName.message}</span>}
                             </div>
 
                             <div className="flex flex-col gap-1.5">
@@ -191,7 +191,7 @@ export default function MaintenancePage() {
                                     className={`h-12 rounded-xl border-2 px-4 outline-none transition-all ${errors.lastName ? 'border-red-500 bg-red-50/50' : 'border-slate-200 dark:border-white/10 focus:border-primary'} dark:bg-white/5`}
                                     placeholder="Doe"
                                 />
-                                {errors.lastName && <span className="text-red-500 text-[10px] font-bold flex items-center gap-1"><AlertCircle size={10} /> {errors.lastName.message}</span>}
+                                {errors.lastName && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.lastName.message}</span>}
                             </div>
 
                             <div className="flex flex-col gap-1.5 sm:col-span-2">
@@ -201,7 +201,7 @@ export default function MaintenancePage() {
                                     className={`h-12 rounded-xl border-2 px-4 outline-none transition-all ${errors.email ? 'border-red-500 bg-red-50/50' : 'border-slate-200 dark:border-white/10 focus:border-primary'} dark:bg-white/5`}
                                     placeholder="john@example.com"
                                 />
-                                {errors.email && <span className="text-red-500 text-[10px] font-bold flex items-center gap-1"><AlertCircle size={10} /> {errors.email.message}</span>}
+                                {errors.email && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.email.message}</span>}
                             </div>
 
                             <div className="flex flex-col gap-1.5 sm:col-span-2">
@@ -217,7 +217,7 @@ export default function MaintenancePage() {
                                     </select>
                                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" size={18} />
                                 </div>
-                                {errors.serviceType && <span className="text-red-500 text-[10px] font-bold flex items-center gap-1"><AlertCircle size={10} /> {errors.serviceType.message}</span>}
+                                {errors.serviceType && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.serviceType.message}</span>}
                             </div>
 
                             <div className="flex flex-col gap-1.5 sm:col-span-2">
@@ -227,7 +227,7 @@ export default function MaintenancePage() {
                                     type="date"
                                     className={`h-12 rounded-xl border-2 px-4 outline-none transition-all ${errors.preferredDate ? 'border-red-500 bg-red-50/50' : 'border-slate-200 dark:border-white/10 focus:border-primary'} dark:bg-white/5`}
                                 />
-                                {errors.preferredDate && <span className="text-red-500 text-[10px] font-bold flex items-center gap-1"><AlertCircle size={10} /> {errors.preferredDate.message}</span>}
+                                {errors.preferredDate && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.preferredDate.message}</span>}
                             </div>
 
                             <button

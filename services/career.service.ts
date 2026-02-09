@@ -1,9 +1,10 @@
 // src/services/career.service.ts
 
 import { StrapiResponse } from "@/types/strapi";
-import { fetcher } from "./api-client";
+import { fetcher, postFetcherFormData } from "./api-client";
 import useSWR from "swr";
 import { ICareer } from "@/types/career";
+import useSWRMutation from "swr/mutation";
 
 const useCareers = (locale: string = 'vi') => {
     // Chúng ta chỉ định rõ populate department để lấy được name và slug của phòng ban
@@ -47,4 +48,40 @@ const useCareerDetail = (slug: string, locale: string = 'vi') => {
     };
 };
 
-export { useCareers, useCareerDetail };
+const useSubmitApplication = () => {
+    // Chúng ta dùng useSWRMutation để kích hoạt việc gửi dữ liệu khi người dùng nhấn nút
+    const { trigger, isMutating, error } = useSWRMutation(
+        'api/career-applications',
+        postFetcherFormData
+    );
+
+    const submit = async (values: any, positionName: string = '') => {
+        const formData = new FormData();
+
+        // Chuẩn hóa dữ liệu theo format Strapi
+        const data = {
+            first_name: values.first_name,
+            last_name: values.last_name,
+            email: values.email,
+            cover_letter: values.cover_letter || "",
+            position: positionName,
+        };
+
+        formData.append('data', JSON.stringify(data));
+
+        if (values.resume?.[0]) {
+            formData.append('files', values.resume[0]);
+        }
+
+        // Gọi trigger để thực hiện request
+        return await trigger(formData);
+    };
+
+    return {
+        submit,
+        isSubmitting: isMutating,
+        error
+    };
+};
+
+export { useCareers, useCareerDetail, useSubmitApplication };

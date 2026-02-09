@@ -268,7 +268,7 @@
       "lastName": "Họ",
       "email": "Địa chỉ Email",
       "resume": "Tải lên CV",
-      "resumeHint": "Nhấp để tải lên hoặc kéo thả (PDF)",
+      "resumeHint": "Nhấp để tải lên hoặc kéo thả",
       "submitBtn": "Nộp đơn ứng tuyển"
     }
   },

@@ -268,7 +268,7 @@
       "lastName": "Last Name",
       "email": "Email Address",
       "resume": "Upload Resume",
-      "resumeHint": "Click to upload or drag and drop (PDF)",
+      "resumeHint": "Click to upload or drag and drop",
       "submitBtn": "Submit Application"
     }
   },
