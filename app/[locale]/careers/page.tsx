@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Head from 'next/head';
-import { Banknote, ChevronDown, HeartPulse, House, Leaf, Lightbulb, MapPin, TrendingUp, UserCog, Users, CloudUpload, ArrowRight, AlertCircle } from 'lucide-react';
+import { Banknote, ChevronDown, HeartPulse, House, Leaf, Lightbulb, MapPin, TrendingUp, UserCog, Users, ArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'use-intl';
 import { useCareers, useSubmitApplication } from '@/services/career.service';
 import { ICareer } from '@/types/career';
@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { CareerFormData, careerSchema } from '@/schemas/career.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Input, FileUpload } from '@/components/ui';
 
 // Dữ liệu Job giữ nguyên không đưa vào JSON theo yêu cầu
 const jobs = [
@@ -296,83 +297,36 @@ export default function Careers() {
 
                                 <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
                                     <div className="grid md:grid-cols-2 gap-6">
-                                        <div className="flex flex-col gap-2">
-                                            <label className="text-sm font-bold text-[#111811] dark:text-white" htmlFor="first-name">{t('Careers.Form.firstName')}</label>
-                                            <input
-                                                {...register('first_name')}
-                                                className={`h-12 w-full rounded-lg border bg-white dark:bg-[#152615] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-colors ${errors.first_name ? 'border-red-500' : 'border-[#dbe6db] dark:border-[#2a3e2a]'
-                                                    }`}
-                                                id="first-name"
-                                                type="text"
-                                            />
-                                            {errors.first_name && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.first_name.message}</span>}
-                                        </div>
-                                        <div className="flex flex-col gap-2">
-                                            <label className="text-sm font-bold text-[#111811] dark:text-white" htmlFor="last-name">{t('Careers.Form.lastName')}</label>
-                                            <input
-                                                {...register('last_name')}
-                                                className={`h-12 w-full rounded-lg border bg-white dark:bg-[#152615] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-colors ${errors.last_name ? 'border-red-500' : 'border-[#dbe6db] dark:border-[#2a3e2a]'
-                                                    }`}
-                                                id="last-name"
-                                                type="text"
-                                            />
-                                            {errors.last_name && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.last_name.message}</span>}
-                                        </div>
-                                    </div>
-                                    <div className="flex flex-col gap-2">
-                                        <label className="text-sm font-bold text-[#111811] dark:text-white" htmlFor="email">{t('Careers.Form.email')}</label>
-                                        <input
-                                            {...register('email')}
-                                            className={`h-12 w-full rounded-lg border bg-white dark:bg-[#152615] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-colors ${errors.email ? 'border-red-500' : 'border-[#dbe6db] dark:border-[#2a3e2a]'
-                                                }`}
-                                            id="email"
-                                            type="email"
+                                        <Input
+                                            {...register('first_name')}
+                                            label={t('Careers.Form.firstName')}
+                                            error={errors.first_name?.message}
+                                            type="text"
+                                            id="first-name"
                                         />
-                                        {errors.email && <span className="text-red-500 text-[11px] font-bold flex items-center gap-1"><AlertCircle size={12} /> {errors.email.message}</span>}
+                                        <Input
+                                            {...register('last_name')}
+                                            label={t('Careers.Form.lastName')}
+                                            error={errors.last_name?.message}
+                                            type="text"
+                                            id="last-name"
+                                        />
                                     </div>
-                                    <div className="flex flex-col gap-2">
-                                        <label className="text-sm font-bold text-[#111811] dark:text-white" htmlFor="resume">
-                                            {t('Careers.Form.resume')}
-                                        </label>
-
-                                        <div className={`relative group min-h-[140px] w-full rounded-xl border-2 border-dashed bg-background-light dark:bg-[#102210] flex flex-col items-center justify-center hover:border-primary transition-all p-6 text-center cursor-pointer ${errors.resume ? 'border-red-500 bg-red-50/5' : 'border-[#dbe6db] dark:border-[#2a3e2a]'
-                                            }`}>
-                                            <input
-                                                type="file"
-                                                className="absolute inset-0 opacity-0 cursor-pointer z-10"
-                                                {...register('resume')}
-                                            />
-
-                                            {/* Icon thay đổi màu khi có lỗi */}
-                                            <CloudUpload className={`${errors.resume ? 'text-red-500' : 'text-[#618961]'} mb-2`} size={32} />
-
-                                            <div className="flex flex-col items-center">
-                                                {/* Logic hiển thị tên file hoặc gợi ý mặc định */}
-                                                {resumeFile && resumeFile.length > 0 ? (
-                                                    <div className="animate-sweep">
-                                                        <p className="text-sm font-bold text-[#618961] dark:text-white break-all px-4">
-                                                            {resumeFile[0].name}
-                                                        </p>
-                                                        <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-wider">
-                                                            {(resumeFile[0].size / 1024 / 1024).toFixed(2)} MB
-                                                        </p>
-                                                    </div>
-                                                ) : (
-                                                    <>
-                                                        <p className="text-sm font-bold text-[#618961] dark:text-white">{t('Careers.Form.resumeHint')}</p>
-                                                        <p className="text-xs text-[#618961] mt-1">PDF, DOC, DOCX up to 10MB</p>
-                                                    </>
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        {/* Thông báo lỗi */}
-                                        {errors.resume && (
-                                            <span className="text-red-500 text-[11px] font-bold flex items-center gap-1">
-                                                <AlertCircle size={12} /> {errors.resume.message}
-                                            </span>
-                                        )}
-                                    </div>
+                                    <Input
+                                        {...register('email')}
+                                        label={t('Careers.Form.email')}
+                                        error={errors.email?.message}
+                                        type="email"
+                                        id="email"
+                                    />
+                                    <FileUpload
+                                        {...register('resume')}
+                                        label={t('Careers.Form.resume')}
+                                        error={errors.resume?.message as string}
+                                        hint={t('Careers.Form.resumeHint')}
+                                        selectedFile={resumeFile}
+                                        acceptedFormats="PDF, DOC, DOCX up to 10MB"
+                                    />
                                     <button type='submit' className="bg-primary hover:bg-green-400 cursor-pointer text-[#111811] text-base font-bold h-12 w-full rounded-lg transition-colors mt-2">
                                         {t('Careers.Form.submitBtn')}
                                     </button>
