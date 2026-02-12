@@ -78,10 +78,16 @@ export default function Benefits() {
                     {/* Segmented Control / Audience Switcher */}
                     <section className="w-full px-4 py-8 max-w-[960px]">
                         <div className="flex justify-center">
-                            <div className="inline-flex h-12 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 p-1.5 w-full max-w-md">
+                            <div className="relative inline-flex h-12 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 p-1.5 w-full max-w-md">
+                                {/* Sliding Background Indicator */}
+                                <div
+                                    className={`absolute top-1.5 bottom-1.5 left-1.5 w-[calc(50%-6px)] bg-white dark:bg-slate-700 rounded-full shadow-sm transition-transform duration-300 ease-in-out ${audience === 'businesses' ? 'translate-x-full' : 'translate-x-0'
+                                        }`}
+                                />
+
                                 <label
-                                    className={`cursor-pointer h-full flex-1 rounded-full px-4 flex items-center justify-center transition-all font-bold text-sm ${audience === 'homeowners'
-                                        ? 'bg-white dark:bg-slate-700 shadow-sm text-primary'
+                                    className={`relative z-10 cursor-pointer h-full flex-1 rounded-full px-4 flex items-center justify-center transition-colors duration-300 font-bold text-sm ${audience === 'homeowners'
+                                        ? 'text-primary'
                                         : 'text-slate-500 dark:text-slate-400'
                                         }`}
                                 >
@@ -100,8 +106,8 @@ export default function Benefits() {
                                 </label>
 
                                 <label
-                                    className={`cursor-pointer h-full flex-1 rounded-full px-4 flex items-center justify-center transition-all font-bold text-sm ${audience === 'businesses'
-                                        ? 'bg-white dark:bg-slate-700 shadow-sm text-primary'
+                                    className={`relative z-10 cursor-pointer h-full flex-1 rounded-full px-4 flex items-center justify-center transition-colors duration-300 font-bold text-sm ${audience === 'businesses'
+                                        ? 'text-primary'
                                         : 'text-slate-500 dark:text-slate-400'
                                         }`}
                                 >
@@ -133,16 +139,19 @@ export default function Benefits() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {/* Map qua 4 lợi ích */}
-                            {[PiggyBank, Leaf, Zap, TrendingUp].map((Icon, index) => (
+                            {(audience === 'homeowners'
+                                ? [PiggyBank, Leaf, Zap, TrendingUp]
+                                : [PiggyBank, TrendingUp, Leaf, Zap]
+                            ).map((Icon, index) => (
                                 <div key={index} className="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
                                     <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-slate-900 text-primary transition-colors">
                                         <Icon size={24} />
                                     </div>
                                     <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                                        {t(`Features.items.${index}.title`)}
+                                        {t(`Features.${audience}.${index}.title`)}
                                     </h3>
                                     <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                        {t(`Features.items.${index}.desc`)}
+                                        {t(`Features.${audience}.${index}.desc`)}
                                     </p>
                                 </div>
                             ))}

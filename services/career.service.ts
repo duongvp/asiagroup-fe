@@ -59,22 +59,28 @@ const useSubmitApplication = () => {
         const formData = new FormData();
 
         // Chuẩn hóa dữ liệu theo format Strapi
-        const data = {
+        const innerData = {
             first_name: values.first_name,
             last_name: values.last_name,
             email: values.email,
             cover_letter: values.cover_letter || "",
             position: positionName,
         };
-
-        formData.append('data', JSON.stringify(data));
-
+        ;
         if (values.resume?.[0]) {
-            formData.append('files', values.resume[0]);
+            formData.append('files.resume', values.resume[0]);
         }
 
+        formData.append('data', JSON.stringify(innerData));
+
         // Gọi trigger để thực hiện request
-        return await trigger(formData);
+        // return await trigger(formData);
+        console.log(formData);
+
+        await fetch("http://localhost:1337/api/career-applications", {
+            method: "POST",
+            body: formData,
+        })
     };
 
     return {

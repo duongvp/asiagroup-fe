@@ -157,7 +157,7 @@
     "Features": {
       "title": "Why Make the Switch?",
       "description": "Solar energy isn't just about saving the planet—it's a smart financial investment that pays dividends for decades.",
-      "items": [
+      "homeowners": [
         {
           "title": "Drastic Cost Savings",
           "desc": "Eliminate or significantly reduce your monthly electricity bills. Solar often pays for itself in 6-9 years."
@@ -173,6 +173,24 @@
         {
           "title": "Increased Property Value",
           "desc": "Homes with solar sell 20% faster and for 4.1% more on average compared to homes without solar."
+        }
+      ],
+      "businesses": [
+        {
+          "title": "Reduce OpEx",
+          "desc": "Lower your operating expenses significantly by generating your own electricity, improving your bottom line."
+        },
+        {
+          "title": "Tax Incentives",
+          "desc": "Take advantage of accelerated depreciation and investment tax credits available for commercial solar installations."
+        },
+        {
+          "title": "Sustainability Goals",
+          "desc": "Meet your ESG and sustainability targets. Demonstrate your commitment to the environment to customers and stakeholders."
+        },
+        {
+          "title": "Energy Security",
+          "desc": "Protect your business operations from power outages and rising energy costs with a reliable solar + storage system."
         }
       ]
     },

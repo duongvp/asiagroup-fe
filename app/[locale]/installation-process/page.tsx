@@ -1,12 +1,16 @@
 'use client';
 import { useState } from 'react';
 import Head from 'next/head';
-import { ArrowRight, BadgeCheck, BrushCleaning, Calendar, ChevronDown, CirclePlay, PiggyBank, Workflow } from 'lucide-react';
+import { ArrowRight, BadgeCheck, BrushCleaning, Calendar, ChevronDown, CirclePlay, ClipboardList, FileText, Gavel, Hammer, PencilRuler, PiggyBank, Power, ShieldCheck, Workflow, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+
+import { motion } from 'framer-motion';
+import { InView } from 'react-intersection-observer';
 
 export default function SolarInstallationProcess() {
     const [email, setEmail] = useState('');
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const [activeStep, setActiveStep] = useState(0);
     const t = useTranslations('Installation');
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -31,7 +35,7 @@ export default function SolarInstallationProcess() {
                 "Preliminary savings estimate"
             ],
             image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-            icon: "assignment",
+            icon: ClipboardList,
             iconLabel: "Personalized Assessment"
         },
         {
@@ -42,7 +46,7 @@ export default function SolarInstallationProcess() {
             roilabel: "ROI Calculation Included",
             roitext: "We show you exactly when your system pays for itself.",
             image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-            icon: "architecture",
+            icon: PencilRuler,
             iconLabel: "Custom Engineering"
         },
         {
@@ -55,9 +59,9 @@ export default function SolarInstallationProcess() {
                 "Building Permits",
                 "Utility Interconnection Agreement"
             ],
-            featureIcons: ["gavel", "description", "bolt"],
+            featureIcons: [Gavel, FileText, Zap],
             image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-            icon: "verified_user",
+            icon: ShieldCheck,
             iconLabel: "Full Compliance Handled"
         },
         {
@@ -70,7 +74,7 @@ export default function SolarInstallationProcess() {
                 { icon: <BrushCleaning size={16} />, label: "Site Cleanup" }
             ],
             image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDStzqPV0L7V_KITjBbT9RPOJDCf2zCWYOLzNUUN92ho2gOktBb3dTbM5KnWaYoWwDms1mCTl0Ppg96HMfnok-agYFVW95eseWfAZDBYpDmBjb3iKz7DtaoMM837J88_J_OwmLX4HywOiWCoQZ6DjRCHOUVKF_DlZ7yOeunxIoSlgBpn0WSrPNGYlHsbnfGJR1ckznDGuz9CJWmOG8S3lE7F4bdOSlxh1uEpGP_K5Q9PZoXbPPMjrn5MdrcixLWFo9ZPV2uqjMbxxE",
-            icon: "build",
+            icon: Hammer,
             iconLabel: "Professional Installation"
         },
         {
@@ -80,7 +84,7 @@ export default function SolarInstallationProcess() {
             description: "After a final city inspection and utility meter swap, you get the 'Permission to Operate.' We'll help you flip the switch, set up your monitoring app, and start generating your own clean power.",
             cta: "View Monitoring App Demo",
             image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-            icon: "power_settings_new",
+            icon: Power,
             iconLabel: "System Live"
         }
     ];
@@ -156,7 +160,7 @@ export default function SolarInstallationProcess() {
                     </div>
                 </div>
 
-                {/* Vertical Timeline Process - SỬA LẠI BỐ CỤC */}
+                {/* Vertical Timeline Process - ANIMATED */}
                 <div className="relative bg-white dark:bg-background-dark pb-24">
                     {/* Vertical Line (Desktop) */}
                     <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700 hidden lg:block -translate-x-1/2"></div>
@@ -165,21 +169,37 @@ export default function SolarInstallationProcess() {
                         <div className="flex flex-col gap-16 lg:gap-24">
                             {steps.map((step, index) => {
                                 const isEven = index % 2 === 0;
-                                const isFirst = index === 0;
+                                const isActive = activeStep === index;
+                                const Icon = step.icon;
 
                                 return (
-                                    <div key={index} className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
+                                    <InView
+                                        key={index}
+                                        as="div"
+                                        threshold={0.5}
+                                        onChange={(inView) => {
+                                            if (inView) setActiveStep(index);
+                                        }}
+                                        className="relative flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16"
+                                    >
                                         {/* Desktop Number Circle - ĐÚNG VỊ TRÍ */}
-                                        <div className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-4 hidden lg:flex h-12 w-12 items-center justify-center rounded-full border-4 border-white dark:border-background-dark ${isFirst ? 'bg-primary text-foreground' : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-foreground dark:text-white'} font-bold z-10 shadow-lg`}>
-                                            {step.number}
+                                        <div className={`absolute left-1/2 top-0 -translate-x-1/2 -translate-y-4 hidden lg:flex h-12 w-12 items-center justify-center rounded-full border-4 border-white dark:border-background-dark font-bold z-10 shadow-lg transition-colors duration-500 ${isActive ? 'text-foreground' : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-600 text-foreground dark:text-white'}`}>
+                                            {isActive && (
+                                                <motion.div
+                                                    layoutId="active-step-bg"
+                                                    className="absolute inset-0 bg-primary rounded-full -z-10"
+                                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                                />
+                                            )}
+                                            <span className="relative z-10">{step.number}</span>
                                         </div>
 
                                         {/* Mobile Number Circle */}
                                         <div className="flex lg:hidden items-center gap-2 mb-4">
-                                            <span className={`flex h-8 w-8 items-center justify-center rounded-full ${isFirst ? 'bg-primary text-foreground' : 'bg-gray-200 dark:bg-gray-700 text-foreground dark:text-white'} font-bold text-sm`}>
+                                            <span className={`flex h-8 w-8 items-center justify-center rounded-full font-bold text-sm transition-colors duration-500 ${isActive ? 'bg-primary text-foreground' : 'bg-gray-200 dark:bg-gray-700 text-foreground dark:text-white'}`}>
                                                 {step.number}
                                             </span>
-                                            <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
+                                            <span className={`font-bold text-sm tracking-wider uppercase transition-colors duration-500 ${isActive ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
                                                 {step.day}
                                             </span>
                                         </div>
@@ -189,7 +209,7 @@ export default function SolarInstallationProcess() {
                                             {/* Desktop Day - chỉ hiện khi nội dung bên trái */}
                                             {isEven && (
                                                 <div className="hidden lg:flex items-center gap-2 mb-2 justify-end">
-                                                    <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
+                                                    <span className={`font-bold text-sm tracking-wider uppercase ${isActive ? 'text-primary' : 'text-secondary-blue dark:text-primary'} transition-colors duration-300`}>
                                                         {step.day}
                                                     </span>
                                                 </div>
@@ -198,7 +218,7 @@ export default function SolarInstallationProcess() {
                                             {/* Desktop Day - chỉ hiện khi nội dung bên phải */}
                                             {!isEven && (
                                                 <div className="hidden lg:flex items-center gap-2 mb-2">
-                                                    <span className={`font-bold text-sm tracking-wider uppercase ${isFirst ? 'text-primary' : 'text-secondary-blue dark:text-primary'}`}>
+                                                    <span className={`font-bold text-sm tracking-wider uppercase ${isActive ? 'text-primary' : 'text-secondary-blue dark:text-primary'} transition-colors duration-300`}>
                                                         {step.day}
                                                     </span>
                                                 </div>
@@ -206,19 +226,22 @@ export default function SolarInstallationProcess() {
 
                                             {/* Nội dung text */}
                                             <div className={`${isEven ? 'lg:text-right' : 'lg:text-left'}`}>
-                                                <h3 className="text-2xl font-bold text-foreground dark:text-white mb-3">{step.title}</h3>
+                                                <h3 className={`text-2xl font-bold mb-3 transition-colors duration-300 ${isActive ? 'text-primary' : 'text-foreground dark:text-white'}`}>{step.title}</h3>
                                                 <p className="text-gray-600 dark:text-gray-300 mb-6">{step.description}</p>
 
                                                 {step.features && (
                                                     <ul className={`flex flex-col gap-2 text-gray-600 dark:text-gray-400 text-sm ${isEven ? 'lg:items-end' : ''}`}>
-                                                        {step.features.map((feature, idx) => (
-                                                            <li key={idx} className="flex items-center gap-2">
-                                                                <span className={`material-symbols-outlined text-lg ${step.featureIcons ? 'text-gray-400' : 'text-primary'}`}>
-                                                                    <BadgeCheck />
-                                                                </span>
-                                                                {feature}
-                                                            </li>
-                                                        ))}
+                                                        {step.features.map((feature, idx) => {
+                                                            const FeatureIcon = step.featureIcons ? step.featureIcons[idx] : BadgeCheck;
+                                                            return (
+                                                                <li key={idx} className="flex items-center gap-2">
+                                                                    <span className={`${step.featureIcons ? 'text-gray-400' : 'text-primary'}`}>
+                                                                        <FeatureIcon size={20} />
+                                                                    </span>
+                                                                    {feature}
+                                                                </li>
+                                                            );
+                                                        })}
                                                     </ul>
                                                 )}
 
@@ -236,7 +259,7 @@ export default function SolarInstallationProcess() {
                                                     <div className="grid grid-cols-2 gap-4 max-w-md">
                                                         {step.badges.map((badge, idx) => (
                                                             <div key={idx} className="flex items-center gap-3 bg-background-light dark:bg-white/5 p-3 rounded-lg">
-                                                                <span className="material-symbols-outlined text-primary">{badge.icon}</span>
+                                                                <span className="text-primary">{badge.icon}</span>
                                                                 <span className="text-sm font-medium">{badge.label}</span>
                                                             </div>
                                                         ))}
@@ -254,7 +277,7 @@ export default function SolarInstallationProcess() {
 
                                         {/* Image - bên PHẢI cho steps chẵn (1, 3, 5) */}
                                         <div className={`w-full lg:w-1/2 ${isEven ? 'lg:pl-8' : 'lg:pr-8 lg:order-1'}`}>
-                                            <div className="relative overflow-hidden rounded-2xl shadow-xl aspect-video lg:aspect-[4/3] max-w-lg mx-auto">
+                                            <div className={`relative overflow-hidden rounded-2xl shadow-xl aspect-video lg:aspect-[4/3] max-w-lg mx-auto transition-all duration-500 ${isActive ? 'scale-105' : 'scale-100'}`}>
                                                 <div
                                                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
                                                     style={{ backgroundImage: `url('${step.image}')` }}
@@ -262,13 +285,13 @@ export default function SolarInstallationProcess() {
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                                                 <div className="absolute bottom-4 left-4 right-4 text-white">
                                                     <div className="flex items-center gap-2">
-                                                        <span className="material-symbols-outlined">{step.icon}</span>
+                                                        <Icon size={24} />
                                                         <span className="font-medium text-sm">{step.iconLabel}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </InView>
                                 );
                             })}
                         </div>

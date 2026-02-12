@@ -157,7 +157,7 @@
     "Features": {
       "title": "Tại sao nên chuyển đổi?",
       "description": "Năng lượng mặt trời không chỉ là bảo vệ hành tinh—đó là một khoản đầu tư tài chính thông minh mang lại lợi nhuận trong nhiều thập kỷ.",
-      "items": [
+      "homeowners": [
         {
           "title": "Tiết kiệm chi phí triệt để",
           "desc": "Loại bỏ hoặc giảm đáng kể hóa đơn tiền điện hàng tháng. Hệ thống thường tự hoàn vốn sau 6-9 năm."
@@ -173,6 +173,24 @@
         {
           "title": "Tăng Giá trị Bất động sản",
           "desc": "Nhà có hệ thống điện mặt trời bán nhanh hơn 20% và giá cao hơn trung bình 4.1% so với nhà thông thường."
+        }
+      ],
+      "businesses": [
+        {
+          "title": "Giảm Chi Phí Vận Hành",
+          "desc": "Giảm đáng kể chi phí vận hành bằng cách tự sản xuất điện, cải thiện lợi nhuận của doanh nghiệp."
+        },
+        {
+          "title": "Ưu Đãi Thuế",
+          "desc": "Tận dụng các chính sách khấu hao và ưu đãi thuế dành cho các hệ thống điện mặt trời thương mại."
+        },
+        {
+          "title": "Mục Tiêu Bền Vững",
+          "desc": "Đạt được các mục tiêu ESG và bền vững. Thể hiện cam kết bảo vệ môi trường với khách hàng và đối tác."
+        },
+        {
+          "title": "An Ninh Năng Lượng",
+          "desc": "Bảo vệ hoạt động kinh doanh khỏi mất điện và chi phí năng lượng tăng cao với hệ thống điện mặt trời kết hợp lưu trữ."
         }
       ]
     },
