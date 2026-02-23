@@ -241,10 +241,10 @@ export default function CustomerTestimonials() {
                                 </div>
 
                                 <div className="flex gap-2">
-                                    <button className="p-2 rounded-full border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
+                                    <button className="p-2 rounded-full cursor-pointer border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
                                         <ChevronLeft />
                                     </button>
-                                    <button className="p-2 rounded-full border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
+                                    <button className="p-2 rounded-full cursor-pointer border border-gray-200 hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800">
                                         <ChevronRight />
                                     </button>
                                 </div>

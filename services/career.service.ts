@@ -58,29 +58,27 @@ const useSubmitApplication = () => {
     const submit = async (values: any, positionName: string = '') => {
         const formData = new FormData();
 
-        // Chuẩn hóa dữ liệu theo format Strapi
-        const innerData = {
+        // 1. Chuẩn hóa dữ liệu text vào object 'data'
+        const dataPayload = {
             first_name: values.first_name,
             last_name: values.last_name,
             email: values.email,
             cover_letter: values.cover_letter || "",
             position: positionName,
         };
-        ;
+
+        // 2. Append 'data' dưới dạng JSON string (BẮT BUỘC)
+        formData.append('data', JSON.stringify(dataPayload));
+
+        // 3. Append file với key 'files.resume' (resume khớp với schema của bạn)
         if (values.resume?.[0]) {
-            formData.append('files.resume', values.resume[0]);
+            // Đảm bảo values.resume[0] là đối tượng File/Blob thực sự
+            formData.append('resume', values.resume[0]);
         }
 
-        formData.append('data', JSON.stringify(innerData));
-
-        // Gọi trigger để thực hiện request
-        // return await trigger(formData);
-        console.log(formData);
-
-        await fetch("http://localhost:1337/api/career-applications", {
-            method: "POST",
-            body: formData,
-        })
+        // 4. Thực hiện gửi
+        // LƯU Ý: Không được set Header 'Content-Type' thủ công trong fetcher
+        return await trigger(formData);
     };
 
     return {
