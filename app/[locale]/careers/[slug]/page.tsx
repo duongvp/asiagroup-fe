@@ -11,10 +11,16 @@ import {
     CheckCircle2,
     UploadCloud,
     Send,
+    Loader2,
 } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
-import { useCareerDetail } from '@/services/career.service';
+import { useCareerDetail, useSubmitApplication } from '@/services/career.service';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CareerFormData, careerSchema } from '@/schemas/career.schema';
+import { Input, FileUpload } from '@/components/ui';
+import toast from 'react-hot-toast';
 
 export default function JobDetail() {
     const t = useTranslations();
@@ -24,6 +30,29 @@ export default function JobDetail() {
 
     // 1. Lấy dữ liệu từ API dựa trên slug và locale
     const { career, isLoading, isError } = useCareerDetail(slug, locale);
+    const { submit, isSubmitting } = useSubmitApplication();
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        watch,
+        formState: { errors }
+    } = useForm<CareerFormData>({
+        resolver: zodResolver(careerSchema),
+    });
+
+    const resumeFile = watch('resume');
+
+    const onSubmit = async (values: CareerFormData) => {
+        try {
+            await submit(values);
+            toast.success(t('Careers.Form.success'));
+            reset();
+        } catch (error: any) {
+            toast.error(t('Careers.Form.error'));
+        }
+    };
 
     // 2. Trạng thái Loading (Giữ style tối giản)
     if (isLoading) return (
@@ -174,36 +203,64 @@ export default function JobDetail() {
                                     <h2 className="text-3xl font-black text-[#111811] dark:text-white mb-3">{t('JobDetail.formTitle')}</h2>
                                     <p className="text-[#618961] dark:text-gray-400">{t('JobDetail.formSubtitle')}</p>
                                 </div>
-                                <form className="space-y-6">
+                                <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                                     <div className="grid md:grid-cols-2 gap-6">
-                                        <div className="flex flex-col gap-2">
-                                            <label className="text-sm font-bold text-[#111811] dark:text-white">{t('Careers.Form.firstName')}</label>
-                                            <input className="h-12 w-full rounded-xl border border-[#dbe6db] dark:border-[#2a3e2a] bg-white dark:bg-[#1a2e1a] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-all" type="text" />
-                                        </div>
-                                        <div className="flex flex-col gap-2">
-                                            <label className="text-sm font-bold text-[#111811] dark:text-white">{t('Careers.Form.lastName')}</label>
-                                            <input className="h-12 w-full rounded-xl border border-[#dbe6db] dark:border-[#2a3e2a] bg-white dark:bg-[#1a2e1a] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-all" type="text" />
-                                        </div>
+                                        <Input
+                                            {...register('first_name')}
+                                            label={t('Careers.Form.firstName')}
+                                            error={errors.first_name?.message}
+                                            type="text"
+                                            id="first-name"
+                                            className="h-12 w-full rounded-xl border border-[#dbe6db] dark:border-[#2a3e2a] bg-white dark:bg-[#1a2e1a] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-all"
+                                        />
+                                        <Input
+                                            {...register('last_name')}
+                                            label={t('Careers.Form.lastName')}
+                                            error={errors.last_name?.message}
+                                            type="text"
+                                            id="last-name"
+                                            className="h-12 w-full rounded-xl border border-[#dbe6db] dark:border-[#2a3e2a] bg-white dark:bg-[#1a2e1a] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-all"
+                                        />
                                     </div>
-                                    <div className="flex flex-col gap-2">
-                                        <label className="text-sm font-bold text-[#111811] dark:text-white">{t('Careers.Form.email')}</label>
-                                        <input className="h-12 w-full rounded-xl border border-[#dbe6db] dark:border-[#2a3e2a] bg-white dark:bg-[#1a2e1a] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-all" type="email" />
-                                    </div>
-                                    <div className="flex flex-col gap-2">
-                                        <label className="text-sm font-bold text-[#111811] dark:text-white">{t('Careers.Form.resume')}</label>
-                                        <div className="relative group min-h-[140px] w-full rounded-xl border-2 border-dashed border-[#dbe6db] dark:border-[#2a3e2a] bg-background-light dark:bg-[#102210] flex flex-col items-center justify-center hover:border-primary transition-colors p-6 text-center cursor-pointer">
-                                            <input type="file" className="absolute inset-0 opacity-0 cursor-pointer" />
-                                            <UploadCloud className="text-[#618961] mb-2" size={32} />
-                                            <p className="text-sm font-bold dark:text-white">{t('JobDetail.uploadText')}</p>
-                                            <p className="text-xs text-[#618961] mt-1">PDF, DOC, DOCX up to 10MB</p>
-                                        </div>
-                                    </div>
+                                    <Input
+                                        {...register('email')}
+                                        label={t('Careers.Form.email')}
+                                        error={errors.email?.message}
+                                        type="email"
+                                        id="email"
+                                        className="h-12 w-full rounded-xl border border-[#dbe6db] dark:border-[#2a3e2a] bg-white dark:bg-[#1a2e1a] px-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-all"
+                                    />
+                                    <FileUpload
+                                        {...register('resume')}
+                                        label={t('Careers.Form.resume')}
+                                        error={errors.resume?.message as string}
+                                        hint={t('Careers.Form.resumeHint')}
+                                        selectedFile={resumeFile}
+                                        acceptedFormats="PDF, DOC, DOCX up to 10MB"
+                                    />
                                     <div className="flex flex-col gap-2">
                                         <label className="text-sm font-bold text-[#111811] dark:text-white">{t('JobDetail.coverLetter')}</label>
-                                        <textarea className="min-h-[160px] w-full rounded-xl border border-[#dbe6db] dark:border-[#2a3e2a] bg-white dark:bg-[#1a2e1a] p-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-all resize-none"></textarea>
+                                        <textarea
+                                            {...register('cover_letter')}
+                                            className="min-h-[160px] w-full rounded-xl border border-[#dbe6db] dark:border-[#2a3e2a] bg-white dark:bg-[#1a2e1a] p-4 text-[#111811] dark:text-white outline-none focus:border-primary transition-all resize-none"
+                                        />
+                                        {errors.cover_letter && <p className="text-xs text-red-500 mt-1">{errors.cover_letter.message}</p>}
                                     </div>
-                                    <button type="submit" className="bg-primary hover:bg-green-400 text-[#111811] text-lg font-bold h-14 w-full rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
-                                        {t('JobDetail.submitBtn')} <Send size={18} />
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        className="bg-primary hover:bg-green-400 text-[#111811] text-lg font-bold h-14 w-full rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    >
+                                        {isSubmitting ? (
+                                            <>
+                                                <Loader2 className="h-6 w-6 animate-spin" />
+                                                {t('Careers.Form.submitting') || 'Sending...'}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {t('JobDetail.submitBtn')} <Send size={18} />
+                                            </>
+                                        )}
                                     </button>
                                 </form>
                             </div>

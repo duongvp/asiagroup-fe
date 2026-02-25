@@ -23,7 +23,7 @@
     "columns": {
       "services": {
         "title": "Services",
-        "links": ["Residential Solar", "Commercial Solar", "Battery Storage", "Maintenance"]
+        "links": ["Residential Solar", "Commercial Solar",  "Maintenance"]
       },
       "company": {
         "title": "Company",
@@ -287,7 +287,10 @@
       "email": "Email Address",
       "resume": "Upload Resume",
       "resumeHint": "Click to upload or drag and drop",
-      "submitBtn": "Submit Application"
+      "submitBtn": "Submit Application",
+      "submitting": "Sending...",
+      "success": "Application submitted successfully!",
+      "error": "Failed to submit application. Please try again."
     }
   },
 
@@ -751,6 +754,66 @@
         "serviceType": "Please select a service type",
         "preferredDate": "Please select a preferred date"
       }
+    }
+  },
+  "Policies": {
+    "Hero": {
+      "title": "Policies & Legal Center",
+      "subtitle": "We believe in complete transparency..."
+    },
+    "CTA": {
+      "download": "Download Full PDF"
+    },
+    "Nav": {
+      "title": "Navigation"
+    },
+    "Content": {
+      "lastUpdated": "Last updated"
+    }
+  },
+  "Projects": {
+    "Hero": {
+      "trusted": "Trusted by 500+ Homeowners",
+      "title": "Powering the Future,\nOne Roof at a Time",
+      "subtitle": "Explore our portfolio of sustainable energy solutions. We help homes and businesses transition to clean, reliable power.",
+      "btnResidential": "View Residential",
+      "btnCommercial": "View Commercial"
+    },
+    "Stats": {
+      "completed": "Projects Completed",
+      "energy": "Energy Generated",
+      "clients": "Happy Clients",
+      "offset": "CO2 Offset"
+    },
+    "Grid": {
+      "title": "Our Projects",
+      "subtitle": "Browse our latest residential and commercial installations.",
+      "loadMore": "Load More Projects",
+      "system": "System",
+      "savings": "Savings"
+    },
+    "Filters": {
+      "all": "All",
+      "residential": "Residential",
+      "commercial": "Commercial",
+      "industrial": "Industrial"
+    },
+    "CaseStudy": {
+      "badge": "Featured Case Study",
+      "title": "The GreenHorizon Complex",
+      "description": "One of our most ambitious commercial projects to date. We transformed an aging office park into a net-zero energy campus. By combining a 500kW rooftop array with smart battery storage, GreenHorizon now operates independently from the grid during peak hours.",
+      "timeline": "6 Month Timeline",
+      "roi": "ROI in 3.5 Years",
+      "quote": "\"SolarTech didn't just install panels; they re-engineered our entire energy strategy. The ROI has exceeded our projections by 15% in the first year alone.\"",
+      "author": "David Chen",
+      "role": "CTO, GreenHorizon Inc.",
+      "readMore": "Read Full Case Study"
+    },
+    "CTA": {
+      "title": "Ready to start your solar journey?",
+      "subtitle": "Join hundreds of satisfied homeowners and businesses. Get a customized quote and see how much you can save.",
+      "btnQuote": "Get Free Quote",
+      "btnCall": "Schedule Call"
     }
   }
 }

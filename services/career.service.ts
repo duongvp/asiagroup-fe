@@ -22,7 +22,6 @@ const useCareers = (locale: string = 'vi') => {
     };
 };
 
-
 const useCareerDetail = (slug: string, locale: string = 'vi') => {
     // Xây dựng query giống hệt URL bạn cung cấp
     // Thêm các trường nội dung (responsibilities, requirements...) để hiển thị chi tiết

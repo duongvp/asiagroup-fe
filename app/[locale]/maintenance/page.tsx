@@ -88,9 +88,9 @@ export default function MaintenancePage() {
                             <Link href="#request-service" className="flex items-center justify-center rounded-lg h-12 px-8 bg-[#0e2a47] hover:bg-slate-800 text-white text-base font-bold shadow-lg transition-all">
                                 {t('hero.ctaPrimary')}
                             </Link>
-                            <button className="flex items-center justify-center rounded-lg h-12 px-8 bg-white dark:bg-white/10 border-2 border-slate-200 dark:border-white/10 text-base font-bold hover:bg-gray-50 dark:hover:bg-white/20 transition-colors">
+                            {/* <button className="flex items-center justify-center rounded-lg h-12 px-8 bg-white dark:bg-white/10 border-2 border-slate-200 dark:border-white/10 text-base font-bold hover:bg-gray-50 dark:hover:bg-white/20 transition-colors">
                                 {t('hero.ctaSecondary')}
-                            </button>
+                            </button> */}
                         </div>
                     </div>
 
@@ -255,7 +255,7 @@ export default function MaintenancePage() {
 function FeatureCard({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) {
     return (
         <div className="bg-white/5 p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group">
-            <div className="text-primary mb-4 group-hover:scale-110 transition-transform">{icon}</div>
+            <div className="text-primary mb-4 group-hover:scale-110 transition-transform duration-300">{icon}</div>
             <h4 className="text-xl font-bold text-white mb-3">{title}</h4>
             <p className="text-blue-100 text-sm leading-relaxed">{desc}</p>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Head from 'next/head';
-import { Banknote, ChevronDown, HeartPulse, House, Leaf, Lightbulb, MapPin, TrendingUp, UserCog, Users, ArrowRight } from 'lucide-react';
+import { Banknote, ChevronDown, HeartPulse, House, Leaf, Lightbulb, MapPin, TrendingUp, UserCog, Users, ArrowRight, Loader2 } from 'lucide-react';
 import { useLocale, useTranslations } from 'use-intl';
 import { useCareers, useSubmitApplication } from '@/services/career.service';
 import { ICareer } from '@/types/career';
@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { CareerFormData, careerSchema } from '@/schemas/career.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input, FileUpload } from '@/components/ui';
+import toast from 'react-hot-toast';
 
 // Dữ liệu Job giữ nguyên không đưa vào JSON theo yêu cầu
 const jobs = [
@@ -94,10 +95,10 @@ export default function Careers() {
         try {
             console.log(values);
             await submit(values);
-            alert("Application submitted successfully!");
+            toast.success(t('Careers.Form.success'));
             reset();
         } catch (error: any) {
-            alert(error.message || "Failed to submit");
+            toast.error(t('Careers.Form.error'));
         }
     };
 
@@ -113,6 +114,7 @@ export default function Careers() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
                 <style>{`
+                    html { scroll-behavior: smooth; }
                     details > summary { list-style: none; }
                     details > summary::-webkit-details-marker { display: none; }
                     @keyframes sweep {
@@ -130,7 +132,7 @@ export default function Careers() {
                     <section className="relative">
                         <div className="relative flex min-h-[500px] md:min-h-[600px] flex-col items-center justify-center bg-cover bg-center bg-no-repeat p-4"
                             style={{ backgroundImage: 'linear-gradient(rgba(16, 34, 16, 0.6) 0%, rgba(16, 34, 16, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD8aGHNp3xDZt9vHUI7YkQmvmpb5gxMUmpVm6Kr217GJ1XxWEKeOtYSgrpECVsiHMw_uDzeAj52p4BNtco3CIgR9r2KqTkIRo_Zsjo9IeAj0oiqPxAWwS0muvxwljtnhSwfYNesb-xGspeJqrfHTUsGT9qGgpCA5wTMsYz8u9FuQo_yJ2yAwiV_nB48tSXrhN0qrHXdU6QFPmxLTZT-cTh8u7Ha3uM66J5f8mv54kpHUuh2LsgAoVDsWwn4ZDBmPdElaLkwJcwg60o")' }}>
-                            <div className="flex flex-col gap-6 text-center max-w-3xl">
+                            <div className="flex flex-col gap-6 text-center max-w-4xl">
                                 <h1 className="text-white text-4xl md:text-6xl font-black leading-tight tracking-tight">
                                     {t('Careers.Hero.title')}
                                 </h1>
@@ -327,8 +329,19 @@ export default function Careers() {
                                         selectedFile={resumeFile}
                                         acceptedFormats="PDF, DOC, DOCX up to 10MB"
                                     />
-                                    <button type='submit' className="bg-primary hover:bg-green-400 cursor-pointer text-[#111811] text-base font-bold h-12 w-full rounded-lg transition-colors mt-2">
-                                        {t('Careers.Form.submitBtn')}
+                                    <button
+                                        type='submit'
+                                        disabled={isSubmitting}
+                                        className="bg-primary hover:bg-green-400 cursor-pointer text-[#111811] text-base font-bold h-12 w-full rounded-lg transition-colors mt-2 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                                    >
+                                        {isSubmitting ? (
+                                            <>
+                                                <Loader2 className="h-5 w-5 animate-spin" />
+                                                {t('Careers.Form.submitting') || 'Sending...'}
+                                            </>
+                                        ) : (
+                                            t('Careers.Form.submitBtn')
+                                        )}
                                     </button>
                                 </form>
                             </div>

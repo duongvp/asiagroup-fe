@@ -23,7 +23,7 @@
     "columns": {
       "services": {
         "title": "Dịch vụ",
-        "links": ["Điện mặt trời hộ gia đình", "Điện mặt trời thương mại", "Lưu trữ pin", "Bảo trì"]
+        "links": ["Điện mặt trời hộ gia đình", "Điện mặt trời thương mại",  "Bảo trì"]
       },
       "company": {
         "title": "Công ty",
@@ -287,7 +287,10 @@
       "email": "Địa chỉ Email",
       "resume": "Tải lên CV",
       "resumeHint": "Nhấp để tải lên hoặc kéo thả",
-      "submitBtn": "Nộp đơn ứng tuyển"
+      "submitBtn": "Nộp đơn ứng tuyển",
+      "submitting": "Đang gửi...",
+      "success": "Nộp đơn ứng tuyển thành công!",
+      "error": "Nộp đơn thất bại. Vui lòng thử lại."
     }
   },
 
@@ -749,6 +752,66 @@
         "serviceType": "Vui lòng chọn một loại dịch vụ",
         "preferredDate": "Vui lòng chọn ngày hẹn"
       }
+    }
+  },
+  "Policies": {
+    "Hero": {
+      "title": "Trung tâm Chính sách & Pháp lý",
+      "subtitle": "Chúng tôi tin tưởng vào sự minh bạch hoàn toàn..."
+    },
+    "CTA": {
+      "download": "Tải toàn bộ file PDF"
+    },
+    "Nav": {
+      "title": "Điều hướng"
+    },
+    "Content": {
+      "lastUpdated": "Cập nhật lần cuối"
+    }
+  },
+  "Projects": {
+    "Hero": {
+      "trusted": "Được tin dùng bởi hơn 500 chủ nhà",
+      "title": "Thắp sáng tương lai,\ntrên từng mái nhà",
+      "subtitle": "Khám phá danh mục các giải pháp năng lượng bền vững của chúng tôi. Chúng tôi giúp các gia đình và doanh nghiệp chuyển đổi sang năng lượng sạch, tin cậy.",
+      "btnResidential": "Xem dự án hộ gia đình",
+      "btnCommercial": "Xem dự án doanh nghiệp"
+    },
+    "Stats": {
+      "completed": "Dự án hoàn thành",
+      "energy": "Năng lượng tạo ra",
+      "clients": "Khách hàng hài lòng",
+      "offset": "Cắt giảm CO2"
+    },
+    "Grid": {
+      "title": "Dự án của chúng tôi",
+      "subtitle": "Khám phá các dự án lắp đặt hộ gia đình và doanh nghiệp mới nhất.",
+      "loadMore": "Xem thêm dự án",
+      "system": "Hệ thống",
+      "savings": "Tiết kiệm"
+    },
+    "Filters": {
+      "all": "Tất cả",
+      "residential": "Hộ gia đình",
+      "commercial": "Doanh nghiệp",
+      "industrial": "Công nghiệp"
+    },
+    "CaseStudy": {
+      "badge": "Dự án tiêu biểu",
+      "title": "Phức hợp GreenHorizon",
+      "description": "Một trong những dự án thương mại đầy tham vọng nhất của chúng tôi. Chúng tôi đã biến một khu văn phòng cũ thành một khuôn viên năng lượng net-zero. Bằng cách kết hợp mảng 500kW trên mái nhà với hệ thống lưu trữ pin thông minh, GreenHorizon hiện hoạt động độc lập với lưới điện trong giờ cao điểm.",
+      "timeline": "6 tháng thi công",
+      "roi": "Hoàn vốn trong 3.5 năm",
+      "quote": "\"SolarTech không chỉ lắp đặt các tấm pin; họ đã tái cấu trúc toàn bộ chiến lược năng lượng của chúng tôi. ROI đã vượt dự kiến 15% ngay trong năm đầu tiên.\"",
+      "author": "David Chen",
+      "role": "CTO, GreenHorizon Inc.",
+      "readMore": "Xem chi tiết dự án"
+    },
+    "CTA": {
+      "title": "Sẵn sàng thắp sáng tương lai bằng năng lượng mặt trời?",
+      "subtitle": "Tham gia cùng hàng trăm hộ gia đình và doanh nghiệp đã hài lòng. Nhận báo giá tùy chỉnh và xem bạn có thể tiết kiệm bao nhiêu.",
+      "btnQuote": "Nhận báo giá miễn phí",
+      "btnCall": "Lên lịch tư vấn"
     }
   }
 }

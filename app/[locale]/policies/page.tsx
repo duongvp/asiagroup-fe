@@ -6,6 +6,7 @@ import * as LucideIcons from 'lucide-react';
 import { Download, ChevronDown } from 'lucide-react';
 import { usePolicies } from '@/services/policy.service';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { useTranslations } from 'next-intl';
 
 // Helper để render icon động từ string name
 const DynamicIcon = ({ name, size = 20, className = "" }: { name: string, size?: number, className?: string }) => {
@@ -15,14 +16,19 @@ const DynamicIcon = ({ name, size = 20, className = "" }: { name: string, size?:
 };
 
 export default function PoliciesLegal({ locale = 'en' }: { locale?: string }) {
+    const t = useTranslations();
     const { policies, isLoading } = usePolicies(locale);
     const [activeSection, setActiveSection] = useState('warranty');
+
+    const handlePrint = () => {
+        window.print();
+    };
 
     if (isLoading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
 
     return (
         <div className="bg-background-light dark:bg-background-dark font-display text-[#111811] dark:text-white">
-            {/* Hero Section - Giữ nguyên UI, có thể map thêm title/subtitle từ Strapi nếu muốn */}
+            {/* Hero Section */}
             <div className="w-full bg-white dark:bg-[#111811]">
                 <div className="px-4 md:px-10 lg:px-40 py-5">
                     <div className="layout-content-container flex flex-col max-w-[1200px] mx-auto flex-1">
@@ -33,16 +39,19 @@ export default function PoliciesLegal({ locale = 'en' }: { locale?: string }) {
                                     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuD3i4sPisJjGFN3n7NlpL3QKqjTsoVG97hTu5w0SiiQ4YD5AqUq9ASMMi6yXTjg4e_gV-wfz42aLLC0_cunq7yhVAB840vP8yG945qPqqbAd_iS-3Ef1GIlpmkcwTs3LevxxX3JqTHSiOjpobrzz4y2FKe_VyqOtNd56bPyEMIixKFeCm2EFI9wvSdU4Q4i9Rm_dOtPsq32xQECuIkon0a5g5UBMdKruEumLFZLQvyTT4SO8wp6MtS7hgf6a2p6geKAFEn003jhznQ")`
                                 }}
                             >
-                                <div className="flex flex-col gap-2 text-left max-w-2xl relative z-10">
-                                    <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl">Policies & Legal Center</h1>
+                                <div className="flex flex-col gap-2 text-left relative z-10">
+                                    <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl">{t('Policies.Hero.title')}</h1>
                                     <h2 className="text-white text-sm font-medium leading-normal md:text-lg md:leading-relaxed text-opacity-90">
-                                        We believe in complete transparency...
+                                        {t('Policies.Hero.subtitle')}
                                     </h2>
                                 </div>
                                 <div className="flex gap-3 relative z-10">
-                                    <button className="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 md:h-12 md:px-5 bg-primary text-[#111811] text-sm font-bold hover:bg-white transition-all">
+                                    <button
+                                        onClick={handlePrint}
+                                        className="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 md:h-12 md:px-5 bg-primary text-[#111811] text-sm font-bold hover:bg-white transition-all"
+                                    >
                                         <Download className="mr-2" size={18} />
-                                        <span>Download Full PDF</span>
+                                        <span>{t('Policies.CTA.download')}</span>
                                     </button>
                                 </div>
                             </div>
@@ -59,7 +68,7 @@ export default function PoliciesLegal({ locale = 'en' }: { locale?: string }) {
                     <aside className="hidden lg:block w-full lg:w-1/4 min-w-[260px]">
                         <div className="sticky top-24 flex flex-col justify-between bg-white dark:bg-[#1a261a] p-6 rounded-xl shadow-sm border border-[#f0f4f0] dark:border-[#2a382a]">
                             <div className="flex flex-col gap-6">
-                                <h3 className="text-[#111811] dark:text-white text-lg font-bold">Navigation</h3>
+                                <h3 className="text-[#111811] dark:text-white text-lg font-bold">{t('Policies.Nav.title')}</h3>
                                 <div className="flex flex-col gap-2 relative">
                                     {policies.map((item) => (
                                         <a
@@ -100,7 +109,7 @@ export default function PoliciesLegal({ locale = 'en' }: { locale?: string }) {
                                     <h2 className="text-primary text-sm font-bold uppercase tracking-wider">{policy.subtitle}</h2>
                                 </div>
                                 <h1 className="text-[#111811] dark:text-white text-3xl font-bold leading-tight mb-2">{policy.title}</h1>
-                                <p className="text-[#618961] text-sm mb-8">Last updated: {policy.lastupdated}</p>
+                                <p className="text-[#618961] text-sm mb-8">{t('Policies.Content.lastUpdated')}: {policy.lastupdated}</p>
 
                                 <div className="prose prose-slate dark:prose-invert max-w-none text-[#111811] dark:text-gray-300">
                                     {/* Render nội dung từ Strapi Editor */}
