@@ -407,6 +407,7 @@
       "desc": "Get your free customized solar design and savings estimate today. No commitment required.",
       "placeholder": "Enter your email",
       "button": "Get Proposal",
+      "success_message": "Thank you! We'll send your proposal to {email}",
       "features": {
         "fast": { "title": "Fast Scheduling", "desc": "Consultation within 24 hours." },
         "warranty": { "title": "25-Year Warranty", "desc": "Peace of mind on panels and labor." }

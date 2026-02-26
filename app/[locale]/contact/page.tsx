@@ -120,7 +120,7 @@ export default function ContactPage() {
                             />
                             <div className="absolute inset-0 bg-primary/10"></div>
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="bg-white dark:bg-slate-900 px-6 py-3 rounded-full shadow-xl border border-primary/20 flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform">
+                                <div className="bg-white dark:bg-slate-900 px-6 py-3 rounded-full shadow-xl border border-primary/20 flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform duration-300">
                                     <MapPin className="text-primary" size={18} />
                                     <span className="font-bold text-sm">{t('Info.map')}</span>
                                 </div>

@@ -64,14 +64,14 @@ export default function Benefits() {
                                 </h2>
                             </div>
 
-                            <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full justify-center pt-4">
+                            {/* <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full justify-center pt-4">
                                 <button className="h-12 px-8 rounded-full bg-primary text-slate-900 font-bold text-base hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(19,236,19,0.4)]">
                                     {t('Hero.ctaPrimary')}
                                 </button>
                                 <button className="h-12 px-8 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold text-base hover:bg-white/20 transition-all">
                                     {t('Hero.ctaSecondary')}
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                     </section>
 

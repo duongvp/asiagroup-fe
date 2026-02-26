@@ -407,6 +407,7 @@
       "desc": "Nhận thiết kế và ước tính tiết kiệm miễn phí ngay hôm nay. không yêu cầu cam kết.",
       "placeholder": "Nhập email của bạn",
       "button": "Nhận báo giá",
+      "success_message": "Cảm ơn bạn! Chúng tôi sẽ gửi đề xuất đến {email}",
       "features": {
         "fast": { "title": "Đặt lịch nhanh", "desc": "Tư vấn trong vòng 24 giờ." },
         "warranty": { "title": "Bảo hành 25 năm", "desc": "Yên tâm về tấm pin và hiệu suất." }

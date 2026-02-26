@@ -154,7 +154,7 @@ export default function FAQPage() {
                                     {t('CTA.subtitle')}
                                 </p>
                             </div>
-                            <button className="px-10 py-4 bg-primary hover:bg-primary-dark text-black text-lg font-black rounded-2xl shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95">
+                            <button className="px-10 py-4 bg-primary hover:bg-primary-dark text-black text-lg font-black rounded-2xl shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95 duration-200">
                                 {t('CTA.button')}
                             </button>
                         </div>
