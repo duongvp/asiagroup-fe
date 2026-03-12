@@ -48,7 +48,6 @@ export default function SolarTechPortfolio() {
         { id: 'all', label: t('Filters.all') },
         { id: 'residential', label: t('Filters.residential') },
         { id: 'commercial', label: t('Filters.commercial') },
-        { id: 'industrial', label: t('Filters.industrial') }
     ];
 
     return (

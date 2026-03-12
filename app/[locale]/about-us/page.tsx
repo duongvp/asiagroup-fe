@@ -17,7 +17,7 @@ export default function AboutUs() {
                 {/* Main Content Wrapper */}
                 <main className="flex flex-1 flex-col">
                     {/* Hero Section */}
-                    <section className="relative flex min-h-[480px] flex-col justify-center overflow-hidden bg-cover bg-center py-20 px-4" style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSolHzstLwrqsA27416p-A7gycFncsav51ZmHewj8ZbP5foPUJHPdCV9Oju6DHwMo9w4Vqfk8s_N01YYFwGITfXBVmWWmXwKveI9_WsE6hrdWqGuYLOyDN4YxeiCXgYxBWk8tybatbSyfMElMof7-c92tbDDJ6uFPylJpmMF5Lr3mokyrYTWLYy9uaDObKIvfnIH-1zqhpbmYLuLS9Ul3056jvRaSYQvo0QEx7kFokXnEFjvSZdezddM2UkHcEir5iP43727DadNw")' }}>
+                    <section className="relative flex min-h-[480px] flex-col justify-center overflow-hidden bg-cover bg-center py-20 px-4" style={{ backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url("/images/LINE_ALBUM_工事925_251231_5.jpg")' }}>
                         <div className="flex flex-col max-w-[960px] mx-auto w-full text-center">
                             <h1 className="text-white text-4xl font-black leading-tight tracking-[-0.033em] md:text-5xl lg:text-6xl mb-6">
                                 {t('Hero.title')}
@@ -45,7 +45,7 @@ export default function AboutUs() {
                             <div className="flex-1 w-full">
                                 <div
                                     className="aspect-video w-full rounded-xl overflow-hidden bg-gray-200"
-                                    style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHTBCrB_UfLFysAlhH7i-ncuHfi6z1Sa3xUi7UcpW93u1s2dMrjiyA6JcCMhA2tWiPa7RRtOTKioc-EBypM3dZXNwbiKjfIg7B4xg7GEHoHJsCYe41acd2AaB69m-VP2WHVKdbvyG3EuBaUQ7S2_ueZWKtd8PgnU8qnAbFs8N-3RcpdA5yid0gS3pBXXPMNuXbE9puhf5F2Bw5-XZbFlX9_Diatu-SV5eXrwPmcZxGh8yQB0WQrkZ4awFNokXk0cUw09xX1TGKc-Y')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+                                    style={{ backgroundImage: "url('/images/whoweare.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
                                 ></div>
                             </div>
                         </div>

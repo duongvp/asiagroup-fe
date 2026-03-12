@@ -1,4 +1,6 @@
 'use client';
+import { useState } from 'react'; // Quản lý trạng thái đóng mở ảnh
+import { motion, AnimatePresence } from 'framer-motion'; // Hiệu ứng mượt mà
 import { getStrapiImageUrl } from '@/helper/strapi-convert-url';
 import { useProjectDetail } from '@/services/project.service';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
@@ -9,24 +11,27 @@ import {
     Leaf,
     Zap,
     ShieldCheck,
+    X, // Icon đóng Lightbox
 } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import { use } from 'react';
 
 interface PageProps {
-    params: Promise<{ slug: string }>; // Params bây giờ là một Promise
+    params: Promise<{ slug: string }>;
 }
 
 export default function ProjectDetail({ params }: PageProps) {
     const { slug } = use(params);
-    console.log("🚀 ~ ProjectDetail ~ slug:", slug)
     const locale = useLocale();
     const { project, isLoading, isError } = useProjectDetail(slug, locale);
-    const { testimonial } = project || {};
-    console.log("🚀 ~ ProjectDetail ~ project:", locale)
+
+    // State lưu URL ảnh đang được chọn để phóng to
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     if (!project) return <></>
+
+    const { testimonial } = project || {};
 
     return (
         <div className="min-h-screen bg-white dark:bg-[#102210] text-[#0f172a] dark:text-white font-sans transition-colors duration-300">
@@ -34,11 +39,10 @@ export default function ProjectDetail({ params }: PageProps) {
                 {/* Hero Section */}
                 <section className="relative w-full h-[60vh] min-h-[400px] overflow-hidden">
                     <img
-                        alt="The Henderson Residence Solar Installation"
+                        alt="Hero Image"
                         className="absolute inset-0 w-full h-full object-cover"
                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuC83tGHWAzUnfNzOAUKjo8HmZylM-r4iC9c7tBJG4HfKHXTf4vF2rVwcJn9NFhFXtFZZ7hq2sVBVnAJETmD-neduEv8Ta7fMBy19FtkXF_AwOWai6I3abkngpMZmyUa0tL-MIprMTQCtYE4CMpW2fQrE3P4Dra1AddkciuTuzyg3T1Mhmnl-4rPFr_8zDP-IftiD3f2QBTqIWrh_529DgpCbuvL2NmT3Svak-kjBwbPjptchyvH9OMm3bJyQf3295y_D8tBoH7v3So"
                     />
-                    {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#102210]/90 to-[#102210]/40 flex flex-col justify-end pb-16 px-6 md:px-10">
                         <div className="max-w-[1200px] mx-auto w-full">
                             <span className="inline-block px-3 py-1 rounded-full bg-[#13ec13] text-[#102210] text-xs font-bold uppercase tracking-widest mb-4">
@@ -58,13 +62,12 @@ export default function ProjectDetail({ params }: PageProps) {
                 {/* Project Stats Bar */}
                 <div className="w-full bg-white dark:bg-[#162e16] border-b border-gray-100 dark:border-[#2a3c2a]">
                     <div className="max-w-[1200px] mx-auto px-6 md:px-10 py-8">
-                        {/* Breadcrumbs */}
                         <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
                             <a className="hover:text-[#13ec13] transition-colors" href="#">Portfolio</a>
                             <ChevronRight size={14} />
                             <a className="hover:text-[#13ec13] transition-colors" href="#">Residential</a>
                             <ChevronRight size={14} />
-                            <span className="text-[#0f172a] dark:text-white font-medium">The Henderson Residence</span>
+                            <span className="text-[#0f172a] dark:text-white font-medium">{project.title}</span>
                         </nav>
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
@@ -81,33 +84,37 @@ export default function ProjectDetail({ params }: PageProps) {
                     <div className="lg:col-span-2 space-y-12">
                         <section>
                             <h2 className="text-3xl font-bold mb-6">Project Overview</h2>
-                            <div className="text-gray-600 dark:text-gray-300 space-y-6 text-lg leading-relaxed">
-                                <BlocksRenderer
-                                    content={project.description as any}
-                                />
+                            <div className="text-gray-600 dark:text-gray-300 space-y-6 text-lg leading-relaxed text-blocks">
+                                <BlocksRenderer content={project.description as any} />
                             </div>
                         </section>
 
-                        {/* Site Gallery */}
+                        {/* Site Gallery với chức năng Click to Zoom */}
                         <section>
                             <h2 className="text-2xl font-bold mb-6">Site Gallery</h2>
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                {project.gallery?.map(item => (
-                                    <div key={item.id} className="aspect-square rounded-xl overflow-hidden bg-gray-200 group">
-                                        <Image
-                                            alt={item.alternativeText || 'Project Image'}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                                            src={getStrapiImageUrl(item.url)}
-                                            width={500}
-                                            height={500}
-                                            unoptimized
-                                        />
-                                    </div>
-                                ))}
+                                {project.gallery?.map(item => {
+                                    const imgUrl = getStrapiImageUrl(item.url);
+                                    return (
+                                        <div
+                                            key={item.id}
+                                            className="aspect-square rounded-xl overflow-hidden bg-gray-200 group cursor-zoom-in"
+                                            onClick={() => setSelectedImage(imgUrl)}
+                                        >
+                                            <Image
+                                                alt={item.alternativeText || 'Project Image'}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                src={imgUrl}
+                                                width={500}
+                                                height={500}
+                                                unoptimized
+                                            />
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </section>
 
-                        {/* Technical Box */}
                         <section className="bg-[#111811] text-white p-8 rounded-2xl border border-white/10">
                             <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-[#13ec13]">
                                 <ShieldCheck size={28} />
@@ -123,34 +130,32 @@ export default function ProjectDetail({ params }: PageProps) {
                     </div>
 
                     {/* Sidebar / Testimonial */}
-                    {
-                        testimonial && (
-                            <aside>
-                                <div className="bg-white dark:bg-[#1a2e1a] p-8 rounded-2xl border border-gray-100 dark:border-[#2a3c2a] shadow-xl sticky top-24">
-                                    <div className="flex items-center gap-4 mb-6">
-                                        <div className="size-14 rounded-full overflow-hidden">
-                                            <img alt="Homeowner" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_fEuII25P1Wy3Qm6sdy47udvjuYwq-O79YOrMpZrpwV83vbRKTegJf9uebtzuWUTlnavaLE0yxyNSmTyaKtEiXOOI6mKES7sRgtzlMyh0JrJw6f2eXQ-tHB9PN4SV1byMXFlUuJpkizpeg99_M60X_hYWij9FmS7S8WdlBA1ABZhODZ0WFiI4XnDg-Lo321fVKhyf7K1P-BE4LwmGGzkLysJ5Mixan_enrWASeGNDrgR_ry_x4oDpZNemWmxsVLmTEmxgKjHs9b4" />
-                                        </div>
-                                        <div>
-                                            <p className="font-bold text-lg leading-none mb-1">{testimonial.author_name}</p>
-                                            <p className="text-sm text-gray-500">{testimonial.author_role}</p>
-                                        </div>
+                    {testimonial && (
+                        <aside>
+                            <div className="bg-white dark:bg-[#1a2e1a] p-8 rounded-2xl border border-gray-100 dark:border-[#2a3c2a] shadow-xl sticky top-24">
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="size-14 rounded-full overflow-hidden">
+                                        <img alt="Author" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_fEuII25P1Wy3Qm6sdy47udvjuYwq-O79YOrMpZrpwV83vbRKTegJf9uebtzuWUTlnavaLE0yxyNSmTyaKtEiXOOI6mKES7sRgtzlMyh0JrJw6f2eXQ-tHB9PN4SV1byMXFlUuJpkizpeg99_M60X_hYWij9FmS7S8WdlBA1ABZhODZ0WFiI4XnDg-Lo321fVKhyf7K1P-BE4LwmGGzkLysJ5Mixan_enrWASeGNDrgR_ry_x4oDpZNemWmxsVLmTEmxgKjHs9b4" />
                                     </div>
-                                    <blockquote className="italic text-gray-600 dark:text-gray-300 mb-6 border-l-4 border-[#13ec13] pl-4">
-                                        "{testimonial.quote}"
-                                    </blockquote>
-                                    <div className="space-y-4 mb-8">
-                                        <DetailRow label="Completed" value="October 2023" />
-                                        <DetailRow label="Sector" value="Residential" />
-                                        <DetailRow label="Impact" value="Carbon Neutral" color="text-[#13ec13]" />
+                                    <div>
+                                        <p className="font-bold text-lg leading-none mb-1">{testimonial.author_name}</p>
+                                        <p className="text-sm text-gray-500">{testimonial.author_role}</p>
                                     </div>
-                                    <button className="w-full py-4 bg-[#13ec13] text-[#102210] font-black rounded-xl hover:bg-[#10d010] transition-all shadow-lg">
-                                        Get a Similar Quote
-                                    </button>
                                 </div>
-                            </aside>
-                        )
-                    }
+                                <blockquote className="italic text-gray-600 dark:text-gray-300 mb-6 border-l-4 border-[#13ec13] pl-4">
+                                    "{testimonial.quote}"
+                                </blockquote>
+                                <div className="space-y-4 mb-8">
+                                    <DetailRow label="Completed" value="October 2023" />
+                                    <DetailRow label="Sector" value="Residential" />
+                                    <DetailRow label="Impact" value="Carbon Neutral" color="text-[#13ec13]" />
+                                </div>
+                                <button className="w-full py-4 bg-[#13ec13] text-[#102210] font-black rounded-xl hover:bg-[#10d010] transition-all shadow-lg">
+                                    Get a Similar Quote
+                                </button>
+                            </div>
+                        </aside>
+                    )}
                 </div>
 
                 {/* CTA Section */}
@@ -158,19 +163,54 @@ export default function ProjectDetail({ params }: PageProps) {
                     <div className="max-w-[1200px] mx-auto px-6 text-center">
                         <h2 className="text-[#102210] text-3xl md:text-5xl font-black mb-6">Ready for your own solar success story?</h2>
                         <p className="text-[#102210]/80 text-xl max-w-2xl mx-auto mb-10">Join thousands of homeowners saving money while protecting the planet.</p>
-                        <div className="flex flex-wrap gap-4 justify-center">
-                            <button className="bg-[#102210] text-white px-10 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all">
-                                Get Your Free Quote
-                            </button>
-                        </div>
+                        <button className="bg-[#102210] text-white px-10 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-all">
+                            Get Your Free Quote
+                        </button>
                     </div>
                 </section>
             </main>
+
+            {/* LIGHTBOX OVERLAY */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImage(null)}
+                        className="fixed inset-0 z-[999] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 cursor-zoom-out"
+                    >
+                        {/* Nút đóng */}
+                        <button
+                            className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-full transition-all"
+                            onClick={() => setSelectedImage(null)}
+                        >
+                            <X size={40} />
+                        </button>
+
+                        {/* Ảnh phóng to */}
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                            className="relative max-w-full max-h-full"
+                        >
+                            <img
+                                src={selectedImage}
+                                alt="Zoomed View"
+                                className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl shadow-black/50"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
 
-// Helper Components để code gọn hơn
+// --- Helper Components ---
+
 function StatCard({ icon, label, value, highlight = false }: any) {
     return (
         <div className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 dark:bg-[#1f3a1f]">
