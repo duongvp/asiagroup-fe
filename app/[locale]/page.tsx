@@ -73,7 +73,7 @@ export default async function SolarCompany({
               <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent z-10"></div>
               <div
                 className="w-full h-full bg-center bg-cover transition-transform duration-700 hover:scale-105"
-                style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPbsM6UmCtd9cxLXQJcmmue6iVUcvAlejYtHsFX6nUeOMz09OfIK5CUmX4wJSJgqpwjgjve-IahzGMCIOHvmeihOqY9ahMlnQ-H1cwvmBEE3IwPV_6GCtkyPLZL2rRU4jNqJiKNafxj_8k101WlzDDyfrfswEA_R2zAmk9x7Bh4proHJG2SQpY2z8WYJBfvwq53rxZGbdgEFij49JZgevr_4_fBbANNk-h-M8tr7pDiyXiAXNuuN-O-kaBTFQAGgrLF0s-gzRvJ08')" }}
+                style={{ backgroundImage: "url('/images/LINE_ALBUM_工事925_251231_5.jpg')" }}
               />
             </div>
             <div className="absolute -bottom-6 -left-6 z-20 bg-white dark:bg-[#1e3a1e] p-4 rounded-xl shadow-xl border border-gray-100 dark:border-white/10 hidden md:block">
@@ -151,7 +151,7 @@ export default async function SolarCompany({
             <div className="w-full aspect-square md:aspect-[4/5] bg-gray-200 rounded-2xl overflow-hidden shadow-lg">
               <div
                 className="w-full h-full bg-center bg-cover"
-                style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHQZog9vRwppu5ij59afPw2ZgkSLSOaWiUJ1nPzgeKCJOhDSi-6Q-0rsml0AFF7qO0WbSMxr29i8ssnKTSpSzugkDJpT-AdMZJxY4OZmrxUva-P5Pqq9KH3y8LPgDY7cp5WYHfMCavKhFLZ09RUHGxN2kNbCYh3FS47Flg2O627isarxQPJxtrhMuxQJA881nIAafinhh-t-YLXBFWZrxtV3ErVTw31KZMoYwacVq7cFiU-2GxFiAa8KUe1357CQZzotoOc96z6wk')` }}
+                style={{ backgroundImage: `url('/images/IMG_2953.jpg')` }}
               />
             </div>
             <div className="absolute -bottom-8 -right-8 size-48 bg-primary rounded-full hidden lg:flex items-center justify-center text-primary-foreground font-black text-center text-lg p-6 rotate-12 shadow-xl border-4 border-white dark:border-background-dark">
