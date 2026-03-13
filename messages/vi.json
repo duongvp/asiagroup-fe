@@ -23,7 +23,7 @@
     "columns": {
       "services": {
         "title": "Dịch vụ",
-        "links": ["Điện mặt trời hộ gia đình", "Điện mặt trời thương mại",  "Bảo trì"]
+        "links": ["Điện mặt trời hộ gia đình", "Điện mặt trời thương mại", "Bảo trì"]
       },
       "company": {
         "title": "Công ty",

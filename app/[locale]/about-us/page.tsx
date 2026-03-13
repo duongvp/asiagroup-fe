@@ -1,14 +1,18 @@
 'use client';
 
 import { useLocale, useTranslations } from 'use-intl';
-import { EyeIcon, Hammer, Handshake, Leaf, Target, Users } from 'lucide-react';
+import { EyeIcon, Hammer, Handshake, Leaf, PlayCircle, Target, Users, X } from 'lucide-react';
 import { useTeamMembers } from '@/services/team.service';
 import Image from 'next/image';
 import { getStrapiImageUrl } from '@/helper/strapi-convert-url';
+import { useState } from 'react';
+import { Play } from 'next/font/google';
+import Link from 'next/link';
 
 export default function AboutUs() {
     const t = useTranslations('AboutUs');
     const locale = useLocale();
+    const [isOpenVideo, setIsOpenVideo] = useState(false);
     const { members, isLoading, isError } = useTeamMembers(locale as string);
 
     return (
@@ -26,7 +30,10 @@ export default function AboutUs() {
                                 {t('Hero.description')}
                             </h2>
                             <div className="mt-8">
-                                <button className="inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-green-600 hover:bg-green-700 text-white text-base font-bold leading-normal tracking-[0.015em] transition-colors">
+                                <button
+                                    className="inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-green-600 hover:bg-green-700 text-white text-base font-bold leading-normal tracking-[0.015em] transition-colors"
+                                    onClick={() => setIsOpenVideo(true)}
+                                >   <PlayCircle size={20} className="mr-2" />
                                     <span>{t('Hero.cta')}</span>
                                 </button>
                             </div>
@@ -199,14 +206,40 @@ export default function AboutUs() {
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-10 lg:p-16 gap-6">
                                 <h2 className="text-white text-3xl lg:text-4xl font-black leading-tight">{t('CTA.title')}</h2>
                                 <p className="text-blue-100 text-base max-w-lg">{t('CTA.description')}</p>
-                                <button className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-transform hover:-translate-y-1">
+                                <Link href={`/${locale}/solar-quotes`} className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-transform hover:-translate-y-1">
                                     {t('CTA.button')}
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </section>
                 </main>
             </div>
+            {/* --- VIDEO MODAL POPUP --- */}
+            {isOpenVideo && (
+                <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/90 p-4 transition-all duration-300 backdrop-blur-sm">
+                    {/* Overlay đóng khi click ra ngoài */}
+                    <div className="absolute inset-0" onClick={() => setIsOpenVideo(false)}></div>
+
+                    <div className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
+                        {/* Nút đóng */}
+                        <button
+                            onClick={() => setIsOpenVideo(false)}
+                            className="absolute top-4 right-4 z-50 p-2 bg-white/20 hover:bg-white/40 text-white rounded-full transition-all"
+                        >
+                            <X size={24} />
+                        </button>
+
+                        {/* Video Iframe (Thay YOUR_VIDEO_ID bằng ID thực tế) */}
+                        <iframe
+                            className="w-full h-full"
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                            title="Introduction Video"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                </div>
+            )}
         </>
     );
 }

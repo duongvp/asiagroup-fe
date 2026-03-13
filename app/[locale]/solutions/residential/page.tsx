@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import {
     SolarPanel, Wallet, Leaf, Zap, Home,
     ShieldCheck, ArrowRight, BarChart3, Star,
@@ -13,6 +13,7 @@ import Link from 'next/link';
 
 export default function ResidentialPage() {
     const t = useTranslations('Residential');
+    const locale = useLocale();
     const [activeTab, setActiveTab] = useState<'owners' | 'newbuild'>('owners');
 
     const solutionItems = [
@@ -44,9 +45,9 @@ export default function ResidentialPage() {
                     </div>
 
                     <div className="relative z-10 flex flex-col sm:flex-row gap-4 w-full justify-center pt-4">
-                        <button className="h-14 px-10 rounded-full bg-[#13ec13] text-[#102210] font-black text-base hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(19,236,19,0.4)] duration-300">
+                        <Link href={`/${locale}/solar-quotes`} className="h-14 px-10 rounded-full bg-[#13ec13] text-[#102210] font-black text-base hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(19,236,19,0.4)] duration-300     flex items-center justify-center">
                             {t('Hero.btnQuote')}
-                        </button>
+                        </Link>
                         <Link href="/installation-process" className="h-14 px-10 flex flex-col items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white font-bold text-base hover:bg-white/20 transition-all duration-300">
                             {t('Hero.btnWork')}
                         </Link>

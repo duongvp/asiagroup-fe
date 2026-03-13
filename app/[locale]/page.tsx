@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { CreditCard, Home, Leaf, PiggyBank, Users, Wallet, Zap } from 'lucide-react';
 import CountUpStat from '@/components/CountUpStat';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'Solar Company - Homepage',
@@ -44,9 +45,9 @@ export default async function SolarCompany({
               {tHero('description')}
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <button className="flex items-center justify-center rounded-lg h-12 px-8 bg-primary hover:bg-green-400 text-primary-foreground text-base font-bold shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5">
+              <Link href={`/${locale}/solar-quotes`} className="flex items-center justify-center rounded-lg h-12 px-8 bg-primary hover:bg-green-400 text-primary-foreground text-base font-bold shadow-lg hover:shadow-primary/50 transition-all transform hover:-translate-y-0.5">
                 {tHero('cta_quote')}
-              </button>
+              </Link>
               <button className="flex items-center justify-center rounded-lg h-12 px-8 bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 text-foreground text-base font-bold hover:bg-gray-50 dark:hover:bg-white/20 transition-colors">
                 {tHero('cta_learn')}
               </button>

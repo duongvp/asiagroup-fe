@@ -157,9 +157,9 @@ export default function Header() {
                             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
                         </button>
 
-                        <button className="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-primary-foreground text-sm font-bold shadow-sm hover:shadow-md">
+                        <Link href={`/${locale}/solar-quotes`} className="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-primary-foreground text-sm font-bold shadow-sm hover:shadow-md">
                             <span className="truncate"> {t('get_quote')}</span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
 
@@ -202,14 +202,14 @@ export default function Header() {
                                     <Link
                                         href={item.href}
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="text-3xl font-black text-foreground tracking-tighter"
+                                        className="text-xl font-black text-foreground tracking-tighter"
                                     >
                                         {item.name}
                                     </Link>
                                     {item.subMenu && (
                                         <button
                                             onClick={() => setActiveSubMenu(activeSubMenu === item.name ? null : item.name)}
-                                            className="p-3 bg-gray-50 dark:bg-white/5 rounded-2xl"
+                                            className="p-3  rounded-2xl"
                                         >
                                             <ChevronDown size={24} className={`transition-transform duration-300 ${activeSubMenu === item.name ? 'rotate-180' : ''}`} />
                                         </button>
@@ -225,7 +225,7 @@ export default function Header() {
                                                 className="flex items-center justify-between py-4 text-gray-600 dark:text-gray-400 font-bold"
                                             >
                                                 {sub.name}
-                                                <ChevronRight size={18} className="text-[#13ec13]" />
+                                                {/* <ChevronRight size={18} className="text-[#13ec13]" /> */}
                                             </Link>
                                         ))}
                                     </div>
