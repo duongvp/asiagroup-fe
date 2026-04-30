@@ -206,7 +206,7 @@ export default function AboutUs() {
                             <div className="relative z-10 flex flex-col items-center justify-center text-center p-10 lg:p-16 gap-6">
                                 <h2 className="text-white text-3xl lg:text-4xl font-black leading-tight">{t('CTA.title')}</h2>
                                 <p className="text-blue-100 text-base max-w-lg">{t('CTA.description')}</p>
-                                <Link href={`/${locale}/solar-quotes`} className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-transform hover:-translate-y-1">
+                                <Link href={`/${locale}/solar-quotes`} className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-transform hover:scale-105 duration-300">
                                     {t('CTA.button')}
                                 </Link>
                             </div>

@@ -48,7 +48,14 @@ export default function Header() {
                 { name: t('maintenance'), href: `/${locale}/maintenance` },
             ]
         },
-        { name: t('projects'), href: `/${locale}/projects` },
+        {
+            name: t('projects'),
+            href: `/${locale}/projects`,
+            subMenu: [
+                { name: t('residential'), href: `/${locale}/projects/residential` },
+                { name: t('commercial'), href: `/${locale}/projects/commercial` },
+            ]
+        },
         {
             name: t('about'),
             href: `/${locale}/about-us`,
@@ -188,7 +195,7 @@ export default function Header() {
                             <button
                                 key={lang.code}
                                 onClick={() => handleLangChange(lang.code)}
-                                className={`flex-1 py-3 rounded-xl text-xs font-black transition-all ${currentLang.code === lang.code ? 'bg-[#13ec13] text-black shadow-md' : 'text-gray-500'}`}
+                                className={`flex-1 py-3 rounded-xl text-xs font-bold transition-all ${currentLang.code === lang.code ? 'bg-[#13ec13] text-black shadow-md' : 'text-gray-500'}`}
                             >
                                 {lang.name}
                             </button>
@@ -202,7 +209,7 @@ export default function Header() {
                                     <Link
                                         href={item.href}
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="text-xl font-black text-foreground tracking-tighter"
+                                        className="text-xl font-medium text-foreground tracking-tighter"
                                     >
                                         {item.name}
                                     </Link>
@@ -238,7 +245,7 @@ export default function Header() {
                         <Link
                             href={`/${locale}/solar-quotes`}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="w-full h-16 bg-[#13ec13] text-[#102210] rounded-2xl flex items-center justify-center font-black text-xl shadow-2xl shadow-green-500/20 active:scale-95 transition-transform"
+                            className="w-full h-16 bg-[#13ec13] text-[#102210] rounded-2xl flex items-center justify-center font-bold text-xl shadow-2xl shadow-green-500/20 active:scale-95 transition-transform"
                         >
                             {t('get_quote').toUpperCase()}
                         </Link>
